@@ -1,0 +1,47 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images/blog"
+public_folder: "/images/blog"
+
+collections:
+  - name: "blog"
+    label: "Articles & Guides"
+    folder: "content/blog"
+    create: true
+    slug: "{{slug}}"
+    extension: "mdx"
+    format: "frontmatter"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Description (SEO Meta)", name: "description", widget: "text" }
+      - {
+          label: "Category",
+          name: "category",
+          widget: "select",
+          options: [
+            "Walking Basics",
+            "Steps & Distance",
+            "Weight Loss",
+            "Treadmill & Workouts",
+            "Calories & Nutrition"
+          ]
+        }
+      - { label: "Tags", name: "tags", widget: "list", default: ["walking", "calories"] }
+      - { label: "Publish Date", name: "publishedAt", widget: "date", format: "YYYY-MM-DD" }
+      - { label: "Last Updated", name: "updatedAt", widget: "date", format: "YYYY-MM-DD", required: false }
+      - { label: "Author", name: "author", widget: "string", default: "Editorial Fitness Team" }
+      - { label: "Featured Image", name: "featuredImage", widget: "image", required: false }
+      - { label: "Featured Image Alt", name: "featuredImageAlt", widget: "string", required: false }
+      - { label: "Draft", name: "draft", widget: "boolean", default: false }
+      - { label: "Body Content (MDX)", name: "body", widget: "markdown" }
+      - label: "FAQ Items"
+        name: "faq"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Question", name: "question", widget: "string" }
+          - { label: "Answer", name: "answer", widget: "text" }
+

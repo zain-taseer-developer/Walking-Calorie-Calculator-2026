@@ -1,0 +1,4205 @@
+[
+  {
+    "keyword": "how many miles is 10000 steps",
+    "volume": 74000,
+    "intent": "I",
+    "relevance": 39,
+    "kd": 23,
+    "cpc": 0.03,
+    "rawVolume": "74.0K"
+  },
+  {
+    "keyword": "bmi bmi bmi",
+    "volume": 33100,
+    "intent": "I",
+    "relevance": 33,
+    "kd": 19,
+    "cpc": 0.14,
+    "rawVolume": "33.1K"
+  },
+  {
+    "keyword": "steps to miles",
+    "volume": 27100,
+    "intent": "I",
+    "relevance": 45,
+    "kd": 18,
+    "cpc": 0.04,
+    "rawVolume": "27.1K"
+  },
+  {
+    "keyword": "body mass index",
+    "volume": 27100,
+    "intent": "I",
+    "relevance": 35,
+    "kd": 13,
+    "cpc": 0.15,
+    "rawVolume": "27.1K"
+  },
+  {
+    "keyword": "determining bmi calculator",
+    "volume": 22200,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 9,
+    "cpc": 0.14,
+    "rawVolume": "22.2K"
+  },
+  {
+    "keyword": "how many miles is 10k steps",
+    "volume": 22200,
+    "intent": "I",
+    "relevance": 37,
+    "kd": 21,
+    "cpc": 0.04,
+    "rawVolume": "22.2K"
+  },
+  {
+    "keyword": "10000 steps to miles",
+    "volume": 18100,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 14,
+    "cpc": 0.03,
+    "rawVolume": "18.1K"
+  },
+  {
+    "keyword": "marathon pace chart",
+    "volume": 18100,
+    "intent": "I",
+    "relevance": 39,
+    "kd": 28,
+    "cpc": 3.26,
+    "rawVolume": "18.1K"
+  },
+  {
+    "keyword": "body mass intake",
+    "volume": 18100,
+    "intent": "I",
+    "relevance": 34,
+    "kd": 14,
+    "cpc": 0.1,
+    "rawVolume": "18.1K"
+  },
+  {
+    "keyword": "steps to miles calculator",
+    "volume": 14800,
+    "intent": "C",
+    "relevance": 49,
+    "kd": 22,
+    "cpc": 1.21,
+    "rawVolume": "14.8K"
+  },
+  {
+    "keyword": "how many steps is 3 miles",
+    "volume": 14800,
+    "intent": "I",
+    "relevance": 48,
+    "kd": 27,
+    "cpc": 0.03,
+    "rawVolume": "14.8K"
+  },
+  {
+    "keyword": "how many calories i should eat per day",
+    "volume": 14800,
+    "intent": "I",
+    "relevance": 46,
+    "kd": 17,
+    "cpc": 0.34,
+    "rawVolume": "14.8K"
+  },
+  {
+    "keyword": "ffmi calculator",
+    "volume": 14800,
+    "intent": "C",
+    "relevance": 41,
+    "kd": 21,
+    "cpc": 0.82,
+    "rawVolume": "14.8K"
+  },
+  {
+    "keyword": "walking calorie calculator",
+    "volume": 12100,
+    "intent": "I",
+    "relevance": 100,
+    "kd": 0,
+    "cpc": 0.43,
+    "rawVolume": "12.1K"
+  },
+  {
+    "keyword": "maintenance calories calculator",
+    "volume": 12100,
+    "intent": "I",
+    "relevance": 54,
+    "kd": 0,
+    "cpc": 0.04,
+    "rawVolume": "12.1K"
+  },
+  {
+    "keyword": "152 pounds kg",
+    "volume": 12100,
+    "intent": "I",
+    "relevance": 35,
+    "kd": 27,
+    "cpc": 0,
+    "rawVolume": "12.1K"
+  },
+  {
+    "keyword": "how many miles is 20000 steps",
+    "volume": 9900,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 10,
+    "cpc": 0.04,
+    "rawVolume": "9.9K"
+  },
+  {
+    "keyword": "bmi calculator for men",
+    "volume": 9900,
+    "intent": "C",
+    "relevance": 42,
+    "kd": 2,
+    "cpc": 0.06,
+    "rawVolume": "9.9K"
+  },
+  {
+    "keyword": "128 lbs to kg",
+    "volume": 9900,
+    "intent": "I",
+    "relevance": 31,
+    "kd": 25,
+    "cpc": 0,
+    "rawVolume": "9.9K"
+  },
+  {
+    "keyword": "bmi definition",
+    "volume": 9900,
+    "intent": "I",
+    "relevance": 31,
+    "kd": 28,
+    "cpc": 0.56,
+    "rawVolume": "9.9K"
+  },
+  {
+    "keyword": "best free calorie counter app",
+    "volume": 8100,
+    "intent": "C",
+    "relevance": 46,
+    "kd": 14,
+    "cpc": 1.35,
+    "rawVolume": "8.1K"
+  },
+  {
+    "keyword": "daily calorie intake",
+    "volume": 8100,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 19,
+    "cpc": 0.27,
+    "rawVolume": "8.1K"
+  },
+  {
+    "keyword": "10k steps in miles",
+    "volume": 8100,
+    "intent": "I",
+    "relevance": 40,
+    "kd": 15,
+    "cpc": 0.03,
+    "rawVolume": "8.1K"
+  },
+  {
+    "keyword": "average steps per day",
+    "volume": 8100,
+    "intent": "I",
+    "relevance": 40,
+    "kd": 21,
+    "cpc": 0.03,
+    "rawVolume": "8.1K"
+  },
+  {
+    "keyword": "bmi measurement female",
+    "volume": 8100,
+    "intent": "I",
+    "relevance": 40,
+    "kd": 6,
+    "cpc": 0.15,
+    "rawVolume": "8.1K"
+  },
+  {
+    "keyword": "kcal en cal",
+    "volume": 8100,
+    "intent": "I",
+    "relevance": 39,
+    "kd": 22,
+    "cpc": 0,
+    "rawVolume": "8.1K"
+  },
+  {
+    "keyword": "kcal of cal",
+    "volume": 8100,
+    "intent": "I | C",
+    "relevance": 39,
+    "kd": 28,
+    "cpc": 0,
+    "rawVolume": "8.1K"
+  },
+  {
+    "keyword": "162 lbs to kg",
+    "volume": 8100,
+    "intent": "I",
+    "relevance": 35,
+    "kd": 2,
+    "cpc": 0,
+    "rawVolume": "8.1K"
+  },
+  {
+    "keyword": "163 lbs to kg",
+    "volume": 8100,
+    "intent": "I",
+    "relevance": 32,
+    "kd": 25,
+    "cpc": 0,
+    "rawVolume": "8.1K"
+  },
+  {
+    "keyword": "153 lbs to kg",
+    "volume": 8100,
+    "intent": "I",
+    "relevance": 29,
+    "kd": 20,
+    "cpc": 0,
+    "rawVolume": "8.1K"
+  },
+  {
+    "keyword": "calories burned walking",
+    "volume": 6600,
+    "intent": "I",
+    "relevance": 67,
+    "kd": 12,
+    "cpc": 0.09,
+    "rawVolume": "6.6K"
+  },
+  {
+    "keyword": "weight loss percentage calculator",
+    "volume": 6600,
+    "intent": "I",
+    "relevance": 45,
+    "kd": 26,
+    "cpc": 0.63,
+    "rawVolume": "6.6K"
+  },
+  {
+    "keyword": "how many miles is 5000 steps",
+    "volume": 6600,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 23,
+    "cpc": 0.02,
+    "rawVolume": "6.6K"
+  },
+  {
+    "keyword": "calorie definition",
+    "volume": 6600,
+    "intent": "I",
+    "relevance": 41,
+    "kd": 25,
+    "cpc": 0.03,
+    "rawVolume": "6.6K"
+  },
+  {
+    "keyword": "how long to walk a mile",
+    "volume": 6600,
+    "intent": "I",
+    "relevance": 40,
+    "kd": 28,
+    "cpc": 0.03,
+    "rawVolume": "6.6K"
+  },
+  {
+    "keyword": "treadmill pace chart",
+    "volume": 6600,
+    "intent": "I",
+    "relevance": 40,
+    "kd": 11,
+    "cpc": 1,
+    "rawVolume": "6.6K"
+  },
+  {
+    "keyword": "bmi index chart for females",
+    "volume": 6600,
+    "intent": "I",
+    "relevance": 39,
+    "kd": 26,
+    "cpc": 0.18,
+    "rawVolume": "6.6K"
+  },
+  {
+    "keyword": "obesity chart",
+    "volume": 6600,
+    "intent": "I",
+    "relevance": 39,
+    "kd": 26,
+    "cpc": 0.31,
+    "rawVolume": "6.6K"
+  },
+  {
+    "keyword": "5k pace chart",
+    "volume": 6600,
+    "intent": "I",
+    "relevance": 36,
+    "kd": 18,
+    "cpc": 2.98,
+    "rawVolume": "6.6K"
+  },
+  {
+    "keyword": "average weight for 5'10 male",
+    "volume": 6600,
+    "intent": "I",
+    "relevance": 35,
+    "kd": 27,
+    "cpc": 0.52,
+    "rawVolume": "6.6K"
+  },
+  {
+    "keyword": "how many steps a day is good",
+    "volume": 6600,
+    "intent": "I",
+    "relevance": 35,
+    "kd": 27,
+    "cpc": 0.03,
+    "rawVolume": "6.6K"
+  },
+  {
+    "keyword": "whats bmi",
+    "volume": 6600,
+    "intent": "I",
+    "relevance": 33,
+    "kd": 19,
+    "cpc": 0.18,
+    "rawVolume": "6.6K"
+  },
+  {
+    "keyword": "169 lbs to kg",
+    "volume": 6600,
+    "intent": "I",
+    "relevance": 32,
+    "kd": 25,
+    "cpc": 0,
+    "rawVolume": "6.6K"
+  },
+  {
+    "keyword": "ffmi",
+    "volume": 6600,
+    "intent": "C",
+    "relevance": 30,
+    "kd": 28,
+    "cpc": 1.86,
+    "rawVolume": "6.6K"
+  },
+  {
+    "keyword": "how many steps in 2 miles",
+    "volume": 5400,
+    "intent": "I",
+    "relevance": 48,
+    "kd": 26,
+    "cpc": 0.02,
+    "rawVolume": "5.4K"
+  },
+  {
+    "keyword": "how many steps in 3 miles",
+    "volume": 5400,
+    "intent": "I",
+    "relevance": 47,
+    "kd": 29,
+    "cpc": 0.02,
+    "rawVolume": "5.4K"
+  },
+  {
+    "keyword": "steps per mile",
+    "volume": 5400,
+    "intent": "I",
+    "relevance": 46,
+    "kd": 19,
+    "cpc": 0.19,
+    "rawVolume": "5.4K"
+  },
+  {
+    "keyword": "15000 steps to miles",
+    "volume": 5400,
+    "intent": "n/a",
+    "relevance": 45,
+    "kd": 11,
+    "cpc": 0,
+    "rawVolume": "5.4K"
+  },
+  {
+    "keyword": "women bmi calculator",
+    "volume": 5400,
+    "intent": "I",
+    "relevance": 44,
+    "kd": 9,
+    "cpc": 0.12,
+    "rawVolume": "5.4K"
+  },
+  {
+    "keyword": "how many miles is 7000 steps",
+    "volume": 5400,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 24,
+    "cpc": 0.02,
+    "rawVolume": "5.4K"
+  },
+  {
+    "keyword": "how many miles is 8000 steps",
+    "volume": 5400,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 15,
+    "cpc": 0.03,
+    "rawVolume": "5.4K"
+  },
+  {
+    "keyword": "race pace calculator",
+    "volume": 5400,
+    "intent": "C",
+    "relevance": 43,
+    "kd": 3,
+    "cpc": 2.19,
+    "rawVolume": "5.4K"
+  },
+  {
+    "keyword": "6000 steps to miles",
+    "volume": 5400,
+    "intent": "I",
+    "relevance": 41,
+    "kd": 21,
+    "cpc": 0,
+    "rawVolume": "5.4K"
+  },
+  {
+    "keyword": "how long does it take to walk 5 miles",
+    "volume": 5400,
+    "intent": "I",
+    "relevance": 41,
+    "kd": 13,
+    "cpc": 0,
+    "rawVolume": "5.4K"
+  },
+  {
+    "keyword": "10 000 steps in miles",
+    "volume": 5400,
+    "intent": "I",
+    "relevance": 40,
+    "kd": 27,
+    "cpc": 0.03,
+    "rawVolume": "5.4K"
+  },
+  {
+    "keyword": "10000 steps is how many miles",
+    "volume": 5400,
+    "intent": "I",
+    "relevance": 40,
+    "kd": 22,
+    "cpc": 0.02,
+    "rawVolume": "5.4K"
+  },
+  {
+    "keyword": "1.5km to miles",
+    "volume": 5400,
+    "intent": "I",
+    "relevance": 39,
+    "kd": 20,
+    "cpc": 0,
+    "rawVolume": "5.4K"
+  },
+  {
+    "keyword": "how many miles is 10 000 steps",
+    "volume": 5400,
+    "intent": "I",
+    "relevance": 39,
+    "kd": 21,
+    "cpc": 0.03,
+    "rawVolume": "5.4K"
+  },
+  {
+    "keyword": "kcal to calories",
+    "volume": 5400,
+    "intent": "I",
+    "relevance": 39,
+    "kd": 26,
+    "cpc": 0,
+    "rawVolume": "5.4K"
+  },
+  {
+    "keyword": "173 lbs to kg",
+    "volume": 5400,
+    "intent": "I",
+    "relevance": 34,
+    "kd": 24,
+    "cpc": 0,
+    "rawVolume": "5.4K"
+  },
+  {
+    "keyword": "179 lbs to kg",
+    "volume": 5400,
+    "intent": "I",
+    "relevance": 34,
+    "kd": 8,
+    "cpc": 0,
+    "rawVolume": "5.4K"
+  },
+  {
+    "keyword": "how to calculate speed",
+    "volume": 5400,
+    "intent": "I",
+    "relevance": 34,
+    "kd": 29,
+    "cpc": 0,
+    "rawVolume": "5.4K"
+  },
+  {
+    "keyword": "correct weight for 5'7 female",
+    "volume": 5400,
+    "intent": "I",
+    "relevance": 33,
+    "kd": 27,
+    "cpc": 0.3,
+    "rawVolume": "5.4K"
+  },
+  {
+    "keyword": "what is a bmi",
+    "volume": 5400,
+    "intent": "I",
+    "relevance": 33,
+    "kd": 18,
+    "cpc": 0.18,
+    "rawVolume": "5.4K"
+  },
+  {
+    "keyword": "179 pounds kg",
+    "volume": 5400,
+    "intent": "I",
+    "relevance": 32,
+    "kd": 25,
+    "cpc": 0,
+    "rawVolume": "5.4K"
+  },
+  {
+    "keyword": "appropriate weight for 5' 7 female",
+    "volume": 5400,
+    "intent": "I",
+    "relevance": 32,
+    "kd": 27,
+    "cpc": 0.3,
+    "rawVolume": "5.4K"
+  },
+  {
+    "keyword": "144 lbs to kg",
+    "volume": 5400,
+    "intent": "I",
+    "relevance": 31,
+    "kd": 22,
+    "cpc": 0,
+    "rawVolume": "5.4K"
+  },
+  {
+    "keyword": "183 lbs to kg",
+    "volume": 5400,
+    "intent": "I",
+    "relevance": 31,
+    "kd": 19,
+    "cpc": 0,
+    "rawVolume": "5.4K"
+  },
+  {
+    "keyword": "5000 steps to miles",
+    "volume": 4400,
+    "intent": "I",
+    "relevance": 45,
+    "kd": 11,
+    "cpc": 0,
+    "rawVolume": "4.4K"
+  },
+  {
+    "keyword": "calories to lose weight",
+    "volume": 4400,
+    "intent": "I",
+    "relevance": 45,
+    "kd": 13,
+    "cpc": 0.4,
+    "rawVolume": "4.4K"
+  },
+  {
+    "keyword": "how many steps is 5 miles",
+    "volume": 4400,
+    "intent": "I",
+    "relevance": 45,
+    "kd": 25,
+    "cpc": 0.11,
+    "rawVolume": "4.4K"
+  },
+  {
+    "keyword": "7000 steps to miles",
+    "volume": 4400,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 15,
+    "cpc": 0,
+    "rawVolume": "4.4K"
+  },
+  {
+    "keyword": "how many calories should i have",
+    "volume": 4400,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 10,
+    "cpc": 0.33,
+    "rawVolume": "4.4K"
+  },
+  {
+    "keyword": "how many miles is 15000 steps",
+    "volume": 4400,
+    "intent": "n/a",
+    "relevance": 43,
+    "kd": 14,
+    "cpc": 0.03,
+    "rawVolume": "4.4K"
+  },
+  {
+    "keyword": "10k steps to miles",
+    "volume": 4400,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 21,
+    "cpc": 0.03,
+    "rawVolume": "4.4K"
+  },
+  {
+    "keyword": "20000 steps to miles",
+    "volume": 4400,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 16,
+    "cpc": 0,
+    "rawVolume": "4.4K"
+  },
+  {
+    "keyword": "average calories per day",
+    "volume": 4400,
+    "intent": "I",
+    "relevance": 41,
+    "kd": 15,
+    "cpc": 0.32,
+    "rawVolume": "4.4K"
+  },
+  {
+    "keyword": "calculate bmi women",
+    "volume": 4400,
+    "intent": "I",
+    "relevance": 41,
+    "kd": 4,
+    "cpc": 0.12,
+    "rawVolume": "4.4K"
+  },
+  {
+    "keyword": "can you lose weight by walking",
+    "volume": 4400,
+    "intent": "I",
+    "relevance": 41,
+    "kd": 26,
+    "cpc": 0.27,
+    "rawVolume": "4.4K"
+  },
+  {
+    "keyword": "how many steps in one mile",
+    "volume": 4400,
+    "intent": "I",
+    "relevance": 40,
+    "kd": 21,
+    "cpc": 0.03,
+    "rawVolume": "4.4K"
+  },
+  {
+    "keyword": "how many steps to lose weight",
+    "volume": 4400,
+    "intent": "I",
+    "relevance": 39,
+    "kd": 20,
+    "cpc": 0.37,
+    "rawVolume": "4.4K"
+  },
+  {
+    "keyword": "precision nutrition macro calculator",
+    "volume": 4400,
+    "intent": "I",
+    "relevance": 39,
+    "kd": 9,
+    "cpc": 0,
+    "rawVolume": "4.4K"
+  },
+  {
+    "keyword": "bmi chart for men",
+    "volume": 4400,
+    "intent": "I",
+    "relevance": 38,
+    "kd": 14,
+    "cpc": 0.12,
+    "rawVolume": "4.4K"
+  },
+  {
+    "keyword": "kilocalories to calories",
+    "volume": 4400,
+    "intent": "I",
+    "relevance": 38,
+    "kd": 16,
+    "cpc": 0,
+    "rawVolume": "4.4K"
+  },
+  {
+    "keyword": "how many miles is a 10k steps",
+    "volume": 4400,
+    "intent": "I",
+    "relevance": 37,
+    "kd": 18,
+    "cpc": 0.04,
+    "rawVolume": "4.4K"
+  },
+  {
+    "keyword": "walkfit reviews",
+    "volume": 4400,
+    "intent": "C",
+    "relevance": 35,
+    "kd": 28,
+    "cpc": 1.46,
+    "rawVolume": "4.4K"
+  },
+  {
+    "keyword": "miles in 20k",
+    "volume": 4400,
+    "intent": "n/a",
+    "relevance": 33,
+    "kd": 22,
+    "cpc": 0,
+    "rawVolume": "4.4K"
+  },
+  {
+    "keyword": "193 lbs to kg",
+    "volume": 4400,
+    "intent": "I",
+    "relevance": 31,
+    "kd": 19,
+    "cpc": 0,
+    "rawVolume": "4.4K"
+  },
+  {
+    "keyword": "free water deficit",
+    "volume": 4400,
+    "intent": "I",
+    "relevance": 28,
+    "kd": 19,
+    "cpc": 0,
+    "rawVolume": "4.4K"
+  },
+  {
+    "keyword": "steps to miles converter",
+    "volume": 3600,
+    "intent": "I",
+    "relevance": 46,
+    "kd": 24,
+    "cpc": 1.21,
+    "rawVolume": "3.6K"
+  },
+  {
+    "keyword": "how to figure out maintenance calories",
+    "volume": 3600,
+    "intent": "I",
+    "relevance": 45,
+    "kd": 3,
+    "cpc": 0.08,
+    "rawVolume": "3.6K"
+  },
+  {
+    "keyword": "how many steps is 4 miles",
+    "volume": 3600,
+    "intent": "I",
+    "relevance": 44,
+    "kd": 13,
+    "cpc": 0.02,
+    "rawVolume": "3.6K"
+  },
+  {
+    "keyword": "6000 steps in miles",
+    "volume": 3600,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 15,
+    "cpc": 0,
+    "rawVolume": "3.6K"
+  },
+  {
+    "keyword": "8000 steps to miles",
+    "volume": 3600,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 15,
+    "cpc": 0,
+    "rawVolume": "3.6K"
+  },
+  {
+    "keyword": "calculate bmr",
+    "volume": 3600,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 8,
+    "cpc": 0.09,
+    "rawVolume": "3.6K"
+  },
+  {
+    "keyword": "how many miles is 12000 steps",
+    "volume": 3600,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 26,
+    "cpc": 0.01,
+    "rawVolume": "3.6K"
+  },
+  {
+    "keyword": "how many calories should i eat daily",
+    "volume": 3600,
+    "intent": "I",
+    "relevance": 41,
+    "kd": 11,
+    "cpc": 0.33,
+    "rawVolume": "3.6K"
+  },
+  {
+    "keyword": "how many miles is 6000 steps",
+    "volume": 3600,
+    "intent": "I",
+    "relevance": 41,
+    "kd": 7,
+    "cpc": 0.03,
+    "rawVolume": "3.6K"
+  },
+  {
+    "keyword": "speed distance time calculator",
+    "volume": 3600,
+    "intent": "I",
+    "relevance": 41,
+    "kd": 25,
+    "cpc": 0,
+    "rawVolume": "3.6K"
+  },
+  {
+    "keyword": "measure bmi online",
+    "volume": 3600,
+    "intent": "I",
+    "relevance": 40,
+    "kd": 5,
+    "cpc": 0.15,
+    "rawVolume": "3.6K"
+  },
+  {
+    "keyword": "weight chart for men",
+    "volume": 3600,
+    "intent": "I",
+    "relevance": 40,
+    "kd": 27,
+    "cpc": 0.44,
+    "rawVolume": "3.6K"
+  },
+  {
+    "keyword": "fast calculator",
+    "volume": 3600,
+    "intent": "I",
+    "relevance": 38,
+    "kd": 8,
+    "cpc": 0,
+    "rawVolume": "3.6K"
+  },
+  {
+    "keyword": "how long does it take to walk 2 miles",
+    "volume": 3600,
+    "intent": "I",
+    "relevance": 37,
+    "kd": 14,
+    "cpc": 0,
+    "rawVolume": "3.6K"
+  },
+  {
+    "keyword": "how long does it take to walk 3 miles",
+    "volume": 3600,
+    "intent": "I",
+    "relevance": 37,
+    "kd": 26,
+    "cpc": 0,
+    "rawVolume": "3.6K"
+  },
+  {
+    "keyword": "how many calories per gram of protein",
+    "volume": 3600,
+    "intent": "I",
+    "relevance": 37,
+    "kd": 24,
+    "cpc": 1.01,
+    "rawVolume": "3.6K"
+  },
+  {
+    "keyword": "mcmillan running calculator",
+    "volume": 3600,
+    "intent": "N | C",
+    "relevance": 37,
+    "kd": 26,
+    "cpc": 0,
+    "rawVolume": "3.6K"
+  },
+  {
+    "keyword": "how to measure bmi",
+    "volume": 3600,
+    "intent": "I",
+    "relevance": 36,
+    "kd": 7,
+    "cpc": 0.1,
+    "rawVolume": "3.6K"
+  },
+  {
+    "keyword": "treadmill incline",
+    "volume": 3600,
+    "intent": "I | C",
+    "relevance": 36,
+    "kd": 29,
+    "cpc": 1.27,
+    "rawVolume": "3.6K"
+  },
+  {
+    "keyword": "height and weight",
+    "volume": 3600,
+    "intent": "I",
+    "relevance": 35,
+    "kd": 21,
+    "cpc": 0.43,
+    "rawVolume": "3.6K"
+  },
+  {
+    "keyword": "normal weight for 5'4 female",
+    "volume": 3600,
+    "intent": "I | C",
+    "relevance": 35,
+    "kd": 26,
+    "cpc": 0.46,
+    "rawVolume": "3.6K"
+  },
+  {
+    "keyword": "3 hour marathon pace",
+    "volume": 3600,
+    "intent": "I",
+    "relevance": 33,
+    "kd": 14,
+    "cpc": 0,
+    "rawVolume": "3.6K"
+  },
+  {
+    "keyword": "counting macros",
+    "volume": 3600,
+    "intent": "I",
+    "relevance": 33,
+    "kd": 21,
+    "cpc": 1.05,
+    "rawVolume": "3.6K"
+  },
+  {
+    "keyword": "bmi 25",
+    "volume": 3600,
+    "intent": "I",
+    "relevance": 32,
+    "kd": 25,
+    "cpc": 0.45,
+    "rawVolume": "3.6K"
+  },
+  {
+    "keyword": "152 pounds in kg",
+    "volume": 3600,
+    "intent": "I",
+    "relevance": 31,
+    "kd": 24,
+    "cpc": 0,
+    "rawVolume": "3.6K"
+  },
+  {
+    "keyword": "183 pounds in kg",
+    "volume": 3600,
+    "intent": "I",
+    "relevance": 31,
+    "kd": 22,
+    "cpc": 0,
+    "rawVolume": "3.6K"
+  },
+  {
+    "keyword": "steps to calories",
+    "volume": 2900,
+    "intent": "I",
+    "relevance": 56,
+    "kd": 16,
+    "cpc": 1.05,
+    "rawVolume": "2.9K"
+  },
+  {
+    "keyword": "calculate bike calories",
+    "volume": 2900,
+    "intent": "I",
+    "relevance": 52,
+    "kd": 19,
+    "cpc": 0.4,
+    "rawVolume": "2.9K"
+  },
+  {
+    "keyword": "how many steps is in a mile walking",
+    "volume": 2900,
+    "intent": "I",
+    "relevance": 49,
+    "kd": 25,
+    "cpc": 0.02,
+    "rawVolume": "2.9K"
+  },
+  {
+    "keyword": "how many calories do i eat to lose weight",
+    "volume": 2900,
+    "intent": "I",
+    "relevance": 48,
+    "kd": 7,
+    "cpc": 0.38,
+    "rawVolume": "2.9K"
+  },
+  {
+    "keyword": "12000 steps to miles",
+    "volume": 2900,
+    "intent": "I",
+    "relevance": 46,
+    "kd": 28,
+    "cpc": 0,
+    "rawVolume": "2.9K"
+  },
+  {
+    "keyword": "20k steps to miles",
+    "volume": 2900,
+    "intent": "I",
+    "relevance": 45,
+    "kd": 10,
+    "cpc": 0,
+    "rawVolume": "2.9K"
+  },
+  {
+    "keyword": "bmi calculatir",
+    "volume": 2900,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 7,
+    "cpc": 0.11,
+    "rawVolume": "2.9K"
+  },
+  {
+    "keyword": "how many calories a day",
+    "volume": 2900,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 13,
+    "cpc": 0.31,
+    "rawVolume": "2.9K"
+  },
+  {
+    "keyword": "how many miles is 20k steps",
+    "volume": 2900,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 10,
+    "cpc": 0,
+    "rawVolume": "2.9K"
+  },
+  {
+    "keyword": "body mass index table for female",
+    "volume": 2900,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 17,
+    "cpc": 0.18,
+    "rawVolume": "2.9K"
+  },
+  {
+    "keyword": "daily water calculator",
+    "volume": 2900,
+    "intent": "C",
+    "relevance": 42,
+    "kd": 22,
+    "cpc": 0.32,
+    "rawVolume": "2.9K"
+  },
+  {
+    "keyword": "how many steps is 1 mile",
+    "volume": 2900,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 29,
+    "cpc": 0.03,
+    "rawVolume": "2.9K"
+  },
+  {
+    "keyword": "1 gm of fat is how many calories",
+    "volume": 2900,
+    "intent": "I",
+    "relevance": 41,
+    "kd": 28,
+    "cpc": 0,
+    "rawVolume": "2.9K"
+  },
+  {
+    "keyword": "strava pace calculator",
+    "volume": 2900,
+    "intent": "I",
+    "relevance": 41,
+    "kd": 26,
+    "cpc": 0,
+    "rawVolume": "2.9K"
+  },
+  {
+    "keyword": "bmi converter with age",
+    "volume": 2900,
+    "intent": "I",
+    "relevance": 40,
+    "kd": 8,
+    "cpc": 0.15,
+    "rawVolume": "2.9K"
+  },
+  {
+    "keyword": "how far is 10k steps",
+    "volume": 2900,
+    "intent": "I",
+    "relevance": 39,
+    "kd": 25,
+    "cpc": 0.05,
+    "rawVolume": "2.9K"
+  },
+  {
+    "keyword": "how many miles should you walk a day",
+    "volume": 2900,
+    "intent": "I",
+    "relevance": 39,
+    "kd": 27,
+    "cpc": 0.24,
+    "rawVolume": "2.9K"
+  },
+  {
+    "keyword": "recipe converter",
+    "volume": 2900,
+    "intent": "C",
+    "relevance": 39,
+    "kd": 25,
+    "cpc": 1.94,
+    "rawVolume": "2.9K"
+  },
+  {
+    "keyword": "kcal and cal",
+    "volume": 2900,
+    "intent": "I",
+    "relevance": 37,
+    "kd": 28,
+    "cpc": 0,
+    "rawVolume": "2.9K"
+  },
+  {
+    "keyword": "10k pace chart",
+    "volume": 2900,
+    "intent": "I",
+    "relevance": 36,
+    "kd": 19,
+    "cpc": 3.42,
+    "rawVolume": "2.9K"
+  },
+  {
+    "keyword": "free water deficit calculator",
+    "volume": 2900,
+    "intent": "I",
+    "relevance": 36,
+    "kd": 22,
+    "cpc": 0,
+    "rawVolume": "2.9K"
+  },
+  {
+    "keyword": "how many calories are in a pound of fat",
+    "volume": 2900,
+    "intent": "I",
+    "relevance": 36,
+    "kd": 17,
+    "cpc": 0.14,
+    "rawVolume": "2.9K"
+  },
+  {
+    "keyword": "how to calculate macros",
+    "volume": 2900,
+    "intent": "I",
+    "relevance": 34,
+    "kd": 6,
+    "cpc": 0.32,
+    "rawVolume": "2.9K"
+  },
+  {
+    "keyword": "mph to minutes per mile",
+    "volume": 2900,
+    "intent": "I",
+    "relevance": 34,
+    "kd": 16,
+    "cpc": 0,
+    "rawVolume": "2.9K"
+  },
+  {
+    "keyword": "149 lbs kg",
+    "volume": 2900,
+    "intent": "I",
+    "relevance": 33,
+    "kd": 24,
+    "cpc": 0,
+    "rawVolume": "2.9K"
+  },
+  {
+    "keyword": "21k to miles",
+    "volume": 2900,
+    "intent": "I",
+    "relevance": 33,
+    "kd": 25,
+    "cpc": 0,
+    "rawVolume": "2.9K"
+  },
+  {
+    "keyword": "3000m to miles",
+    "volume": 2900,
+    "intent": "I",
+    "relevance": 33,
+    "kd": 25,
+    "cpc": 0.76,
+    "rawVolume": "2.9K"
+  },
+  {
+    "keyword": "what should my bmi be",
+    "volume": 2900,
+    "intent": "I",
+    "relevance": 32,
+    "kd": 6,
+    "cpc": 0.12,
+    "rawVolume": "2.9K"
+  },
+  {
+    "keyword": "how much should a 13 year old weigh",
+    "volume": 2900,
+    "intent": "I",
+    "relevance": 29,
+    "kd": 23,
+    "cpc": 0,
+    "rawVolume": "2.9K"
+  },
+  {
+    "keyword": "what is macros",
+    "volume": 2900,
+    "intent": "I",
+    "relevance": 27,
+    "kd": 27,
+    "cpc": 0.06,
+    "rawVolume": "2.9K"
+  },
+  {
+    "keyword": "how many steps in 5 miles",
+    "volume": 2400,
+    "intent": "I",
+    "relevance": 48,
+    "kd": 29,
+    "cpc": 0.11,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "4000 steps to miles",
+    "volume": 2400,
+    "intent": "I",
+    "relevance": 47,
+    "kd": 4,
+    "cpc": 0,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "how many steps in 4 miles",
+    "volume": 2400,
+    "intent": "I",
+    "relevance": 47,
+    "kd": 14,
+    "cpc": 0.02,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "5 miles is how many steps",
+    "volume": 2400,
+    "intent": "I",
+    "relevance": 46,
+    "kd": 26,
+    "cpc": 0.11,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "how many miles is 3000 steps",
+    "volume": 2400,
+    "intent": "I",
+    "relevance": 45,
+    "kd": 7,
+    "cpc": 0.02,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "how many miles is 4000 steps",
+    "volume": 2400,
+    "intent": "I",
+    "relevance": 44,
+    "kd": 22,
+    "cpc": 0.02,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "how many steps equal a mile",
+    "volume": 2400,
+    "intent": "I",
+    "relevance": 44,
+    "kd": 27,
+    "cpc": 0.02,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "how many steps i n a mile",
+    "volume": 2400,
+    "intent": "I",
+    "relevance": 44,
+    "kd": 22,
+    "cpc": 0.02,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "how many steps is 10 miles",
+    "volume": 2400,
+    "intent": "I",
+    "relevance": 44,
+    "kd": 27,
+    "cpc": 0.02,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "how many calories does swimming burn",
+    "volume": 2400,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 20,
+    "cpc": 0.03,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "benefits of zone 2 incline walk",
+    "volume": 2400,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 17,
+    "cpc": 0,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "how many miles is 13000 steps",
+    "volume": 2400,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 19,
+    "cpc": 0,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "calorie chilocalorie",
+    "volume": 2400,
+    "intent": "I",
+    "relevance": 41,
+    "kd": 14,
+    "cpc": 0,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "how far is 5000 steps",
+    "volume": 2400,
+    "intent": "I",
+    "relevance": 41,
+    "kd": 14,
+    "cpc": 0.01,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "how many miles is 30000 steps",
+    "volume": 2400,
+    "intent": "I",
+    "relevance": 41,
+    "kd": 8,
+    "cpc": 0,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "body recomp calculator",
+    "volume": 2400,
+    "intent": "C",
+    "relevance": 40,
+    "kd": 0,
+    "cpc": 0,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "body recomposition calculator",
+    "volume": 2400,
+    "intent": "I",
+    "relevance": 39,
+    "kd": 15,
+    "cpc": 0,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "how long does it take to walk 4 miles",
+    "volume": 2400,
+    "intent": "I",
+    "relevance": 38,
+    "kd": 15,
+    "cpc": 0,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "how many average steps in a mile",
+    "volume": 2400,
+    "intent": "I",
+    "relevance": 38,
+    "kd": 28,
+    "cpc": 0.03,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "how many miles in 10k steps",
+    "volume": 2400,
+    "intent": "I",
+    "relevance": 38,
+    "kd": 18,
+    "cpc": 0.04,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "is kcal the same as calories",
+    "volume": 2400,
+    "intent": "I | C",
+    "relevance": 37,
+    "kd": 24,
+    "cpc": 0,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "is kilocalorie the same as calorie",
+    "volume": 2400,
+    "intent": "I | C",
+    "relevance": 37,
+    "kd": 25,
+    "cpc": 0,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "normal walking pace",
+    "volume": 2400,
+    "intent": "I",
+    "relevance": 37,
+    "kd": 27,
+    "cpc": 0.04,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "cdc pediatric bmi calculator",
+    "volume": 2400,
+    "intent": "I | T",
+    "relevance": 35,
+    "kd": 19,
+    "cpc": 0,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "how much calories is a pound",
+    "volume": 2400,
+    "intent": "I",
+    "relevance": 35,
+    "kd": 23,
+    "cpc": 0.5,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "194 pounds in kg",
+    "volume": 2400,
+    "intent": "I",
+    "relevance": 34,
+    "kd": 18,
+    "cpc": 0,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "how many calories do sit ups burn",
+    "volume": 2400,
+    "intent": "I",
+    "relevance": 34,
+    "kd": 10,
+    "cpc": 0,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "is kcal the same as cal",
+    "volume": 2400,
+    "intent": "I | C",
+    "relevance": 34,
+    "kd": 23,
+    "cpc": 0,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "5 5 weight for female",
+    "volume": 2400,
+    "intent": "I",
+    "relevance": 33,
+    "kd": 26,
+    "cpc": 0.32,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "183 pounds to kg",
+    "volume": 2400,
+    "intent": "I",
+    "relevance": 32,
+    "kd": 24,
+    "cpc": 0,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "202 lbs to kg",
+    "volume": 2400,
+    "intent": "I",
+    "relevance": 32,
+    "kd": 21,
+    "cpc": 0,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "152 lb to kg",
+    "volume": 2400,
+    "intent": "I",
+    "relevance": 31,
+    "kd": 24,
+    "cpc": 0,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "3:30 marathon pace",
+    "volume": 2400,
+    "intent": "I",
+    "relevance": 31,
+    "kd": 16,
+    "cpc": 0,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "good bmi",
+    "volume": 2400,
+    "intent": "I",
+    "relevance": 31,
+    "kd": 20,
+    "cpc": 0.15,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "miles in minutes to miles per hour",
+    "volume": 2400,
+    "intent": "I",
+    "relevance": 31,
+    "kd": 22,
+    "cpc": 0,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "treadmill incline workout",
+    "volume": 2400,
+    "intent": "I",
+    "relevance": 31,
+    "kd": 22,
+    "cpc": 0.12,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "163 pounds in kg",
+    "volume": 2400,
+    "intent": "I",
+    "relevance": 30,
+    "kd": 24,
+    "cpc": 0,
+    "rawVolume": "2.4K"
+  },
+  {
+    "keyword": "step calorie calculator",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 66,
+    "kd": 2,
+    "cpc": 1.27,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "25000 steps to miles",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 46,
+    "kd": 8,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "macronutrient calculator",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 46,
+    "kd": 0,
+    "cpc": 0.38,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "convert steps to miles",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 45,
+    "kd": 24,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "14000 steps to miles",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 44,
+    "kd": 21,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "bulking calculator",
+    "volume": 1900,
+    "intent": "C",
+    "relevance": 44,
+    "kd": 28,
+    "cpc": 0.04,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "how many miles is 16000 steps",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 44,
+    "kd": 17,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "how many miles is 17000 steps",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 44,
+    "kd": 11,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "how many miles is 25000 steps",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 44,
+    "kd": 11,
+    "cpc": 0.02,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "how many steps is one mile",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 44,
+    "kd": 24,
+    "cpc": 0.02,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "18000 steps to miles",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 14,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "3000 steps in miles",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 20,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "3000 steps to miles",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 21,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "calculating velocity calculator",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 23,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "how many miles is 15k steps",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 9,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "how many miles is 18000 steps",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 6,
+    "cpc": 0.02,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "calculating macros",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 39,
+    "kd": 23,
+    "cpc": 0.38,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "how accurate is apple watch calories",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 39,
+    "kd": 25,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "how long does it take to walk 10 miles",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 39,
+    "kd": 22,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "how long does it take to walk three miles",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 39,
+    "kd": 23,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "how long would it take to walk a mile",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 39,
+    "kd": 27,
+    "cpc": 0.04,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "each gram of protein is how many calories",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 38,
+    "kd": 9,
+    "cpc": 1.16,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "average u.s. female weight",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 37,
+    "kd": 26,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "calories vs kcal",
+    "volume": 1900,
+    "intent": "C",
+    "relevance": 37,
+    "kd": 27,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "how to calculate gas mileage",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 37,
+    "kd": 25,
+    "cpc": 1.97,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "is kilocalories and calories the same",
+    "volume": 1900,
+    "intent": "I | C",
+    "relevance": 37,
+    "kd": 24,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "formula of speed time and distance",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 36,
+    "kd": 27,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "how far is 20000 steps",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 36,
+    "kd": 12,
+    "cpc": 0.04,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "how many calories in ak cal",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 36,
+    "kd": 28,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "is 200 pounds overweight",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 36,
+    "kd": 25,
+    "cpc": 0.62,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "marathon pace",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 36,
+    "kd": 25,
+    "cpc": 2.24,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "173 pounds kg",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 35,
+    "kd": 21,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "183 pounds kg",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 35,
+    "kd": 24,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "marathon pace for 2 hours",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 35,
+    "kd": 26,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "mcmillan pace calculator",
+    "volume": 1900,
+    "intent": "N",
+    "relevance": 35,
+    "kd": 24,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "go for a walk",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 34,
+    "kd": 26,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "how far is 10 000 steps",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 34,
+    "kd": 29,
+    "cpc": 0.06,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "how many steps in a flight of stairs",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 34,
+    "kd": 24,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "top rated running apps",
+    "volume": 1900,
+    "intent": "C",
+    "relevance": 34,
+    "kd": 26,
+    "cpc": 1.91,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "formula distance time speed",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 33,
+    "kd": 26,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "pace chart",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 33,
+    "kd": 24,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "174 lbs in kg",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 32,
+    "kd": 21,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "5 7 height",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 32,
+    "kd": 27,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "how many stairs in a flight",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 32,
+    "kd": 28,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "how many stairs is a flight of stairs",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 32,
+    "kd": 17,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "164 pounds kg",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 31,
+    "kd": 24,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "what is a flight of stairs",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 31,
+    "kd": 28,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "bm1",
+    "volume": 1900,
+    "intent": "I | N",
+    "relevance": 27,
+    "kd": 27,
+    "cpc": 0,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "perfect body me",
+    "volume": 1900,
+    "intent": "I",
+    "relevance": 26,
+    "kd": 27,
+    "cpc": 2.95,
+    "rawVolume": "1.9K"
+  },
+  {
+    "keyword": "30 000 steps to miles",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 47,
+    "kd": 13,
+    "cpc": 0,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "how many steps is in 1 mile",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 47,
+    "kd": 23,
+    "cpc": 0.03,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "tdee weight loss calculator",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 46,
+    "kd": 2,
+    "cpc": 0.34,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "macros calculator for weight loss",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 45,
+    "kd": 0,
+    "cpc": 0.46,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "calculator running pace",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 44,
+    "kd": 2,
+    "cpc": 1.92,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "how far is 7000 steps",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 44,
+    "kd": 19,
+    "cpc": 0.01,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "how many miles is 14000 steps",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 44,
+    "kd": 18,
+    "cpc": 0.01,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "how many steps in a mile on average",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 44,
+    "kd": 23,
+    "cpc": 0.03,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "how many steps is in a mile",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 44,
+    "kd": 28,
+    "cpc": 0.02,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "15000 steps miles",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 10,
+    "cpc": 0,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "15k steps to miles",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 9,
+    "cpc": 0,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "17000 steps to miles",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 17,
+    "cpc": 0,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "18000 steps is how many miles",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 10,
+    "cpc": 0.02,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "9000 steps to miles",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 3,
+    "cpc": 0,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "how many miles is 11000 steps",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 5,
+    "cpc": 0.01,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "how many miles is 2000 steps",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 22,
+    "cpc": 0.02,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "13000 steps miles",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 18,
+    "cpc": 0,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "13000 steps to miles",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 17,
+    "cpc": 0,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "30000 steps to miles",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 14,
+    "cpc": 0,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "how long to walk 3 miles",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 18,
+    "cpc": 0,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "how many miles is 9000 steps",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 24,
+    "cpc": 0.02,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "how many steps make a mile",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 20,
+    "cpc": 0.03,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "how many steps to a mile",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 23,
+    "cpc": 0.02,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "keto diet calculator",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 25,
+    "cpc": 0.85,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "net carb calculator",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 26,
+    "cpc": 0.28,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "weight lifting and calories burned",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 29,
+    "cpc": 0.05,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "time average calculator",
+    "volume": 1600,
+    "intent": "C",
+    "relevance": 41,
+    "kd": 24,
+    "cpc": 0,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "how long does it take to walk 6 miles",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 40,
+    "kd": 16,
+    "cpc": 0,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "how many steps is a 5k",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 39,
+    "kd": 21,
+    "cpc": 0.14,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "normal person walking speed",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 39,
+    "kd": 26,
+    "cpc": 0,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "atlanta track club pace calculator",
+    "volume": 1600,
+    "intent": "N",
+    "relevance": 38,
+    "kd": 19,
+    "cpc": 0,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "cal vs kcal",
+    "volume": 1600,
+    "intent": "C",
+    "relevance": 38,
+    "kd": 29,
+    "cpc": 0,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "food cost calculator",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 38,
+    "kd": 26,
+    "cpc": 4.33,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "how long to walk 5 miles",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 38,
+    "kd": 13,
+    "cpc": 0,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "how many steps is 5k",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 38,
+    "kd": 21,
+    "cpc": 0.21,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "how many steps should i walk to lose weight",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 38,
+    "kd": 23,
+    "cpc": 0.48,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "walkfit app reviews",
+    "volume": 1600,
+    "intent": "C",
+    "relevance": 38,
+    "kd": 26,
+    "cpc": 1.05,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "how long to walk 2 miles",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 37,
+    "kd": 14,
+    "cpc": 0,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "macroeconomics calculator",
+    "volume": 1600,
+    "intent": "C",
+    "relevance": 37,
+    "kd": 16,
+    "cpc": 0.32,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "go for a walking",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 36,
+    "kd": 26,
+    "cpc": 0,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "how long would it take to walk 2 miles",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 36,
+    "kd": 13,
+    "cpc": 0,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "is calorie same as kcal",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 36,
+    "kd": 25,
+    "cpc": 0,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "difference between kcal and cal",
+    "volume": 1600,
+    "intent": "I | C",
+    "relevance": 35,
+    "kd": 19,
+    "cpc": 0,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "non watch fitness tracker",
+    "volume": 1600,
+    "intent": "C",
+    "relevance": 35,
+    "kd": 29,
+    "cpc": 0.76,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "calculadora fast",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 34,
+    "kd": 17,
+    "cpc": 0,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "height is 5 6",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 34,
+    "kd": 20,
+    "cpc": 0,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "how long is 10k steps",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 34,
+    "kd": 26,
+    "cpc": 0.05,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "1600m to miles",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 33,
+    "kd": 26,
+    "cpc": 0,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "5 hour marathon pace",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 33,
+    "kd": 16,
+    "cpc": 0,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "half marathon pace",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 33,
+    "kd": 26,
+    "cpc": 1.08,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "227 lbs to kg",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 32,
+    "kd": 15,
+    "cpc": 0,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "ideal weight for 5 7 female",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 32,
+    "kd": 2,
+    "cpc": 0.28,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "miles per minute to miles per hour",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 32,
+    "kd": 14,
+    "cpc": 0,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "3000 meter run is how many miles",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 31,
+    "kd": 22,
+    "cpc": 0,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "800m to mile",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 31,
+    "kd": 27,
+    "cpc": 0,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "193 pounds in kg",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 29,
+    "kd": 18,
+    "cpc": 0,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "what is macro counting",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 29,
+    "kd": 29,
+    "cpc": 0,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "180 5'6",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 27,
+    "kd": 27,
+    "cpc": 0,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "est cost",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 26,
+    "kd": 29,
+    "cpc": 0,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "caloriecalculator.net",
+    "volume": 1600,
+    "intent": "I",
+    "relevance": 0,
+    "kd": 5,
+    "cpc": 0.75,
+    "rawVolume": "1.6K"
+  },
+  {
+    "keyword": "hiking calorie calculator",
+    "volume": 1300,
+    "intent": "n/a",
+    "relevance": 50,
+    "kd": 16,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "fat intake calculator",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 48,
+    "kd": 15,
+    "cpc": 0.05,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "how many calories does 20000 steps burn",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 48,
+    "kd": 17,
+    "cpc": 0.3,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "how many steps are in 3 miles",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 48,
+    "kd": 28,
+    "cpc": 0.02,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "treadmill pace calculator",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 47,
+    "kd": 21,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "2 miles in steps",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 46,
+    "kd": 19,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "calories skipping rope burns",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 46,
+    "kd": 14,
+    "cpc": 0.04,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "weight calculator bmi",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 46,
+    "kd": 5,
+    "cpc": 0.1,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "10000 steps equals how many miles",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 45,
+    "kd": 23,
+    "cpc": 0.03,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "8 000 steps in miles",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 45,
+    "kd": 22,
+    "cpc": 0.02,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "how many steps are in 1 mile",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 45,
+    "kd": 28,
+    "cpc": 0.03,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "how many steps is 7 miles",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 45,
+    "kd": 25,
+    "cpc": 0.03,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "19000 steps in miles",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 44,
+    "kd": 16,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "20 000 steps to miles",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 44,
+    "kd": 9,
+    "cpc": 0.59,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "how far is 7 000 steps",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 44,
+    "kd": 15,
+    "cpc": 0.03,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "how many miles is 19000 steps",
+    "volume": 1300,
+    "intent": "n/a",
+    "relevance": 44,
+    "kd": 18,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "how many miles is 22 000 steps",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 44,
+    "kd": 17,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "in n out calorie calculator",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 44,
+    "kd": 27,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "swimming calories burned",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 44,
+    "kd": 21,
+    "cpc": 0.03,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "22000 steps in miles",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 12,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "22000 steps to miles",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 21,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "average steps per mile",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 26,
+    "cpc": 0.02,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "breastfeeding calorie calculator",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 6,
+    "cpc": 1.76,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "how many miles is 20 000 steps",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 9,
+    "cpc": 0.04,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "how many miles is 22000 steps",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 8,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "11000 steps to miles",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 9,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "55miles in km",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 28,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "how many calories does jumping rope burn",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 29,
+    "cpc": 0.03,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "how many miles is 17 000 steps",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 13,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "how many calories can i burn by jumping rope",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 41,
+    "kd": 20,
+    "cpc": 0.03,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "how many miles is 5k steps",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 41,
+    "kd": 18,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "10k steps is how many miles",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 40,
+    "kd": 21,
+    "cpc": 0.04,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "how long would it take to walk 10 miles",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 40,
+    "kd": 22,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "how many calories to equal a pound",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 40,
+    "kd": 25,
+    "cpc": 0.1,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "in n out nutrition calculator",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 40,
+    "kd": 21,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "steps in one mile",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 40,
+    "kd": 22,
+    "cpc": 0.03,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "steps to miles conversion",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 40,
+    "kd": 16,
+    "cpc": 0.4,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "time calculator from speed and distance",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 40,
+    "kd": 29,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "7500 steps to miles",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 39,
+    "kd": 12,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "calories vs kilocalories",
+    "volume": 1300,
+    "intent": "C",
+    "relevance": 39,
+    "kd": 25,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "how many miles is 10 thousand steps",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 39,
+    "kd": 15,
+    "cpc": 0.03,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "fitness planner",
+    "volume": 1300,
+    "intent": "C",
+    "relevance": 38,
+    "kd": 19,
+    "cpc": 0.9,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "how long would it take to walk 5 miles",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 38,
+    "kd": 12,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "how many calories are in 1 gram of carbohydrates",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 38,
+    "kd": 22,
+    "cpc": 0.27,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "treadmill pace conversion",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 38,
+    "kd": 27,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "are kcals the same as calories",
+    "volume": 1300,
+    "intent": "I | C",
+    "relevance": 37,
+    "kd": 28,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "how accurate calories apple watch",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 37,
+    "kd": 28,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "how long does it take to walk two miles",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 37,
+    "kd": 13,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "macro calculators",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 37,
+    "kd": 5,
+    "cpc": 0.34,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "treadmill pace",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 37,
+    "kd": 7,
+    "cpc": 0.8,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "18.5 kg lbs",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 36,
+    "kd": 29,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "how can we burn calories",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 36,
+    "kd": 11,
+    "cpc": 0.57,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "pace chart 10km",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 36,
+    "kd": 15,
+    "cpc": 2.57,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "259 kcal to calories",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 35,
+    "kd": 25,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "cycling for weight loss",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 35,
+    "kd": 20,
+    "cpc": 0.04,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "how long does it take to walk 20 miles",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 35,
+    "kd": 23,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "what is the average time to run 1 mile",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 35,
+    "kd": 25,
+    "cpc": 0.03,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "how many miles is 20k",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 34,
+    "kd": 19,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "how many minutes is a mile",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 34,
+    "kd": 26,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "is kcal and calories the same",
+    "volume": 1300,
+    "intent": "I | C",
+    "relevance": 34,
+    "kd": 28,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "220 km to miles",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 33,
+    "kd": 21,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "how many stairs in a flight of steps",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 33,
+    "kd": 14,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "what is the average time to run a mile",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 33,
+    "kd": 25,
+    "cpc": 0.02,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "whats a bmi",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 33,
+    "kd": 6,
+    "cpc": 0.2,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "150 lbs 5 6 female",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 32,
+    "kd": 28,
+    "cpc": 0.74,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "179 pounds to kg",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 32,
+    "kd": 21,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "153 pounds to kg",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 31,
+    "kd": 18,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "sub 4 hour marathon pace",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 31,
+    "kd": 10,
+    "cpc": 0.86,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "swimming for weight loss",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 31,
+    "kd": 22,
+    "cpc": 0.32,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "1600 miles to km",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 30,
+    "kd": 23,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "169 pounds in kg",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 30,
+    "kd": 21,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "calcute",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 30,
+    "kd": 16,
+    "cpc": 0.54,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "how many min are in a mile",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 30,
+    "kd": 22,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "178 lb to kg",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 28,
+    "kd": 21,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "cancel weight watchers",
+    "volume": 1300,
+    "intent": "I",
+    "relevance": 28,
+    "kd": 27,
+    "cpc": 1.39,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "pace calendar",
+    "volume": 1300,
+    "intent": "T | N",
+    "relevance": 28,
+    "kd": 21,
+    "cpc": 0,
+    "rawVolume": "1.3K"
+  },
+  {
+    "keyword": "how many calories can i burn walking for an hour",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 56,
+    "kd": 28,
+    "cpc": 0.21,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how many calories do you burn running",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 50,
+    "kd": 29,
+    "cpc": 0.41,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "30k steps to miles",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 46,
+    "kd": 20,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how many steps in 7 miles",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 46,
+    "kd": 25,
+    "cpc": 0.03,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "3 miles is how many steps",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 45,
+    "kd": 26,
+    "cpc": 0.02,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how many steps equal to a mile",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 45,
+    "kd": 29,
+    "cpc": 0.02,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how many steps in a mile and a half",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 45,
+    "kd": 29,
+    "cpc": 0.02,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "on average how many steps are in a mile",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 45,
+    "kd": 25,
+    "cpc": 0.02,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "steps in 3 miles",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 45,
+    "kd": 16,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "1 mile in steps",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 44,
+    "kd": 22,
+    "cpc": 0.03,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how far is 1000 steps",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 44,
+    "kd": 19,
+    "cpc": 0.03,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how many calories does walking 10000 steps burn",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 44,
+    "kd": 28,
+    "cpc": 0.18,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how many miles is 23000 steps",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 44,
+    "kd": 27,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "15 000 steps in miles",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 9,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "20000 steps in miles",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 14,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "average number of steps in a mile",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 29,
+    "cpc": 0.03,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how many calories to consume to lose weight",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 8,
+    "cpc": 0.4,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how many miles in 11000 steps",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 19,
+    "cpc": 0.01,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how many miles is 12k steps",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 19,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how many miles is 15 000 steps",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 12,
+    "cpc": 0.03,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how many miles is 8k steps",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 21,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "steps in a mile walking",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 43,
+    "kd": 19,
+    "cpc": 0.03,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "10 000 steps is how many miles",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 16,
+    "cpc": 0.02,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "14000 steps is how many miles",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 17,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "17000 steps into miles",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 6,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "5 000 steps to miles",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 17,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "about how many steps in a mile",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 13,
+    "cpc": 0.02,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "calories for breastfeeding calculator",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 19,
+    "cpc": 1.76,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how far is 15000 steps",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 12,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how many kcal does swimming burn",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 23,
+    "cpc": 0.03,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how many miles is 21000 steps",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 25,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how many miles is 7 000 steps",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 25,
+    "cpc": 0.02,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how many miles is 7500 steps",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 25,
+    "cpc": 0.02,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how many steps are in a mile on average",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 25,
+    "cpc": 0.02,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how many steps to lose a pound",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 12,
+    "cpc": 0.3,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "senior female weight chart",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 42,
+    "kd": 24,
+    "cpc": 0.56,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "10 000 steps how many miles",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 41,
+    "kd": 17,
+    "cpc": 0.02,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "grams to calories",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 41,
+    "kd": 17,
+    "cpc": 0.63,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how far is 10000 steps in miles",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 41,
+    "kd": 16,
+    "cpc": 0.03,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how many calories are in one gram of carbohydrates",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 41,
+    "kd": 18,
+    "cpc": 0.27,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "precision nutrition calculator",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 41,
+    "kd": 21,
+    "cpc": 1.01,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "water fast weight loss calculator",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 41,
+    "kd": 14,
+    "cpc": 1.02,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "active vs total calories",
+    "volume": 1000,
+    "intent": "C",
+    "relevance": 40,
+    "kd": 24,
+    "cpc": 0.44,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "am i fat quiz",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 40,
+    "kd": 11,
+    "cpc": 1.5,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how far is 4000 steps",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 40,
+    "kd": 22,
+    "cpc": 0.02,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "7000 steps is how many miles",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 39,
+    "kd": 22,
+    "cpc": 0.03,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "calorie friend",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 39,
+    "kd": 25,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "difference between carbs and calories",
+    "volume": 1000,
+    "intent": "C",
+    "relevance": 39,
+    "kd": 26,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how long does it take to walk half a mile",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 39,
+    "kd": 14,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how long would it take to walk 3 miles",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 39,
+    "kd": 22,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how many calories do i burn doing push ups",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 39,
+    "kd": 23,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how many miles should i walk per day",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 39,
+    "kd": 28,
+    "cpc": 0.24,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how many steps do i need to lose weight",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 39,
+    "kd": 15,
+    "cpc": 0.62,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how much is 10k steps in miles",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 39,
+    "kd": 28,
+    "cpc": 0.03,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "mapmyfitness",
+    "volume": 1000,
+    "intent": "N",
+    "relevance": 39,
+    "kd": 29,
+    "cpc": 1.51,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "5k running pace chart",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 38,
+    "kd": 18,
+    "cpc": 2.98,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how long does it take to walk 7 miles",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 38,
+    "kd": 13,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how long will it take to walk 5 miles",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 38,
+    "kd": 12,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how many miles is ten thousand steps",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 38,
+    "kd": 9,
+    "cpc": 0.03,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "human weight scale",
+    "volume": 1000,
+    "intent": "C",
+    "relevance": 38,
+    "kd": 24,
+    "cpc": 1.03,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "20000 steps a day",
+    "volume": 1000,
+    "intent": "n/a",
+    "relevance": 37,
+    "kd": 26,
+    "cpc": 0.02,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "calculadora de macros",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 37,
+    "kd": 10,
+    "cpc": 0.73,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "erg calculator",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 37,
+    "kd": 19,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "ffmi calc",
+    "volume": 1000,
+    "intent": "C",
+    "relevance": 37,
+    "kd": 18,
+    "cpc": 0.48,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how accurate is the apple watch calories",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 37,
+    "kd": 28,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "health tracking apps",
+    "volume": 1000,
+    "intent": "I | C",
+    "relevance": 36,
+    "kd": 26,
+    "cpc": 1.34,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "one mile is how many minutes",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 36,
+    "kd": 20,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "treadmill speed to pace",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 36,
+    "kd": 18,
+    "cpc": 0.35,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "20k steps a day",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 35,
+    "kd": 22,
+    "cpc": 0.03,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "5k pace",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 35,
+    "kd": 25,
+    "cpc": 0.52,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "benefits of walking 45 minutes a day",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 35,
+    "kd": 29,
+    "cpc": 0.21,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how long is 11 miles",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 35,
+    "kd": 23,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "speed on running machine",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 35,
+    "kd": 21,
+    "cpc": 1.26,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "walking three miles a day",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 35,
+    "kd": 25,
+    "cpc": 0.04,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "are kcal and calories the same",
+    "volume": 1000,
+    "intent": "I | C",
+    "relevance": 34,
+    "kd": 24,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "exercising but gaining weight",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 34,
+    "kd": 28,
+    "cpc": 0.03,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how many calories can i burn doing push ups",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 34,
+    "kd": 24,
+    "cpc": 0.03,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "is cycling good for weight loss",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 34,
+    "kd": 20,
+    "cpc": 0.04,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "what is kcal vs cal",
+    "volume": 1000,
+    "intent": "I | C",
+    "relevance": 34,
+    "kd": 27,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "body mass index for 5 10 male",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 33,
+    "kd": 17,
+    "cpc": 0.11,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "calculate free water deficit",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 33,
+    "kd": 16,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "5 3 150 lbs female",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 32,
+    "kd": 25,
+    "cpc": 0.86,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "bmi 22 female",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 32,
+    "kd": 21,
+    "cpc": 0.38,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "calculate asian bmi",
+    "volume": 1000,
+    "intent": "C",
+    "relevance": 32,
+    "kd": 25,
+    "cpc": 1.15,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "mile splits",
+    "volume": 1000,
+    "intent": "I | N",
+    "relevance": 32,
+    "kd": 25,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "what pace is a 4 hour marathon",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 32,
+    "kd": 8,
+    "cpc": 0.8,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "130km in miles",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 31,
+    "kd": 21,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "152 pounds to kg",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 31,
+    "kd": 23,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "250 km h to miles",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 31,
+    "kd": 16,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "bmi 是 什麼",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 31,
+    "kd": 23,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "gaining weight while working out",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 31,
+    "kd": 28,
+    "cpc": 0.03,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "recipe divider",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 31,
+    "kd": 26,
+    "cpc": 0.31,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "flight of staircase",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 30,
+    "kd": 27,
+    "cpc": 3.71,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "gaining weight after working out",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 30,
+    "kd": 28,
+    "cpc": 0.03,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "mpg fuel economy gov",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 30,
+    "kd": 15,
+    "cpc": 22.35,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "232 lbs to kg",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 29,
+    "kd": 15,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "marathon pace for sub 4 hours",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 29,
+    "kd": 14,
+    "cpc": 0.86,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "marathon sub 3 hours pace",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 29,
+    "kd": 18,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "how heavy",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 28,
+    "kd": 26,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  },
+  {
+    "keyword": "180 5 6",
+    "volume": 1000,
+    "intent": "I",
+    "relevance": 26,
+    "kd": 26,
+    "cpc": 0,
+    "rawVolume": "1.0K"
+  }
+]

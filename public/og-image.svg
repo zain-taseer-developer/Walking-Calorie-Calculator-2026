@@ -1,0 +1,26 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#042F2E" />
+  <circle cx="1050" cy="150" r="300" fill="#0D9488" opacity="0.3" filter="blur(80px)" />
+  <circle cx="150" cy="500" r="250" fill="#F59E0B" opacity="0.2" filter="blur(90px)" />
+  
+  <rect x="100" y="80" width="80" height="80" rx="24" fill="#0D9488" />
+  <path d="M140 100C140 100 125 116 125 131C125 140 131.7 148 140 148C148.3 148 155 140 155 131C155 116 140 100 140 100Z" fill="#F59E0B" />
+  
+  <text x="100" y="240" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif" font-size="64" font-weight="900" letter-spacing="-0.03em">
+    Walking Calorie Calculator
+  </text>
+  
+  <text x="100" y="320" fill="#5EEAD4" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="700">
+    Accurate, Science-Backed Calories Burned Walking
+  </text>
+  
+  <text x="100" y="400" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="400">
+    Compendium of Physical Activities METs • Treadmill Incline • Pedometer Steps
+  </text>
+  
+  <rect x="100" y="470" width="340" height="64" rx="16" fill="#F97316" />
+  <text x="140" y="512" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700">
+    walkingcaloriecalculator.net
+  </text>
+</svg>
+

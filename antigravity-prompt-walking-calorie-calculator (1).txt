@@ -1,0 +1,189 @@
+# PROJECT BRIEF: "Walking Calorie Calculator" website (SEO + AdSense ready)
+
+You are a senior full-stack engineer, UX/UI designer and SEO content strategist. Build a complete, production-ready website whose **homepage IS the calculator**. Work in phases, finish each phase fully, and do not leave placeholder or lorem ipsum text anywhere.
+
+## 0. Attached inputs (read these first)
+1. `semrush-export-*.csv`: a Semrush keyword export. Parse it carefully:
+   - Keywords contain hidden zero-width characters (`\u200b`). Strip them.
+   - Volume is written like `12.1K`; convert to numbers.
+   - Save a cleaned file to `/data/keywords.json` and use it to decide page targets, H1/H2s, FAQ questions and internal-link anchors.
+2. Competitor design screenshots (if attached): study layout, input flow, result presentation, and what feels cluttered or annoying. **Take ideas only. Do not copy any design, text or code.** The goal is a design that is cleaner, faster, easier and more attractive than all of them.
+
+If any input is missing, continue with this spec and tell me what was missing.
+
+---
+
+## 1. Goal and primary keyword
+- **Primary keyword: `walking calorie calculator`** (about 12.1K searches/mo). The homepage `/` must be the best result on the internet for this query.
+- Secondary targets on the homepage: `calories burned walking` (6.6K), `steps to calories` (2.9K), `step calorie calculator` (1.9K), `how many calories does 20000 steps burn` (1.3K), `how many calories can i burn walking for an hour` (1K), `how many calories does walking 10000 steps burn` (1K).
+- Monetisation: Google AdSense. The site must pass AdSense review (original useful content, all trust pages, clean navigation, fast, mobile friendly). **Do not insert real AdSense code yet.** Build reserved, clearly separated ad slot components (fixed height to avoid layout shift) that I can switch on with one env variable.
+
+## 2. Tech stack
+- Next.js (latest, App Router) + TypeScript + Tailwind CSS. Static generation (SSG) for every page. Guides written as MDX.
+- No heavy libraries. Charts must be lightweight inline SVG or a tiny lib. Keep JS bundle small.
+- Config file `site.config.ts` with: SITE_NAME, DOMAIN, CONTACT_EMAIL, AUTHOR_NAME, AUTHOR_BIO, GA4_ID, ADSENSE_CLIENT_ID. Use placeholders that I will fill. **Never invent a fake doctor, fake credentials, fake reviews, fake testimonials or fake statistics.**
+- Deployable on Vercel or Cloudflare Pages. Include README with deploy steps and a list of everything I must fill in.
+
+---
+
+## 3. THE CALCULATOR (the heart of the project, must be the best)
+
+### 3.1 Behaviour
+- Homepage loads with the calculator visible **above the fold on mobile and desktop**, with sensible defaults already filled so a result shows immediately (e.g. 70 kg / 154 lb, 3.5 mph, 30 min). Results update live as the user types or drags. Also include a clear "Calculate" button for users who expect one.
+- Unit toggle Imperial / Metric (lb, ft+in, mph, miles vs kg, cm, km/h, km). Auto-select default from browser locale, remember the choice.
+- Four input modes (tabs or segmented control):
+  1. **Time + Speed** (most common). Speed via slider plus presets: Stroll, Casual, Moderate, Brisk, Power walk, Race walk.
+  2. **Distance + Time** (calculates pace/speed automatically).
+  3. **Steps** (steps + height, or custom stride length; calculates distance, time and calories).
+  4. **Treadmill / Incline** (speed + incline % + duration).
+- Fields: weight, height (needed for steps and stride), age and sex (optional, used for net calories and daily-percentage context), duration (h/min), speed or pace, incline %, terrain (pavement, trail, sand, grass), optional backpack/load weight.
+- Toggle **Gross vs Net calories** (net = excluding resting burn), with a one-line explanation.
+
+### 3.2 Formulas (implement in a pure, unit-tested `lib/calc` module)
+- Main: `kcal = MET × weight_kg × hours`.
+- Walking MET values (Compendium of Physical Activities, 2011). Use linear interpolation between points. Verify values against the Compendium before shipping and cite it:
+  - 2.0 mph (3.2 km/h) = 2.8
+  - 2.5 mph (4.0 km/h) = 3.0
+  - 3.0 mph (4.8 km/h) = 3.5
+  - 3.5 mph (5.6 km/h) = 4.3
+  - 4.0 mph (6.4 km/h) = 5.0
+  - 4.5 mph (7.2 km/h) = 7.0
+  - 5.0 mph (8.0 km/h) = 8.3
+- Net calories: `(MET − 1) × weight_kg × hours`.
+- Incline/treadmill (and optional load): use the ACSM walking equation. `VO2 (ml/kg/min) = 0.1 × speed(m/min) + 1.8 × speed(m/min) × grade(decimal) + 3.5`, then `kcal/min = VO2 × weight_kg / 1000 × 5`. Valid roughly 1.9 to 3.7 mph; above that, fall back to MET table and add an incline adjustment, and show a small "estimate" note.
+- Steps to distance: `stride = height × 0.414` (average; allow manual override). Provide steps per mile/km result.
+- Fat/weight context: about 7,700 kcal per kg (3,500 kcal per lb) of body fat, clearly labelled as an approximation.
+- Sanity check: 70 kg, 3.5 mph, 1 hour must give about 301 kcal. Write unit tests for this and for edge cases (zero, huge values, unit conversion round-trips). Validate inputs with friendly inline messages, never crash.
+
+### 3.3 Results panel (make it beautiful and useful)
+- Big animated number: **total calories burned**, with a ring/progress visual.
+- Secondary stats: calories per minute, per mile/km, distance, estimated steps, average pace (min/mile and min/km), net vs gross.
+- "What does this equal?" (fat equivalent, simple food equivalents like a banana or slice of pizza, based on common kcal values).
+- **Speed comparison chart:** the same duration and weight at different speeds (small SVG bar chart).
+- **Weight-loss projection:** "If you walk like this X days/week, about Y per month" with honest wording and an approximation note.
+- Actions: Copy result, Share link (inputs in URL params, no personal data stored server-side), Print/Save as PDF-friendly view, Reset.
+- Recent calculations saved only in the user's browser (localStorage, wrapped in try/catch).
+- Always show a short medical disclaimer link near the result. Estimates only.
+
+### 3.4 UX/UI requirements
+- Mobile-first (most traffic will be mobile). Large tap targets, number keyboards on numeric inputs, no horizontal scroll.
+- Visual style: modern, clean, friendly health/wellness feel. Fresh green/teal as the main colour, one warm accent (orange) for the primary button, lots of white space, rounded cards, subtle shadows, smooth micro-animations. Include dark mode. Pick one excellent font pair and self-host it.
+- Fully accessible (WCAG AA): labels, focus states, keyboard use, aria-live for results.
+- Performance targets: Lighthouse 95+ on Performance, Accessibility, Best Practices, SEO on mobile. LCP under 2s, CLS under 0.1, INP good.
+- No popups, no interstitials, no autoplay. Nothing that gets in the way of the calculator.
+
+---
+
+## 4. HOMEPAGE CONTENT (below the calculator)
+Target 2,000 to 2,800 words of original, helpful, human-sounding content. Use the structure below, with clean H2/H3s and the keywords used naturally (no stuffing). Include a table of contents (jump links).
+
+- **H1: Walking Calorie Calculator** (exact keyword). Short intro (2 to 3 lines) under it.
+- Title tag: `Walking Calorie Calculator: Calories Burned Walking by Weight, Speed & Steps` (keep under about 60 chars if possible, adjust). Write a compelling meta description of at most 155 chars containing the primary keyword.
+- How the walking calorie calculator works (plain-language formula with a worked example).
+- **Calories burned walking chart**: tables by body weight (e.g. 120 to 250 lb / 55 to 115 kg) × speed, for 30 min and 1 hour. Generate from the same calc module so numbers always match.
+- **Calories burned by steps table** (1,000 / 5,000 / 7,500 / 10,000 / 15,000 / 20,000 steps) for a few body weights.
+- Factors that change calories burned (weight, speed, incline, terrain, load, age, fitness).
+- Gross vs net calories explained.
+- Walking for weight loss (honest, balanced, no miracle claims).
+- Tips to burn more calories while walking (incline, intervals, arm swing, hills, 12-3-30 style treadmill workout).
+- Limitations and accuracy (including a short note on smartwatch/Apple Watch accuracy).
+- **FAQ section** (visible Q&A, 4 to 6 sentences max each), built from the question keywords: How many calories do you burn walking a mile? How many calories does 10,000 steps burn? Does 20,000 steps burn a lot more? How many calories can I burn walking for an hour? Can you lose weight by walking? How many steps to lose weight / lose a pound? How long does it take to walk a mile? What is a normal walking pace? How accurate is the Apple Watch for calories? Is walking on an incline worth it? Add FAQPage JSON-LD too.
+- "More calculators and guides" card grid linking to the other pages.
+- Sources/References block (CDC, Compendium of Physical Activities, ACSM, Harvard Health, Mayo Clinic or similar real sources, with real links) and "Last updated" date.
+
+---
+
+## 5. SITE MAP: pages to build
+
+### Phase 1 (launch)
+| URL | Purpose | Target keywords (monthly volume) |
+|---|---|---|
+| `/` | Walking Calorie Calculator | walking calorie calculator (12.1K), calories burned walking (6.6K), steps to calories, step calorie calculator |
+| `/steps-to-miles-calculator` | Steps ↔ miles/km converter with stride option and quick table | steps to miles (27.1K), steps to miles calculator (14.8K), steps to miles converter (3.6K), steps per mile (5.4K), how many steps in a mile / 2 / 3 / 4 / 5 miles |
+| `/how-many-miles-is-10000-steps` | Answer-first guide + mini converter | how many miles is 10000 steps (74K), how many miles is 10k steps (22.2K), 10000 steps to miles (18.1K), 10k steps in miles (8.1K), how far is 10k steps (2.9K). Also include a table for 5,000 / 6,000 / 7,000 / 8,000 / 12,000 / 15,000 / 20,000 steps (each has 3K to 10K searches) |
+| `/steps-to-calories-calculator` | Steps-mode tool with its own unique content | steps to calories (2.9K), step calorie calculator (1.9K), how many calories does 20000 steps burn (1.3K), 10000 steps calories (1K) |
+| `/walking-pace-calculator` | Speed / distance / time / pace calculator | speed distance time calculator (3.6K), how to calculate speed (5.4K), mph to minutes per mile (2.9K), normal walking pace (2.4K), formula of speed time and distance |
+| `/how-long-to-walk-a-mile` | Time-to-walk table by pace and distance | how long to walk a mile (6.6K), how long does it take to walk 5 miles (5.4K), 3 miles (3.6K), 2 miles (3.6K) |
+| `/walking-calories-burned-chart` | Printable chart by weight and speed | calories burned walking chart, calories burned walking by weight |
+| `/how-many-steps-a-day` | Guide | average steps per day (8.1K), how many steps a day is good (6.6K), how many miles should you walk a day (2.9K) |
+| `/walking-for-weight-loss` | Guide + mini projection tool | can you lose weight by walking (4.4K), how many steps to lose weight (4.4K), how many steps should i walk to lose weight (1.6K), how many steps to lose a pound (1K), calories to lose weight (4.4K) |
+| `/calories-vs-kcal` | Explainer + tiny converter (this whole cluster is about 40K combined searches and low difficulty) | kcal to calories (5.4K), kcal en cal (8.1K), kcal of cal (8.1K), kilocalories to calories (4.4K), is kcal the same as calories (2.4K), calories vs kcal, difference between kcal and cal |
+
+### Phase 2 (after launch, same topic cluster)
+| URL | Target keywords |
+|---|---|
+| `/maintenance-calorie-calculator` (TDEE, Mifflin-St Jeor) | maintenance calories calculator (12.1K), how many calories i should eat per day (14.8K), daily calorie intake (8.1K), calculate bmr (3.6K), how to figure out maintenance calories (3.6K), how many calories should i eat daily (3.6K) |
+| `/treadmill-incline-calculator` | treadmill incline (3.6K), treadmill pace chart (6.6K), treadmill pace conversion, benefits of zone 2 incline walk (2.4K), treadmill incline workout (2.4K) |
+| `/hiking-calorie-calculator` | hiking calorie calculator (1.3K) |
+| `/calories-burned-calculator` (hub: running, cycling, swimming, jump rope, push-ups, sit-ups) | calculate bike calories (2.9K), how many calories does swimming burn (2.4K), how many calories do you burn running (1K), jump rope (1.3K) |
+
+### Phase 3 (optional, only if time allows)
+`/bmi-calculator` (very high volume), running pace charts (5K, 10K, marathon; high CPC). Skip low-value keywords such as bare "152 lbs to kg" style conversions, "free water deficit", recipe converter, FFMI, brand-specific ones. They dilute topical focus.
+
+### Cannibalisation rules
+- One page, one primary intent. The homepage owns "walking calorie calculator" and "calories burned walking". Other pages must have clearly different intent and unique content, and must link back to the homepage with the anchor text "walking calorie calculator".
+- Each page gets one H1, a unique title and meta description, canonical URL, breadcrumbs, and Open Graph/Twitter tags.
+
+### Mandatory trust and AdSense pages (Phase 1)
+`/about` (real story and purpose, placeholder for my name/photo), `/contact` (working form + email), `/privacy-policy` (include Google AdSense cookie/ad personalisation disclosures, DoubleClick, opt-out links, GA4, data rights), `/terms`, `/medical-disclaimer`, `/editorial-policy-and-methodology` (how numbers are calculated, sources, update policy), `/cookie-policy`, `/blog`, plus a footer linking all of them. Add a **cookie consent banner** that is ready to be replaced by a Google-certified CMP (required for EEA/UK traffic). Also create `ads.txt` (placeholder), `robots.txt`, `sitemap.xml` (auto-generated), a custom 404 page, and an author box component.
+
+---
+
+## 5B. BLOG SYSTEM (build in Phase 1)
+Build a complete, easy-to-use blogging system. I am not a developer, so adding a new post must be simple.
+
+### Content management
+- Posts live as MDX files in `/content/blog/*.mdx` with frontmatter: `title`, `slug`, `description`, `category`, `tags`, `publishedAt`, `updatedAt`, `author`, `featuredImage`, `featuredImageAlt`, `faq` (optional list), `draft` (true/false), `relatedPosts` (optional).
+- Drafts are never built or listed. Posts with a future `publishedAt` stay hidden until that date (scheduled publishing, evaluated at build time).
+- Add a browser-based editor so I can write posts without touching code: set up **Decap CMS** at `/admin` (Git-based, free), with fields matching the frontmatter, image upload, and a markdown/rich-text editor. Include step-by-step setup instructions in the README (GitHub auth for Vercel/Cloudflare). If any part cannot be fully configured, document the fallback: "create a new .mdx file from the template `/content/blog/_template.mdx`".
+
+### Blog pages and features
+- `/blog`: clean card grid (featured image, category, title, excerpt, date, reading time), featured/latest post at the top, category filter, pagination, and a lightweight client-side search.
+- `/blog/[slug]`: article layout with breadcrumb, H1, author + "Last updated" date, reading time, auto-generated table of contents (sticky on desktop), good typography, featured image (next/image, lazy where appropriate, no layout shift), share buttons (copy link, X, Facebook, WhatsApp, Pinterest), author box, related posts, FAQ block, and prev/next links.
+- `/blog/category/[category]` and `/blog/tag/[tag]` archive pages (set `noindex` on tag pages and thin archives, index category pages).
+- Categories to start with: Walking Basics, Steps & Distance, Weight Loss, Treadmill & Workouts, Calories & Nutrition.
+- MDX components I can use inside posts: `<MiniCalculator />` (compact version of the main walking calorie calculator that links to the homepage), `<Callout type="tip|warning|info">`, `<KeyTakeaways>`, `<DataTable>`, `<AdSlot />`, `<RelatedTools />`, `<FAQ>`. Every post should be able to embed the mini calculator so readers can act right away.
+- SEO per post: unique title/meta/canonical, Open Graph + Twitter card with an auto-generated OG image (title on branded background) when no featured image exists, `Article` + `BreadcrumbList` + optional `FAQPage` JSON-LD, included automatically in `sitemap.xml`.
+- RSS feed at `/rss.xml` and `/feed.json`.
+- Automatic internal linking helpers: every post ends with a "Try the Walking Calorie Calculator" CTA block, and a related-tools block.
+- Ad slots inside posts (after intro, mid-article, end), reserved height, disabled until the AdSense ID is set.
+- Performance: blog pages are fully static, images optimized (AVIF/WebP), fonts self-hosted, no layout shift.
+
+### Starter posts (write these fully, 1,200 to 2,000 words each, original and helpful; real sources linked)
+Use the keywords from `/data/keywords.json` and the question phrasing as headings. Suggested first batch:
+1. How many calories does walking 10,000 steps burn? (about 1K searches on variants)
+2. Is walking 20,000 steps a day too much? (how many miles is 20000 steps: 9.9K, 20000 steps to miles: 4.4K)
+3. The 12-3-30 treadmill workout explained, plus incline walking and Zone 2 benefits (benefits of zone 2 incline walk: 2.4K, treadmill incline workout: 2.4K)
+4. How accurate are Apple Watch and fitness tracker calories? (1.9K + 1.3K + 1K)
+5. Walking vs running for weight loss
+6. How many calories are in a pound of fat? (2.9K, how many calories to equal a pound: 1.3K)
+7. Active vs total calories: what's the difference? (1K)
+8. Calories per gram of protein, carbs and fat (3.6K, 1.9K, 1.3K, 2.9K)
+9. How many stairs are in a flight of stairs? (about 1.9K, with several variants)
+10. Is cycling good for weight loss? / swimming for weight loss (1K to 1.3K each)
+
+Link these posts to the relevant tool pages and to the homepage using the anchor "walking calorie calculator" where natural. Blog posts must not compete with tool pages for the same primary keyword.
+
+---
+
+## 6. SEO and content rules
+- Content must be original, accurate, genuinely helpful and written like a knowledgeable human, not generic AI filler. No copying competitor text. Answer the question in the first 1 to 2 sentences of each page ("answer-first"), then go deeper.
+- Minimum length: guide pages 1,000+ words, tool pages 600+ words of useful content beyond the tool.
+- Use semantic HTML, descriptive alt text, one H1, logical H2/H3.
+- Structured data (JSON-LD): `WebApplication` (or `SoftwareApplication`) for tools, `BreadcrumbList`, `Article` for guides, `FAQPage` for FAQs, `Organization`/`WebSite`.
+- Internal linking: related-tools cards on every page, contextual links using keyword-rich but natural anchors, header nav (Calculators / Guides / About) and a full footer nav.
+- Use keywords from `/data/keywords.json` as H2/H3 headings and FAQ questions where they fit naturally. Prefer exact question phrasing for FAQ items.
+- Health content: add medical disclaimer, avoid cures/guarantees, cite sources, show "Last updated" and author.
+
+## 7. Ad slot design (for later AdSense)
+- Slots: one below the calculator result (never between inputs and result), one in-content after a few paragraphs, one in the sidebar/sticky on desktop, one at the end of article. Each has reserved min-height, a small "Advertisement" label, and is disabled until `ADSENSE_CLIENT_ID` is set.
+- No ads above the calculator, nothing that mimics buttons or results, no layout shift.
+
+## 8. Deliverables and process
+1. First output a short **plan**: file structure, design system (colours, type, components), page list. Then build.
+2. Build Phase 1 completely (including the blog system and the starter posts). Run the unit tests, a production build, and a Lighthouse check; fix issues.
+3. Write all page content for real (no TODOs).
+4. Provide `README.md` with: how to run, how to deploy, env variables, and a **checklist of what I must fill in** (site name, domain, email, my name/bio/photo, GA4 ID, AdSense ID, social links), plus a short "How to publish a new blog post" guide for a non-developer.
+5. At the end, report: pages created, Lighthouse scores, anything not done, and suggestions for Phase 2.
+
+Quality bar: this should look and feel like the best walking calorie calculator available, easier to use than every competitor, with more complete and more trustworthy supporting content.
