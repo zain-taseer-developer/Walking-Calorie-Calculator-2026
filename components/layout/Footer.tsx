@@ -53,7 +53,7 @@ export function Footer() {
           {/* Guides & Reference */}
           <div>
             <h3 className="font-semibold text-slate-900 dark:text-white text-sm tracking-wide mb-3 uppercase">
-              Reference Guides
+              Scientific References and Research Guides
             </h3>
             <ul className="space-y-2">
               {siteConfig.allTools.slice(5).map((tool) => (

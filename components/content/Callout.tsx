@@ -4,10 +4,11 @@ import { Info, AlertTriangle, Lightbulb } from "lucide-react";
 interface CalloutProps {
   type?: "info" | "tip" | "warning";
   title?: string;
+  titleLevel?: 3 | 5;
   children: React.ReactNode;
 }
 
-export function Callout({ type = "info", title, children }: CalloutProps) {
+export function Callout({ type = "info", title, titleLevel = 5, children }: CalloutProps) {
   const configs = {
     info: {
       bg: "bg-blue-50 dark:bg-blue-950/40 border-blue-200 dark:border-blue-900",
@@ -36,12 +37,13 @@ export function Callout({ type = "info", title, children }: CalloutProps) {
   }[type];
 
   const { bg, iconColor, titleColor, textColor, Icon, defaultTitle } = configs;
+  const TitleHeading = titleLevel === 3 ? "h3" : "h5";
 
   return (
     <div className={`not-prose my-6 p-4 sm:p-5 rounded-2xl border ${bg} flex items-start gap-3.5`}>
       <Icon className={`w-5 h-5 shrink-0 mt-0.5 ${iconColor}`} />
       <div className="space-y-1 text-sm leading-relaxed">
-        <h5 className={`font-bold ${titleColor}`}>{title || defaultTitle}</h5>
+        <TitleHeading className={`font-bold ${titleColor}`}>{title || defaultTitle}</TitleHeading>
         <div className={textColor}>{children}</div>
       </div>
     </div>

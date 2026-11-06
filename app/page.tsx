@@ -267,9 +267,9 @@ export default function HomePage() {
           </p>
 
           <div className="my-6 p-6 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-            <h4 className="font-bold text-slate-900 dark:text-white text-base mb-2">
+            <h3 className="font-bold text-slate-900 dark:text-white text-base mb-2">
               The Standard Walking Calorie Equation:
-            </h4>
+            </h3>
             <div className="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-mono text-sm sm:text-base text-brand-700 dark:text-brand-300 font-bold overflow-x-auto">
               Calories (kcal) = MET × Weight (kg) × Duration (hours)
             </div>
@@ -306,6 +306,7 @@ export default function HomePage() {
 
           <DataTable
             title="Calories Burned in 30 Minutes of Walking"
+            titleLevel={3}
             caption="Comparison across 6 speed benchmarks (2.0 to 4.5 mph) by body weight."
             headers={[
               "Weight (lbs / kg)",
@@ -355,6 +356,7 @@ export default function HomePage() {
 
           <DataTable
             title="Calories Burned by Step Count Across Body Weights"
+            titleLevel={3}
             caption="Estimates assume a standard brisk pace (3.5 mph) and average adult stride length (5'9 / 175cm height)."
             headers={[
               "Step Count",
@@ -466,9 +468,9 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
             <div className="p-5 rounded-2xl bg-teal-50/70 dark:bg-teal-950/30 border border-teal-200 dark:border-teal-900/60">
-              <h4 className="font-bold text-teal-900 dark:text-teal-200 text-base mb-1">
+              <h3 className="font-bold text-teal-900 dark:text-teal-200 text-base mb-1">
                 Gross Calories (Total Energy)
-              </h4>
+              </h3>
               <p className="text-xs sm:text-sm text-teal-800 dark:text-teal-300 leading-relaxed">
                 Gross expenditure represents every single calorie burned while walking. This includes both the energy required to move your legs <em>plus</em> the baseline calories your body would have burned anyway just keeping your heart beating and lungs breathing.
               </p>
@@ -534,9 +536,9 @@ export default function HomePage() {
 
           <div className="space-y-3 mt-4">
             <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-              <h4 className="font-bold text-slate-900 dark:text-white text-base">
+              <h3 className="font-bold text-slate-900 dark:text-white text-base">
                 1. The 12-3-30 Treadmill Protocol
-              </h4>
+              </h3>
               <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
                 Set a treadmill to a <strong>12% incline</strong>, walk at <strong>3.0 mph</strong>, for <strong>30 minutes</strong>. This viral workout is backed by exercise physiology: walking on a steep 12% grade demands roughly 8.5 to 9.5 METs, burning over 350 calories in 30 minutes for a 160-lb adult.
               </p>
@@ -598,7 +600,7 @@ export default function HomePage() {
             Wearable fitness devices like the Apple Watch Ultra, Garmin Forerunner, WHOOP band, and Fitbit Sense have revolutionized how we monitor physical activity. However, when it comes to measuring <strong>active calories burned walking</strong>, consumers should treat watch outputs as estimates rather than laboratory calorimetry.
           </p>
 
-          <Callout type="warning" title="What the Clinical Research Shows">
+          <Callout type="warning" title="What the Clinical Research Shows" titleLevel={3}>
             A comprehensive clinical trial conducted by researchers at Stanford University School of Medicine evaluated seven popular wrist-worn activity monitors across 60 volunteers. While devices measured heart rate accurately (median error &lt;5%), <strong>not a single device achieved a median error below 20% for energy expenditure</strong>. Some models overestimated walking calories by as much as 27%, while others underestimated by 18%.
           </Callout>
 

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 
 export interface DataTableProps {
   title?: string;
+  titleLevel?: 3 | 4;
   caption?: string;
   headers: string[];
   rows: (string | number)[][];
@@ -12,6 +13,7 @@ export interface DataTableProps {
 
 export function DataTable({
   title,
+  titleLevel = 4,
   caption,
   headers,
   rows,
@@ -24,6 +26,7 @@ export function DataTable({
         row.some((cell) => cell.toString().toLowerCase().includes(filter.toLowerCase()))
       )
     : rows;
+  const TitleHeading = titleLevel === 3 ? "h3" : "h4";
 
   return (
     <div className="not-prose my-8 overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs">
@@ -31,9 +34,9 @@ export function DataTable({
         <div className="p-4 sm:p-5 border-b border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             {title && (
-              <h4 className="font-bold text-base text-slate-900 dark:text-white">
+              <TitleHeading className="font-bold text-base text-slate-900 dark:text-white">
                 {title}
-              </h4>
+              </TitleHeading>
             )}
             {caption && (
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">

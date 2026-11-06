@@ -250,9 +250,9 @@ export function ResultsPanel({ result, inputs, unitSystem, onReset }: ResultsPan
 
       {/* "What Does This Equal?" Real-World Food & Fat Equivalents */}
       <div className="p-4 sm:p-5 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-3">
-        <h4 className="text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+        <h3 className="text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
           What Does This Calorie Burn Equal?
-        </h4>
+        </h3>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
           <div className="p-3 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/60">
