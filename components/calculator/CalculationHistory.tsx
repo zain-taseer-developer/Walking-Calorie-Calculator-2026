@@ -4,8 +4,10 @@ import React from "react";
 import { History, Trash2, ArrowUpRight, ArrowRight } from "lucide-react";
 import { SavedCalculation } from "@/lib/history";
 
-function formatSavedTimestamp(item: SavedCalculation): string {
-  let date = new Date(item.timestamp);
+function formatHistoryTimestamp(item: SavedCalculation): { label: string; value: string } {
+  const updatedDate = item.updatedAt ? new Date(item.updatedAt) : null;
+  const wasUpdated = updatedDate !== null && !Number.isNaN(updatedDate.getTime());
+  let date = wasUpdated && updatedDate ? updatedDate : new Date(item.timestamp);
 
   if (Number.isNaN(date.getTime())) {
     const idTimestamp = Number(item.id);
@@ -14,12 +16,17 @@ function formatSavedTimestamp(item: SavedCalculation): string {
     }
   }
 
-  if (Number.isNaN(date.getTime())) return item.timestamp;
+  if (Number.isNaN(date.getTime())) {
+    return { label: wasUpdated ? "Updated" : "Saved", value: item.timestamp };
+  }
 
-  return new Intl.DateTimeFormat(undefined, {
-    dateStyle: "medium",
-    timeStyle: "short",
-  }).format(date);
+  return {
+    label: wasUpdated ? "Updated" : "Saved",
+    value: new Intl.DateTimeFormat(undefined, {
+      dateStyle: "medium",
+      timeStyle: "short",
+    }).format(date),
+  };
 }
 
 export interface CalculationHistoryProps {
@@ -84,6 +91,7 @@ export function CalculationHistory({
             const isLoaded = loadedRecordId === item.id;
             const isRecentlyUpdated = recentlyUpdatedId === item.id;
             const rowNumber = index + 1;
+            const historyTimestamp = formatHistoryTimestamp(item);
 
             return (
               <div
@@ -106,7 +114,7 @@ export function CalculationHistory({
                         {item.calories} kcal
                       </span>
                       <span className="text-slate-500 dark:text-slate-400">
-                        · Duration: {item.durationMinutes} min @ {item.speedMph} mph (
+                        · Walk duration: {item.durationMinutes} min @ {item.speedMph} mph (
                         {item.unitSystem === "imperial"
                           ? `${item.weightLbs} lbs`
                           : `${item.weightKg} kg`}
@@ -117,7 +125,9 @@ export function CalculationHistory({
                     <div className="flex items-center gap-2 mt-0.5 text-[11px] text-slate-400">
                       <span>{item.distanceMiles} mi ({item.distanceKm} km)</span>
                       <span>·</span>
-                      <span>Saved: {formatSavedTimestamp(item)}</span>
+                      <span>
+                        {historyTimestamp.label}: {historyTimestamp.value}
+                      </span>
 
                       {/* 10-second "Data updated" badge with arrow */}
                       {isRecentlyUpdated && (
