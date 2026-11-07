@@ -1138,7 +1138,7 @@ export function WalkingCalculator() {
               src="/walking-calorie-calculator-illustration.svg"
               alt="A person walking with icons representing calories, steps, distance, and pace"
               width={640}
-              height={230}
+              height={200}
               className="h-auto w-full"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
