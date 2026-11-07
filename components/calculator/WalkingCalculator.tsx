@@ -1060,21 +1060,20 @@ export function WalkingCalculator() {
             onDeleteRecord={handleDeleteRecord}
             onClearHistory={handleClearHistory}
           />
-          {inputs.mode === "treadmill" && (
-            <section
-              aria-label="Live treadmill workout summary"
+          <section
+              aria-label="Walking calorie calculator summary"
               className="overflow-hidden rounded-2xl border border-orange-200 bg-gradient-to-br from-orange-50 via-white to-slate-50 p-4 shadow-xs dark:border-slate-800 dark:from-slate-900 dark:via-slate-900 dark:to-slate-950 sm:p-5"
             >
               <div className="grid items-center gap-3 sm:grid-cols-[1fr_150px]">
                 <div>
                   <p className="text-[11px] font-bold uppercase tracking-wider text-orange-700 dark:text-orange-300">
-                    Live treadmill session
+                    Live walking estimate
                   </p>
                   <h3 className="mt-1 text-lg font-extrabold text-slate-900 dark:text-white">
-                    Your Incline Walk
+                    Your Walking Calculation
                   </h3>
                   <p className="mt-1 text-xs text-slate-600 dark:text-slate-400">
-                    Estimate updates with your calculator settings.
+                    Updates as you change your calculator settings.
                   </p>
                 </div>
                 <div className="flex items-baseline gap-1 sm:justify-end">
@@ -1102,10 +1101,12 @@ export function WalkingCalculator() {
                     {inputs.unitSystem === "imperial" ? `${result.speedMph} mph` : `${result.speedKmh} km/h`}
                   </p>
                 </div>
-                <div className="rounded-xl border border-slate-200/80 bg-white/80 p-2.5 dark:border-slate-700 dark:bg-slate-800/80">
-                  <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Incline</p>
-                  <p className="mt-0.5 text-sm font-bold text-slate-900 dark:text-white">{inputs.inclinePercent}%</p>
-                </div>
+                {inputs.inclinePercent > 0 && (
+                  <div className="rounded-xl border border-slate-200/80 bg-white/80 p-2.5 dark:border-slate-700 dark:bg-slate-800/80">
+                    <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Incline</p>
+                    <p className="mt-0.5 text-sm font-bold text-slate-900 dark:text-white">{inputs.inclinePercent}%</p>
+                  </div>
+                )}
                 <div className="rounded-xl border border-slate-200/80 bg-white/80 p-2.5 dark:border-slate-700 dark:bg-slate-800/80">
                   <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Distance</p>
                   <p className="mt-0.5 text-sm font-bold text-slate-900 dark:text-white">
@@ -1138,26 +1139,24 @@ export function WalkingCalculator() {
                 <svg
                   viewBox="0 0 220 92"
                   role="img"
-                  aria-label="Person walking uphill on a treadmill"
+                  aria-label="Person walking with estimated calorie, pace, distance, and step metrics"
                   className="h-[76px] w-[190px]"
                 >
-                  <path d="M14 79h190" stroke="#cbd5e1" strokeLinecap="round" strokeWidth="2" />
-                  <path d="m48 62 104-17 19 10-105 18z" fill="#334155" />
-                  <path d="m66 69-5 10m95-23 7 11m-1-12 17-39h17" fill="none" stroke="#475569" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" />
-                  <circle cx="82" cy="67" r="3" fill="#f97316" />
-                  <circle cx="163" cy="54" r="3" fill="#f97316" />
-                  <circle cx="103" cy="18" r="8" fill="#f6c7a8" />
-                  <path d="m97 15 2-6 10 1 4 7-8-3-7 5z" fill="#334155" />
-                  <path d="m98 29 15-3 10 22-20 5-10-12z" fill="#f97316" />
-                  <path d="m101 48-8 12-15 3m29-13 8 12 15-2" fill="none" stroke="#334155" strokeLinecap="round" strokeWidth="6" />
-                  <path d="m98 31-12 9 7 9m20-20 10 8-7 8" fill="none" stroke="#f6c7a8" strokeLinecap="round" strokeWidth="5" />
+                  <path d="M12 78c30-8 52 6 80 0s47-7 70 0 32 2 46-2" fill="none" stroke="#cbd5e1" strokeLinecap="round" strokeWidth="3" />
+                  <path d="M25 67h15m120 0h18" stroke="#f97316" strokeDasharray="3 5" strokeLinecap="round" strokeWidth="3" />
+                  <circle cx="104" cy="17" r="8" fill="#f6c7a8" />
+                  <path d="m98 14 2-6 10 1 4 7-8-3-7 5z" fill="#334155" />
+                  <path d="m99 28 15-3 10 22-20 5-10-12z" fill="#f97316" />
+                  <path d="m102 47-8 13-15 3m29-13 9 12 15-2" fill="none" stroke="#334155" strokeLinecap="round" strokeLinejoin="round" strokeWidth="6" />
+                  <path d="m99 30-12 9 7 9m21-20 10 8-7 8" fill="none" stroke="#f6c7a8" strokeLinecap="round" strokeLinejoin="round" strokeWidth="5" />
+                  <rect x="151" y="27" width="39" height="24" rx="8" fill="#fff" stroke="#fed7aa" strokeWidth="2" />
+                  <path d="M159 40h7l4-7 6 13 4-6h5" fill="none" stroke="#f97316" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" />
                 </svg>
                 <p className="max-w-[150px] text-xs leading-relaxed text-slate-500 dark:text-slate-400">
-                  Personal estimate based on your weight, pace, duration, and incline.
+                  Walking calorie, pace, distance, and step estimates based on your inputs.
                 </p>
               </div>
             </section>
-          )}
         </div>
 
         {/* Right Column: Live Results Panel (6 cols on lg) */}
