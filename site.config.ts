@@ -5,7 +5,7 @@
  */
 
 export const siteConfig = {
-  SITE_NAME: process.env.NEXT_PUBLIC_SITE_NAME || "WalkingCalorieCalculator.net",
+  SITE_NAME: process.env.NEXT_PUBLIC_SITE_NAME || "WalkingCalorieCalc",
   SITE_TAGLINE: "Accurate, Science-Backed Calories Burned Walking Calculator",
   DOMAIN: process.env.NEXT_PUBLIC_DOMAIN || "walkingcaloriecalculator.net",
   CANONICAL_URL: process.env.NEXT_PUBLIC_CANONICAL_URL || "https://walkingcaloriecalculator.net",
@@ -151,4 +151,3 @@ export const siteConfig = {
 };
 
 export type SiteConfig = typeof siteConfig;
-

@@ -65,7 +65,7 @@ export function ResultsPanel({ result, inputs, unitSystem, onReset }: ResultsPan
       unitSystem === "imperial"
         ? `${result.distanceMiles} miles`
         : `${result.distanceKm} km`
-    } (~${result.steps.toLocaleString()} steps) via WalkingCalorieCalculator.net`;
+    } (~${result.steps.toLocaleString()} steps) via WalkingCalorieCalc`;
 
     if (navigator.clipboard) {
       navigator.clipboard.writeText(text);
@@ -358,4 +358,3 @@ export function ResultsPanel({ result, inputs, unitSystem, onReset }: ResultsPan
     </div>
   );
 }
-

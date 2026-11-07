@@ -8,7 +8,7 @@ import { FileText, Scale } from "lucide-react";
 export const metadata: Metadata = constructMetadata({
   title: "Terms of Service | User Agreement",
   description:
-    "Terms of service governing the use of WalkingCalorieCalculator.net, interactive calculators, and fitness content.",
+    "Terms of service governing the use of WalkingCalorieCalc, interactive calculators, and fitness content.",
   canonicalPath: "/terms",
 });
 
@@ -79,4 +79,3 @@ export default function TermsPage() {
     </div>
   );
 }
-

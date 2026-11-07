@@ -8,7 +8,7 @@ import { Shield, Lock, Eye, FileText, CheckCircle2 } from "lucide-react";
 export const metadata: Metadata = constructMetadata({
   title: "Privacy Policy | GDPR, CCPA & Google AdSense Disclosures",
   description:
-    "Comprehensive privacy policy for WalkingCalorieCalculator.net. Details our privacy practices, Google AdSense cookies, analytics, and your data rights.",
+    "Comprehensive privacy policy for WalkingCalorieCalc. Details our privacy practices, Google AdSense cookies, analytics, and your data rights.",
   canonicalPath: "/privacy-policy",
 });
 
@@ -136,4 +136,3 @@ export default function PrivacyPolicyPage() {
     </div>
   );
 }
-
