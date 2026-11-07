@@ -237,7 +237,7 @@ export default function HomePage() {
             </h1>
             
             <p className="mt-3 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-              Calculate exact <strong>calories burned walking</strong> by body weight, speed, incline, duration, and steps. Powered by peer-reviewed metabolic equations with instantaneous live results.
+              Calculate calories burned while walking based on your body weight, height, walking duration, speed, distance, or steps. Choose your preferred calculation method, adjust treadmill incline and other activity settings, and get estimates for calories burned, distance, steps, and walking pace, along with weight-loss projections.
             </p>
           </div>
 
