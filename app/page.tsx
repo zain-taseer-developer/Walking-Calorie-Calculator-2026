@@ -635,7 +635,7 @@ export default function HomePage() {
             </div>
             <div className="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs">
               <h3 className="font-bold text-slate-900 dark:text-white text-base mb-2">
-                Mobile-Friendly
+                Mobile-Friendly Walking Calculator for Any Device
               </h3>
               <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
                 Use the calculator on a phone, tablet, or desktop.
@@ -643,7 +643,7 @@ export default function HomePage() {
             </div>
             <div className="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs">
               <h3 className="font-bold text-slate-900 dark:text-white text-base mb-2">
-                MET-Based Estimates
+                MET-Based Walking Calorie Estimates
               </h3>
               <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
                 Estimates use activity MET values from the 2011 Compendium of Physical Activities.
@@ -680,7 +680,7 @@ export default function HomePage() {
 
           <div className="space-y-2">
             <h3 className="font-bold text-slate-900 dark:text-white text-base">
-              Methodology
+              How We Calculate Walking Calories, Steps, and Pace
             </h3>
             <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
               Walking calorie estimates use activity MET values from the 2011 Compendium of Physical Activities, interpolated for walking speeds between listed benchmarks. Gross calories are estimated with MET × body weight (kg) × duration (hours); net calories subtract the resting 1-MET baseline. For eligible treadmill speeds, incline estimates use the ACSM walking equation. Distance and step estimates are derived from the entered activity details and estimated or custom stride length. Terrain and carried load are included where applicable.
@@ -689,7 +689,7 @@ export default function HomePage() {
 
           <div className="space-y-2 rounded-xl border border-amber-200 dark:border-amber-900/60 bg-amber-50/70 dark:bg-amber-950/30 p-4">
             <h3 className="font-bold text-amber-900 dark:text-amber-200 text-base">
-              Disclaimer
+              Limits of Calorie and Weight-Loss Estimates
             </h3>
             <p className="text-sm text-amber-900 dark:text-amber-200 leading-relaxed">
               All results are estimates, not exact measurements or medical advice. Actual energy use varies with individual physiology, walking conditions, and the accuracy of the information entered. Weight-loss projections are illustrative and are not guaranteed outcomes. Do not use this calculator to diagnose or treat a health condition; consult a qualified healthcare professional if you have health concerns or need personalized exercise guidance.
