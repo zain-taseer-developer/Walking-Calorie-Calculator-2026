@@ -45,7 +45,7 @@ export default function HomePage() {
   const tocItems: TocItem[] = [
     { id: "calculator", label: "Interactive Walking Calorie Calculator" },
     { id: "how-it-works", label: "How the Walking Calorie Calculator Works (The Science & Math)" },
-    { id: "calorie-tables-duration", label: "Calories Burned Walking Charts (30 Min & 1 Hour)" },
+    { id: "calorie-tables-duration", label: "Walking Calories Examples & Charts (30 Min & 1 Hour)" },
     { id: "calorie-tables-steps", label: "Calories Burned by Steps Table (1k to 20,000 Steps)" },
     { id: "key-factors", label: "7 Key Factors That Determine Your Caloric Burn" },
     { id: "gross-vs-net", label: "Gross vs. Net Calories: Why the Difference Matters" },
@@ -295,27 +295,27 @@ export default function HomePage() {
           </p>
         </section>
 
-        {/* Section 2: Calories Burned Walking Charts */}
+        {/* Section 2: Walking Calories Examples and Charts */}
         <section id="calorie-tables-duration" className="my-12 scroll-mt-24 space-y-4">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            Calories Burned Walking Charts (30 Minutes &amp; 1 Hour)
+            Walking Calories Examples &amp; Charts (30 Minutes &amp; 1 Hour)
           </h2>
           <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
-            The reference tables below showcase total calories burned across common adult body weights and walking velocities. All numbers are computed directly from our pure calculation engine using official Compendium MET coefficients on flat, firm ground.
+            These examples show approximate gross calories burned at different body weights, walking durations, and speeds. Estimates use the same calculator engine and official 2011 Compendium MET values for level pavement with no incline; individual results vary.
           </p>
 
           <DataTable
             title="Calories Burned in 30 Minutes of Walking"
             titleLevel={3}
-            caption="Comparison across 6 speed benchmarks (2.0 to 4.5 mph) by body weight."
+            caption="Approximate gross calories by body weight and walking speed on level pavement (no incline)."
             headers={[
               "Weight (lbs / kg)",
-              "2.0 mph (Stroll)",
-              "2.5 mph (Casual)",
-              "3.0 mph (Moderate)",
-              "3.5 mph (Brisk)",
-              "4.0 mph (Power)",
-              "4.5 mph (Fast)",
+              "Approx. kcal · 2.0 mph (Stroll)",
+              "Approx. kcal · 2.5 mph (Casual)",
+              "Approx. kcal · 3.0 mph (Moderate)",
+              "Approx. kcal · 3.5 mph (Brisk)",
+              "Approx. kcal · 4.0 mph (Power)",
+              "Approx. kcal · 4.5 mph (Fast)",
             ]}
             rows={chart30MinRows}
             highlightColumnIndex={4} // highlight 3.5 mph brisk
@@ -323,15 +323,15 @@ export default function HomePage() {
 
           <DataTable
             title="Calories Burned in 60 Minutes (1 Hour) of Walking"
-            caption="Energy expenditure for an extended 1-hour continuous walking session."
+            caption="Approximate gross calories by body weight and walking speed on level pavement (no incline)."
             headers={[
               "Weight (lbs / kg)",
-              "2.0 mph (Stroll)",
-              "2.5 mph (Casual)",
-              "3.0 mph (Moderate)",
-              "3.5 mph (Brisk)",
-              "4.0 mph (Power)",
-              "4.5 mph (Fast)",
+              "Approx. kcal · 2.0 mph (Stroll)",
+              "Approx. kcal · 2.5 mph (Casual)",
+              "Approx. kcal · 3.0 mph (Moderate)",
+              "Approx. kcal · 3.5 mph (Brisk)",
+              "Approx. kcal · 4.0 mph (Power)",
+              "Approx. kcal · 4.5 mph (Fast)",
             ]}
             rows={chart60MinRows}
             highlightColumnIndex={4}
