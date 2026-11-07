@@ -255,6 +255,47 @@ export default function HomePage() {
         {/* Table of Contents */}
         <TableOfContents items={tocItems} />
 
+        {/* Section 1: How the Walking Calorie Calculator Works */}
+        <section id="how-it-works" className="my-12 scroll-mt-24 space-y-4">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            How the Walking Calorie Calculator Works (The Science &amp; Math)
+          </h2>
+          <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+            Estimating your true energy expenditure during a walking session is not guesswork. Human locomotion requires skeletal muscle contractions that consume oxygen and metabolize stored glycogen and lipids. In exercise physiology, this rate of oxygen consumption is quantified using the <strong>Metabolic Equivalent of Task (MET)</strong>.
+          </p>
+          <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+            By international medical convention, <strong>1 MET represents the energy cost of sitting quietly at rest</strong>, which equates to roughly 3.5 milliliters of oxygen per kilogram of body weight per minute (or approximately 1.0 kilocalorie per kilogram per hour for an average adult). When you transition from seated rest to walking, your working quadriceps, glutes, hamstrings, and calves demand significantly more oxygen.
+          </p>
+
+          <div className="my-6 p-6 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+            <h3 className="font-bold text-slate-900 dark:text-white text-base mb-2">
+              The Standard Walking Calorie Equation:
+            </h3>
+            <div className="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-mono text-sm sm:text-base text-brand-700 dark:text-brand-300 font-bold overflow-x-auto">
+              Calories (kcal) = MET × Weight (kg) × Duration (hours)
+            </div>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">
+              Source: Ainsworth BE, et al. <em>2011 Compendium of Physical Activities</em>. Medicine &amp; Science in Sports &amp; Exercise.
+            </p>
+          </div>
+
+          <h3 className="text-xl font-bold text-slate-900 dark:text-white mt-6 mb-2">
+            Worked Step-by-Step Example
+          </h3>
+          <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+            Consider a walker weighing <strong>160 pounds (72.57 kg)</strong> who completes a <strong>45-minute (0.75 hours)</strong> brisk walk at a speed of <strong>3.5 mph (5.6 km/h)</strong> on level asphalt:
+          </p>
+          <ul className="list-disc list-inside space-y-1.5 text-slate-700 dark:text-slate-300 text-sm sm:text-base pl-2">
+            <li><strong>Determine MET value:</strong> According to the 2011 Compendium (code 17190), walking at 3.5 mph has a benchmark MET of <strong>4.3</strong>.</li>
+            <li><strong>Convert body weight:</strong> 160 lbs ÷ 2.20462 = <strong>72.57 kg</strong>.</li>
+            <li><strong>Convert duration:</strong> 45 minutes ÷ 60 = <strong>0.75 hours</strong>.</li>
+            <li><strong>Calculate gross expenditure:</strong> 4.3 × 72.57 kg × 0.75 hours = <strong>234.04 kcal</strong>.</li>
+          </ul>
+          <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+            Our calculator executes this exact calculation with real-time linear interpolation between speeds so you receive smooth, scientifically rigorous numbers whether you walk at 2.8 mph, 3.3 mph, or 4.2 mph.
+          </p>
+        </section>
+
         <section id="why-use-calculator" className="my-12 scroll-mt-24 space-y-4">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             Why Use Our Walking Calorie Calculator?
@@ -297,47 +338,6 @@ export default function HomePage() {
               </p>
             </div>
           </div>
-        </section>
-
-        {/* Section 1: How the Walking Calorie Calculator Works */}
-        <section id="how-it-works" className="my-12 scroll-mt-24 space-y-4">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            How the Walking Calorie Calculator Works (The Science &amp; Math)
-          </h2>
-          <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
-            Estimating your true energy expenditure during a walking session is not guesswork. Human locomotion requires skeletal muscle contractions that consume oxygen and metabolize stored glycogen and lipids. In exercise physiology, this rate of oxygen consumption is quantified using the <strong>Metabolic Equivalent of Task (MET)</strong>.
-          </p>
-          <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
-            By international medical convention, <strong>1 MET represents the energy cost of sitting quietly at rest</strong>, which equates to roughly 3.5 milliliters of oxygen per kilogram of body weight per minute (or approximately 1.0 kilocalorie per kilogram per hour for an average adult). When you transition from seated rest to walking, your working quadriceps, glutes, hamstrings, and calves demand significantly more oxygen.
-          </p>
-
-          <div className="my-6 p-6 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-            <h3 className="font-bold text-slate-900 dark:text-white text-base mb-2">
-              The Standard Walking Calorie Equation:
-            </h3>
-            <div className="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-mono text-sm sm:text-base text-brand-700 dark:text-brand-300 font-bold overflow-x-auto">
-              Calories (kcal) = MET × Weight (kg) × Duration (hours)
-            </div>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">
-              Source: Ainsworth BE, et al. <em>2011 Compendium of Physical Activities</em>. Medicine &amp; Science in Sports &amp; Exercise.
-            </p>
-          </div>
-
-          <h3 className="text-xl font-bold text-slate-900 dark:text-white mt-6 mb-2">
-            Worked Step-by-Step Example
-          </h3>
-          <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
-            Consider a walker weighing <strong>160 pounds (72.57 kg)</strong> who completes a <strong>45-minute (0.75 hours)</strong> brisk walk at a speed of <strong>3.5 mph (5.6 km/h)</strong> on level asphalt:
-          </p>
-          <ul className="list-disc list-inside space-y-1.5 text-slate-700 dark:text-slate-300 text-sm sm:text-base pl-2">
-            <li><strong>Determine MET value:</strong> According to the 2011 Compendium (code 17190), walking at 3.5 mph has a benchmark MET of <strong>4.3</strong>.</li>
-            <li><strong>Convert body weight:</strong> 160 lbs ÷ 2.20462 = <strong>72.57 kg</strong>.</li>
-            <li><strong>Convert duration:</strong> 45 minutes ÷ 60 = <strong>0.75 hours</strong>.</li>
-            <li><strong>Calculate gross expenditure:</strong> 4.3 × 72.57 kg × 0.75 hours = <strong>234.04 kcal</strong>.</li>
-          </ul>
-          <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
-            Our calculator executes this exact calculation with real-time linear interpolation between speeds so you receive smooth, scientifically rigorous numbers whether you walk at 2.8 mph, 3.3 mph, or 4.2 mph.
-          </p>
         </section>
 
         {/* Section 2: Walking Calories Examples and Charts */}
