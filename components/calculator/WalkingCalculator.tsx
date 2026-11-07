@@ -1139,8 +1139,8 @@ export function WalkingCalculator() {
               alt="A person walking with icons representing calories, steps, distance, and pace"
               width={640}
               height={360}
-              className="mx-auto h-auto w-full max-w-[320px] rounded-2xl"
-              sizes="(max-width: 640px) 100vw, 320px"
+              className="h-auto w-full rounded-2xl"
+              sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>
         </div>
