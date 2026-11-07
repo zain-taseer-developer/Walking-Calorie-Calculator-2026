@@ -26,9 +26,9 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Walking Calorie Calculator: Calories Burned Walking",
+  title: "Walking Calorie Calculator Free – Calories, Steps & Pace",
   description:
-    "Free walking calorie calculator. Calculate calories burned walking by body weight, speed, incline, duration, and steps using official 2011 Compendium MET data.",
+    "Calculate calories burned walking with our walking calorie calculator. Track calories, steps, distance, pace, speed, and incline using official 2011 Compendium MET data.",
   canonicalPath: "/",
   keywords: [
     "walking calorie calculator",
@@ -683,4 +683,3 @@ export default function HomePage() {
     </div>
   );
 }
-
