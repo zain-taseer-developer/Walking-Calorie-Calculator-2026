@@ -4,6 +4,24 @@ import React from "react";
 import { History, Trash2, ArrowUpRight, ArrowRight } from "lucide-react";
 import { SavedCalculation } from "@/lib/history";
 
+function formatSavedTimestamp(item: SavedCalculation): string {
+  let date = new Date(item.timestamp);
+
+  if (Number.isNaN(date.getTime())) {
+    const idTimestamp = Number(item.id);
+    if (Number.isFinite(idTimestamp) && idTimestamp > 1_000_000_000_000) {
+      date = new Date(idTimestamp);
+    }
+  }
+
+  if (Number.isNaN(date.getTime())) return item.timestamp;
+
+  return new Intl.DateTimeFormat(undefined, {
+    dateStyle: "medium",
+    timeStyle: "short",
+  }).format(date);
+}
+
 export interface CalculationHistoryProps {
   history: SavedCalculation[];
   loadedRecordId: string | null;
@@ -88,7 +106,7 @@ export function CalculationHistory({
                         {item.calories} kcal
                       </span>
                       <span className="text-slate-500 dark:text-slate-400">
-                        · {item.durationMinutes} min @ {item.speedMph} mph (
+                        · Duration: {item.durationMinutes} min @ {item.speedMph} mph (
                         {item.unitSystem === "imperial"
                           ? `${item.weightLbs} lbs`
                           : `${item.weightKg} kg`}
@@ -99,25 +117,7 @@ export function CalculationHistory({
                     <div className="flex items-center gap-2 mt-0.5 text-[11px] text-slate-400">
                       <span>{item.distanceMiles} mi ({item.distanceKm} km)</span>
                       <span>·</span>
-                      <span>
-                        {(() => {
-                          const d = new Date(item.timestamp);
-                          if (!isNaN(d.getTime())) {
-                            return d.toLocaleDateString(undefined, {
-                              month: "short",
-                              day: "numeric",
-                            });
-                          }
-                          const idNum = Number(item.id);
-                          if (!isNaN(idNum) && idNum > 1000000000000) {
-                            return new Date(idNum).toLocaleDateString(undefined, {
-                              month: "short",
-                              day: "numeric",
-                            });
-                          }
-                          return item.timestamp || "";
-                        })()}
-                      </span>
+                      <span>Saved: {formatSavedTimestamp(item)}</span>
 
                       {/* 10-second "Data updated" badge with arrow */}
                       {isRecentlyUpdated && (
