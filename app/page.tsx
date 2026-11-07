@@ -30,6 +30,7 @@ export const metadata: Metadata = constructMetadata({
   description:
     "Calculate calories burned walking with our walking calorie calculator. Track calories, steps, distance, pace, speed, and incline using official 2011 Compendium MET data.",
   canonicalPath: "/",
+  absoluteTitle: true,
   keywords: [
     "walking calorie calculator",
     "calories burned walking",
@@ -699,49 +700,49 @@ export default function HomePage() {
             <h3 className="font-bold text-slate-900 dark:text-white text-base">
               Scientific Sources &amp; Literature Cited
             </h3>
-            <ol className="list-decimal list-inside space-y-1.5 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-            <li>
-              Ainsworth BE, Haskell WL, Herrmann SD, et al. <em>2011 Compendium of Physical Activities: a second update of codes and MET values.</em> Medicine &amp; Science in Sports &amp; Exercise. 2011;43(8):1575-1581.{" "}
-              <a
-                href="https://pubmed.ncbi.nlm.nih.gov/21681120/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline hover:text-brand-600 inline-flex items-center gap-0.5"
-              >
-                PubMed PMID: 21681120 <ExternalLink className="w-2.5 h-2.5" />
-              </a>
-            </li>
-            <li>
-              American College of Sports Medicine (ACSM). <em>ACSM&apos;s Guidelines for Exercise Testing and Prescription.</em> 11th Edition. Wolters Kluwer, 2021. Metabolic Calculation for Walking: VO2 = (0.1 × S) + (1.8 × S × G) + 3.5.
-            </li>
-            <li>
-              Centers for Disease Control and Prevention (CDC). <em>Physical Activity for a Healthy Weight.</em> U.S. Department of Health and Human Services.{" "}
-              <a
-                href="https://www.cdc.gov/healthy-weight-growth/physical-activity/index.html"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline hover:text-brand-600 inline-flex items-center gap-0.5"
-              >
-                CDC Walking Guidelines <ExternalLink className="w-2.5 h-2.5" />
-              </a>
-            </li>
-            <li>
-              Harvard Health Publishing. <em>Calories burned in 30 minutes for people of three different weights.</em> Harvard Medical School, 2021.
-            </li>
-            <li>
-              Shcherbina A, Mattsson CM, Waggott D, et al. <em>Accuracy in Wrist-Worn, Sensor-Based Measurements of Heart Rate and Energy Expenditure in a Diverse Cohort.</em> Journal of Personalized Medicine. 2017;7(2):3.{" "}
-              <a
-                href="https://pubmed.ncbi.nlm.nih.gov/28538107/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline hover:text-brand-600 inline-flex items-center gap-0.5"
-              >
-                Stanford Validation Study <ExternalLink className="w-2.5 h-2.5" />
-              </a>
-            </li>
-            <li>
-              Hall KD, Sacks G, Chandramohan D, et al. <em>Quantification of the effect of energy imbalance on bodyweight.</em> The Lancet. 2011;378(9793):826-837.
-            </li>
+            <ol className="list-decimal list-inside space-y-1.5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              <li>
+                Ainsworth BE, Haskell WL, Herrmann SD, et al. <em>2011 Compendium of Physical Activities: a second update of codes and MET values.</em> Medicine &amp; Science in Sports &amp; Exercise. 2011;43(8):1575-1581.{" "}
+                <a
+                  href="https://pubmed.ncbi.nlm.nih.gov/21681120/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-brand-600 inline-flex items-center gap-0.5"
+                >
+                  PubMed PMID: 21681120 <ExternalLink className="w-2.5 h-2.5" />
+                </a>
+              </li>
+              <li>
+                American College of Sports Medicine (ACSM). <em>ACSM&apos;s Guidelines for Exercise Testing and Prescription.</em> 11th Edition. Wolters Kluwer, 2021. Metabolic Calculation for Walking: VO2 = (0.1 × S) + (1.8 × S × G) + 3.5.
+              </li>
+              <li>
+                Centers for Disease Control and Prevention (CDC). <em>Physical Activity for a Healthy Weight.</em> U.S. Department of Health and Human Services.{" "}
+                <a
+                  href="https://www.cdc.gov/healthy-weight-growth/physical-activity/index.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-brand-600 inline-flex items-center gap-0.5"
+                >
+                  CDC Walking Guidelines <ExternalLink className="w-2.5 h-2.5" />
+                </a>
+              </li>
+              <li>
+                Harvard Health Publishing. <em>Calories burned in 30 minutes for people of three different weights.</em> Harvard Medical School, 2021.
+              </li>
+              <li>
+                Shcherbina A, Mattsson CM, Waggott D, et al. <em>Accuracy in Wrist-Worn, Sensor-Based Measurements of Heart Rate and Energy Expenditure in a Diverse Cohort.</em> Journal of Personalized Medicine. 2017;7(2):3.{" "}
+                <a
+                  href="https://pubmed.ncbi.nlm.nih.gov/28538107/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-brand-600 inline-flex items-center gap-0.5"
+                >
+                  Stanford Validation Study <ExternalLink className="w-2.5 h-2.5" />
+                </a>
+              </li>
+              <li>
+                Hall KD, Sacks G, Chandramohan D, et al. <em>Quantification of the effect of energy imbalance on bodyweight.</em> The Lancet. 2011;378(9793):826-837.
+              </li>
             </ol>
           </div>
         </section>

@@ -10,6 +10,7 @@ export interface GenerateSeoProps {
   modifiedTime?: string;
   keywords?: string[];
   noindex?: boolean;
+  absoluteTitle?: boolean;
 }
 
 export function constructMetadata({
@@ -21,13 +22,16 @@ export function constructMetadata({
   modifiedTime,
   keywords,
   noindex = false,
+  absoluteTitle = false,
 }: GenerateSeoProps): Metadata {
   const cleanPath = canonicalPath.startsWith("/") ? canonicalPath : `/${canonicalPath}`;
   const canonicalUrl = `${siteConfig.CANONICAL_URL}${cleanPath === "/" ? "" : cleanPath}`;
-  const fullTitle = title.includes(siteConfig.SITE_NAME) ? title : `${title} | ${siteConfig.SITE_NAME}`;
+  const fullTitle = absoluteTitle || title.includes(siteConfig.SITE_NAME)
+    ? title
+    : `${title} | ${siteConfig.SITE_NAME}`;
 
   return {
-    title: fullTitle,
+    title: absoluteTitle ? { absolute: fullTitle } : fullTitle,
     description: description.slice(0, 160),
     metadataBase: new URL(siteConfig.CANONICAL_URL),
     alternates: {
@@ -179,4 +183,3 @@ export function generateArticleSchema({
     },
   };
 }
-
