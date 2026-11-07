@@ -1071,7 +1071,7 @@ export function WalkingCalculator() {
             onReset={handleReset}
           />
           {inputs.mode === "treadmill" && (
-            <div className="hidden lg:block mt-5 overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-br from-orange-50 via-white to-slate-50 p-5 dark:border-slate-800 dark:from-slate-900 dark:via-slate-900 dark:to-slate-950">
+            <div className="mt-5 overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-br from-orange-50 via-white to-slate-50 p-5 dark:border-slate-800 dark:from-slate-900 dark:via-slate-900 dark:to-slate-950">
               <svg
                 viewBox="0 0 480 230"
                 role="img"
