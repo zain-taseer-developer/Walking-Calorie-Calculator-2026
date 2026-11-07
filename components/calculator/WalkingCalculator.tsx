@@ -1062,9 +1062,10 @@ export function WalkingCalculator() {
             onClearHistory={handleClearHistory}
           />
           <section
-            aria-label="Live walking calculation summary"
-            className="mt-4 rounded-t-2xl border border-b-0 border-orange-200 bg-gradient-to-br from-orange-50 via-white to-slate-50 p-4 shadow-xs dark:border-slate-800 dark:border-b-0 dark:from-slate-900 dark:via-slate-900 dark:to-slate-950 sm:p-5"
+            aria-label="Live walking calculation summary and illustration"
+            className="mt-4 overflow-hidden rounded-2xl border border-orange-200 bg-gradient-to-br from-orange-50 via-white to-slate-50 shadow-xs dark:border-slate-800 dark:from-slate-900 dark:via-slate-900 dark:to-slate-950"
           >
+            <div className="p-4 sm:p-5">
             <div className="flex items-center justify-between gap-3">
               <div>
                 <p className="text-[11px] font-bold uppercase tracking-wider text-orange-700 dark:text-orange-300">
@@ -1132,17 +1133,16 @@ export function WalkingCalculator() {
                 </p>
               </div>
             </div>
-          </section>
-          <div className="overflow-hidden rounded-b-2xl border border-t-0 border-orange-200 bg-gradient-to-br from-orange-50 via-white to-slate-50 dark:border-slate-800 dark:from-slate-900 dark:via-slate-900 dark:to-slate-950">
+            </div>
             <Image
               src="/walking-calorie-calculator-illustration.svg"
               alt="A person walking with icons representing calories, steps, distance, and pace"
               width={640}
-              height={270}
+              height={230}
               className="h-auto w-full"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
-          </div>
+          </section>
         </div>
 
         {/* Right Column: Live Results Panel (6 cols on lg) */}
