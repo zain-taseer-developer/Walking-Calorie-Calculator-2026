@@ -17,7 +17,10 @@ export function AdSlot({
   label = "Advertisement",
 }: AdSlotProps) {
   const isAdsenseEnabled = Boolean(siteConfig.ADSENSE_CLIENT_ID);
-  const isTestMode = siteConfig.ADSENSE_TEST_MODE;
+
+  if (!isAdsenseEnabled) {
+    return null;
+  }
 
   // Reserved fixed heights to prevent any Cumulative Layout Shift (CLS)
   const heightClasses = {
@@ -36,30 +39,16 @@ export function AdSlot({
         {label}
       </span>
 
-      {isAdsenseEnabled ? (
-        // When real AdSense Client ID is configured:
-        <div className="w-full h-full flex items-center justify-center">
-          <ins
-            className="adsbygoogle"
-            style={{ display: "block", width: "100%", height: "100%" }}
-            data-ad-client={siteConfig.ADSENSE_CLIENT_ID}
-            data-ad-slot={slotId}
-            data-ad-format={format === "rectangle" ? "rectangle" : "auto"}
-            data-full-width-responsive="true"
-          />
-        </div>
-      ) : (
-        // Placeholder state when waiting for AdSense approval
-        <div className="flex flex-col items-center justify-center p-3 text-slate-400 dark:text-slate-600">
-          <div className="text-xs font-medium text-slate-500 dark:text-slate-400">
-            Reserved Ad Placement ({format})
-          </div>
-          <div className="text-[11px] text-slate-400 dark:text-slate-500 mt-0.5">
-            Zero-CLS container. Active once ADSENSE_CLIENT_ID is configured.
-          </div>
-        </div>
-      )}
+      <div className="w-full h-full flex items-center justify-center">
+        <ins
+          className="adsbygoogle"
+          style={{ display: "block", width: "100%", height: "100%" }}
+          data-ad-client={siteConfig.ADSENSE_CLIENT_ID}
+          data-ad-slot={slotId}
+          data-ad-format={format === "rectangle" ? "rectangle" : "auto"}
+          data-full-width-responsive="true"
+        />
+      </div>
     </div>
   );
 }
-
