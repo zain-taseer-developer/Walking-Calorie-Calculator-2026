@@ -45,7 +45,7 @@ export function WalkingCalculator() {
 
   // History states
   const [history, setHistory] = useState<SavedCalculation[]>([]);
-  const [isHistoryOpen, setIsHistoryOpen] = useState(false);
+  const [isHistoryOpen, setIsHistoryOpen] = useState(true);
   const [loadedRecordId, setLoadedRecordId] = useState<string | null>(null);
   const [isRecordEdited, setIsRecordEdited] = useState(false);
   const [updateButtonStatus, setUpdateButtonStatus] = useState<"idle" | "updated">("idle");
