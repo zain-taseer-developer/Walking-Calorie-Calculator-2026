@@ -1070,6 +1070,55 @@ export function WalkingCalculator() {
             unitSystem={inputs.unitSystem}
             onReset={handleReset}
           />
+          {inputs.mode === "treadmill" && (
+            <div className="hidden lg:block mt-5 overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-br from-orange-50 via-white to-slate-50 p-5 dark:border-slate-800 dark:from-slate-900 dark:via-slate-900 dark:to-slate-950">
+              <svg
+                viewBox="0 0 480 230"
+                role="img"
+                aria-labelledby="treadmill-illustration-title"
+                className="mx-auto h-auto w-full max-w-md"
+              >
+                <title id="treadmill-illustration-title">
+                  Illustration of a person walking on an inclined treadmill
+                </title>
+                <defs>
+                  <linearGradient id="treadmill-belt" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0" stopColor="#475569" />
+                    <stop offset="1" stopColor="#1e293b" />
+                  </linearGradient>
+                </defs>
+                <circle cx="240" cy="112" r="95" fill="#ffedd5" opacity=".65" />
+                <path d="M75 194h330" stroke="#cbd5e1" strokeLinecap="round" strokeWidth="3" />
+
+                <g fill="none" stroke="#334155" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="m169 157 160-23 27 13-162 25z" fill="url(#treadmill-belt)" strokeWidth="4" />
+                  <path d="m190 170-9 24m145-47 15 22" strokeWidth="6" />
+                  <path d="m328 136 25-63h31" strokeWidth="6" />
+                  <path d="m353 73 4-17" strokeWidth="5" />
+                </g>
+                <circle cx="197" cy="166" r="5" fill="#f97316" />
+                <circle cx="337" cy="145" r="5" fill="#f97316" />
+
+                <g strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="228" cy="57" r="15" fill="#f6c7a8" />
+                  <path d="M217 54c2-13 21-18 29-5l-2 7-11-5-14 8z" fill="#334155" />
+                  <path d="m220 77 28-4 17 42-38 10-17-25z" fill="#f97316" />
+                  <path d="m222 81-23 25 14 18 18-21m31-3 19 24-11 8-24-20" fill="none" stroke="#f6c7a8" strokeWidth="9" />
+                  <path d="m238 119-15 28-26 5m47-29 12 27 28-4" fill="none" stroke="#334155" strokeWidth="11" />
+                  <path d="m198 152-14 2m99-6 13-2" stroke="#f97316" strokeWidth="7" />
+                </g>
+
+                <g transform="translate(337 26)">
+                  <rect width="91" height="42" rx="14" fill="#fff" stroke="#fed7aa" strokeWidth="2" />
+                  <path d="M15 23h10l6-10 8 18 7-13h8" fill="none" stroke="#f97316" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" />
+                  <text x="60" y="26" fill="#475569" fontFamily="system-ui, sans-serif" fontSize="11" fontWeight="700">INCLINE</text>
+                </g>
+              </svg>
+              <p className="mt-1 text-center text-xs font-medium text-slate-500 dark:text-slate-400">
+                Incline walking adds an uphill challenge to your workout.
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>
