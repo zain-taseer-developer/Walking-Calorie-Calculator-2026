@@ -1135,10 +1135,10 @@ export function WalkingCalculator() {
             </div>
             </div>
             <Image
-              src="/walking-calorie-calculator-illustration.svg"
+              src="/walking-calorie-calculator-banner.png"
               alt="A person walking with icons representing calories, steps, distance, and pace"
-              width={640}
-              height={200}
+              width={2242}
+              height={701}
               className="h-auto w-full"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
