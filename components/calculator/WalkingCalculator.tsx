@@ -1060,6 +1060,104 @@ export function WalkingCalculator() {
             onDeleteRecord={handleDeleteRecord}
             onClearHistory={handleClearHistory}
           />
+          {inputs.mode === "treadmill" && (
+            <section
+              aria-label="Live treadmill workout summary"
+              className="overflow-hidden rounded-2xl border border-orange-200 bg-gradient-to-br from-orange-50 via-white to-slate-50 p-4 shadow-xs dark:border-slate-800 dark:from-slate-900 dark:via-slate-900 dark:to-slate-950 sm:p-5"
+            >
+              <div className="grid items-center gap-3 sm:grid-cols-[1fr_150px]">
+                <div>
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-orange-700 dark:text-orange-300">
+                    Live treadmill session
+                  </p>
+                  <h3 className="mt-1 text-lg font-extrabold text-slate-900 dark:text-white">
+                    Your Incline Walk
+                  </h3>
+                  <p className="mt-1 text-xs text-slate-600 dark:text-slate-400">
+                    Estimate updates with your calculator settings.
+                  </p>
+                </div>
+                <div className="flex items-baseline gap-1 sm:justify-end">
+                  <span className="text-3xl font-black tabular-nums text-orange-600 dark:text-orange-400">
+                    {result.caloriesToDisplay.toLocaleString()}
+                  </span>
+                  <span className="text-sm font-bold text-slate-600 dark:text-slate-300">
+                    {inputs.showNetCalories ? "net kcal" : "gross kcal"}
+                  </span>
+                </div>
+              </div>
+
+              <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3">
+                <div className="rounded-xl border border-slate-200/80 bg-white/80 p-2.5 dark:border-slate-700 dark:bg-slate-800/80">
+                  <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Duration</p>
+                  <p className="mt-0.5 text-sm font-bold text-slate-900 dark:text-white">
+                    {result.durationTotalMinutes >= 60
+                      ? `${Math.floor(result.durationTotalMinutes / 60)} hr ${result.durationTotalMinutes % 60} min`
+                      : `${result.durationTotalMinutes} min`}
+                  </p>
+                </div>
+                <div className="rounded-xl border border-slate-200/80 bg-white/80 p-2.5 dark:border-slate-700 dark:bg-slate-800/80">
+                  <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Speed</p>
+                  <p className="mt-0.5 text-sm font-bold text-slate-900 dark:text-white">
+                    {inputs.unitSystem === "imperial" ? `${result.speedMph} mph` : `${result.speedKmh} km/h`}
+                  </p>
+                </div>
+                <div className="rounded-xl border border-slate-200/80 bg-white/80 p-2.5 dark:border-slate-700 dark:bg-slate-800/80">
+                  <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Incline</p>
+                  <p className="mt-0.5 text-sm font-bold text-slate-900 dark:text-white">{inputs.inclinePercent}%</p>
+                </div>
+                <div className="rounded-xl border border-slate-200/80 bg-white/80 p-2.5 dark:border-slate-700 dark:bg-slate-800/80">
+                  <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Distance</p>
+                  <p className="mt-0.5 text-sm font-bold text-slate-900 dark:text-white">
+                    {inputs.unitSystem === "imperial" ? `${result.distanceMiles} mi` : `${result.distanceKm} km`}
+                  </p>
+                </div>
+                <div className="rounded-xl border border-slate-200/80 bg-white/80 p-2.5 dark:border-slate-700 dark:bg-slate-800/80">
+                  <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Estimated steps</p>
+                  <p className="mt-0.5 text-sm font-bold text-slate-900 dark:text-white">~{result.steps.toLocaleString()}</p>
+                </div>
+                <div className="rounded-xl border border-slate-200/80 bg-white/80 p-2.5 dark:border-slate-700 dark:bg-slate-800/80">
+                  <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Intensity</p>
+                  <p className="mt-0.5 text-sm font-bold text-slate-900 dark:text-white">{result.met} MET</p>
+                </div>
+                <div className="rounded-xl border border-slate-200/80 bg-white/80 p-2.5 dark:border-slate-700 dark:bg-slate-800/80">
+                  <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Body weight</p>
+                  <p className="mt-0.5 text-sm font-bold text-slate-900 dark:text-white">
+                    {inputs.unitSystem === "imperial" ? `${inputs.weightLbs} lbs` : `${inputs.weightKg} kg`}
+                  </p>
+                </div>
+                <div className="rounded-xl border border-slate-200/80 bg-white/80 p-2.5 dark:border-slate-700 dark:bg-slate-800/80">
+                  <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Pace</p>
+                  <p className="mt-0.5 text-sm font-bold text-slate-900 dark:text-white">
+                    {inputs.unitSystem === "imperial" ? result.paceFormattedMile : result.paceFormattedKm}
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-3 flex items-center justify-center gap-2 border-t border-orange-200/70 pt-3 dark:border-slate-700">
+                <svg
+                  viewBox="0 0 220 92"
+                  role="img"
+                  aria-label="Person walking uphill on a treadmill"
+                  className="h-[76px] w-[190px]"
+                >
+                  <path d="M14 79h190" stroke="#cbd5e1" strokeLinecap="round" strokeWidth="2" />
+                  <path d="m48 62 104-17 19 10-105 18z" fill="#334155" />
+                  <path d="m66 69-5 10m95-23 7 11m-1-12 17-39h17" fill="none" stroke="#475569" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" />
+                  <circle cx="82" cy="67" r="3" fill="#f97316" />
+                  <circle cx="163" cy="54" r="3" fill="#f97316" />
+                  <circle cx="103" cy="18" r="8" fill="#f6c7a8" />
+                  <path d="m97 15 2-6 10 1 4 7-8-3-7 5z" fill="#334155" />
+                  <path d="m98 29 15-3 10 22-20 5-10-12z" fill="#f97316" />
+                  <path d="m101 48-8 12-15 3m29-13 8 12 15-2" fill="none" stroke="#334155" strokeLinecap="round" strokeWidth="6" />
+                  <path d="m98 31-12 9 7 9m20-20 10 8-7 8" fill="none" stroke="#f6c7a8" strokeLinecap="round" strokeWidth="5" />
+                </svg>
+                <p className="max-w-[150px] text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+                  Personal estimate based on your weight, pace, duration, and incline.
+                </p>
+              </div>
+            </section>
+          )}
         </div>
 
         {/* Right Column: Live Results Panel (6 cols on lg) */}
@@ -1070,55 +1168,6 @@ export function WalkingCalculator() {
             unitSystem={inputs.unitSystem}
             onReset={handleReset}
           />
-          {inputs.mode === "treadmill" && (
-            <div className="mt-5 overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-br from-orange-50 via-white to-slate-50 p-5 dark:border-slate-800 dark:from-slate-900 dark:via-slate-900 dark:to-slate-950">
-              <svg
-                viewBox="0 0 480 230"
-                role="img"
-                aria-labelledby="treadmill-illustration-title"
-                className="mx-auto h-auto w-full max-w-md"
-              >
-                <title id="treadmill-illustration-title">
-                  Illustration of a person walking on an inclined treadmill
-                </title>
-                <defs>
-                  <linearGradient id="treadmill-belt" x1="0" x2="1" y1="0" y2="1">
-                    <stop offset="0" stopColor="#475569" />
-                    <stop offset="1" stopColor="#1e293b" />
-                  </linearGradient>
-                </defs>
-                <circle cx="240" cy="112" r="95" fill="#ffedd5" opacity=".65" />
-                <path d="M75 194h330" stroke="#cbd5e1" strokeLinecap="round" strokeWidth="3" />
-
-                <g fill="none" stroke="#334155" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="m169 157 160-23 27 13-162 25z" fill="url(#treadmill-belt)" strokeWidth="4" />
-                  <path d="m190 170-9 24m145-47 15 22" strokeWidth="6" />
-                  <path d="m328 136 25-63h31" strokeWidth="6" />
-                  <path d="m353 73 4-17" strokeWidth="5" />
-                </g>
-                <circle cx="197" cy="166" r="5" fill="#f97316" />
-                <circle cx="337" cy="145" r="5" fill="#f97316" />
-
-                <g strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="228" cy="57" r="15" fill="#f6c7a8" />
-                  <path d="M217 54c2-13 21-18 29-5l-2 7-11-5-14 8z" fill="#334155" />
-                  <path d="m220 77 28-4 17 42-38 10-17-25z" fill="#f97316" />
-                  <path d="m222 81-23 25 14 18 18-21m31-3 19 24-11 8-24-20" fill="none" stroke="#f6c7a8" strokeWidth="9" />
-                  <path d="m238 119-15 28-26 5m47-29 12 27 28-4" fill="none" stroke="#334155" strokeWidth="11" />
-                  <path d="m198 152-14 2m99-6 13-2" stroke="#f97316" strokeWidth="7" />
-                </g>
-
-                <g transform="translate(337 26)">
-                  <rect width="91" height="42" rx="14" fill="#fff" stroke="#fed7aa" strokeWidth="2" />
-                  <path d="M15 23h10l6-10 8 18 7-13h8" fill="none" stroke="#f97316" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" />
-                  <text x="60" y="26" fill="#475569" fontFamily="system-ui, sans-serif" fontSize="11" fontWeight="700">INCLINE</text>
-                </g>
-              </svg>
-              <p className="mt-1 text-center text-xs font-medium text-slate-500 dark:text-slate-400">
-                Incline walking adds an uphill challenge to your workout.
-              </p>
-            </div>
-          )}
         </div>
       </div>
     </div>
