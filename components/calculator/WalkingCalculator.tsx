@@ -17,6 +17,7 @@ import { SpeedSlider } from "./SpeedSlider";
 import { ResultsPanel } from "./ResultsPanel";
 import { CalculationHistory } from "./CalculationHistory";
 import { NumericInput } from "./NumericInput";
+import Image from "next/image";
 import {
   SavedCalculation,
   loadHistoryFromStorage,
@@ -1061,102 +1062,18 @@ export function WalkingCalculator() {
             onClearHistory={handleClearHistory}
           />
           <section
-              aria-label="Walking calorie calculator summary"
-              className="overflow-hidden rounded-2xl border border-orange-200 bg-gradient-to-br from-orange-50 via-white to-slate-50 p-4 shadow-xs dark:border-slate-800 dark:from-slate-900 dark:via-slate-900 dark:to-slate-950 sm:p-5"
-            >
-              <div className="grid items-center gap-3 sm:grid-cols-[1fr_150px]">
-                <div>
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-orange-700 dark:text-orange-300">
-                    Live walking estimate
-                  </p>
-                  <h3 className="mt-1 text-lg font-extrabold text-slate-900 dark:text-white">
-                    Your Walking Calculation
-                  </h3>
-                  <p className="mt-1 text-xs text-slate-600 dark:text-slate-400">
-                    Updates as you change your calculator settings.
-                  </p>
-                </div>
-                <div className="flex items-baseline gap-1 sm:justify-end">
-                  <span className="text-3xl font-black tabular-nums text-orange-600 dark:text-orange-400">
-                    {result.caloriesToDisplay.toLocaleString()}
-                  </span>
-                  <span className="text-sm font-bold text-slate-600 dark:text-slate-300">
-                    {inputs.showNetCalories ? "net kcal" : "gross kcal"}
-                  </span>
-                </div>
-              </div>
-
-              <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3">
-                <div className="rounded-xl border border-slate-200/80 bg-white/80 p-2.5 dark:border-slate-700 dark:bg-slate-800/80">
-                  <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Duration</p>
-                  <p className="mt-0.5 text-sm font-bold text-slate-900 dark:text-white">
-                    {result.durationTotalMinutes >= 60
-                      ? `${Math.floor(result.durationTotalMinutes / 60)} hr ${result.durationTotalMinutes % 60} min`
-                      : `${result.durationTotalMinutes} min`}
-                  </p>
-                </div>
-                <div className="rounded-xl border border-slate-200/80 bg-white/80 p-2.5 dark:border-slate-700 dark:bg-slate-800/80">
-                  <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Speed</p>
-                  <p className="mt-0.5 text-sm font-bold text-slate-900 dark:text-white">
-                    {inputs.unitSystem === "imperial" ? `${result.speedMph} mph` : `${result.speedKmh} km/h`}
-                  </p>
-                </div>
-                {inputs.inclinePercent > 0 && (
-                  <div className="rounded-xl border border-slate-200/80 bg-white/80 p-2.5 dark:border-slate-700 dark:bg-slate-800/80">
-                    <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Incline</p>
-                    <p className="mt-0.5 text-sm font-bold text-slate-900 dark:text-white">{inputs.inclinePercent}%</p>
-                  </div>
-                )}
-                <div className="rounded-xl border border-slate-200/80 bg-white/80 p-2.5 dark:border-slate-700 dark:bg-slate-800/80">
-                  <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Distance</p>
-                  <p className="mt-0.5 text-sm font-bold text-slate-900 dark:text-white">
-                    {inputs.unitSystem === "imperial" ? `${result.distanceMiles} mi` : `${result.distanceKm} km`}
-                  </p>
-                </div>
-                <div className="rounded-xl border border-slate-200/80 bg-white/80 p-2.5 dark:border-slate-700 dark:bg-slate-800/80">
-                  <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Estimated steps</p>
-                  <p className="mt-0.5 text-sm font-bold text-slate-900 dark:text-white">~{result.steps.toLocaleString()}</p>
-                </div>
-                <div className="rounded-xl border border-slate-200/80 bg-white/80 p-2.5 dark:border-slate-700 dark:bg-slate-800/80">
-                  <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Intensity</p>
-                  <p className="mt-0.5 text-sm font-bold text-slate-900 dark:text-white">{result.met} MET</p>
-                </div>
-                <div className="rounded-xl border border-slate-200/80 bg-white/80 p-2.5 dark:border-slate-700 dark:bg-slate-800/80">
-                  <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Body weight</p>
-                  <p className="mt-0.5 text-sm font-bold text-slate-900 dark:text-white">
-                    {inputs.unitSystem === "imperial" ? `${inputs.weightLbs} lbs` : `${inputs.weightKg} kg`}
-                  </p>
-                </div>
-                <div className="rounded-xl border border-slate-200/80 bg-white/80 p-2.5 dark:border-slate-700 dark:bg-slate-800/80">
-                  <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Pace</p>
-                  <p className="mt-0.5 text-sm font-bold text-slate-900 dark:text-white">
-                    {inputs.unitSystem === "imperial" ? result.paceFormattedMile : result.paceFormattedKm}
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-3 flex items-center justify-center gap-2 border-t border-orange-200/70 pt-3 dark:border-slate-700">
-                <svg
-                  viewBox="0 0 220 92"
-                  role="img"
-                  aria-label="Person walking with estimated calorie, pace, distance, and step metrics"
-                  className="h-[76px] w-[190px]"
-                >
-                  <path d="M12 78c30-8 52 6 80 0s47-7 70 0 32 2 46-2" fill="none" stroke="#cbd5e1" strokeLinecap="round" strokeWidth="3" />
-                  <path d="M25 67h15m120 0h18" stroke="#f97316" strokeDasharray="3 5" strokeLinecap="round" strokeWidth="3" />
-                  <circle cx="104" cy="17" r="8" fill="#f6c7a8" />
-                  <path d="m98 14 2-6 10 1 4 7-8-3-7 5z" fill="#334155" />
-                  <path d="m99 28 15-3 10 22-20 5-10-12z" fill="#f97316" />
-                  <path d="m102 47-8 13-15 3m29-13 9 12 15-2" fill="none" stroke="#334155" strokeLinecap="round" strokeLinejoin="round" strokeWidth="6" />
-                  <path d="m99 30-12 9 7 9m21-20 10 8-7 8" fill="none" stroke="#f6c7a8" strokeLinecap="round" strokeLinejoin="round" strokeWidth="5" />
-                  <rect x="151" y="27" width="39" height="24" rx="8" fill="#fff" stroke="#fed7aa" strokeWidth="2" />
-                  <path d="M159 40h7l4-7 6 13 4-6h5" fill="none" stroke="#f97316" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" />
-                </svg>
-                <p className="max-w-[150px] text-xs leading-relaxed text-slate-500 dark:text-slate-400">
-                  Walking calorie, pace, distance, and step estimates based on your inputs.
-                </p>
-              </div>
-            </section>
+            aria-label="Walking calorie calculator illustration"
+            className="mt-4 overflow-hidden rounded-2xl"
+          >
+            <Image
+              src="/walking-calorie-calculator-illustration.svg"
+              alt="A person walking with icons representing calories, steps, distance, and pace"
+              width={640}
+              height={360}
+              className="h-auto w-full"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+          </section>
         </div>
 
         {/* Right Column: Live Results Panel (6 cols on lg) */}
