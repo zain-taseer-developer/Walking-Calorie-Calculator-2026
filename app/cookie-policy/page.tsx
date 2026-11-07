@@ -8,7 +8,7 @@ import { Cookie, Shield, CheckCircle2 } from "lucide-react";
 export const metadata: Metadata = constructMetadata({
   title: "Cookie Policy | How We Use Cookies & Local Storage",
   description:
-    "Learn about how WalkingCalorieCalc uses browser cookies, essential local storage, and advertising beacons, and how to manage your preferences.",
+    "Learn about how WalkingCalorieCalculator.net uses browser cookies, essential local storage, and advertising beacons, and how to manage your preferences.",
   canonicalPath: "/cookie-policy",
 });
 

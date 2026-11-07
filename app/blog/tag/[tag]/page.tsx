@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return constructMetadata({
     title: `Posts Tagged #${tagName}`,
-    description: `Articles tagged with #${tagName} on WalkingCalorieCalc.`,
+    description: `Articles tagged with #${tagName} on WalkingCalorieCalculator.net.`,
     canonicalPath: `/blog/tag/${params.tag}`,
     noindex: true, // As specified in brief to avoid thin archive dilution
   });
