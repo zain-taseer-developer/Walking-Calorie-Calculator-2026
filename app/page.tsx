@@ -44,6 +44,7 @@ export const metadata: Metadata = constructMetadata({
 export default function HomePage() {
   const tocItems: TocItem[] = [
     { id: "calculator", label: "Interactive Walking Calorie Calculator" },
+    { id: "why-use-calculator", label: "Why Use Our Walking Calorie Calculator?" },
     { id: "how-it-works", label: "How the Walking Calorie Calculator Works (The Science & Math)" },
     { id: "calorie-tables-duration", label: "Walking Calories Examples & Charts (30 Min & 1 Hour)" },
     { id: "calorie-tables-steps", label: "Calories Burned by Steps Table (1k to 20,000 Steps)" },
@@ -253,6 +254,50 @@ export default function HomePage() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         {/* Table of Contents */}
         <TableOfContents items={tocItems} />
+
+        <section id="why-use-calculator" className="my-12 scroll-mt-24 space-y-4">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Why Use Our Walking Calorie Calculator?
+          </h2>
+          <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+            Get a useful estimate for your walk with a free, straightforward calculator designed to work across screen sizes.
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs">
+              <h3 className="font-bold text-slate-900 dark:text-white text-base mb-2">
+                Free to Use
+              </h3>
+              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                Calculate walking estimates without a subscription or payment.
+              </p>
+            </div>
+            <div className="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs">
+              <h3 className="font-bold text-slate-900 dark:text-white text-base mb-2">
+                Mobile-Friendly
+              </h3>
+              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                Use the calculator on a phone, tablet, or desktop.
+              </p>
+            </div>
+            <div className="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs">
+              <h3 className="font-bold text-slate-900 dark:text-white text-base mb-2">
+                MET-Based Estimates
+              </h3>
+              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                Estimates use activity MET values from the 2011 Compendium of Physical Activities.
+              </p>
+            </div>
+            <div className="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs">
+              <h3 className="font-bold text-slate-900 dark:text-white text-base mb-2">
+                Simple, Fast Calculations
+              </h3>
+              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                Choose a calculation method, enter your walking details, and get estimates for your activity.
+              </p>
+            </div>
+          </div>
+        </section>
 
         {/* Section 1: How the Walking Calorie Calculator Works */}
         <section id="how-it-works" className="my-12 scroll-mt-24 space-y-4">
