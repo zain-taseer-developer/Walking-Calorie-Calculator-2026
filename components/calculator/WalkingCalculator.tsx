@@ -1063,7 +1063,7 @@ export function WalkingCalculator() {
           />
           <section
             aria-label="Live walking calculation summary"
-            className="mt-4 rounded-2xl border border-orange-200 bg-gradient-to-br from-orange-50 via-white to-slate-50 p-4 shadow-xs dark:border-slate-800 dark:from-slate-900 dark:via-slate-900 dark:to-slate-950 sm:p-5"
+            className="mt-4 rounded-t-2xl border border-b-0 border-orange-200 bg-gradient-to-br from-orange-50 via-white to-slate-50 p-4 shadow-xs dark:border-slate-800 dark:border-b-0 dark:from-slate-900 dark:via-slate-900 dark:to-slate-950 sm:p-5"
           >
             <div className="flex items-center justify-between gap-3">
               <div>
@@ -1133,13 +1133,13 @@ export function WalkingCalculator() {
               </div>
             </div>
           </section>
-          <div className="mt-3 overflow-hidden rounded-2xl">
+          <div className="overflow-hidden rounded-b-2xl border border-t-0 border-orange-200 bg-gradient-to-br from-orange-50 via-white to-slate-50 dark:border-slate-800 dark:from-slate-900 dark:via-slate-900 dark:to-slate-950">
             <Image
               src="/walking-calorie-calculator-illustration.svg"
               alt="A person walking with icons representing calories, steps, distance, and pace"
               width={640}
-              height={360}
-              className="h-auto w-full rounded-2xl"
+              height={270}
+              className="h-auto w-full"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>
