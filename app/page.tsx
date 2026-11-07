@@ -54,7 +54,7 @@ export default function HomePage() {
     { id: "tracker-accuracy", label: "Smartwatch Accuracy: Apple Watch, Garmin & Fitbits" },
     { id: "why-use-calculator", label: "Why Use Our Walking Calorie Calculator?" },
     { id: "faq", label: "Frequently Asked Questions" },
-    { id: "references", label: "Scientific References & Clinical Sources" },
+    { id: "references", label: "Sources, Methodology & Disclaimer" },
   ];
 
   // Precompute 30 min and 60 min walking charts using pure lib/calc
@@ -671,12 +671,35 @@ export default function HomePage() {
         {/* Section 10: Connected Fitness Suite */}
         <RelatedTools currentPath="/" limit={4} />
 
-        {/* Section 11: Scientific References & Sources */}
-        <section id="references" className="my-12 pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-2">
-          <h4 className="font-bold text-slate-900 dark:text-white text-sm mb-2 uppercase tracking-wider">
-            Scientific Sources &amp; Literature Cited
-          </h4>
-          <ol className="list-decimal list-inside space-y-1.5 leading-relaxed">
+        {/* Section 11: Sources, Methodology & Disclaimer */}
+        <section id="references" className="my-12 pt-8 border-t border-slate-200 dark:border-slate-800 space-y-5">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Sources, Methodology &amp; Disclaimer
+          </h2>
+
+          <div className="space-y-2">
+            <h3 className="font-bold text-slate-900 dark:text-white text-base">
+              Methodology
+            </h3>
+            <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              Walking calorie estimates use activity MET values from the 2011 Compendium of Physical Activities, interpolated for walking speeds between listed benchmarks. Gross calories are estimated with MET × body weight (kg) × duration (hours); net calories subtract the resting 1-MET baseline. For eligible treadmill speeds, incline estimates use the ACSM walking equation. Distance and step estimates are derived from the entered activity details and estimated or custom stride length. Terrain and carried load are included where applicable.
+            </p>
+          </div>
+
+          <div className="space-y-2 rounded-xl border border-amber-200 dark:border-amber-900/60 bg-amber-50/70 dark:bg-amber-950/30 p-4">
+            <h3 className="font-bold text-amber-900 dark:text-amber-200 text-base">
+              Disclaimer
+            </h3>
+            <p className="text-sm text-amber-900 dark:text-amber-200 leading-relaxed">
+              All results are estimates, not exact measurements or medical advice. Actual energy use varies with individual physiology, walking conditions, and the accuracy of the information entered. Weight-loss projections are illustrative and are not guaranteed outcomes. Do not use this calculator to diagnose or treat a health condition; consult a qualified healthcare professional if you have health concerns or need personalized exercise guidance.
+            </p>
+          </div>
+
+          <div className="space-y-2">
+            <h3 className="font-bold text-slate-900 dark:text-white text-base">
+              Scientific Sources &amp; Literature Cited
+            </h3>
+            <ol className="list-decimal list-inside space-y-1.5 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
             <li>
               Ainsworth BE, Haskell WL, Herrmann SD, et al. <em>2011 Compendium of Physical Activities: a second update of codes and MET values.</em> Medicine &amp; Science in Sports &amp; Exercise. 2011;43(8):1575-1581.{" "}
               <a
@@ -719,7 +742,8 @@ export default function HomePage() {
             <li>
               Hall KD, Sacks G, Chandramohan D, et al. <em>Quantification of the effect of energy imbalance on bodyweight.</em> The Lancet. 2011;378(9793):826-837.
             </li>
-          </ol>
+            </ol>
+          </div>
         </section>
 
         {/* Editorial & Author Box */}
