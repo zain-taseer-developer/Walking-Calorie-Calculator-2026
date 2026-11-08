@@ -41,7 +41,6 @@ import {
 } from "lucide-react";
 
 export function WalkingCalculator() {
-  const [mounted, setMounted] = useState(false);
   const [showAdvanced, setShowAdvanced] = useState(false);
 
   // History states
@@ -89,7 +88,6 @@ export function WalkingCalculator() {
 
   // On mount: check browser locale, localStorage, history and URL search params
   useEffect(() => {
-    setMounted(true);
     let resolvedUnits = detectDefaultUnitSystem();
 
     try {
@@ -102,6 +100,8 @@ export function WalkingCalculator() {
     // Load saved history
     const storedHistory = loadHistoryFromStorage();
     if (storedHistory.records) {
+      // Browser storage is only available after hydration.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setHistory(storedHistory.records);
     }
     if (storedHistory.error) {

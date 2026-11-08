@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getPostBySlug, getAllPosts } from "@/lib/blog";
+import { getPostBySlug, getAllPosts, slugifyCategory } from "@/lib/blog";
 import { constructMetadata, generateArticleSchema } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { TableOfContents, TocItem } from "@/components/content/TableOfContents";
@@ -22,9 +22,9 @@ import {
 } from "lucide-react";
 
 interface Props {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -35,7 +35,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = getPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
   if (!post) return {};
 
   return constructMetadata({
@@ -49,12 +50,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
-export default function BlogPostPage({ params }: Props) {
-  const post = getPostBySlug(params.slug);
+export default async function BlogPostPage({ params }: Props) {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
   if (!post) notFound();
 
   const allPosts = getAllPosts();
-  const currentIndex = allPosts.findIndex((p) => p.frontmatter.slug === params.slug);
+  const currentIndex = allPosts.findIndex((p) => p.frontmatter.slug === slug);
   const prevPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
   const nextPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
 
@@ -90,7 +92,7 @@ export default function BlogPostPage({ params }: Props) {
       <Breadcrumbs
         items={[
           { label: "Blog", href: "/blog" },
-          { label: post.frontmatter.category, href: `/blog/category/${post.frontmatter.category.toLowerCase().replace(/\s+/g, "-")}` },
+          { label: post.frontmatter.category, href: `/blog/category/${slugifyCategory(post.frontmatter.category)}` },
           { label: post.frontmatter.title },
         ]}
       />
@@ -98,7 +100,7 @@ export default function BlogPostPage({ params }: Props) {
       {/* Article Header */}
       <header className="max-w-4xl mx-auto my-6 text-center">
         <Link
-          href={`/blog/category/${post.frontmatter.category.toLowerCase().replace(/\s+/g, "-")}`}
+          href={`/blog/category/${slugifyCategory(post.frontmatter.category)}`}
           className="inline-block px-3 py-1 rounded-full text-xs font-bold bg-brand-50 dark:bg-brand-950 text-brand-700 dark:text-brand-300 mb-3 hover:bg-brand-100"
         >
           {post.frontmatter.category}
@@ -251,4 +253,3 @@ export default function BlogPostPage({ params }: Props) {
     </article>
   );
 }
-

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { CalculationResult, CalculatorInputs, UnitSystem } from "@/lib/types";
 import { SpeedComparisonChart } from "./SpeedComparisonChart";
@@ -33,28 +33,32 @@ export function ResultsPanel({ result, inputs, unitSystem, onReset }: ResultsPan
   const [copied, setCopied] = useState(false);
   const [shared, setShared] = useState(false);
   const [animatedCal, setAnimatedCal] = useState(result.caloriesToDisplay);
+  const animatedCalRef = useRef(result.caloriesToDisplay);
 
   // Smooth number interpolation on update
   useEffect(() => {
-    let start = animatedCal;
+    const start = animatedCalRef.current;
     const end = result.caloriesToDisplay;
     if (start === end) return;
 
     const duration = 250;
     const startTime = performance.now();
+    let animationFrame = 0;
 
     const updateCounter = (currentTime: number) => {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
       const currentVal = Math.round(start + (end - start) * progress);
+      animatedCalRef.current = currentVal;
       setAnimatedCal(currentVal);
 
       if (progress < 1) {
-        requestAnimationFrame(updateCounter);
+        animationFrame = requestAnimationFrame(updateCounter);
       }
     };
 
-    requestAnimationFrame(updateCounter);
+    animationFrame = requestAnimationFrame(updateCounter);
+    return () => cancelAnimationFrame(animationFrame);
   }, [result.caloriesToDisplay]);
 
   // Action: Copy Result Text

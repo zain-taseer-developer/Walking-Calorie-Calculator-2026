@@ -7,9 +7,9 @@ import { BlogCard } from "@/components/blog/BlogCard";
 import { Tag } from "lucide-react";
 
 interface Props {
-  params: {
+  params: Promise<{
     tag: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -20,22 +20,24 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { tag } = await params;
   const tags = getAllTags();
-  const current = tags.find((t) => t.slug === params.tag);
-  const tagName = current ? current.name : params.tag.replace(/-/g, " ");
+  const current = tags.find((t) => t.slug === tag);
+  const tagName = current ? current.name : tag.replace(/-/g, " ");
 
   return constructMetadata({
     title: `Posts Tagged #${tagName}`,
     description: `Articles tagged with #${tagName} on WalkingCalorieCalculator.net.`,
-    canonicalPath: `/blog/tag/${params.tag}`,
+    canonicalPath: `/blog/tag/${tag}`,
     noindex: true, // As specified in brief to avoid thin archive dilution
   });
 }
 
-export default function TagArchivePage({ params }: Props) {
+export default async function TagArchivePage({ params }: Props) {
+  const { tag } = await params;
   const tags = getAllTags();
-  const current = tags.find((t) => t.slug === params.tag);
-  const tagName = current ? current.name : params.tag.replace(/-/g, " ");
+  const current = tags.find((t) => t.slug === tag);
+  const tagName = current ? current.name : tag.replace(/-/g, " ");
   const posts = getPostsByTag(tagName);
 
   if (posts.length === 0) notFound();

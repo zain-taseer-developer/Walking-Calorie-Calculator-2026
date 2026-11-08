@@ -76,7 +76,6 @@ describe("Walking Calorie Calculator Core Logic", () => {
     // 2.0 mph is 2.8, 2.5 mph is 3.0
     // Midpoint: 2.25 mph should be 2.8 + 0.5 * (3.0 - 2.8) = 2.9 MET
     const lowMidMet = getWalkingMet(2.25);
-    expect(lowMidMidMet => lowMidMet).toBeTruthy();
     expect(lowMidMet).toBeCloseTo(2.9, 2);
   });
 
@@ -219,4 +218,3 @@ describe("Walking Calorie Calculator Core Logic", () => {
     expect(formatPace(0)).toBe("--:--");
   });
 });
-

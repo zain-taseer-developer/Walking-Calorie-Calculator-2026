@@ -105,6 +105,14 @@ export function getPostsByTag(tag: string): BlogPost[] {
   );
 }
 
+export function slugifyCategory(category: string): string {
+  return category
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
 export function getAllCategories(): Array<{ name: string; slug: string; count: number }> {
   const posts = getAllPosts();
   const map = new Map<string, number>();
@@ -116,7 +124,7 @@ export function getAllCategories(): Array<{ name: string; slug: string; count: n
 
   return Array.from(map.entries()).map(([name, count]) => ({
     name,
-    slug: name.toLowerCase().replace(/\s+/g, "-"),
+    slug: slugifyCategory(name),
     count,
   }));
 }
@@ -137,4 +145,3 @@ export function getAllTags(): Array<{ name: string; slug: string; count: number 
     count,
   }));
 }
-

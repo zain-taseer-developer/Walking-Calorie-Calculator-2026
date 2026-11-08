@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { normalizeLeadingZeros, clearZeroOnFocus } from "@/lib/numericInput";
 
 export interface NumericInputProps {
@@ -35,24 +35,13 @@ export function NumericInput({
   onBlur,
 }: NumericInputProps) {
   const [isFocused, setIsFocused] = useState(false);
-  const [displayValue, setDisplayValue] = useState<string>(() =>
-    value !== undefined && value !== null ? String(value) : ""
-  );
-
-  // Sync external value changes when not actively focused
-  useEffect(() => {
-    if (!isFocused) {
-      setDisplayValue(value !== undefined && value !== null ? String(value) : "");
-    }
-  }, [value, isFocused]);
+  const [displayValue, setDisplayValue] = useState("");
+  const currentValue = value !== undefined && value !== null ? String(value) : "";
 
   const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
     setIsFocused(true);
     // Clear displayed zero on focus so the user can enter a custom value without the zero getting in the way
-    const cleared = clearZeroOnFocus(displayValue);
-    if (cleared !== displayValue) {
-      setDisplayValue(cleared);
-    }
+    setDisplayValue(clearZeroOnFocus(currentValue));
     if (onFocus) onFocus(e);
   };
 
@@ -92,7 +81,7 @@ export function NumericInput({
       id={id}
       type="text"
       inputMode={inputMode}
-      value={displayValue}
+      value={isFocused ? displayValue : currentValue}
       onChange={handleChange}
       onFocus={handleFocus}
       onBlur={handleBlur}

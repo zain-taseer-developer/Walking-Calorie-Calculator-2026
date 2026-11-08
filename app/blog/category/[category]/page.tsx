@@ -8,9 +8,9 @@ import { AdSlot } from "@/components/ads/AdSlot";
 import { FolderOpen } from "lucide-react";
 
 interface Props {
-  params: {
+  params: Promise<{
     category: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -21,22 +21,24 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { category } = await params;
   const categories = getAllCategories();
-  const current = categories.find((c) => c.slug === params.category);
-  const categoryName = current ? current.name : params.category.replace(/-/g, " ");
+  const current = categories.find((c) => c.slug === category);
+  const categoryName = current ? current.name : category.replace(/-/g, " ");
 
   return constructMetadata({
     title: `${categoryName} Articles & Guides`,
     description: `Browse all articles, calculators, and research guides filed under ${categoryName}.`,
-    canonicalPath: `/blog/category/${params.category}`,
+    canonicalPath: `/blog/category/${category}`,
     noindex: false,
   });
 }
 
-export default function CategoryArchivePage({ params }: Props) {
+export default async function CategoryArchivePage({ params }: Props) {
+  const { category } = await params;
   const categories = getAllCategories();
-  const current = categories.find((c) => c.slug === params.category);
-  const categoryName = current ? current.name : params.category.replace(/-/g, " ");
+  const current = categories.find((c) => c.slug === category);
+  const categoryName = current ? current.name : category.replace(/-/g, " ");
   const posts = getPostsByCategory(categoryName);
 
   if (posts.length === 0) notFound();
@@ -73,4 +75,3 @@ export default function CategoryArchivePage({ params }: Props) {
     </div>
   );
 }
-
