@@ -26,8 +26,17 @@ export default function ContactPage() {
       return;
     }
 
-    // Client-side confirmation state
     setError("");
+    const body = [
+      `Name: ${formData.name.trim()}`,
+      `Reply-to: ${formData.email.trim()}`,
+      "",
+      formData.message.trim(),
+    ].join("\n");
+    const mailto = `mailto:${siteConfig.CONTACT_EMAIL}?subject=${encodeURIComponent(
+      formData.subject.trim()
+    )}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
     setSubmitted(true);
   };
 
@@ -57,10 +66,14 @@ export default function ContactPage() {
                 <CheckCircle2 className="w-6 h-6" />
               </div>
               <h3 className="text-xl font-bold text-slate-900 dark:text-white">
-                Message Sent Successfully
+                Email Draft Ready
               </h3>
               <p className="text-sm text-slate-600 dark:text-slate-400 max-w-md mx-auto">
-                Thank you for reaching out to {siteConfig.SITE_NAME}. Our editorial and technical team will review your message shortly.
+                Your email app should open with your message addressed to {siteConfig.CONTACT_EMAIL}. Press Send in that app to deliver it. If it did not open, email us directly at{" "}
+                <a className="font-semibold text-brand-600 underline" href={`mailto:${siteConfig.CONTACT_EMAIL}`}>
+                  {siteConfig.CONTACT_EMAIL}
+                </a>
+                .
               </p>
               <button
                 type="button"
@@ -142,7 +155,7 @@ export default function ContactPage() {
                 className="w-full py-3 px-5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm shadow-md transition-colors flex items-center justify-center gap-2"
               >
                 <Send className="w-4 h-4" />
-                <span>Send Message</span>
+                <span>Open Email App</span>
               </button>
             </form>
           )}
@@ -175,4 +188,3 @@ export default function ContactPage() {
     </div>
   );
 }
-

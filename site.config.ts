@@ -9,7 +9,7 @@ export const siteConfig = {
   SITE_TAGLINE: "Accurate, Science-Backed Calories Burned Walking Calculator",
   DOMAIN: process.env.NEXT_PUBLIC_DOMAIN || "walkingcaloriecalc.com",
   CANONICAL_URL: process.env.NEXT_PUBLIC_CANONICAL_URL || "https://walkingcaloriecalc.com",
-  CONTACT_EMAIL: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "contact@walkingcaloriecalculator.net",
+  CONTACT_EMAIL: "zainndevv@gmail.com",
   
   // Author & Editorial Transparency (placeholders for the publisher to fill in their real name & bio)
   AUTHOR_NAME: process.env.NEXT_PUBLIC_AUTHOR_NAME || "Editorial Fitness Team",
