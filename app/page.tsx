@@ -48,7 +48,7 @@ export default function HomePage() {
     { id: "how-it-works", label: "How the Walking Calorie Calculator Works (The Science & Math)" },
     { id: "calorie-tables-duration", label: "Walking Calories Examples & Charts (30 Min & 1 Hour)" },
     { id: "calorie-tables-steps", label: "Calories Burned by Steps Table (1k to 20,000 Steps)" },
-    { id: "key-factors", label: "7 Key Factors That Determine Your Caloric Burn" },
+    { id: "key-factors", label: "6 Key Factors That Determine Your Caloric Burn" },
     { id: "gross-vs-net", label: "Gross vs. Net Calories: Why the Difference Matters" },
     { id: "walking-for-weight-loss", label: "Walking for Weight Loss: Realistic Caloric Deficits" },
     { id: "tips-burn-more", label: "6 Proven Strategies to Burn More Calories Walking" },
@@ -390,7 +390,7 @@ export default function HomePage() {
         {/* Section 4: Key Factors Influencing Caloric Expenditure */}
         <section id="key-factors" className="my-12 scroll-mt-24 space-y-4">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            7 Key Factors That Determine Your Caloric Burn
+            6 Key Factors That Determine Your Caloric Burn
           </h2>
           <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
             While generic charts provide useful baselines, your actual caloric burn during any walk is dictated by seven physiological and environmental variables:
@@ -513,7 +513,7 @@ export default function HomePage() {
             points={[
               "One pound of body fat roughly equates to 3,500 dietary kilocalories (~7,700 kcal per kilogram).",
               "A daily 50-minute brisk walk burning approximately 300 kcal creates a cumulative weekly deficit of 2,100 kcal (~0.6 lbs per week without dietary starvation).",
-              "Pairing 8,000 to 10,000 daily steps with a modest 250-calorie dietary adjustment achieves the ideal 1-to-1.5 lb weekly fat loss recommended by the CDC.",
+              "Pairing 8,000 to 10,000 daily steps with a modest 250-calorie dietary adjustment achieves a gradual weight loss of about 1 to 2 lb per week, a pace the CDC says is more likely to be kept off long term.",
               "Walking protects lean muscle tissue when operating in a modest caloric deficit, keeping resting metabolism higher over time.",
             ]}
           />
@@ -542,7 +542,7 @@ export default function HomePage() {
                 1. The 12-3-30 Treadmill Protocol
               </h3>
               <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
-                Set a treadmill to a <strong>12% incline</strong>, walk at <strong>3.0 mph</strong>, for <strong>30 minutes</strong>. This viral workout is backed by exercise physiology: walking on a steep 12% grade demands roughly 8.5 to 9.5 METs, burning over 350 calories in 30 minutes for a 160-lb adult.
+                Set a treadmill to a <strong>12% incline</strong>, walk at <strong>3.0 mph</strong>, for <strong>30 minutes</strong>. This viral workout is backed by exercise physiology: walking on a steep 12% grade demands about 8.3 METs by the ACSM walking equation, burning roughly 310 calories in 30 minutes for a 160-lb adult.
               </p>
             </div>
 
@@ -599,11 +599,11 @@ export default function HomePage() {
             Smartwatch Accuracy: Apple Watch, Garmin &amp; Fitbits
           </h2>
           <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
-            Wearable fitness devices like the Apple Watch Ultra, Garmin Forerunner, WHOOP band, and Fitbit Sense have revolutionized how we monitor physical activity. However, when it comes to measuring <strong>active calories burned walking</strong>, consumers should treat watch outputs as estimates rather than laboratory calorimetry.
+            Popular wearable devices have revolutionized how we monitor physical activity. However, when it comes to measuring <strong>active calories burned walking</strong>, consumers should treat watch outputs as estimates rather than laboratory calorimetry.
           </p>
 
           <Callout type="warning" title="What the Clinical Research Shows" titleLevel={3}>
-            A comprehensive clinical trial conducted by researchers at Stanford University School of Medicine evaluated seven popular wrist-worn activity monitors across 60 volunteers. While devices measured heart rate accurately (median error &lt;5%), <strong>not a single device achieved a median error below 20% for energy expenditure</strong>. Some models overestimated walking calories by as much as 27%, while others underestimated by 18%.
+            A laboratory study by Stanford University researchers tested seven wrist-worn devices (Apple Watch, Basis Peak, Fitbit Surge, Microsoft Band, Mio Alpha 2, PulseOn, and Samsung Gear S2) on 60 volunteers, using clinical-grade equipment as the reference. Heart rate was generally measured with acceptable accuracy, with walking showing slightly higher error (median 5.5%). However, none of the devices estimated energy expenditure within an acceptable error range: median calorie error ranged from about 27% (Fitbit Surge) to about 93% (PulseOn), and the Apple Watch had the lowest overall error. The devices tested were models available around 2016, so newer watches may perform differently.
           </Callout>
 
           <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">

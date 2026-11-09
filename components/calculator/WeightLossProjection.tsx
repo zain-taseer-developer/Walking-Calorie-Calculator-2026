@@ -70,10 +70,9 @@ export function WeightLossProjection({ result, unitSystem }: WeightLossProjectio
       <div className="flex items-start gap-1.5 mt-3 text-[11px] text-slate-500 dark:text-slate-400 leading-tight">
         <Info className="w-3.5 h-3.5 shrink-0 mt-0.5 text-brand-600 dark:text-brand-400" />
         <span>
-          Based on the classic rule of thumb (~3,500 kcal per pound / ~7,700 kcal per kg of body fat). Individual metabolic adaptation, appetite compensation, and water retention will vary.
+          Based on net (active) calories and the ~3,500 kcal per lb (~7,700 kcal per kg) rule of thumb. Individual metabolic adaptation, appetite compensation, and water retention will vary.
         </span>
       </div>
     </div>
   );
 }
-

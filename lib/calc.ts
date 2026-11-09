@@ -272,9 +272,9 @@ export function calculateWalkingCalories(inputs: CalculatorInputs): CalculationR
 
   // 6. Projections (monthly fat loss if walked X days/week: 4.33 weeks per month)
   const monthlyMultiplier = 4.33;
-  const weeklyKcal3 = caloriesToDisplay * 3;
-  const weeklyKcal5 = caloriesToDisplay * 5;
-  const weeklyKcal7 = caloriesToDisplay * 7;
+  const weeklyKcal3 = netCalories * 3;
+  const weeklyKcal5 = netCalories * 5;
+  const weeklyKcal7 = netCalories * 7;
 
   const projections = {
     days3PerWeekLbs: parseFloat(((weeklyKcal3 * monthlyMultiplier) / 3500).toFixed(1)),
@@ -330,4 +330,3 @@ export function calculateWalkingCalories(inputs: CalculatorInputs): CalculationR
     notes,
   };
 }
-

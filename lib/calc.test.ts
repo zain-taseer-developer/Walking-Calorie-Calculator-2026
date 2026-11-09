@@ -65,6 +65,17 @@ describe("Walking Calorie Calculator Core Logic", () => {
     // (4.3 - 1.0) * 70 * 1 = 231 kcal
     expect(result.netCalories).toBe(231);
     expect(result.caloriesToDisplay).toBe(231);
+
+    const grossDisplayResult = calculateWalkingCalories({ ...inputs, showNetCalories: false });
+    expect(result.projections).toEqual(grossDisplayResult.projections);
+    expect(result.projections).toEqual({
+      days3PerWeekLbs: 0.9,
+      days3PerWeekKg: 0.4,
+      days5PerWeekLbs: 1.4,
+      days5PerWeekKg: 0.6,
+      days7PerWeekLbs: 2,
+      days7PerWeekKg: 0.9,
+    });
   });
 
   it("interpolates MET values linearly between table points", () => {

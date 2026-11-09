@@ -44,13 +44,11 @@ export const siteConfig = {
       title: "Steps to Miles Calculator",
       description: "Convert any step count to miles and kilometers with personalized stride lengths.",
       href: "/steps-to-miles-calculator",
-      badge: "27.1K Mo. Searches",
     },
     {
       title: "How Many Miles is 10,000 Steps?",
       description: "Comprehensive step-distance breakdown for 1k to 30k steps by height.",
       href: "/how-many-miles-is-10000-steps",
-      badge: "74K Mo. Searches",
     },
     {
       title: "Steps to Calories Calculator",
