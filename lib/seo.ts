@@ -31,7 +31,7 @@ export function constructMetadata({
     : `${title} | ${siteConfig.SITE_NAME}`;
 
   return {
-    title: absoluteTitle ? { absolute: fullTitle } : fullTitle,
+    title: { absolute: fullTitle },
     description: description.slice(0, 160),
     metadataBase: new URL(siteConfig.CANONICAL_URL),
     alternates: {
