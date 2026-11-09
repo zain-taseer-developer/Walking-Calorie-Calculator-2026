@@ -52,7 +52,7 @@ export default function HomePage() {
     { id: "gross-vs-net", label: "Gross vs. Net Calories: Why the Difference Matters" },
     { id: "walking-for-weight-loss", label: "Walking for Weight Loss: Realistic Caloric Deficits" },
     { id: "tips-burn-more", label: "6 Proven Strategies to Burn More Calories Walking" },
-    { id: "tracker-accuracy", label: "Smartwatch Accuracy: Apple Watch, Garmin & Fitbits" },
+    { id: "tracker-accuracy", label: "Smartwatch Accuracy: How Reliable Are Wearable Calorie Counts?" },
     { id: "why-use-calculator", label: "Why Use Our Walking Calorie Calculator?" },
     { id: "faq", label: "Frequently Asked Questions" },
     { id: "references", label: "Sources, Methodology & Disclaimer" },
@@ -512,7 +512,7 @@ export default function HomePage() {
             title="The 3,500 Calorie Rule in Perspective"
             points={[
               "One pound of body fat roughly equates to 3,500 dietary kilocalories (~7,700 kcal per kilogram).",
-              "A daily 50-minute brisk walk burning approximately 300 kcal creates a cumulative weekly deficit of 2,100 kcal (~0.6 lbs per week without dietary starvation).",
+              "A daily 50-minute brisk walk burning approximately 250 kcal creates a cumulative weekly deficit of about 1,750 kcal (~0.5 lbs per week without dietary starvation).",
               "Pairing 8,000 to 10,000 daily steps with a modest 250-calorie dietary adjustment can add up to roughly 1 lb of weight loss per week. The CDC describes a gradual pace of about 1 to 2 lb per week as more likely to be kept off long term.",
               "Walking protects lean muscle tissue when operating in a modest caloric deficit, keeping resting metabolism higher over time.",
             ]}
@@ -596,7 +596,7 @@ export default function HomePage() {
         {/* Section 8: Smartwatch & Fitness Tracker Accuracy */}
         <section id="tracker-accuracy" className="my-12 scroll-mt-24 space-y-4">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            Smartwatch Accuracy: Apple Watch, Garmin &amp; Fitbits
+            Smartwatch Accuracy: How Reliable Are Wearable Calorie Counts?
           </h2>
           <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
             Popular wearable devices have revolutionized how we monitor physical activity. However, when it comes to measuring <strong>active calories burned walking</strong>, consumers should treat watch outputs as estimates rather than laboratory calorimetry.
