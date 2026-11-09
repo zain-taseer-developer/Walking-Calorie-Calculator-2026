@@ -167,6 +167,60 @@ export default function TenThousandStepsPage() {
           on the homepage.
         </p>
 
+        <h2>How Long Does It Take to Walk 10,000 Steps?</h2>
+        <p>
+          Walking time depends on your stride and pace. Using the page&apos;s approximate 4.55-mile estimate for 10,000 steps, these continuous-walking times show how pace can affect the total:
+        </p>
+        <DataTable
+          title="Estimated Time for 10,000 Steps by Walking Speed"
+          titleLevel={3}
+          caption="Times use an estimated 4.55-mile distance and exclude stops or breaks."
+          headers={["Walking Pace", "Example Speed", "Estimated Time"]}
+          rows={[
+            ["Slow walking", "2.0 mph", "About 2 hr 17 min"],
+            ["Casual walking", "2.5 mph", "About 1 hr 49 min"],
+            ["Moderate walking", "3.0 mph", "About 1 hr 31 min"],
+            ["Brisk walking", "3.5 mph", "About 1 hr 18 min"],
+          ]}
+        />
+        <p>
+          These are approximate comparisons, not a time guarantee. Your step length, route, terrain, and pauses can all change how long it takes.
+        </p>
+
+        <h2>How to Reach 10,000 Steps a Day</h2>
+        <p>
+          You can build steps into activities that already fit your day. For example, spread walks and movement breaks across your morning, meals, workday, and evening rather than relying on one long session.
+        </p>
+        <div className="not-prose grid grid-cols-1 sm:grid-cols-2 gap-3 my-5">
+          {[
+            ["Morning walk", "Start the day with a walk that fits your schedule, even if it is only part of your daily movement."],
+            ["After-meal walks", "Take a short stroll after lunch or dinner when convenient."],
+            ["Workday breaks", "Stand up and walk during breaks, take a longer route, or choose stairs when practical."],
+            ["Evening walk", "Use a relaxed evening walk to add steps that are still missing from your daily total."],
+          ].map(([title, description]) => (
+            <div
+              key={title}
+              className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4"
+            >
+              <h3 className="font-bold text-slate-900 dark:text-white">{title}</h3>
+              <p className="mt-1 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{description}</p>
+            </div>
+          ))}
+        </div>
+        <p>
+          Let your step counter guide you, and adjust the routine around your current activity level, schedule, and comfort.
+        </p>
+
+        <h2>Does 10,000 Steps Have to Be Walked at Once?</h2>
+        <p>
+          No. Your daily step total can come from several shorter walks and everyday movement. A morning walk, a few brief work breaks, errands, and an evening stroll can all contribute to the same daily count. Choose a pattern that is manageable for you; the walking does not need to happen in one continuous session.
+        </p>
+
+        <h2>Is Walking 10,000 Steps Every Day Necessary?</h2>
+        <p>
+          No. 10,000 steps is a popular goal, not a universal medical requirement. Appropriate activity targets vary with a person&apos;s starting activity level, health, mobility, schedule, and fitness goals. If you are building a walking habit, start from a comfortable baseline and increase gradually; consistency matters more than forcing the same number every day.
+        </p>
+
         <h2>Health Benefits of Hitting 10,000 Steps Daily</h2>
         <p>
           Clinical research led by Dr. I-Min Lee at Harvard Medical School and meta-analyses published in <em>The Lancet Public Health</em> have tracked tens of thousands of participants over decades. The findings reveal clear dose-response relationships:
@@ -188,4 +242,3 @@ export default function TenThousandStepsPage() {
     </div>
   );
 }
-
