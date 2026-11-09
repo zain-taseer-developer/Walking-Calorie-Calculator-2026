@@ -393,7 +393,7 @@ export default function HomePage() {
             6 Key Factors That Determine Your Caloric Burn
           </h2>
           <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
-            While generic charts provide useful baselines, your actual caloric burn during any walk is dictated by seven physiological and environmental variables:
+            While generic charts provide useful baselines, your actual caloric burn during any walk is dictated by six physiological and environmental variables:
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
@@ -513,7 +513,7 @@ export default function HomePage() {
             points={[
               "One pound of body fat roughly equates to 3,500 dietary kilocalories (~7,700 kcal per kilogram).",
               "A daily 50-minute brisk walk burning approximately 300 kcal creates a cumulative weekly deficit of 2,100 kcal (~0.6 lbs per week without dietary starvation).",
-              "Pairing 8,000 to 10,000 daily steps with a modest 250-calorie dietary adjustment achieves a gradual weight loss of about 1 to 2 lb per week, a pace the CDC says is more likely to be kept off long term.",
+              "Pairing 8,000 to 10,000 daily steps with a modest 250-calorie dietary adjustment can add up to roughly 1 lb of weight loss per week. The CDC describes a gradual pace of about 1 to 2 lb per week as more likely to be kept off long term.",
               "Walking protects lean muscle tissue when operating in a modest caloric deficit, keeping resting metabolism higher over time.",
             ]}
           />
