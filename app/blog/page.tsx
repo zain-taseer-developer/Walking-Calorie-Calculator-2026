@@ -9,7 +9,7 @@ import { BookOpen, Sparkles } from "lucide-react";
 export const metadata: Metadata = constructMetadata({
   title: "Walking & Fitness Research Blog | Evidence-Based Guides",
   description:
-    "Explore in-depth exercise physiology articles, step benchmarks, treadmill workout breakdowns, and fat-loss science from the WalkingCalorieCalculator.net research team.",
+    "Explore in-depth exercise physiology articles, step benchmarks, treadmill workout breakdowns, and fat-loss science from the WalkingCalorieCalc.com research team.",
   canonicalPath: "/blog",
   keywords: [
     "walking blog",

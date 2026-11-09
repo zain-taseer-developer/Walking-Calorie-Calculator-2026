@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 import { siteConfig } from "@/site.config";
-import { getAllPosts } from "@/lib/blog";
+import { getAllCategories, getAllPosts } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.CANONICAL_URL;
@@ -49,6 +49,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...blogRoutes];
+  // Category archives are indexable; tag archives are intentionally noindex.
+  const categoryRoutes = getAllCategories().map((category) => ({
+    url: `${baseUrl}/blog/category/${category.slug}`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.6,
+  }));
+
+  return [...staticRoutes, ...categoryRoutes, ...blogRoutes];
 }
 

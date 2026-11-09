@@ -6,7 +6,7 @@ import { Share2, Link as LinkIcon, Check, Twitter, Facebook } from "lucide-react
 export function ShareButtons({ title, slug }: { title: string; slug: string }) {
   const [copied, setCopied] = useState(false);
 
-  const url = typeof window !== "undefined" ? window.location.href : `https://walkingcaloriecalculator.net/blog/${slug}`;
+  const url = typeof window !== "undefined" ? window.location.href : `https://walkingcaloriecalc.com/blog/${slug}`;
 
   const copyLink = () => {
     if (navigator.clipboard) {
