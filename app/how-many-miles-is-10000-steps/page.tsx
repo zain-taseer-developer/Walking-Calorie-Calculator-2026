@@ -15,7 +15,7 @@ import { Footprints, CheckCircle, Clock, Flame, Sparkles } from "lucide-react";
 export const metadata: Metadata = constructMetadata({
   title: "How Many Miles is 10,000 Steps? Distance & Calorie Guide",
   description:
-    "10,000 steps is roughly 4.2 to 5.0 miles (7 to 8 km) for most adults. See exact mileage charts by height, stride length, and how many calories it burns.",
+    "10,000 steps equals 4.5 to 5 miles for most adults. See exact distances by height, calories burned, and health benefits of 10k steps daily.",
   canonicalPath: "/how-many-miles-is-10000-steps",
   keywords: [
     "how many miles is 10000 steps",
