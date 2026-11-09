@@ -228,6 +228,92 @@ export default function WalkingPaceCalculatorPage() {
 
       <AdSlot format="horizontal" slotId="pace-calc-top" />
 
+      <div className="prose prose-slate dark:prose-invert max-w-none my-10 space-y-4">
+        <h2>How to Use the Walking Pace Calculator</h2>
+        <p>
+          Get your walking pace, speed, and equivalent pace in a few steps. The results update automatically as you edit the calculator—there is no separate Calculate button.
+        </p>
+        <ol className="not-prose grid grid-cols-1 sm:grid-cols-2 gap-3 my-5 list-none p-0">
+          {[
+            ["Enter your distance", "Type the distance you walked. The distance field is in miles or kilometers, depending on your selected unit."],
+            ["Enter your walking time", "Set the hours and minutes it took to cover that distance."],
+            ["Choose your preferred unit", "Select Miles (mph) or Kilometers (km/h); the calculator updates the pace and speed units to match."],
+            ["Review your results", "See your walking pace, speed, and alternative pace in the other distance unit. Change an input or unit to update the results."],
+          ].map(([title, description], index) => (
+            <li
+              key={title}
+              className="flex gap-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4"
+            >
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-100 dark:bg-brand-950 text-sm font-bold text-brand-700 dark:text-brand-300">
+                {index + 1}
+              </span>
+              <div>
+                <h3 className="m-0 text-sm font-bold text-slate-900 dark:text-white">{title}</h3>
+                <p className="mt-1 mb-0 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{description}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+
+        <h2>How to Calculate Walking Pace (Formula)</h2>
+        <p>
+          Walking pace tells you how many minutes it takes to cover one mile or one kilometer. Walking speed tells you how much distance you cover in an hour. They describe the same walk in different ways.
+        </p>
+        <div className="not-prose grid grid-cols-1 md:grid-cols-2 gap-4 my-5">
+          <div className="rounded-2xl border border-brand-200 dark:border-brand-900/60 bg-brand-50 dark:bg-brand-950/40 p-5">
+            <h3 className="text-base font-bold text-slate-900 dark:text-white">Pace</h3>
+            <p className="mt-2 text-lg font-bold text-brand-700 dark:text-brand-300">Pace = Total Time ÷ Distance</p>
+            <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Usually shown as minutes per mile (min/mile) or minutes per kilometer (min/km).</p>
+          </div>
+          <div className="rounded-2xl border border-teal-200 dark:border-teal-900/60 bg-teal-50 dark:bg-teal-950/40 p-5">
+            <h3 className="text-base font-bold text-slate-900 dark:text-white">Speed</h3>
+            <p className="mt-2 text-lg font-bold text-teal-700 dark:text-teal-300">Speed = Distance ÷ Total Time</p>
+            <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Usually shown as miles per hour (mph) or kilometers per hour (km/h).</p>
+          </div>
+        </div>
+        <div className="not-prose rounded-2xl border border-amber-200 dark:border-amber-900/60 bg-amber-50 dark:bg-amber-950/30 p-5">
+          <h3 className="text-base font-bold text-slate-900 dark:text-white">Example: Walking 3 miles in 45 minutes</h3>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+            <strong>Pace:</strong> 45 minutes ÷ 3 miles = <strong>15 minutes per mile</strong>.
+            {" "}<strong>Speed:</strong> 45 minutes is 0.75 hours, so 3 miles ÷ 0.75 hours = <strong>4 mph</strong>.
+          </p>
+          <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+            A lower minutes-per-mile value means a faster pace; a higher mph value means a faster speed.
+          </p>
+        </div>
+
+        <h2>Walking Pace vs. Walking Speed: What&apos;s the Difference?</h2>
+        <p>
+          Pace measures the time needed to cover a set distance, while speed measures the distance traveled in a set time. The calculator shows both, along with an alternative pace in the other unit system.
+        </p>
+        <div className="not-prose my-5 overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+          <table className="w-full min-w-[560px] text-left text-sm">
+            <thead className="bg-slate-50 dark:bg-slate-950/60 text-slate-700 dark:text-slate-300">
+              <tr>
+                <th scope="col" className="px-4 py-3 font-semibold">Walk example</th>
+                <th scope="col" className="px-4 py-3 font-semibold">Pace</th>
+                <th scope="col" className="px-4 py-3 font-semibold">Speed</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-slate-600 dark:text-slate-300">
+              <tr>
+                <td className="px-4 py-3">3 miles in 45 minutes</td>
+                <td className="px-4 py-3 font-mono">15:00 min/mile</td>
+                <td className="px-4 py-3 font-mono">4 mph</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-3">5 kilometers in 40 minutes</td>
+                <td className="px-4 py-3 font-mono">8:00 min/km</td>
+                <td className="px-4 py-3 font-mono">7.5 km/h</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Convert between them with <strong>speed = 60 ÷ pace</strong> or <strong>pace = 60 ÷ speed</strong> when using matching distance units—for example, 60 ÷ 15 min/mile = 4 mph. For the full set of common conversions, see the chart below.
+        </p>
+      </div>
+
       {/* Authoritative Pace Reference Table */}
       <div className="prose prose-slate dark:prose-invert max-w-none my-12">
         <h2>Speed to Pace Conversion Chart (mph to min/mile &amp; km/h)</h2>
@@ -252,6 +338,34 @@ export default function WalkingPaceCalculatorPage() {
         </p>
       </div>
 
+      <div className="prose prose-slate dark:prose-invert max-w-none my-10 space-y-4">
+        <h2>What Is a Good Walking Pace?</h2>
+        <p>
+          A good walking pace is one that feels comfortable and appropriate for your goals and abilities. These are approximate adult examples, not medical standards or requirements; the pace you can sustain may vary.
+        </p>
+        <div className="not-prose my-5 overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+          <table className="w-full min-w-[480px] text-left text-sm">
+            <thead className="bg-slate-50 dark:bg-slate-950/60 text-slate-700 dark:text-slate-300">
+              <tr>
+                <th scope="col" className="px-4 py-3 font-semibold">Walking level</th>
+                <th scope="col" className="px-4 py-3 font-semibold">Approximate speed</th>
+                <th scope="col" className="px-4 py-3 font-semibold">Approximate pace</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-slate-600 dark:text-slate-300">
+              <tr><td className="px-4 py-3">Slow walking</td><td className="px-4 py-3 font-mono">Around 2 mph</td><td className="px-4 py-3 font-mono">About 30 min/mile</td></tr>
+              <tr><td className="px-4 py-3">Casual walking</td><td className="px-4 py-3 font-mono">Around 2.5 mph</td><td className="px-4 py-3 font-mono">About 24 min/mile</td></tr>
+              <tr><td className="px-4 py-3">Moderate walking</td><td className="px-4 py-3 font-mono">Around 3 mph</td><td className="px-4 py-3 font-mono">About 20 min/mile</td></tr>
+              <tr><td className="px-4 py-3">Brisk walking</td><td className="px-4 py-3 font-mono">Around 3.5–4 mph</td><td className="px-4 py-3 font-mono">About 17:09–15:00 min/mile</td></tr>
+              <tr><td className="px-4 py-3">Fast walking</td><td className="px-4 py-3 font-mono">Around 4.5–5 mph</td><td className="px-4 py-3 font-mono">About 13:20–12:00 min/mile</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Your walking pace can change with age, fitness, health, terrain, and individual ability. Use these ranges as a general reference rather than a target you must meet.
+        </p>
+      </div>
+
       <FAQSection faqs={faqs} />
 
       <RelatedTools currentPath="/walking-pace-calculator" />
@@ -260,4 +374,3 @@ export default function WalkingPaceCalculatorPage() {
     </div>
   );
 }
-
