@@ -90,7 +90,7 @@ export default function TenThousandStepsPage() {
           </span>
 
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
-            How Many Miles is 10,000 Steps?
+            How Many Miles is 10,000 Steps? Distance &amp; Calorie Guide
           </h1>
 
           <p className="mt-3 text-lg sm:text-xl font-medium text-teal-50 leading-relaxed">
