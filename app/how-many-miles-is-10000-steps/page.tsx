@@ -17,6 +17,7 @@ export const metadata: Metadata = constructMetadata({
   description:
     "10,000 steps equals 4.5 to 5 miles for most adults. See exact distances by height, calories burned, and health benefits of 10k steps daily.",
   canonicalPath: "/how-many-miles-is-10000-steps",
+  absoluteTitle: true,
   keywords: [
     "how many miles is 10000 steps",
     "how many miles is 10k steps",
