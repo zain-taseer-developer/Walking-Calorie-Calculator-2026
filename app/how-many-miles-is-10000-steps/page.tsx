@@ -127,6 +127,7 @@ export default function TenThousandStepsPage() {
         defaultDurationMins={90}
         defaultMph={3.2}
         title="Estimate Your 10,000 Step Calorie Burn"
+        titleLevel={3}
       />
 
       <div className="prose prose-slate dark:prose-invert max-w-none my-10 space-y-4">
@@ -152,6 +153,7 @@ export default function TenThousandStepsPage() {
 
         <DataTable
           title="10,000 Steps Distance Breakdown by Height"
+          titleLevel={3}
           caption="Calculated using anthropometric stride formulas (Height × 0.414)."
           headers={["Height", "Estimated Stride", "10,000 Steps (Miles)", "10,000 Steps (Km)", "Steps Per Mile"]}
           rows={heightRows}
@@ -165,6 +167,7 @@ export default function TenThousandStepsPage() {
 
         <DataTable
           title="Step Count to Miles & Calories Benchmark Table"
+          titleLevel={3}
           caption="Based on average 5'9 adult stride at a brisk 3.2 mph pace."
           headers={["Step Milestone", "Distance (Miles)", "Distance (Km)", "Walking Time (Brisk)", "Estimated Calories"]}
           rows={stepComparisonRows}
@@ -205,10 +208,10 @@ export default function TenThousandStepsPage() {
         </p>
         <div className="not-prose grid grid-cols-1 sm:grid-cols-2 gap-3 my-5">
           {[
-            ["Morning walk", "Start the day with a walk that fits your schedule, even if it is only part of your daily movement."],
-            ["After-meal walks", "Take a short stroll after lunch or dinner when convenient."],
-            ["Workday breaks", "Stand up and walk during breaks, take a longer route, or choose stairs when practical."],
-            ["Evening walk", "Use a relaxed evening walk to add steps that are still missing from your daily total."],
+            ["Start Your Day with a Morning Walk", "Start the day with a walk that fits your schedule, even if it is only part of your daily movement."],
+            ["Add Short Walks After Meals", "Take a short stroll after lunch or dinner when convenient."],
+            ["Take Walking Breaks During Work", "Stand up and walk during breaks, take a longer route, or choose stairs when practical."],
+            ["Finish the Day with an Evening Walk", "Use a relaxed evening walk to add steps that are still missing from your daily total."],
           ].map(([title, description]) => (
             <div
               key={title}

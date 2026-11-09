@@ -12,11 +12,13 @@ export function MiniCalculator({
   defaultDurationMins = 45,
   defaultMph = 3.5,
   title = "Quick Walking Calorie Estimator",
+  titleLevel = 4,
 }: {
   defaultWeightLbs?: number;
   defaultDurationMins?: number;
   defaultMph?: number;
   title?: string;
+  titleLevel?: 3 | 4;
 }) {
   const [weight, setWeight] = useState(defaultWeightLbs);
   const [minutes, setMinutes] = useState(defaultDurationMins);
@@ -48,6 +50,7 @@ export function MiniCalculator({
   );
 
   const result = useMemo(() => calculateWalkingCalories(inputs), [inputs]);
+  const TitleHeading = titleLevel === 3 ? "h3" : "h4";
 
   return (
     <div className="not-prose my-8 p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-brand-50 via-white to-teal-50/60 dark:from-slate-900 dark:via-slate-900/90 dark:to-brand-950/40 border border-brand-200 dark:border-brand-900/60 shadow-lg">
@@ -56,9 +59,9 @@ export function MiniCalculator({
           <div className="p-1.5 rounded-lg bg-brand-600 text-white shadow-xs">
             <Flame className="w-4 h-4" />
           </div>
-          <h4 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
+          <TitleHeading className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
             {title}
-          </h4>
+          </TitleHeading>
         </div>
         <span className="text-[11px] font-semibold text-brand-700 dark:text-brand-300 bg-brand-100/60 dark:bg-brand-950 px-2 py-0.5 rounded-full">
           Interactive Tool
@@ -135,4 +138,3 @@ export function MiniCalculator({
     </div>
   );
 }
-
