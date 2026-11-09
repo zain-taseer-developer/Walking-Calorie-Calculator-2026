@@ -226,6 +226,7 @@ export default function StepsToMilesPage() {
 
         <DataTable
           title="Steps to Miles & Kilometers Quick Reference"
+          titleLevel={3}
           caption="Based on average adult stride length (~2.38 feet / 0.725 meters)."
           headers={["Steps", "Distance (Miles)", "Distance (Kilometers)", "Est. Walking Time (3.0 mph)"]}
           rows={milestoneRows}
