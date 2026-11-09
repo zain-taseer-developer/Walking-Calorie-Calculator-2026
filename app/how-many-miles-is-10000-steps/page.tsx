@@ -13,7 +13,7 @@ import { MiniCalculator } from "@/components/calculator/MiniCalculator";
 import { Footprints, CheckCircle, Clock, Flame, Sparkles } from "lucide-react";
 
 export const metadata: Metadata = constructMetadata({
-  title: "How Many Miles is 10,000 Steps? (Answer by Height & Pace)",
+  title: "How Many Miles is 10,000 Steps? Distance & Calorie Guide",
   description:
     "10,000 steps is roughly 4.2 to 5.0 miles (7 to 8 km) for most adults. See exact mileage charts by height, stride length, and how many calories it burns.",
   canonicalPath: "/how-many-miles-is-10000-steps",
@@ -129,6 +129,17 @@ export default function TenThousandStepsPage() {
       />
 
       <div className="prose prose-slate dark:prose-invert max-w-none my-10 space-y-4">
+        <h2>How to Calculate Miles from 10,000 Steps</h2>
+        <p>
+          To estimate distance, multiply your step count by your average step length in inches, then divide by 63,360—the number of inches in a mile:
+        </p>
+        <p>
+          <strong>Miles = (Steps × Step Length in Inches) ÷ 63,360</strong>
+        </p>
+        <p>
+          For example, with an average step length of 28.8 inches, 10,000 steps × 28.8 ÷ 63,360 = about <strong>4.55 miles</strong> (7.32 km). Your result will vary with your step length, which is influenced by factors such as height and walking style.
+        </p>
+
         <h2>Why 10,000 Steps Mileage Varies by Height</h2>
         <p>
           While the general guideline of <strong>&quot;10,000 steps equals 5 miles&quot;</strong> is a common rule of thumb, it actually overestimates distance for the majority of the population. To cover a full 5.0 miles in 10,000 steps, your stride length must be exactly <strong>2.64 feet (31.7 inches)</strong>.
