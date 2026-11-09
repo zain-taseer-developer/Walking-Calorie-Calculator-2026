@@ -59,17 +59,17 @@ export default function StepsToMilesPage() {
     {
       question: "How many steps is 3 miles?",
       answer:
-        "Approximately 6,000 to 7,500 steps for an average adult.",
+        "Walking 3 miles equals approximately 6,000 to 7,500 steps for an average adult. At a standard walking pace of 3.0 mph, this takes roughly 60 minutes to complete.",
     },
     {
       question: "How do you calculate your personal stride length?",
       answer:
-        "Walk 10 steps, measure the total distance in feet, divide by 10. That is your average stride length. Alternatively, multiply your height in inches by 0.413 for an estimate.",
+        "To measure your exact stride length, walk 10 steps on flat ground and measure the total distance in feet, then divide by 10. Alternatively, multiply your height in inches by 0.413 to get a close estimate. For example, a person 5 feet 8 inches (68 inches) tall would have an estimated stride of approximately 2.4 feet.",
     },
     {
       question: "How many steps in 5 miles?",
       answer:
-        "Approximately 10,000 to 12,500 steps depending on your stride length.",
+        "Five miles equals approximately 10,000 to 12,500 steps depending on your stride length. For an average adult using a 2.2 to 2.5 foot stride, 5 miles falls right at the popular 10,000-step daily goal mark.",
     },
   ];
 
@@ -248,41 +248,41 @@ export default function StepsToMilesPage() {
         <ul>
           <li><strong>1,000 Steps:</strong> How far is 1000 steps? Approximately 0.38 to 0.47 miles (0.61 to 0.76 km).</li>
           <li><strong>2,000 Steps:</strong> How many miles is 2000 steps? Approximately 0.76 to 0.95 miles.</li>
-          <li><strong>3,000 Steps:</strong> How many miles is 3000 steps? 3000 steps to miles (or 3000 steps in miles) equals roughly 1.14 to 1.42 miles.</li>
-          <li><strong>4,000 Steps:</strong> How many miles is 4000 steps? 4000 steps to miles (how far is 4000 steps) equals roughly 1.52 to 1.89 miles.</li>
-          <li><strong>5,000 Steps:</strong> How many miles is 5000 steps? 5000 steps to miles (also searched as 5 000 steps to miles or how far is 5000 steps) equals 1.89 to 2.37 miles.</li>
-          <li><strong>6,000 Steps:</strong> How many miles is 6000 steps? 6000 steps to miles (6000 steps in miles) equals 2.27 to 2.84 miles.</li>
-          <li><strong>7,000 Steps:</strong> How many miles is 7000 steps? 7000 steps to miles (7000 steps is how many miles, how far is 7000 steps, how far is 7 000 steps, how many miles is 7 000 steps) equals roughly 2.65 to 3.31 miles.</li>
-          <li><strong>7,500 Steps:</strong> 7500 steps to miles (how many miles is 7500 steps) equals 2.84 to 3.55 miles.</li>
-          <li><strong>8,000 Steps:</strong> How many miles is 8000 steps? 8000 steps to miles (8 000 steps in miles or how many miles is 8k steps) equals roughly 3.03 to 3.79 miles.</li>
+          <li><strong>3,000 Steps:</strong> How many miles is 3,000 steps? Walking 3,000 steps covers roughly 1.14 to 1.42 miles.</li>
+          <li><strong>4,000 Steps:</strong> How many miles is 4,000 steps? Walking 4,000 steps covers roughly 1.52 to 1.89 miles.</li>
+          <li><strong>5,000 Steps:</strong> How many miles is 5,000 steps? Walking 5,000 steps covers approximately 1.89 to 2.37 miles.</li>
+          <li><strong>6,000 Steps:</strong> How many miles is 6,000 steps? Walking 6,000 steps covers approximately 2.27 to 2.84 miles.</li>
+          <li><strong>7,000 Steps:</strong> How many miles is 7,000 steps? Walking 7,000 steps covers roughly 2.65 to 3.31 miles.</li>
+          <li><strong>7,500 Steps:</strong> How many miles is 7,500 steps? Walking 7,500 steps covers approximately 2.84 to 3.55 miles.</li>
+          <li><strong>8,000 Steps:</strong> How many miles is 8,000 steps? Walking 8,000 steps covers roughly 3.03 to 3.79 miles.</li>
           <li><strong>9,000 Steps:</strong> How many miles is 9000 steps? 9000 steps to miles equals roughly 3.41 to 4.26 miles.</li>
-          <li><strong>10,000 Steps:</strong> 10 000 steps in miles (10000 steps is how many miles, how many miles is 10 000 steps, how far is 10 000 steps, 10000 steps equals how many miles, how many miles is 10 thousand steps, 10 000 steps is how many miles, 10 000 steps how many miles, how far is 10000 steps in miles, how many miles is ten thousand steps) equals 3.79 to 4.73 miles.</li>
-          <li><strong>11,000 Steps:</strong> How many miles is 11000 steps? 11000 steps to miles (how many miles in 11000 steps) equals 4.17 to 5.21 miles.</li>
-          <li><strong>12,000 Steps:</strong> How many miles is 12000 steps? 12000 steps to miles (how many miles is 12k steps) equals 4.55 to 5.68 miles.</li>
-          <li><strong>13,000 Steps:</strong> How many miles is 13000 steps? 13000 steps to miles (13000 steps miles) equals roughly 4.92 to 6.16 miles.</li>
-          <li><strong>14,000 Steps:</strong> How many miles is 14000 steps? 14000 steps to miles (14000 steps is how many miles) equals 5.30 to 6.63 miles.</li>
-          <li><strong>15,000 Steps:</strong> 15000 steps to miles (how many miles is 15000 steps, 15000 steps miles, 15 000 steps in miles, how many miles is 15 000 steps, how far is 15000 steps) equals 5.68 to 7.10 miles.</li>
+          <li><strong>10,000 Steps:</strong> How many miles is 10,000 steps? Walking 10,000 steps covers approximately 3.79 to 4.73 miles depending on your stride length. This is the most popular daily step goal recommended by health organizations worldwide.</li>
+          <li><strong>11,000 Steps:</strong> How many miles is 11,000 steps? Walking 11,000 steps covers approximately 4.17 to 5.21 miles.</li>
+          <li><strong>12,000 Steps:</strong> How many miles is 12,000 steps? Walking 12,000 steps covers approximately 4.55 to 5.68 miles.</li>
+          <li><strong>13,000 Steps:</strong> How many miles is 13,000 steps? Walking 13,000 steps covers roughly 4.92 to 6.16 miles.</li>
+          <li><strong>14,000 Steps:</strong> How many miles is 14,000 steps? Walking 14,000 steps covers approximately 5.30 to 6.63 miles.</li>
+          <li><strong>15,000 Steps:</strong> How many miles is 15,000 steps? Walking 15,000 steps covers approximately 5.68 to 7.10 miles.</li>
           <li><strong>16,000 Steps:</strong> How many miles is 16000 steps? Equals roughly 6.06 to 7.58 miles.</li>
-          <li><strong>17,000 Steps:</strong> How many miles is 17000 steps? 17000 steps to miles (how many miles is 17 000 steps, 17000 steps into miles) equals roughly 6.44 to 8.05 miles.</li>
-          <li><strong>18,000 Steps:</strong> 18000 steps to miles (how many miles is 18000 steps, 18000 steps is how many miles) equals roughly 6.82 to 8.52 miles.</li>
+          <li><strong>17,000 Steps:</strong> How many miles is 17,000 steps? Walking 17,000 steps covers roughly 6.44 to 8.05 miles.</li>
+          <li><strong>18,000 Steps:</strong> How many miles is 18,000 steps? Walking 18,000 steps covers roughly 6.82 to 8.52 miles.</li>
           <li><strong>19,000 Steps:</strong> How many miles is 19000 steps? 19000 steps in miles equals 7.20 to 9.00 miles.</li>
-          <li><strong>20,000 Steps:</strong> 20000 steps to miles (20k steps to miles, how many miles is 20k steps, how far is 20000 steps, 20 000 steps to miles, how many miles is 20 000 steps, 20000 steps in miles, 20000 steps a day, 20k steps a day) equals 7.58 to 9.47 miles.</li>
+          <li><strong>20,000 Steps:</strong> How many miles is 20,000 steps? Walking 20,000 steps covers approximately 7.58 to 9.47 miles.</li>
           <li><strong>21,000 Steps:</strong> How many miles is 21000 steps? Equals roughly 7.95 to 9.94 miles.</li>
-          <li><strong>22,000 Steps:</strong> 22000 steps to miles (how many miles is 22 000 steps, 22000 steps in miles, how many miles is 22000 steps) equals roughly 8.33 to 10.42 miles.</li>
+          <li><strong>22,000 Steps:</strong> How many miles is 22,000 steps? Walking 22,000 steps covers roughly 8.33 to 10.42 miles.</li>
           <li><strong>23,000 Steps:</strong> How many miles is 23000 steps? Equals roughly 8.71 to 10.89 miles.</li>
-          <li><strong>25,000 Steps:</strong> 25000 steps to miles (how many miles is 25000 steps) equals roughly 9.47 to 11.84 miles.</li>
-          <li><strong>30,000 Steps:</strong> How many miles is 30000 steps? 30 000 steps to miles (30000 steps to miles, 30k steps to miles) equals roughly 11.36 to 14.20 miles.</li>
+          <li><strong>25,000 Steps:</strong> How many miles is 25,000 steps? Walking 25,000 steps covers roughly 9.47 to 11.84 miles.</li>
+          <li><strong>30,000 Steps:</strong> How many miles is 30,000 steps? Walking 30,000 steps covers roughly 11.36 to 14.20 miles.</li>
         </ul>
 
         <h2>Miles to Steps Distance Benchmarks</h2>
         <ul>
-          <li><strong>1 Mile:</strong> How many steps in one mile? (Also searched as: how many steps is 1 mile, how many steps equal a mile, how many steps i n a mile, how many average steps in a mile, how many steps is one mile, how many steps is in 1 mile, how many steps in a mile on average, how many steps is in a mile, how many steps make a mile, how many steps to a mile, how many steps are in 1 mile, average steps per mile, how many steps equal to a mile, on average how many steps are in a mile, 1 mile in steps, average number of steps in a mile, steps in a mile walking, about how many steps in a mile, how many steps are in a mile on average, how many steps is in a mile walking). An average adult takes 2,000 to 2,500 steps per mile.</li>
+          <li><strong>1 Mile:</strong> How many steps is 1 mile? An average adult takes approximately 2,000 to 2,500 steps to walk one mile. This varies by height — taller adults average around 2,000 steps per mile, while shorter adults may take closer to 2,500 steps per mile.</li>
           <li><strong>1.5 Miles:</strong> How many steps in a mile and a half? Equals roughly 3,000 to 3,750 steps.</li>
-          <li><strong>2 Miles:</strong> How many steps in 2 miles (2 miles in steps) equals approximately 4,000 to 5,000 steps.</li>
-          <li><strong>3 Miles:</strong> How many steps in 3 miles (how many steps are in 3 miles, 3 miles is how many steps, steps in 3 miles) equals 6,000 to 7,500 steps.</li>
-          <li><strong>4 Miles:</strong> How many steps is 4 miles (how many steps in 4 miles) equals 8,000 to 10,000 steps.</li>
-          <li><strong>5 Miles:</strong> How many steps is 5 miles (5 miles is how many steps) equals 10,000 to 12,500 steps.</li>
-          <li><strong>7 Miles:</strong> How many steps is 7 miles (how many steps in 7 miles) equals 14,000 to 17,500 steps.</li>
+          <li><strong>2 Miles:</strong> How many steps in 2 miles? Approximately 4,000 to 5,000 steps.</li>
+          <li><strong>3 Miles:</strong> How many steps in 3 miles? Approximately 6,000 to 7,500 steps.</li>
+          <li><strong>4 Miles:</strong> How many steps is 4 miles? Approximately 8,000 to 10,000 steps.</li>
+          <li><strong>5 Miles:</strong> How many steps is 5 miles? Approximately 10,000 to 12,500 steps.</li>
+          <li><strong>7 Miles:</strong> How many steps is 7 miles? Approximately 14,000 to 17,500 steps.</li>
           <li><strong>10 Miles:</strong> How many steps is 10 miles equals 20,000 to 25,000 steps.</li>
         </ul>
 
