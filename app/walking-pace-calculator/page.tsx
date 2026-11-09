@@ -261,12 +261,12 @@ export default function WalkingPaceCalculatorPage() {
         </p>
         <div className="not-prose grid grid-cols-1 md:grid-cols-2 gap-4 my-5">
           <div className="rounded-2xl border border-brand-200 dark:border-brand-900/60 bg-brand-50 dark:bg-brand-950/40 p-5">
-            <h3 className="text-base font-bold text-slate-900 dark:text-white">Pace</h3>
+            <h3 className="text-base font-bold text-slate-900 dark:text-white">Walking Pace Formula</h3>
             <p className="mt-2 text-lg font-bold text-brand-700 dark:text-brand-300">Pace = Total Time ÷ Distance</p>
             <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Usually shown as minutes per mile (min/mile) or minutes per kilometer (min/km).</p>
           </div>
           <div className="rounded-2xl border border-teal-200 dark:border-teal-900/60 bg-teal-50 dark:bg-teal-950/40 p-5">
-            <h3 className="text-base font-bold text-slate-900 dark:text-white">Speed</h3>
+            <h3 className="text-base font-bold text-slate-900 dark:text-white">Walking Speed Formula</h3>
             <p className="mt-2 text-lg font-bold text-teal-700 dark:text-teal-300">Speed = Distance ÷ Total Time</p>
             <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Usually shown as miles per hour (mph) or kilometers per hour (km/h).</p>
           </div>
@@ -323,6 +323,7 @@ export default function WalkingPaceCalculatorPage() {
 
         <DataTable
           title="Walking Speed, Pace, and Split Times Reference Matrix"
+          titleLevel={3}
           caption="Conversion benchmarks from 2.0 to 5.0 mph."
           headers={["Intensity Level", "Speed (mph)", "Speed (km/h)", "Pace (min/mi)", "Pace (min/km)", "Time for 1 Mile", "Time for 5 km"]}
           rows={paceTableRows}
