@@ -50,6 +50,27 @@ export default function StepsToMilesPage() {
     return [`${m} mile${m === 1 ? "" : "s"}`, `${km} km`, `${st.toLocaleString()} steps`];
   });
 
+  const heightBenchmarkRows = [
+    { height: "5 ft 0 in", totalHeightInches: 60 },
+    { height: "5 ft 4 in", totalHeightInches: 64 },
+    { height: "5 ft 8 in", totalHeightInches: 68 },
+    { height: "6 ft 0 in", totalHeightInches: 72 },
+    { height: "6 ft 4 in", totalHeightInches: 76 },
+  ].map(({ height, totalHeightInches }) => {
+    const strideLengthFt = estimateStrideLength(Math.round(totalHeightInches * 2.54)).feet;
+    const strideLengthInches = strideLengthFt * 12;
+    const milesAtSteps = (stepCount: number) =>
+      `${((stepCount * strideLengthInches) / 63360).toFixed(2)} miles`;
+
+    return [
+      height,
+      `${strideLengthFt.toFixed(2)} ft (${strideLengthInches.toFixed(1)} in)`,
+      milesAtSteps(5000),
+      milesAtSteps(10000),
+      milesAtSteps(15000),
+    ];
+  });
+
   const faqs: FAQItem[] = [
     {
       question: "How many steps are in a single mile?",
@@ -200,9 +221,48 @@ export default function StepsToMilesPage() {
 
       {/* Authoritative Content */}
       <div className="prose prose-slate dark:prose-invert max-w-none my-12">
+        <h2>How to Use the Steps to Miles Calculator</h2>
+        <ol className="not-prose grid grid-cols-1 sm:grid-cols-2 gap-3 my-5">
+          {[
+            "Enter your step count in the Number of Steps field, or select a preset count.",
+            "Enter your height in feet and inches. The calculator uses it to estimate your stride length.",
+            "The stride estimate updates automatically with your height; this calculator does not have a separate custom-stride control.",
+            "Read your calculated distance in miles and kilometers in the results card.",
+          ].map((instruction, index) => (
+            <li
+              key={instruction}
+              className="flex items-start gap-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 text-sm text-slate-700 dark:text-slate-300"
+            >
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-600 text-xs font-bold text-white">
+                {index + 1}
+              </span>
+              <span className="leading-relaxed">{instruction}</span>
+            </li>
+          ))}
+        </ol>
+
         <h2>How Many Steps in a Mile? (The Anthropometric Science)</h2>
         <p>
           The number of steps required to walk a mile is determined by simple geometry: <strong>5,280 feet divided by your average stride length</strong>. Because human leg length correlates directly with total standing height (accounting for approximately 45% of total stature), taller walkers take longer steps and register fewer steps per mile than shorter walkers.
+        </p>
+
+        <h2>How to Calculate Miles from Steps</h2>
+        <p>
+          To convert steps to miles, multiply your step count by your stride length in inches, then divide by the number of inches in a mile:
+        </p>
+        <div className="not-prose my-6 rounded-2xl border border-blue-200 dark:border-blue-900 bg-blue-50 dark:bg-blue-950/40 p-5 sm:p-6">
+          <p className="text-center text-xl sm:text-2xl font-bold text-blue-900 dark:text-blue-200">
+            Miles = (Number of Steps × Stride Length in Inches) ÷ 63,360
+          </p>
+          <p className="mt-3 text-sm text-blue-800 dark:text-blue-300">
+            <strong>Number of steps</strong> is the count you enter. <strong>Stride length</strong> is the distance covered per step, measured in inches. <strong>63,360</strong> is the number of inches in one mile.
+          </p>
+          <p className="mt-3 text-sm text-blue-800 dark:text-blue-300">
+            <strong>Example:</strong> Using an assumed 28-inch stride, 2,000 steps × 28 inches ÷ 63,360 = approximately 0.88 miles.
+          </p>
+        </div>
+        <p>
+          This is an estimate: your actual distance varies with your individual stride length, which can change with height, walking pace, and terrain.
         </p>
 
         <p>
@@ -239,6 +299,19 @@ export default function StepsToMilesPage() {
           headers={["Miles", "Kilometers", "Step Equivalent"]}
           rows={milesToStepsRows}
           highlightColumnIndex={2}
+        />
+
+        <h2>Steps to Miles by Height</h2>
+        <p>
+          The chart below compares estimated walking distances at common heights. Stride length is estimated using the calculator&apos;s height-based model (0.414 × height in meters), assuming a typical walking step on level ground. These are illustrative estimates, not exact measurements; your personal stride may differ.
+        </p>
+        <DataTable
+          title="Estimated Steps-to-Miles Distances by Height"
+          titleLevel={3}
+          caption="Height-based stride estimates; individual results vary."
+          headers={["Height", "Estimated Stride Length", "5,000 Steps", "10,000 Steps", "15,000 Steps"]}
+          rows={heightBenchmarkRows}
+          highlightColumnIndex={3}
         />
 
         <h2>Comprehensive Step-to-Miles Conversion Matrix &amp; Mileage Benchmarks</h2>
