@@ -15,7 +15,7 @@ interface Props {
 
 export async function generateStaticParams() {
   const categories = getAllCategories();
-  return categories.map((c) => ({
+  return categories.filter((c) => c.count > 0).map((c) => ({
     category: c.slug,
   }));
 }

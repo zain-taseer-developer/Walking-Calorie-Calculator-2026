@@ -27,6 +27,18 @@ export interface BlogPost {
 }
 
 const BLOG_CONTENT_DIR = path.join(process.cwd(), "content", "blog");
+const BLOG_CATEGORIES = [
+  "Treadmill & Workouts",
+  "Calories & Nutrition",
+  "Walking Basics",
+  "Steps & Distance",
+  "Weight Loss",
+  "Fitness Trackers & Tech",
+  "Pace & Speed",
+  "Walking for Health",
+  "Hiking, Rucking & Terrain",
+  "Beginners & Seniors",
+];
 
 export function calculateReadingTime(text: string): { minutes: number; words: number } {
   const words = text.trim().split(/\s+/).filter(Boolean).length;
@@ -122,10 +134,12 @@ export function getAllCategories(): Array<{ name: string; slug: string; count: n
     map.set(cat, (map.get(cat) || 0) + 1);
   });
 
-  return Array.from(map.entries()).map(([name, count]) => ({
+  const categories = [...BLOG_CATEGORIES, ...Array.from(map.keys()).filter((name) => !BLOG_CATEGORIES.includes(name))];
+
+  return categories.map((name) => ({
     name,
     slug: slugifyCategory(name),
-    count,
+    count: map.get(name) || 0,
   }));
 }
 

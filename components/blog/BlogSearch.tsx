@@ -57,7 +57,7 @@ export function BlogSearch({ posts, categories }: BlogSearchProps) {
           >
             All Guides ({posts.length})
           </button>
-          {categories.map((cat) => (
+          {categories.filter((cat) => cat.count > 0).map((cat) => (
             <button
               key={cat.name}
               type="button"
