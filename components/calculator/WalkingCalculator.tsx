@@ -415,6 +415,7 @@ export function WalkingCalculator() {
   const isLimitReached = history.length >= MAX_HISTORY_RECORDS && !isUpdating;
 
   return (
+    <>
     <div className="w-full bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/90 dark:border-slate-800 shadow-xl shadow-slate-900/5 transition-colors overflow-hidden">
       {/* Top Banner & Mode Segmented Tabs */}
       <div className="border-b border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40 p-4 sm:p-5">
@@ -1069,11 +1070,6 @@ export function WalkingCalculator() {
                 </button>
               </div>
             )}
-            {storageWarning && (
-              <div className="mt-2 p-3 rounded-xl bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-300 text-xs">
-                {storageWarning}
-              </div>
-            )}
             <p className="text-center text-[11px] text-slate-400 mt-2">
               Results update live above &amp; below as you adjust values.
             </p>
@@ -1185,5 +1181,24 @@ export function WalkingCalculator() {
         </div>
       </div>
     </div>
+    {storageWarning && (
+      <div
+        role="status"
+        aria-live="polite"
+        className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:max-w-md z-50 p-3 rounded-xl border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/95 text-amber-800 dark:text-amber-300 text-xs shadow-xl"
+      >
+        <div className="flex items-start justify-between gap-3">
+          <span>{storageWarning}</span>
+          <button
+            type="button"
+            onClick={() => setStorageWarning(null)}
+            className="shrink-0 font-bold underline hover:no-underline"
+          >
+            Dismiss
+          </button>
+        </div>
+      </div>
+    )}
+    </>
   );
 }
