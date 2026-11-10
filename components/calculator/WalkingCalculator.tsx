@@ -52,7 +52,6 @@ export function WalkingCalculator() {
   const [updateButtonStatus, setUpdateButtonStatus] = useState<"idle" | "updated">("idle");
   const [recentlyUpdatedId, setRecentlyUpdatedId] = useState<string | null>(null);
   const [storageError, setStorageError] = useState<string | null>(null);
-  const [storageWarning, setStorageWarning] = useState<string | null>(null);
 
   const updateStatusTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const recentlyUpdatedTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -107,17 +106,8 @@ export function WalkingCalculator() {
       setHistory(storedHistory.records);
       if (storedHistory.records.length > 0) {
         void requestPersistentHistoryStorage()
-          .then((persistentStorageGranted) => {
-            if (!persistentStorageGranted) {
-              setStorageWarning(
-                "Your saved history is still available in this browser, but the browser may clear it if site data is removed."
-              );
-            }
-          })
-          .catch(() => {
-            setStorageWarning(
-              "Your saved history is still available in this browser, but persistent storage could not be enabled."
-            );
+          .catch((error) => {
+            console.error("Could not request persistent history storage.", error);
           });
       }
     }
@@ -221,7 +211,6 @@ export function WalkingCalculator() {
   // Action button click: "Save to History" or "Update Record"
   const handleActionButtonClick = () => {
     setStorageError(null);
-    setStorageWarning(null);
 
     void requestPersistentHistoryStorage().catch((error) => {
       console.error("Could not request persistent history storage.", error);
@@ -1049,24 +1038,6 @@ export function WalkingCalculator() {
                 </>
               )}
             </button>
-            {storageWarning && (
-              <div
-                role="status"
-                aria-live="polite"
-                className="mt-2 p-3 rounded-xl border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/95 text-amber-800 dark:text-amber-300 text-xs"
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <span>{storageWarning}</span>
-                  <button
-                    type="button"
-                    onClick={() => setStorageWarning(null)}
-                    className="shrink-0 font-bold underline hover:no-underline"
-                  >
-                    Dismiss
-                  </button>
-                </div>
-              </div>
-            )}
             {storageError && (
               <div className="mt-2 p-3 rounded-xl bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 text-xs flex items-center justify-between gap-2">
                 <span>{storageError}</span>
