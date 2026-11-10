@@ -322,12 +322,6 @@ export function WalkingCalculator() {
     setIsHistoryOpen(true);
     setLoadedRecordId(null);
     setIsRecordEdited(false);
-
-    // Scroll to results on mobile devices if needed
-    const element = document.getElementById("results-panel-anchor");
-    if (element && window.innerWidth < 1024) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
   };
 
   // Reset to defaults
@@ -1057,7 +1051,7 @@ export function WalkingCalculator() {
               type="button"
               onClick={handleActionButtonClick}
               disabled={isLimitReached}
-              className={`w-full py-3.5 px-6 rounded-2xl font-bold text-base shadow-lg transform active:scale-[0.99] transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-4 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed ${
+              className={`w-full py-3.5 px-6 rounded-2xl font-bold text-base shadow-lg transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-4 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed ${
                 updateButtonStatus === "updated"
                   ? "bg-emerald-600 hover:bg-emerald-700 text-white shadow-emerald-600/25 focus:ring-emerald-500/30"
                   : isUpdating
