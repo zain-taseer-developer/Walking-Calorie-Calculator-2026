@@ -1059,6 +1059,24 @@ export function WalkingCalculator() {
                 </>
               )}
             </button>
+            {storageWarning && (
+              <div
+                role="status"
+                aria-live="polite"
+                className="mt-2 p-3 rounded-xl border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/95 text-amber-800 dark:text-amber-300 text-xs"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <span>{storageWarning}</span>
+                  <button
+                    type="button"
+                    onClick={() => setStorageWarning(null)}
+                    className="shrink-0 font-bold underline hover:no-underline"
+                  >
+                    Dismiss
+                  </button>
+                </div>
+              </div>
+            )}
             {storageError && (
               <div className="mt-2 p-3 rounded-xl bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 text-xs flex items-center justify-between gap-2">
                 <span>{storageError}</span>
@@ -1182,24 +1200,6 @@ export function WalkingCalculator() {
         </div>
       </div>
     </div>
-    {storageWarning && (
-      <div
-        role="status"
-        aria-live="polite"
-        className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:max-w-md z-50 p-3 rounded-xl border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/95 text-amber-800 dark:text-amber-300 text-xs shadow-xl"
-      >
-        <div className="flex items-start justify-between gap-3">
-          <span>{storageWarning}</span>
-          <button
-            type="button"
-            onClick={() => setStorageWarning(null)}
-            className="shrink-0 font-bold underline hover:no-underline"
-          >
-            Dismiss
-          </button>
-        </div>
-      </div>
-    )}
     </>
   );
 }
