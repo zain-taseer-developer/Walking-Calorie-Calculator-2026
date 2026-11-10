@@ -4,6 +4,7 @@ import matter from "gray-matter";
 
 export interface BlogPostFrontmatter {
   title: string;
+  seoTitle?: string;
   slug: string;
   description: string;
   category: string;
@@ -64,6 +65,7 @@ export function getAllPosts(): BlogPost[] {
 
       const frontmatter: BlogPostFrontmatter = {
         title: data.title || "Untitled Post",
+        seoTitle: data.seoTitle,
         slug: data.slug || fileName.replace(/\.mdx$/, ""),
         description: data.description || "",
         category: data.category || "Walking Basics",
