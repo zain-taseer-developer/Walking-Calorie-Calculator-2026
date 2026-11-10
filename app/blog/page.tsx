@@ -7,10 +7,11 @@ import { AdSlot } from "@/components/ads/AdSlot";
 import { BookOpen, Sparkles } from "lucide-react";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Walking & Fitness Research Blog | Evidence-Based Guides",
+  title: "Walking, Steps & Calorie Guides | walkingcaloriecalc.com",
   description:
-    "Explore in-depth exercise physiology articles, step benchmarks, treadmill workout breakdowns, and fat-loss science from the WalkingCalorieCalc.com research team.",
+    "Evidence-based walking guides on calories burned, daily steps, treadmill workouts, and weight loss, with clear answers and tools you can use today.",
   canonicalPath: "/blog",
+  absoluteTitle: true,
   keywords: [
     "walking blog",
     "calories burned walking articles",
@@ -33,10 +34,10 @@ export default function BlogIndexPage() {
           <span>Exercise Science &amp; Health Hub</span>
         </div>
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
-          Walking, Steps &amp; Calorie Research
+          Walking, Steps &amp; Calorie Guides
         </h1>
         <p className="mt-2 text-base text-slate-600 dark:text-slate-300">
-          In-depth, peer-reviewed articles and practical protocols to help you optimize your daily step volume and physical well-being.
+          Clear, evidence-based articles on walking calories, daily steps, treadmill workouts, and weight loss, with practical tips you can use every day.
         </p>
       </div>
 
