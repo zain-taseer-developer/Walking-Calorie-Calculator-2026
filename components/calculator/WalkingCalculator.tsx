@@ -1020,25 +1020,6 @@ export function WalkingCalculator() {
 
           {/* Primary Action Button Area */}
           <div className="pt-2">
-            {/* Storage Error Banner */}
-            {storageError && (
-              <div className="mb-2 p-3 rounded-xl bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 text-xs flex items-center justify-between gap-2">
-                <span>{storageError}</span>
-                <button
-                  type="button"
-                  onClick={() => setStorageError(null)}
-                  className="font-bold underline hover:no-underline shrink-0"
-                >
-                  Dismiss
-                </button>
-              </div>
-            )}
-            {storageWarning && (
-              <div className="mb-2 p-3 rounded-xl bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-300 text-xs">
-                {storageWarning}
-              </div>
-            )}
-
             {/* 28-record limit notice above button */}
             {isLimitReached && (
               <div className="mb-2 p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-300 text-xs flex items-center gap-2">
@@ -1076,6 +1057,23 @@ export function WalkingCalculator() {
                 </>
               )}
             </button>
+            {storageError && (
+              <div className="mt-2 p-3 rounded-xl bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 text-xs flex items-center justify-between gap-2">
+                <span>{storageError}</span>
+                <button
+                  type="button"
+                  onClick={() => setStorageError(null)}
+                  className="font-bold underline hover:no-underline shrink-0"
+                >
+                  Dismiss
+                </button>
+              </div>
+            )}
+            {storageWarning && (
+              <div className="mt-2 p-3 rounded-xl bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-300 text-xs">
+                {storageWarning}
+              </div>
+            )}
             <p className="text-center text-[11px] text-slate-400 mt-2">
               Results update live above &amp; below as you adjust values.
             </p>
