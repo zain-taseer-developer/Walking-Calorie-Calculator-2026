@@ -12,9 +12,9 @@ import { calculateWalkingCalories, getWalkingMet } from "@/lib/calc";
 import { Table, Flame, Sparkles } from "lucide-react";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Calories Burned Walking Chart: Printable Matrix by Weight & Speed",
+  title: "Calories Burned Walking Chart (30 Min & 1 Hour) by Weight",
   description:
-    "Comprehensive, printable calories burned walking chart by weight (110–260 lbs) and speed (2.0–4.5 mph) for 30 and 60 minutes based on 2011 Compendium MET data.",
+    "Free printable walking calories burned chart. Find calories burned in 30 minutes or 1 hour by body weight (110–260 lbs) and speed, plus calories per mile.",
   canonicalPath: "/walking-calories-burned-chart",
   keywords: [
     "calories burned walking chart",
