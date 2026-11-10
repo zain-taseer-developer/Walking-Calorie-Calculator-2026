@@ -13,9 +13,10 @@ export default function ContactPage() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
       setError("Please complete all required fields.");
@@ -27,17 +28,38 @@ export default function ContactPage() {
     }
 
     setError("");
-    const body = [
-      `Name: ${formData.name.trim()}`,
-      `Reply-to: ${formData.email.trim()}`,
-      "",
-      formData.message.trim(),
-    ].join("\n");
-    const mailto = `mailto:${siteConfig.CONTACT_EMAIL}?subject=${encodeURIComponent(
-      formData.subject.trim()
-    )}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailto;
-    setSubmitted(true);
+    setIsSubmitting(true);
+
+    const formElement = e.currentTarget;
+    const botcheck = new FormData(formElement).get("botcheck");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, botcheck }),
+      });
+      const result: unknown = await response.json();
+      const message =
+        typeof result === "object" && result !== null && "error" in result &&
+        typeof result.error === "string"
+          ? result.error
+          : "Unable to send your message. Please try again.";
+
+      if (!response.ok) {
+        throw new Error(message);
+      }
+
+      setSubmitted(true);
+    } catch (submitError) {
+      setError(
+        submitError instanceof Error
+          ? submitError.message
+          : "Unable to send your message. Please try again."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -66,10 +88,10 @@ export default function ContactPage() {
                 <CheckCircle2 className="w-6 h-6" />
               </div>
               <h3 className="text-xl font-bold text-slate-900 dark:text-white">
-                Email Draft Ready
+                Message Sent
               </h3>
               <p className="text-sm text-slate-600 dark:text-slate-400 max-w-md mx-auto">
-                Your email app should open with your message addressed to {siteConfig.CONTACT_EMAIL}. Press Send in that app to deliver it. If it did not open, email us directly at{" "}
+                Your message has been sent. We will reply to the email address you provided. If you need to follow up, email us directly at{" "}
                 <a className="font-semibold text-brand-600 underline" href={`mailto:${siteConfig.CONTACT_EMAIL}`}>
                   {siteConfig.CONTACT_EMAIL}
                 </a>
@@ -88,6 +110,12 @@ export default function ContactPage() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="hidden" aria-hidden="true">
+                <label>
+                  Leave this field blank
+                  <input type="text" name="botcheck" tabIndex={-1} autoComplete="off" />
+                </label>
+              </div>
               {error && (
                 <div className="p-3 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900 text-red-700 dark:text-red-300 text-xs flex items-center gap-2">
                   <AlertCircle className="w-4 h-4 shrink-0" />
@@ -152,10 +180,11 @@ export default function ContactPage() {
 
               <button
                 type="submit"
+                disabled={isSubmitting}
                 className="w-full py-3 px-5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm shadow-md transition-colors flex items-center justify-center gap-2"
               >
                 <Send className="w-4 h-4" />
-                <span>Open Email App</span>
+                <span>{isSubmitting ? "Sending..." : "Send Message"}</span>
               </button>
             </form>
           )}
