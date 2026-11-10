@@ -268,9 +268,10 @@ export function WalkingCalculator() {
       }
 
       setHistory(updateRes.history);
+      setLoadedRecordId(null);
       setIsRecordEdited(false);
       setUpdateButtonStatus("updated");
-      setRecentlyUpdatedId(loadedRecordId);
+      setRecentlyUpdatedId(updatedRecord.id);
       setIsHistoryOpen(true);
 
       if (updateStatusTimeoutRef.current) clearTimeout(updateStatusTimeoutRef.current);
