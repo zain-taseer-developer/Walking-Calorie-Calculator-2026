@@ -26,6 +26,7 @@ import {
   updateRecord,
   deleteRecord,
   MAX_HISTORY_RECORDS,
+  requestPersistentHistoryStorage,
 } from "@/lib/history";
 import {
   Clock,
@@ -51,6 +52,7 @@ export function WalkingCalculator() {
   const [updateButtonStatus, setUpdateButtonStatus] = useState<"idle" | "updated">("idle");
   const [recentlyUpdatedId, setRecentlyUpdatedId] = useState<string | null>(null);
   const [storageError, setStorageError] = useState<string | null>(null);
+  const [storageWarning, setStorageWarning] = useState<string | null>(null);
 
   const updateStatusTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const recentlyUpdatedTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -103,6 +105,21 @@ export function WalkingCalculator() {
       // Browser storage is only available after hydration.
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setHistory(storedHistory.records);
+      if (storedHistory.records.length > 0) {
+        void requestPersistentHistoryStorage()
+          .then((persistentStorageGranted) => {
+            if (!persistentStorageGranted) {
+              setStorageWarning(
+                "Your saved history is still available in this browser, but the browser may clear it if site data is removed."
+              );
+            }
+          })
+          .catch(() => {
+            setStorageWarning(
+              "Your saved history is still available in this browser, but persistent storage could not be enabled."
+            );
+          });
+      }
     }
     if (storedHistory.error) {
       setStorageError(storedHistory.error);
@@ -204,6 +221,21 @@ export function WalkingCalculator() {
   // Action button click: "Save to History" or "Update Record"
   const handleActionButtonClick = () => {
     setStorageError(null);
+    setStorageWarning(null);
+
+    void requestPersistentHistoryStorage()
+      .then((persistentStorageGranted) => {
+        if (!persistentStorageGranted) {
+          setStorageWarning(
+            "Your record will still be saved in this browser, but the browser may clear it if site data is removed."
+          );
+        }
+      })
+      .catch(() => {
+        setStorageWarning(
+          "Your record will still be saved in this browser, but persistent storage could not be enabled."
+        );
+      });
 
     // Case 1: Updating an existing loaded record
     if (loadedRecordId && isRecordEdited) {
@@ -1005,6 +1037,11 @@ export function WalkingCalculator() {
                 >
                   Dismiss
                 </button>
+              </div>
+            )}
+            {storageWarning && (
+              <div className="mb-2 p-3 rounded-xl bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-300 text-xs">
+                {storageWarning}
               </div>
             )}
 

@@ -47,7 +47,7 @@ export default function PrivacyPolicyPage() {
           Like most modern web applications, {siteConfig.SITE_NAME} uses standard browser storage mechanisms:
         </p>
         <ul>
-          <li><strong>Essential Local Storage:</strong> Used to remember your preferred unit system (Imperial vs. Metric), dark/light theme preference, and your optional recent calculation history. This data resides solely on your physical device and can be cleared at any time via your browser settings.</li>
+          <li><strong>Essential Local Storage:</strong> Used to remember your preferred unit system (Imperial vs. Metric), dark/light theme preference, and your optional recent calculation history for up to 28 days. When you save a calculation, we may ask your browser to protect this local data from automatic storage cleanup. The data remains on your device and can still be removed through your browser settings.</li>
           <li><strong>Analytical Cookies:</strong> Used to understand how visitors navigate our tools, which pages are most helpful, and how to improve site speed and accessibility.</li>
         </ul>
 
