@@ -223,19 +223,9 @@ export function WalkingCalculator() {
     setStorageError(null);
     setStorageWarning(null);
 
-    void requestPersistentHistoryStorage()
-      .then((persistentStorageGranted) => {
-        if (!persistentStorageGranted) {
-          setStorageWarning(
-            "Your record will still be saved in this browser, but the browser may clear it if site data is removed."
-          );
-        }
-      })
-      .catch(() => {
-        setStorageWarning(
-          "Your record will still be saved in this browser, but persistent storage could not be enabled."
-        );
-      });
+    void requestPersistentHistoryStorage().catch((error) => {
+      console.error("Could not request persistent history storage.", error);
+    });
 
     // Case 1: Updating an existing loaded record
     if (loadedRecordId && isRecordEdited) {
