@@ -7,6 +7,7 @@ import { generateFAQSchema } from "@/lib/seo";
 export interface FAQItem {
   question: string;
   answer: string;
+  answerContent?: React.ReactNode;
 }
 
 export function FAQSection({
@@ -75,7 +76,7 @@ export function FAQSection({
 
               {isOpen && (
                 <div className="px-5 pb-5 pt-1 text-sm text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-slate-800/80">
-                  <p>{faq.answer}</p>
+                  <p>{faq.answerContent ?? faq.answer}</p>
                 </div>
               )}
             </div>
@@ -85,4 +86,3 @@ export function FAQSection({
     </section>
   );
 }
-
