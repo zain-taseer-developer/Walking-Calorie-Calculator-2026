@@ -1,4 +1,5 @@
 import { siteConfig } from "@/site.config";
+import nodemailer from "nodemailer";
 
 const MAX_REQUEST_SIZE = 12_000;
 const MAX_NAME_LENGTH = 120;
@@ -55,55 +56,37 @@ export async function POST(request: Request) {
     return errorResponse("Please check the form fields and try again.", 400);
   }
 
-  const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
-  if (!accessKey) {
-    console.error("Contact form email delivery is unavailable: WEB3FORMS_ACCESS_KEY is not configured.");
+  const host = process.env.SMTP_HOST;
+  const port = Number(process.env.SMTP_PORT);
+  const user = process.env.SMTP_USER;
+  const password = process.env.SMTP_PASSWORD;
+  const from = process.env.SMTP_FROM;
+  const to = process.env.CONTACT_EMAIL;
+  if (!host || !Number.isInteger(port) || port < 1 || port > 65_535 || !user || !password || !from || !to) {
+    console.error("Contact form email delivery is unavailable: SMTP settings are incomplete.");
     return errorResponse("Message sending is not configured yet. Please email us directly.", 503);
   }
 
-  let providerResponse: Response;
   try {
-    providerResponse = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        access_key: accessKey,
-        name,
-        email,
-        replyto: email,
-        subject,
-        message,
-        botcheck: "",
-        from_name: `${siteConfig.SITE_NAME} Contact Form`,
-      }),
-      signal: AbortSignal.timeout(10_000),
+    const transporter = nodemailer.createTransport({
+      host,
+      port,
+      secure: port === 465,
+      requireTLS: port !== 465,
+      auth: { user, pass: password },
+      connectionTimeout: 10_000,
+      greetingTimeout: 10_000,
+      socketTimeout: 10_000,
+    });
+    await transporter.sendMail({
+      from: { name: `${siteConfig.SITE_NAME} Contact Form`, address: from },
+      to,
+      replyTo: { name, address: email },
+      subject,
+      text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
     });
   } catch (error) {
-    console.error("Contact form request to Web3Forms failed.", error);
-    return errorResponse("We could not send your message right now. Please try again later.", 502);
-  }
-
-  let result: unknown;
-  try {
-    result = await providerResponse.json();
-  } catch (error) {
-    console.error("Web3Forms returned an invalid response.", error);
-    return errorResponse("We could not confirm that your message was sent. Please try again.", 502);
-  }
-
-  const succeeded =
-    typeof result === "object" &&
-    result !== null &&
-    "success" in result &&
-    result.success === true;
-
-  if (!providerResponse.ok || !succeeded) {
-    console.error("Web3Forms could not deliver a contact form submission.", {
-      status: providerResponse.status,
-    });
+    console.error("Contact form email delivery through SMTP failed.", error);
     return errorResponse("We could not send your message right now. Please try again later.", 502);
   }
 
