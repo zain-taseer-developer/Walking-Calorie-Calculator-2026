@@ -16,6 +16,7 @@ export const metadata: Metadata = constructMetadata({
   description:
     "Free printable walking calories burned chart. Find calories burned in 30 minutes or 1 hour by body weight (110–260 lbs) and speed, plus calories per mile.",
   canonicalPath: "/walking-calories-burned-chart",
+  absoluteTitle: true,
   keywords: [
     "calories burned walking chart",
     "calories burned walking by weight",
