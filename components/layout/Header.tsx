@@ -43,11 +43,11 @@ export function Header() {
           >
             <Image
               src="/walking-calories-logo.svg"
-              alt="Walking Calories — Free Walking & Fitness Calculator"
-              width={220}
-              height={55}
+              alt="Walking Calories — Walking & Fitness Calculator"
+              width={260}
+              height={65}
               priority
-              className="h-auto w-[180px] sm:w-[220px]"
+              className="h-auto w-[220px] sm:w-[260px]"
             />
           </Link>
 

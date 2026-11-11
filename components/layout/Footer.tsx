@@ -18,10 +18,10 @@ export function Footer() {
             >
               <Image
                 src="/walking-calories-logo.svg"
-                alt="Walking Calories — Free Walking & Fitness Calculator"
-                width={220}
-                height={55}
-                className="h-auto w-[220px]"
+                alt="Walking Calories — Walking & Fitness Calculator"
+                width={260}
+                height={65}
+                className="h-auto w-[260px]"
               />
             </Link>
             <p className="text-xs leading-relaxed text-slate-500 dark:text-slate-400">

@@ -13,5 +13,5 @@
     <path d="M146 38 C158 52 166 60 166 72 A13 13 0 0 1 140 72 C140 66 144 62 146 58 C148 64 150 64 152 64 C152 54 148 48 146 38 Z" fill="#fff"/>
   </g>
   <text x="140" y="68" font-family="Inter, 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif" font-size="46" font-weight="800" letter-spacing="-1"><tspan fill="#0f172a">Walking</tspan><tspan fill="#0c9488">Calories</tspan></text>
-  <text x="142" y="102" font-family="Inter, 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif" font-size="17" font-weight="500" fill="#475569">Free Walking &amp; Fitness Calculator</text>
+  <text x="142" y="104" font-family="Inter, 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif" font-size="23" font-weight="600" fill="#334155">Walking &amp; Fitness Calculator</text>
 </svg>
