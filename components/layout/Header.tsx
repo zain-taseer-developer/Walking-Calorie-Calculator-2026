@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { siteConfig } from "@/site.config";
 import { ThemeToggle } from "./ThemeToggle";
-import Image from "next/image";
+import { BrandLogoLink } from "./BrandLogoLink";
 import { Menu, X, ChevronRight } from "lucide-react";
 
 export function Header() {
@@ -39,28 +39,11 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Brand Logo */}
-          <Link
-            href="/"
-            className="flex shrink-0 items-center rounded-lg p-1 focus:outline-none focus:ring-2 focus:ring-brand-500"
-          >
-            <Image
-              src="/walking-calories-logo.svg"
-              alt="Walking Calories — Walking & Fitness Calculator"
-              width={260}
-              height={65}
-              priority
-              className="h-auto w-[220px] sm:w-[260px] dark:hidden"
-            />
-            <Image
-              src="/walking-calories-logo-dark.svg"
-              alt=""
-              aria-hidden="true"
-              width={260}
-              height={65}
-              priority
-              className="hidden h-auto w-[220px] sm:w-[260px] dark:block"
-            />
-          </Link>
+          <BrandLogoLink
+            className="flex shrink-0 items-center rounded-lg p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+            imageClassName="h-auto w-[220px] sm:w-[260px]"
+            priority
+          />
 
           {/* Desktop Navigation Links */}
           <nav className="hidden md:flex items-center gap-1 lg:gap-2">

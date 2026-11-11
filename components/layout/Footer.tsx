@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { siteConfig } from "@/site.config";
-import Image from "next/image";
+import { BrandLogoLink } from "./BrandLogoLink";
 import { ShieldCheck, Heart, ExternalLink } from "lucide-react";
 
 export function Footer() {
@@ -12,26 +12,10 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand & Purpose */}
           <div className="space-y-4">
-            <Link
-              href="/"
-              className="inline-flex rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500"
-            >
-              <Image
-                src="/walking-calories-logo.svg"
-                alt="Walking Calories — Walking & Fitness Calculator"
-                width={260}
-                height={65}
-                className="h-auto w-[260px] dark:hidden"
-              />
-              <Image
-                src="/walking-calories-logo-dark.svg"
-                alt=""
-                aria-hidden="true"
-                width={260}
-                height={65}
-                className="hidden h-auto w-[260px] dark:block"
-              />
-            </Link>
+            <BrandLogoLink
+              className="inline-flex rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+              imageClassName="h-auto w-[260px]"
+            />
             <p className="text-xs leading-relaxed text-slate-500 dark:text-slate-400">
               Science-backed exercise energy metrics powered by the 2011 Compendium of Physical Activities and ACSM metabolic equations. Free and privacy-first.
             </p>
