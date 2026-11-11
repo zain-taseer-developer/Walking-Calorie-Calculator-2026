@@ -41,7 +41,7 @@ export function Header() {
           {/* Brand Logo */}
           <BrandLogoLink
             className="flex shrink-0 items-center rounded-lg p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
-            imageClassName="h-auto w-[220px] sm:w-[260px]"
+            imageClassName="h-auto w-[190px] sm:w-[220px]"
             priority
           />
 

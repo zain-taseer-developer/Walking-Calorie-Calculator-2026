@@ -14,7 +14,7 @@ export function Footer() {
           <div className="space-y-4">
             <BrandLogoLink
               className="inline-flex rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
-              imageClassName="h-auto w-[260px]"
+              imageClassName="h-auto w-[220px]"
             />
             <p className="text-xs leading-relaxed text-slate-500 dark:text-slate-400">
               Science-backed exercise energy metrics powered by the 2011 Compendium of Physical Activities and ACSM metabolic equations. Free and privacy-first.
