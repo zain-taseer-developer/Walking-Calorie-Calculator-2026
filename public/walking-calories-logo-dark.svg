@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 140" width="560" height="140">
+  <g transform="translate(20 20) scale(.5)">
+    <rect width="200" height="200" rx="44" fill="#0c9488"/>
+    <g stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <line x1="100" y1="76" x2="92" y2="112"/>
+      <polyline points="92,112 106,132 100,156"/>
+      <polyline points="92,112 78,132 66,152"/>
+      <polyline points="98,84 114,98 126,92"/>
+      <polyline points="98,84 84,98 74,92"/>
+    </g>
+    <circle cx="104" cy="60" r="11" fill="#fff"/>
+    <path d="M146 38 C158 52 166 60 166 72 A13 13 0 0 1 140 72 C140 66 144 62 146 58 C148 64 150 64 152 64 C152 54 148 48 146 38 Z" fill="#fff"/>
+  </g>
+  <text x="140" y="68" font-family="Inter, 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif" font-size="46" font-weight="800" letter-spacing="-1"><tspan fill="#f8fafc">Walking</tspan><tspan fill="#2dd4bf">Calories</tspan></text>
+  <text x="142" y="104" font-family="Inter, 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif" font-size="23" font-weight="400" fill="#cbd5e1">Walking &amp; Fitness Calculator</text>
+</svg>
