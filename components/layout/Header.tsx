@@ -17,7 +17,9 @@ export function Header() {
       {/* Slim 20px Subheader above Main Header */}
       <div className="w-full h-[20px] min-h-[20px] max-h-[20px] border-b border-slate-200/60 dark:border-slate-800/60 bg-slate-50/90 dark:bg-slate-900/90 text-[11px] leading-[20px] text-slate-500 dark:text-slate-400">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
-          <span className="truncate font-medium">Your Free Walking &amp; Fitness Calculator – 2026</span>
+          <span className="truncate pl-3 font-medium sm:pl-[13px]">
+            Your Free Walking &amp; Fitness Calculator – 2026
+          </span>
           <nav className="flex items-center gap-2.5 sm:gap-3 shrink-0 text-[11px]" aria-label="Quick links">
             <Link href="/about" className="hover:text-slate-900 dark:hover:text-white transition-colors">
               About
