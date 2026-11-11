@@ -1,6 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-  <rect width="32" height="32" rx="8" fill="#0D9488" />
-  <path d="M16 6C16 6 11 11.5 11 16.5C11 19.5 13.2 22 16 22C18.8 22 21 19.5 21 16.5C21 11.5 16 6 16 6Z" fill="#F59E0B" />
-  <path d="M16 13C16 13 13.5 16 13.5 18.5C13.5 20 14.6 21 16 21C17.4 21 18.5 20 18.5 18.5C18.5 16 16 13 16 13Z" fill="#FEF3C7" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <rect width="200" height="200" rx="44" fill="#0c9488"/>
+  <g stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <line x1="100" y1="76" x2="92" y2="112"/>
+    <polyline points="92,112 106,132 100,156"/>
+    <polyline points="92,112 78,132 66,152"/>
+    <polyline points="98,84 114,98 126,92"/>
+    <polyline points="98,84 84,98 74,92"/>
+  </g>
+  <circle cx="104" cy="60" r="11" fill="#fff"/>
+  <path d="M146 38 C158 52 166 60 166 72 A13 13 0 0 1 140 72 C140 66 144 62 146 58 C148 64 150 64 152 64 C152 54 148 48 146 38 Z" fill="#fff"/>
 </svg>
-

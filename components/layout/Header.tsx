@@ -5,7 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { siteConfig } from "@/site.config";
 import { ThemeToggle } from "./ThemeToggle";
-import { Flame, Menu, X, ChevronRight } from "lucide-react";
+import Image from "next/image";
+import { Menu, X, ChevronRight } from "lucide-react";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -38,14 +39,16 @@ export function Header() {
           {/* Brand Logo */}
           <Link
             href="/"
-            className="flex items-center gap-2.5 font-bold text-lg sm:text-xl text-slate-900 dark:text-white group focus:outline-none focus:ring-2 focus:ring-brand-500 rounded-lg p-1"
+            className="flex shrink-0 items-center rounded-lg p-1 focus:outline-none focus:ring-2 focus:ring-brand-500"
           >
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-600 to-teal-400 flex items-center justify-center text-white shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform">
-              <Flame className="w-5 h-5 text-white" />
-            </div>
-            <span className="tracking-tight">
-              Walking<span className="text-brand-600 dark:text-brand-400">Calories</span>
-            </span>
+            <Image
+              src="/walking-calories-logo.svg"
+              alt="Walking Calories — Free Walking & Fitness Calculator"
+              width={220}
+              height={55}
+              priority
+              className="h-auto w-[180px] sm:w-[220px]"
+            />
           </Link>
 
           {/* Desktop Navigation Links */}
@@ -130,4 +133,3 @@ export function Header() {
     </header>
   );
 }
-

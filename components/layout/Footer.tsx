@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { siteConfig } from "@/site.config";
-import { Flame, ShieldCheck, Heart, ExternalLink } from "lucide-react";
+import Image from "next/image";
+import { ShieldCheck, Heart, ExternalLink } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -13,14 +14,15 @@ export function Footer() {
           <div className="space-y-4">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 font-bold text-lg text-slate-900 dark:text-white group"
+              className="inline-flex rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500"
             >
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-600 to-teal-400 flex items-center justify-center text-white shadow-sm">
-                <Flame className="w-4 h-4 text-white" />
-              </div>
-              <span>
-                Walking<span className="text-brand-600 dark:text-brand-400">Calories</span>
-              </span>
+              <Image
+                src="/walking-calories-logo.svg"
+                alt="Walking Calories — Free Walking & Fitness Calculator"
+                width={220}
+                height={55}
+                className="h-auto w-[220px]"
+              />
             </Link>
             <p className="text-xs leading-relaxed text-slate-500 dark:text-slate-400">
               Science-backed exercise energy metrics powered by the 2011 Compendium of Physical Activities and ACSM metabolic equations. Free and privacy-first.

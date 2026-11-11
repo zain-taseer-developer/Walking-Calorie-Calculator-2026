@@ -41,7 +41,7 @@ export const metadata: Metadata = {
       "Calculate your walking calorie burn instantly by weight, speed, distance, or steps.",
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/icon.svg",
   },
 };
 
@@ -124,4 +124,3 @@ export default function RootLayout({
     </html>
   );
 }
-
