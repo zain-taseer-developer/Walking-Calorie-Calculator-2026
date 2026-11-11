@@ -21,7 +21,15 @@ export function Footer() {
                 alt="Walking Calories — Walking & Fitness Calculator"
                 width={260}
                 height={65}
-                className="h-auto w-[260px]"
+                className="h-auto w-[260px] dark:hidden"
+              />
+              <Image
+                src="/walking-calories-logo-dark.svg"
+                alt=""
+                aria-hidden="true"
+                width={260}
+                height={65}
+                className="hidden h-auto w-[260px] dark:block"
               />
             </Link>
             <p className="text-xs leading-relaxed text-slate-500 dark:text-slate-400">

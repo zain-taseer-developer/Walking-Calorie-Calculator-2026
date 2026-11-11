@@ -47,7 +47,16 @@ export function Header() {
               width={260}
               height={65}
               priority
-              className="h-auto w-[220px] sm:w-[260px]"
+              className="h-auto w-[220px] sm:w-[260px] dark:hidden"
+            />
+            <Image
+              src="/walking-calories-logo-dark.svg"
+              alt=""
+              aria-hidden="true"
+              width={260}
+              height={65}
+              priority
+              className="hidden h-auto w-[220px] sm:w-[260px] dark:block"
             />
           </Link>
 
