@@ -135,6 +135,37 @@ export default function MarathonPaceChartPage() {
           </table>
         </div>
 
+        <h2>Half Marathon Pace Chart</h2>
+        <p>
+          Use this <strong>half marathon pace chart</strong> to estimate the average pace needed for a 13.1-mile (21.1-kilometer) race. Choose a finish-time goal and aim to keep your mile or kilometer splits close to the listed pace. These rounded estimates assume an even pace throughout the race.
+        </p>
+        <div className="not-prose my-6 overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
+          <table className="min-w-full divide-y divide-slate-200 text-left text-sm dark:divide-slate-800">
+            <thead className="bg-slate-50 dark:bg-slate-900">
+              <tr>
+                <th className="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">Finish Time</th>
+                <th className="px-4 py-3 font-semibold text-emerald-700 dark:text-emerald-400">Pace / Mile</th>
+                <th className="px-4 py-3 font-semibold text-teal-700 dark:text-teal-400">Pace / Km</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100 bg-white dark:divide-slate-800 dark:bg-slate-950">
+              {[
+                ["1:30:00", "6:52 /mi", "4:16 /km"],
+                ["1:45:00", "8:00 /mi", "4:59 /km"],
+                ["2:00:00", "9:09 /mi", "5:41 /km"],
+                ["2:15:00", "10:18 /mi", "6:24 /km"],
+                ["2:30:00", "11:27 /mi", "7:07 /km"],
+              ].map(([finish, milePace, kmPace]) => (
+                <tr key={finish}>
+                  <td className="px-4 py-3 font-bold text-slate-900 dark:text-slate-100">{finish}</td>
+                  <td className="px-4 py-3 font-mono text-emerald-600 dark:text-emerald-400">{milePace}</td>
+                  <td className="px-4 py-3 font-mono text-teal-600 dark:text-teal-400">{kmPace}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
         <h2>5K Pace Chart & 10K Pace Chart</h2>
         <p>
           Before tackling 26.2 miles, runners build speed on shorter courses or train for a specific <strong>half marathon pace</strong> (13.1 miles). A dedicated <strong>5k pace chart</strong> and <strong>10k pace chart</strong> (or <strong>pace chart 10km</strong> and <strong>5k running pace chart</strong>) helps calibrate early splits:
