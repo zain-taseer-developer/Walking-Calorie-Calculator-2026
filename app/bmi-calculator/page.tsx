@@ -9,76 +9,95 @@ import { siteConfig } from "@/site.config";
 export const metadata: Metadata = {
   title: "BMI Calculator: Body Mass Index, Healthy Weight & FFMI",
   description:
-    "Free Body Mass Index (BMI) and FFMI calculator for men and women. Check healthy height and weight charts, obesity classifications, and lean muscle mass.",
+    "Calculate your BMI and healthy weight range with our free BMI calculator. Check BMI categories, understand FFMI, and explore results for adults and children.",
   alternates: {
     canonical: `${siteConfig.CANONICAL_URL}/bmi-calculator`,
   },
 };
 
-const femaleBmiChart = [
-  { height: "4'11\" (150 cm)", under: "< 91 lbs", healthy: "91 - 123 lbs", over: "124 - 147 lbs", obese: "148+ lbs" },
-  { height: "5'1\" (155 cm)", under: "< 98 lbs", healthy: "98 - 131 lbs", over: "132 - 157 lbs", obese: "158+ lbs" },
-  { height: "5'3\" (160 cm)", under: "< 104 lbs", healthy: "104 - 140 lbs", over: "141 - 168 lbs", obese: "169+ lbs (5 3 150 lbs female is slightly overweight)" },
-  { height: "5'4\" (163 cm)", under: "< 108 lbs", healthy: "108 - 145 lbs (normal weight for 5'4 female)", over: "146 - 174 lbs", obese: "175+ lbs" },
-  { height: "5'5\" (165 cm)", under: "< 111 lbs", healthy: "111 - 150 lbs (5 5 weight for female)", over: "151 - 179 lbs", obese: "180+ lbs" },
-  { height: "5'6\" (168 cm)", under: "< 115 lbs", healthy: "115 - 154 lbs (when height is 5 6; 150 lbs 5 6 female is healthy; 180 5'6 / 180 5 6 is overweight)", over: "155 - 185 lbs", obese: "186+ lbs" },
-  { height: "5'7\" (170 cm)", under: "< 118 lbs", healthy: "118 - 159 lbs (ideal weight for 5 7 female / correct weight for 5'7 female)", over: "160 - 190 lbs", obese: "191+ lbs" },
-  { height: "5'9\" (175 cm)", under: "< 125 lbs", healthy: "125 - 169 lbs", over: "170 - 202 lbs", obese: "203+ lbs" },
-];
-
-const maleBmiChart = [
-  { height: "5'6\" (168 cm)", under: "< 115 lbs", healthy: "115 - 154 lbs", over: "155 - 185 lbs", obese: "186+ lbs" },
-  { height: "5'8\" (173 cm)", under: "< 122 lbs", healthy: "122 - 164 lbs", over: "165 - 196 lbs", obese: "197+ lbs" },
-  { height: "5'10\" (178 cm)", under: "< 129 lbs", healthy: "129 - 173 lbs (average weight for 5'10 male / body mass index for 5 10 male)", over: "174 - 208 lbs", obese: "209+ lbs" },
-  { height: "6'0\" (183 cm)", under: "< 136 lbs", healthy: "136 - 184 lbs", over: "185 - 220 lbs", obese: "221+ lbs" },
-  { height: "6'2\" (188 cm)", under: "< 144 lbs", healthy: "144 - 194 lbs", over: "195 - 232 lbs", obese: "233+ lbs" },
+const bmiCategories = [
+  {
+    range: "Below 18.5",
+    category: "Underweight",
+    interpretation: "Below the adult reference range; BMI alone cannot explain the cause or assess health.",
+  },
+  {
+    range: "18.5 to 24.9",
+    category: "Normal weight",
+    interpretation: "Within the standard adult reference range; this does not guarantee overall health.",
+  },
+  {
+    range: "25.0 to 29.9",
+    category: "Overweight",
+    interpretation: "Above the standard adult reference range; consider it alongside other health information.",
+  },
+  {
+    range: "30.0 or higher",
+    category: "Obesity",
+    interpretation: "At or above the standard adult BMI screening threshold; it is not a diagnosis by itself.",
+  },
 ];
 
 const faqs = [
   {
-    question: "What is a BMI (whats bmi / whats a bmi / bmi 是 什麼)?",
+    question: "What is BMI and how is it calculated?",
     answer:
-      "Body mass index (BMI) is a standardized screening metric established by the World Health Organization (WHO) and Belgian mathematician Adolphe Quetelet. By dividing body weight in kilograms by height in meters squared (kg/m²), BMI estimates whether an adult's overall mass falls into underweight (< 18.5), normal healthy range (18.5 - 24.9), overweight (25.0 - 29.9), or obese (≥ 30.0) categories.",
+      "Body mass index (BMI) is weight relative to height. For metric units, divide weight in kilograms by height in metres squared. For pounds and inches, divide weight by height in inches squared and multiply by 703. BMI is a screening measure, not a direct measurement of body fat.",
   },
   {
-    question: "What is the correct weight for 5'7 female (appropriate weight for 5' 7 female / ideal weight for 5 7 female)?",
+    question: "What is a healthy BMI for adults?",
     answer:
-      "For a 5 7 height (170 cm), a healthy normal BMI range (18.5 to 24.9) corresponds to a body weight between 118 lbs (53.5 kg) and 159 lbs (72.1 kg). Most clinical guides consider 130 to 148 lbs the ideal weight for 5 7 female individuals depending on bone frame structure.",
+      "The standard adult reference range is 18.5 to less than 25.0. It is a screening range, not an individual diagnosis or a complete measure of health.",
   },
   {
-    question: "What is the average weight for 5'10 male (body mass index for 5 10 male)?",
+    question: "What is a healthy weight for my height?",
     answer:
-      "The normal healthy weight range for a 5'10\" male (178 cm) is 129 to 173 lbs (BMI 18.5 to 24.9). The statistical average weight for 5'10 male adults in the United States is approximately 195 to 200 lbs, which places the average man into the overweight BMI classification.",
+      "This calculator shows the weight range corresponding to a BMI of 18.5 to 24.9 at your entered height. Treat it as a reference range rather than a required or ideal weight; body composition and health history also matter.",
   },
   {
-    question: "What is a good BMI (what should my bmi be)?",
+    question: "Is BMI different for men and women?",
     answer:
-      "For general adult health and longevity, a good BMI is generally between 18.5 and 24.9. For example, a bmi 22 female represents the statistical center of optimal cardiovascular health. A bmi 25 marks the exact boundary between normal weight and overweight.",
+      "Standard adult BMI formulas and category thresholds are generally the same for men and women. BMI does not directly measure body-fat percentage or account for individual differences in muscle mass and body composition.",
   },
   {
-    question: "What is an FFMI calculator (ffmi calc / ffmi) and why is it better for athletic bodies?",
+    question: "What is the correct weight for a 5'7\" woman?",
     answer:
-      "The Fat-Free Mass Index (FFMI) evaluates muscular development independent of height and fat mass. While a muscular weightlifter might be misclassified as overweight by a standard determining bmi calculator, an FFMI calculator subtracts body fat percentage to reveal true lean skeletal muscle mass. Natural drug-free athletic ceilings typically peak around 24 to 25 FFMI.",
+      "There is no single correct weight. At 5'7\" (about 1.70 m), the standard adult BMI reference range corresponds roughly to 118–159 lb (about 54–72 kg). This is only a screening reference and does not account for body composition or personal health factors.",
+  },
+  {
+    question: "What is the average weight for a 5'10\" man?",
+    answer:
+      "An average depends on the population, location, and survey being discussed, so BMI cannot determine it. At 5'10\" (about 1.78 m), the standard adult BMI reference range corresponds roughly to 130–174 lb (about 59–79 kg); that range is not a population average or a personal target.",
+  },
+  {
+    question: "What is FFMI and how is it calculated?",
+    answer:
+      "Fat-Free Mass Index (FFMI) relates estimated fat-free mass to height: FFMI = fat-free mass in kilograms ÷ height in metres squared. Fat-free mass is estimated from body weight and body-fat percentage. This calculator also displays a height-normalized FFMI estimate; neither value is a diagnosis or universal health classification.",
+  },
+  {
+    question: "Is BMI accurate for muscular people?",
+    answer:
+      "BMI can classify a muscular person as overweight because it does not distinguish muscle from fat. Consider it alongside other measures and a qualified health professional’s assessment rather than interpreting the number alone.",
   },
   {
     question: "Is 200 pounds overweight?",
     answer:
-      "Whether 200 pounds is overweight depends entirely on your height and body composition. For someone 5'8\" or 5'9\", 200 pounds yields a BMI over 29.5 (borderline obesity). However, for an athlete standing 6'4\" or taller, 200 pounds falls squarely into a normal healthy weight category.",
+      "It depends on height and other factors. For example, 200 lb at 5'7\" gives a BMI of about 31.3, while 200 lb at 6'4\" gives a BMI of about 24.3. BMI is a screening result, not a diagnosis.",
   },
   {
-    question: "How much should a 13 year old weigh?",
+    question: "How is BMI calculated for children?",
     answer:
-      "Adult BMI formulas do not apply directly to teenagers because children grow at rapid, variable rates. Pediatricians use the CDC pediatric bmi calculator and percentile growth charts (evaluating age and sex specific percentiles). A healthy 13-year-old typically weighs between 75 and 145 lbs depending on their growth spurt timing and biological sex.",
+      "For children and teens, BMI is interpreted using age- and sex-specific BMI-for-age percentiles, not adult cutoffs. This calculator does not calculate pediatric percentiles; use an appropriate child and teen BMI assessment tool or consult a pediatric health professional.",
   },
   {
-    question: "What is the average u.s. female weight?",
+    question: "How do Asian BMI categories differ?",
     answer:
-      "According to National Center for Health Statistics (CDC) surveys, the average U.S. female weight is approximately 170.8 lbs (77.5 kg) at an average height of 5'3.5\" (161 cm), yielding an average BMI of roughly 29.6.",
+      "WHO consultation identified lower BMI action points (including 23 and 27.5) for assessing potential public-health risk in Asian populations, because risk may occur at lower BMI in some groups. These are action points, not interchangeable universal category definitions; populations vary. The calculator’s Asian option applies its displayed thresholds as a reference.",
   },
   {
-    question: "How do you calculate Asian BMI?",
+    question: "What are the limitations of BMI?",
     answer:
-      "Because individuals of Asian descent tend to carry a higher percentage of visceral adipose tissue at lower body weights, the WHO Western Pacific Region recommends lower thresholds: Normal BMI is 18.5 to 22.9, Overweight is 23.0 to 27.4, and Obesity begins at 27.5. You can toggle our tool above to calculate Asian BMI automatically.",
+      "BMI does not distinguish fat from muscle or show where fat is distributed. It can be less informative for people with higher muscle mass, and it needs different interpretation during pregnancy and in older adults. For children and teens, adult categories do not apply. BMI is a screening tool, not a medical diagnosis.",
   },
 ];
 
@@ -94,118 +113,128 @@ export default function BMICalculatorPage() {
 
       <header className="mb-8">
         <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
-          BMI Calculator: Body Mass Index & FFMI Calculator
+          BMI Calculator: Body Mass Index &amp; FFMI Calculator
         </h1>
         <p className="mt-3 text-lg text-slate-600 dark:text-slate-300">
-          Find your exact Body Mass Index (BMI), healthy weight range, and Fat-Free Mass Index (FFMI). Built for both men and women with WHO, CDC, and Asian metabolic guidelines.
+          Estimate adult BMI, see the corresponding standard healthy-weight range, and optionally explore FFMI using body-fat percentage. BMI is a screening measure, not a diagnosis.
         </p>
       </header>
 
-      {/* Interactive Tool */}
       <div className="mb-8">
         <BMICalculatorTool />
       </div>
 
       <AdSlot slotId="bmi-top" format="horizontal" />
 
-      {/* Main Editorial Content */}
       <section className="prose prose-slate mt-10 max-w-none dark:prose-invert">
-        <h2>BMI Definition: What Is Body Mass Index?</h2>
+        <h2>How to Use the BMI Calculator</h2>
+        <ol>
+          <li>
+            Choose <strong>WHO Standard</strong> for standard adult BMI categories. The Asian BMI option uses separate lower public-health action points; see the explanation below.
+          </li>
+          <li>Select Imperial or Metric units.</li>
+          <li>
+            The calculator has sex and age fields, but these do not change its BMI result or calculate pediatric percentiles.
+          </li>
+          <li>Enter your height and weight.</li>
+          <li>
+            Enter body-fat percentage if you want the calculator to estimate FFMI. This field is optional.
+          </li>
+          <li>
+            Results update as you change the inputs; there is no separate Calculate button. Review BMI, the standard healthy-weight range for your height, and the optional normalized FFMI estimate.
+          </li>
+        </ol>
+
+        <h2>Understanding Your BMI Results</h2>
         <p>
-          If you are searching for <strong>bmi definition</strong>, <strong>what is a bmi</strong>, <strong>whats bmi</strong>, or <strong>whats a bmi</strong> (or in Chinese: <strong>bmi 是 什麼</strong>), Body Mass Index is a universal screening ratio used by healthcare systems worldwide. Many people look up <strong>how to measure bmi</strong> or seek to <strong>measure bmi online</strong> accurately without registration.
+          Adult BMI categories group a height-adjusted weight calculation into screening ranges. They do not diagnose a condition or describe a person’s overall health. The calculator’s healthy-weight range shows the weights that correspond to a BMI from 18.5 through 24.9 at the entered height.
         </p>
         <p>
-          Whether typed as <strong>bmi bmi bmi</strong>, <strong>determining bmi calculator</strong>, <strong>weight calculator bmi</strong>, or common typos like <strong>bmi calculatir</strong> or <strong>bm1</strong>, the underlying mathematical formula divides body weight by height squared:
+          That range is a reference—not a prescribed, ideal, or suitable weight for everyone. BMI should be considered with other information, such as body composition, medical history, and clinical assessment.
+        </p>
+
+        <h2>BMI Formula and Calculation Example</h2>
+        <p>The calculator uses the standard formulas:</p>
+        <div className="not-prose my-4 rounded-xl border border-slate-200 bg-slate-50 p-4 font-mono text-sm text-slate-800 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200">
+          Metric: BMI = Weight (kg) ÷ Height (m)²
+          <br />
+          Imperial: BMI = [Weight (lbs) ÷ Height (inches)²] × 703
+        </div>
+        <p>
+          For example, at 70 kg and 1.75 m: BMI = 70 ÷ (1.75 × 1.75) = 22.86. The calculation squares the height first, then divides the weight by that value.
+        </p>
+
+        <h2>BMI Chart and Categories</h2>
+        <p>
+          These standard adult categories are commonly used for adults aged 20 and older. They are screening ranges, and the interpretation column is general rather than diagnostic.
+        </p>
+        <div className="not-prose my-6 overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
+          <table className="min-w-[36rem] divide-y divide-slate-200 text-left text-sm dark:divide-slate-800">
+            <caption className="sr-only">Standard adult BMI ranges and general interpretations</caption>
+            <thead className="bg-slate-50 dark:bg-slate-900">
+              <tr>
+                <th scope="col" className="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">BMI range</th>
+                <th scope="col" className="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">Weight category</th>
+                <th scope="col" className="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">General interpretation</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100 bg-white dark:divide-slate-800 dark:bg-slate-950">
+              {bmiCategories.map((item) => (
+                <tr key={item.category} className="align-top">
+                  <td className="whitespace-nowrap px-4 py-3 font-medium text-slate-900 dark:text-slate-100">{item.range}</td>
+                  <td className="whitespace-nowrap px-4 py-3 font-semibold text-slate-900 dark:text-slate-100">{item.category}</td>
+                  <td className="px-4 py-3 text-slate-600 dark:text-slate-400">{item.interpretation}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="text-sm">
+          On smaller screens, scroll the table horizontally to read each column.
+        </p>
+
+        <h2>BMI for Men vs. Women</h2>
+        <p>
+          Standard adult BMI formulas and category thresholds are generally the same for men and women. BMI does not directly measure body-fat percentage, distinguish muscle from fat, or account for individual differences in body composition. The sex field in this calculator does not change the result.
+        </p>
+
+        <h2>What Is FFMI?</h2>
+        <p>
+          Fat-Free Mass Index relates estimated fat-free mass to height. Unlike BMI, which uses total body weight, FFMI uses an estimate of weight excluding fat mass. Body-fat percentage is needed to estimate fat-free mass from body weight.
         </p>
         <div className="not-prose my-4 rounded-xl border border-slate-200 bg-slate-50 p-4 font-mono text-sm text-slate-800 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200">
-          Metric Formula: BMI = Weight (kg) ÷ [Height (m)]²
+          Fat-free mass (kg) = Weight (kg) × [1 − Body-fat percentage ÷ 100]
           <br />
-          Imperial Formula: BMI = [Weight (lbs) ÷ Height (inches)²] × 703
+          FFMI = Fat-free mass (kg) ÷ Height (m)²
         </div>
-
-        <h2>How to Calculate BMI</h2>
         <p>
-          To calculate BMI, divide your weight in kilograms by your height in meters squared. For example, at 70 kg and 1.75 m tall, the calculation is 70 ÷ (1.75 × 1.75), giving a BMI of about 22.9. For pounds and inches, divide your weight by your height in inches squared, then multiply by 703. This adult screening measure is one useful health indicator, but it does not distinguish muscle from fat.
+          This calculator reports a height-normalized FFMI estimate. Normalization adjusts the index for height; it does not establish a universal health or muscularity category. Body-fat estimates also vary by measurement method, so FFMI should be treated as an estimate.
         </p>
 
-        <h2>BMI Index Chart for Females & Women BMI Calculator</h2>
-        <p>
-          When women seek a specialized <strong>women bmi calculator</strong>, <strong>calculate bmi women</strong>, or <strong>bmi measurement female</strong>, body composition changes across reproductive life stages, bone density, and pregnancy play vital roles. The <strong>body mass index table for female</strong> and <strong>senior female weight chart</strong> below provides target healthy boundaries across heights.
-        </p>
-
-        {/* Female Reference Table */}
-        <div className="not-prose my-6 overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
-          <table className="min-w-full divide-y divide-slate-200 text-left text-sm dark:divide-slate-800">
-            <thead className="bg-slate-50 dark:bg-slate-900">
-              <tr>
-                <th className="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">Female Height</th>
-                <th className="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">Underweight (&lt;18.5)</th>
-                <th className="px-4 py-3 font-semibold text-emerald-700 dark:text-emerald-400">Normal Range (18.5 - 24.9)</th>
-                <th className="px-4 py-3 font-semibold text-amber-700 dark:text-amber-400">Overweight (25 - 29.9)</th>
-                <th className="px-4 py-3 font-semibold text-rose-700 dark:text-rose-400">Obesity (&ge;30)</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100 bg-white dark:divide-slate-800 dark:bg-slate-950">
-              {femaleBmiChart.map((row) => (
-                <tr key={row.height} className="hover:bg-slate-50/70 dark:hover:bg-slate-900/50">
-                  <td className="px-4 py-3 font-bold text-slate-900 dark:text-slate-100">{row.height}</td>
-                  <td className="px-4 py-3 text-slate-600 dark:text-slate-400">{row.under}</td>
-                  <td className="px-4 py-3 font-medium text-emerald-600 dark:text-emerald-400">{row.healthy}</td>
-                  <td className="px-4 py-3 text-amber-600 dark:text-amber-400">{row.over}</td>
-                  <td className="px-4 py-3 text-rose-600 dark:text-rose-400">{row.obese}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <h2>BMI Calculator for Men & Weight Chart for Men</h2>
-        <p>
-          For male fitness enthusiasts looking up a <strong>bmi calculator for men</strong>, <strong>bmi chart for men</strong>, or <strong>weight chart for men</strong>, men naturally possess higher bone density and skeletal muscle mass. The table below outlines standard weight expectations for men by height:
-        </p>
-
-        {/* Male Reference Table */}
-        <div className="not-prose my-6 overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
-          <table className="min-w-full divide-y divide-slate-200 text-left text-sm dark:divide-slate-800">
-            <thead className="bg-slate-50 dark:bg-slate-900">
-              <tr>
-                <th className="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">Male Height</th>
-                <th className="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">Underweight</th>
-                <th className="px-4 py-3 font-semibold text-emerald-700 dark:text-emerald-400">Healthy Weight (BMI 18.5 - 24.9)</th>
-                <th className="px-4 py-3 font-semibold text-amber-700 dark:text-amber-400">Overweight (BMI 25 - 29.9)</th>
-                <th className="px-4 py-3 font-semibold text-rose-700 dark:text-rose-400">Obese (BMI &ge; 30)</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100 bg-white dark:divide-slate-800 dark:bg-slate-950">
-              {maleBmiChart.map((row) => (
-                <tr key={row.height} className="hover:bg-slate-50/70 dark:hover:bg-slate-900/50">
-                  <td className="px-4 py-3 font-bold text-slate-900 dark:text-slate-100">{row.height}</td>
-                  <td className="px-4 py-3 text-slate-600 dark:text-slate-400">{row.under}</td>
-                  <td className="px-4 py-3 font-medium text-emerald-600 dark:text-emerald-400">{row.healthy}</td>
-                  <td className="px-4 py-3 text-amber-600 dark:text-amber-400">{row.over}</td>
-                  <td className="px-4 py-3 text-rose-600 dark:text-rose-400">{row.obese}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <h2>Obesity Chart & Clinical Classifications</h2>
-        <p>
-          In clinical medicine, the official <strong>obesity chart</strong> categorizes elevated body weight into three progressive stages to assess cardiometabolic risk:
-        </p>
+        <h2>BMI Limitations and Accuracy</h2>
         <ul>
-          <li><strong>Class 1 Obesity (BMI 30.0 – 34.9):</strong> Moderate elevation in health risk. Increased likelihood of developing type 2 diabetes and hypertension.</li>
-          <li><strong>Class 2 Obesity (BMI 35.0 – 39.9):</strong> Severe risk. Daily joint wear on hips and knees accelerates.</li>
-          <li><strong>Class 3 Obesity (BMI &ge; 40.0):</strong> Very severe / morbid obesity. Medical intervention and low-impact walking routines are strongly indicated.</li>
+          <li>BMI does not distinguish muscle, fat, and bone mass.</li>
+          <li>People with higher muscle mass, including some athletes, may have a higher BMI without the result describing their body composition.</li>
+          <li>BMI does not show where body fat is distributed.</li>
+          <li>Pregnancy requires different interpretation; this calculator is not designed to assess pregnancy-related weight.</li>
+          <li>BMI should be interpreted carefully in older adults and alongside other health information.</li>
+          <li>Children and teens need age- and sex-specific percentiles rather than adult BMI categories.</li>
         </ul>
-
-        <h2>Understanding Body Mass Intake & Energy Balance</h2>
         <p>
-          Searches for <strong>body mass intake</strong> refer to the relationship between the caloric energy you consume and your metabolic maintenance burn. Maintaining a healthy body mass index requires aligning energy intake with energy expenditure. Walking 7,500 to 10,000 steps daily contributes 300 to 500 kcal of lean expenditure that keeps your BMI stable over decades.
+          BMI is a screening tool, not a medical diagnosis. Discuss questions about your results with a qualified health professional.
+        </p>
+
+        <h2>Asian BMI Categories and Public-Health Action Points</h2>
+        <p>
+          The WHO expert consultation identified BMI values of 23.0, 27.5, 32.5, and 37.5 as public-health action points for Asian populations. These points reflect evidence that some populations may experience metabolic risk at lower BMI values. They are not a replacement for, or an interchangeable version of, the standard international adult categories.
         </p>
         <p>
-          If you are wondering <strong>how heavy</strong> you should be or are searching for an objective <strong>human weight scale</strong> or taking an informal <strong>am i fat quiz</strong>, our calculator provides grounded clinical science free of aesthetic commercial bias or <strong>perfect body me</strong> marketing claims. You can also explore age-graded guidelines using our <strong>bmi converter with age</strong> and the official <strong>cdc pediatric bmi calculator</strong> standards.
+          Asian populations are diverse, and risk varies between individuals and groups. The calculator’s Asian option applies the lower 23.0 and 27.5 thresholds to its displayed categories as a screening reference; it does not assess personal health risk or provide a diagnosis.
+        </p>
+
+        <h2>Adult BMI vs. Children’s BMI</h2>
+        <p>
+          Adult BMI thresholds should not be applied directly to children and teenagers. For ages 2 through 19, BMI is interpreted using age- and sex-specific percentiles on a growth reference. This calculator does not calculate BMI percentiles, so it is not a pediatric BMI calculator. Use an appropriate child and teen BMI assessment tool or consult a pediatric health professional.
         </p>
       </section>
 
@@ -217,21 +246,56 @@ export default function BMICalculatorPage() {
         <FAQSection faqs={faqs} />
       </div>
 
-      {/* Internal Navigation to Flagship Tool */}
-      <div className="mt-12 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 p-8 text-white shadow-lg">
-        <h3 className="text-2xl font-bold">Use Your BMI to Calculate Walking Calorie Burn</h3>
-        <p className="mt-2 text-emerald-100">
-          Now that you know your BMI and weight in kilograms and pounds, discover exactly how many calories you burn walking at different speeds and inclines.
-        </p>
-        <div className="mt-6">
-          <Link
-            href="/"
-            className="inline-flex items-center rounded-xl bg-white px-6 py-3 font-bold text-emerald-800 shadow transition hover:bg-emerald-50"
-          >
-            Calculate Walking Calories Now →
-          </Link>
-        </div>
-      </div>
+      <section aria-labelledby="related-calculators" className="mt-12">
+        <h2 id="related-calculators" className="text-2xl font-bold text-slate-900 dark:text-white">
+          Related Calculators
+        </h2>
+        <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+          <li><Link className="text-emerald-700 underline dark:text-emerald-400" href="/weight-converter">Weight Converter (lbs to kg &amp; kg to lbs)</Link></li>
+          <li><Link className="text-emerald-700 underline dark:text-emerald-400" href="/maintenance-calorie-calculator">Maintenance Calorie &amp; TDEE Calculator</Link></li>
+          <li><Link className="text-emerald-700 underline dark:text-emerald-400" href="/">Walking Calorie Calculator</Link></li>
+          <li><Link className="text-emerald-700 underline dark:text-emerald-400" href="/calories-burned-calculator">Calories Burned Calculator</Link></li>
+          <li><Link className="text-emerald-700 underline dark:text-emerald-400" href="/steps-to-calories-calculator">Steps to Calories Calculator</Link></li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="scientific-references" className="mt-12">
+        <h2 id="scientific-references" className="text-2xl font-bold text-slate-900 dark:text-white">
+          Scientific References
+        </h2>
+        <ul className="mt-4 space-y-3 text-sm text-slate-700 dark:text-slate-300">
+          <li>
+            <a className="text-emerald-700 underline dark:text-emerald-400" href="https://www.cdc.gov/bmi/about/index.html" target="_blank" rel="noopener noreferrer">
+              Centers for Disease Control and Prevention (CDC): About Body Mass Index
+            </a>{" "}
+            — BMI as a screening measure and its limitations.
+          </li>
+          <li>
+            <a className="text-emerald-700 underline dark:text-emerald-400" href="https://www.cdc.gov/bmi/adult-calculator/bmi-categories.html" target="_blank" rel="noopener noreferrer">
+              CDC: Adult BMI Categories
+            </a>{" "}
+            — Standard adult category ranges.
+          </li>
+          <li>
+            <a className="text-emerald-700 underline dark:text-emerald-400" href="https://www.cdc.gov/bmi/child-teen-calculator/index.html" target="_blank" rel="noopener noreferrer">
+              CDC: Child and Teen BMI Calculator
+            </a>{" "}
+            — BMI-for-age assessment for ages 2 through 19.
+          </li>
+          <li>
+            <a className="text-emerald-700 underline dark:text-emerald-400" href="https://doi.org/10.1016/S0140-6736(03)15268-3" target="_blank" rel="noopener noreferrer">
+              WHO Expert Consultation: Appropriate body-mass index for Asian populations
+            </a>{" "}
+            — Rationale for Asian-population public-health action points.
+          </li>
+          <li>
+            <a className="text-emerald-700 underline dark:text-emerald-400" href="https://doi.org/10.1097/00042752-199510000-00003" target="_blank" rel="noopener noreferrer">
+              Kouri et al.: Fat-Free Mass Index in Users and Nonusers of Anabolic-Androgenic Steroids
+            </a>{" "}
+            — Research describing FFMI and a height-normalization method.
+          </li>
+        </ul>
+      </section>
     </div>
   );
 }

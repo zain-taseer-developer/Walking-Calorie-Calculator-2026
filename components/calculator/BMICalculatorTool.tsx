@@ -39,15 +39,15 @@ export function BMICalculatorTool() {
       colorClass = "text-amber-500";
       bgClass = "bg-amber-500";
     } else if (bmi <= 22.9) {
-      category = "Normal / Healthy";
+      category = "Normal weight";
       colorClass = "text-emerald-500";
       bgClass = "bg-emerald-500";
     } else if (bmi <= 27.4) {
-      category = "Overweight (Increased Risk)";
+      category = "Overweight";
       colorClass = "text-orange-500";
       bgClass = "bg-orange-500";
     } else {
-      category = "Obesity (High Risk)";
+      category = "Obesity";
       colorClass = "text-rose-500";
       bgClass = "bg-rose-500";
     }
@@ -57,7 +57,7 @@ export function BMICalculatorTool() {
       colorClass = "text-amber-500";
       bgClass = "bg-amber-500";
     } else if (bmi <= 24.9) {
-      category = "Normal weight (Good BMI)";
+      category = "Normal weight";
       colorClass = "text-emerald-500";
       bgClass = "bg-emerald-500";
     } else if (bmi <= 29.9) {
@@ -94,7 +94,9 @@ export function BMICalculatorTool() {
           <h2 className="text-xl font-bold text-slate-900 dark:text-white">
             Body Mass Index & FFMI Calculator
           </h2>
-          <p className="text-xs text-slate-500">WHO & CDC adult and pediatric guidelines</p>
+          <p className="text-xs text-slate-500">
+            Adult BMI categories; age and sex do not change these results
+          </p>
         </div>
         <div className="flex items-center gap-2">
           <button
@@ -293,10 +295,8 @@ export function BMICalculatorTool() {
             </div>
             <p className="mt-1 text-xs text-slate-400">
               {normalizedFfmi
-                ? normalizedFfmi > 22
-                  ? "Superior lean muscular development"
-                  : "Average to healthy muscularity"
-                : "Enter body fat % to calculate muscular FFMI"}
+                ? "Height-adjusted estimate; not a health classification"
+                : "Enter body fat % to estimate FFMI"}
             </p>
           </div>
         </div>
