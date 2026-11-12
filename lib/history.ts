@@ -29,18 +29,97 @@ export function removeExpiredRecords(
   nowMs: number = Date.now(),
   maxAgeMs: number = RETENTION_MS
 ): SavedCalculation[] {
-  return records.filter((rec) => {
+  return records.flatMap((rec) => {
     let time = new Date(rec.timestamp).getTime();
     if (isNaN(time)) {
       const idNum = Number(rec.id);
       if (!isNaN(idNum) && idNum > 1000000000000) {
         time = idNum;
       } else {
-        return true;
+        return [];
       }
     }
-    return nowMs - time <= maxAgeMs;
+    if (nowMs - time > maxAgeMs) return [];
+    if (new Date(rec.timestamp).getTime() === time) return [rec];
+    return [{ ...rec, timestamp: new Date(time).toISOString() }];
   });
+}
+
+function isCalculatorInputs(value: unknown): value is CalculatorInputs {
+  if (!value || typeof value !== "object") return false;
+  const inputs = value as Record<string, unknown>;
+  const numericFields = [
+    "weightKg", "weightLbs", "heightCm", "heightFt", "heightIn",
+    "durationHours", "durationMinutes", "speedMph", "speedKmh",
+    "distanceMiles", "distanceKm", "steps", "inclinePercent",
+    "backpackWeightKg", "backpackWeightLbs",
+  ];
+
+  return (
+    (inputs.unitSystem === "imperial" || inputs.unitSystem === "metric") &&
+    (inputs.mode === "time-speed" ||
+      inputs.mode === "distance-time" ||
+      inputs.mode === "steps" ||
+      inputs.mode === "treadmill") &&
+    (inputs.terrain === "pavement" ||
+      inputs.terrain === "grass" ||
+      inputs.terrain === "trail" ||
+      inputs.terrain === "sand") &&
+    inputs.showNetCalories !== undefined &&
+    typeof inputs.showNetCalories === "boolean" &&
+    numericFields.every((field) => typeof inputs[field] === "number" && Number.isFinite(inputs[field])) &&
+    (inputs.customStrideLengthM === undefined ||
+      (typeof inputs.customStrideLengthM === "number" && Number.isFinite(inputs.customStrideLengthM))) &&
+    (inputs.age === undefined || (typeof inputs.age === "number" && Number.isFinite(inputs.age))) &&
+    (inputs.sex === undefined ||
+      inputs.sex === "male" ||
+      inputs.sex === "female" ||
+      inputs.sex === "unspecified")
+  );
+}
+
+function normalizeSavedCalculation(value: unknown): SavedCalculation | null {
+  if (!value || typeof value !== "object") return null;
+  const record = value as Record<string, unknown>;
+  const id = typeof record.id === "string" || typeof record.id === "number"
+    ? String(record.id)
+    : "";
+  let timestamp = typeof record.timestamp === "string" ? record.timestamp : "";
+
+  if (Number.isNaN(new Date(timestamp).getTime())) {
+    const idTimestamp = Number(id);
+    if (!Number.isFinite(idTimestamp) || idTimestamp <= 1_000_000_000_000) return null;
+    timestamp = new Date(idTimestamp).toISOString();
+  }
+
+  const numericFields = [
+    "calories", "durationMinutes", "speedMph", "weightLbs",
+    "weightKg", "distanceMiles", "distanceKm",
+  ];
+  if (
+    !id ||
+    (record.unitSystem !== "imperial" && record.unitSystem !== "metric") ||
+    !numericFields.every((field) => typeof record[field] === "number" && Number.isFinite(record[field]))
+  ) {
+    return null;
+  }
+
+  return {
+    id,
+    timestamp,
+    calories: record.calories as number,
+    durationMinutes: record.durationMinutes as number,
+    speedMph: record.speedMph as number,
+    weightLbs: record.weightLbs as number,
+    weightKg: record.weightKg as number,
+    distanceMiles: record.distanceMiles as number,
+    distanceKm: record.distanceKm as number,
+    unitSystem: record.unitSystem,
+    ...(typeof record.updatedAt === "string" && !Number.isNaN(new Date(record.updatedAt).getTime())
+      ? { updatedAt: record.updatedAt }
+      : {}),
+    ...(isCalculatorInputs(record.inputs) ? { inputs: record.inputs } : {}),
+  };
 }
 
 /**
@@ -93,16 +172,17 @@ export function updateRecord(
   history: SavedCalculation[],
   updatedRecord: SavedCalculation
 ): { success: boolean; history: SavedCalculation[]; error?: string } {
-  const index = history.findIndex((r) => r.id === updatedRecord.id);
+  const cleanHistory = removeExpiredRecords(history);
+  const index = cleanHistory.findIndex((r) => r.id === updatedRecord.id);
   if (index === -1) {
     return {
       success: false,
-      history,
+      history: cleanHistory,
       error: "Record to update was not found in history.",
     };
   }
 
-  const newHistory = [...history];
+  const newHistory = [...cleanHistory];
   newHistory[index] = {
     ...newHistory[index],
     ...updatedRecord,
@@ -116,7 +196,7 @@ export function updateRecord(
  * Removes an individual record by id.
  */
 export function deleteRecord(history: SavedCalculation[], id: string): SavedCalculation[] {
-  return history.filter((r) => r.id !== id);
+  return removeExpiredRecords(history).filter((r) => r.id !== id);
 }
 
 /**
@@ -124,21 +204,56 @@ export function deleteRecord(history: SavedCalculation[], id: string): SavedCalc
  */
 export function loadHistoryFromStorage(): { records: SavedCalculation[]; error?: string } {
   if (typeof window === "undefined") return { records: [] };
+  let raw: string | null;
   try {
-    const raw = localStorage.getItem(HISTORY_STORAGE_KEY);
-    if (!raw) return { records: [] };
-    const parsed: SavedCalculation[] = JSON.parse(raw);
-    if (!Array.isArray(parsed)) return { records: [] };
-    const valid = removeExpiredRecords(parsed);
-    const sorted = sortOldestToNewest(valid);
-    if (valid.length !== parsed.length) {
-      localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(sorted));
-    }
-    return { records: sorted };
-  } catch (err: any) {
+    raw = localStorage.getItem(HISTORY_STORAGE_KEY);
+  } catch {
     return {
       records: [],
       error: "Unable to read history from browser storage. Browser storage may be disabled.",
+    };
+  }
+
+  if (!raw) return { records: [] };
+
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(raw);
+  } catch {
+    try {
+      localStorage.removeItem(HISTORY_STORAGE_KEY);
+    } catch {
+      return {
+        records: [],
+        error: "Saved history is corrupted and could not be cleared from browser storage.",
+      };
+    }
+    return { records: [], error: "Corrupted saved history was cleared from browser storage." };
+  }
+
+  if (!Array.isArray(parsed)) {
+    try {
+      localStorage.removeItem(HISTORY_STORAGE_KEY);
+    } catch {
+      return {
+        records: [],
+        error: "Saved history is invalid and could not be cleared from browser storage.",
+      };
+    }
+    return { records: [], error: "Invalid saved history was cleared from browser storage." };
+  }
+
+  const normalized = parsed
+    .map(normalizeSavedCalculation)
+    .filter((record): record is SavedCalculation => record !== null);
+  const sorted = sortOldestToNewest(removeExpiredRecords(normalized));
+  try {
+    localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(sorted));
+    return { records: sorted };
+  } catch {
+    return {
+      records: sorted,
+      error: "Saved history loaded, but browser storage could not be updated.",
     };
   }
 }
@@ -149,10 +264,10 @@ export function loadHistoryFromStorage(): { records: SavedCalculation[]; error?:
 export function saveHistoryToStorage(records: SavedCalculation[]): { success: boolean; error?: string } {
   if (typeof window === "undefined") return { success: false, error: "Window undefined" };
   try {
-    const sorted = sortOldestToNewest(records);
+    const sorted = sortOldestToNewest(removeExpiredRecords(records));
     localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(sorted));
     return { success: true };
-  } catch (err: any) {
+  } catch {
     return {
       success: false,
       error: "Unable to save record to browser storage. Your browser storage quota may be exceeded or disabled.",

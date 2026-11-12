@@ -25,6 +25,7 @@ import {
   addRecord,
   updateRecord,
   deleteRecord,
+  removeExpiredRecords,
   MAX_HISTORY_RECORDS,
   requestPersistentHistoryStorage,
 } from "@/lib/history";
@@ -216,9 +217,19 @@ export function WalkingCalculator() {
       console.error("Could not request persistent history storage.", error);
     });
 
+    const retainedHistory = removeExpiredRecords(history);
+    if (retainedHistory.length !== history.length) {
+      const cleanupResult = saveHistoryToStorage(retainedHistory);
+      if (!cleanupResult.success) {
+        setStorageError(cleanupResult.error || "Unable to clean expired browser history.");
+        return;
+      }
+      setHistory(retainedHistory);
+    }
+
     // Case 1: Updating an existing loaded record
     if (loadedRecordId && isRecordEdited) {
-      const existing = history.find((r) => r.id === loadedRecordId);
+      const existing = retainedHistory.find((r) => r.id === loadedRecordId);
       const updatedRecord: SavedCalculation = {
         id: loadedRecordId,
         timestamp: existing ? existing.timestamp : new Date().toISOString(),
@@ -234,7 +245,7 @@ export function WalkingCalculator() {
         inputs: { ...inputs }, // Full input snapshot
       };
 
-      const updateRes = updateRecord(history, updatedRecord);
+      const updateRes = updateRecord(retainedHistory, updatedRecord);
       if (!updateRes.success) {
         setStorageError(updateRes.error || "Failed to update record.");
         return;
@@ -267,7 +278,7 @@ export function WalkingCalculator() {
     }
 
     // Case 2: Saving a new record
-    if (history.length >= MAX_HISTORY_RECORDS) {
+    if (retainedHistory.length >= MAX_HISTORY_RECORDS) {
       setStorageError(`History limit reached (${MAX_HISTORY_RECORDS}/${MAX_HISTORY_RECORDS} records). Please remove a saved record before adding a new one.`);
       return;
     }
@@ -286,7 +297,7 @@ export function WalkingCalculator() {
       inputs: { ...inputs }, // Full input snapshot
     };
 
-    const addRes = addRecord(history, newRecord, MAX_HISTORY_RECORDS);
+    const addRes = addRecord(retainedHistory, newRecord, MAX_HISTORY_RECORDS);
     if (!addRes.success) {
       setStorageError(addRes.error || "Unable to save record.");
       return;

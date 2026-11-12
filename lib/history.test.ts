@@ -1,11 +1,14 @@
-import { describe, it, expect } from "vitest";
+import { afterEach, describe, it, expect, vi } from "vitest";
 import {
   removeExpiredRecords,
   sortOldestToNewest,
   addRecord,
   updateRecord,
   deleteRecord,
+  loadHistoryFromStorage,
+  saveHistoryToStorage,
   SavedCalculation,
+  HISTORY_STORAGE_KEY,
   MAX_HISTORY_RECORDS,
   RETENTION_MS,
 } from "./history";
@@ -49,6 +52,28 @@ describe("History Management and Retention", () => {
       },
     };
   };
+
+  const recentRecord = (id: string, ageDays = 0): SavedCalculation =>
+    ({
+      ...sampleRecord(id, 0, 300),
+      timestamp: new Date(Date.now() - ageDays * 24 * 60 * 60 * 1000).toISOString(),
+    });
+
+  const setupStorage = (initialValue?: string) => {
+    const values = new Map<string, string>();
+    if (initialValue !== undefined) values.set(HISTORY_STORAGE_KEY, initialValue);
+    vi.stubGlobal("window", {});
+    vi.stubGlobal("localStorage", {
+      getItem: (key: string) => values.get(key) ?? null,
+      setItem: (key: string, value: string) => values.set(key, value),
+      removeItem: (key: string) => values.delete(key),
+    });
+    return values;
+  };
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
 
   it("automatically removes records older than 28 days", () => {
     const records: SavedCalculation[] = [
@@ -116,9 +141,9 @@ describe("History Management and Retention", () => {
 
   it("updates a loaded record in place without creating a new record", () => {
     const initialRecords: SavedCalculation[] = [
-      sampleRecord("rec-1", 10, 200),
-      sampleRecord("rec-2", 5, 300),
-      sampleRecord("rec-3", 1, 400),
+      recentRecord("rec-1", 10),
+      recentRecord("rec-2", 5),
+      recentRecord("rec-3", 1),
     ];
 
     const updatedRec2: SavedCalculation = {
@@ -142,9 +167,9 @@ describe("History Management and Retention", () => {
 
   it("removes an individual record by id", () => {
     const initialRecords: SavedCalculation[] = [
-      sampleRecord("rec-1", 10),
-      sampleRecord("rec-2", 5),
-      sampleRecord("rec-3", 1),
+      recentRecord("rec-1", 10),
+      recentRecord("rec-2", 5),
+      recentRecord("rec-3", 1),
     ];
 
     const remaining = deleteRecord(initialRecords, "rec-2");
@@ -173,6 +198,55 @@ describe("History Management and Retention", () => {
 
     expect(legacyRecord.inputs).toBeUndefined();
     expect(legacyRecord.calories).toBe(220);
+  });
+
+  it("restores saved localStorage records after a fresh load and appends new records", () => {
+    const storage = setupStorage();
+    const first = recentRecord("first");
+    const second = recentRecord("second");
+
+    expect(saveHistoryToStorage([first]).success).toBe(true);
+    const restored = loadHistoryFromStorage();
+    expect(restored.records).toHaveLength(1);
+    expect(restored.records[0].id).toBe(first.id);
+
+    const added = addRecord(restored.records, second);
+    expect(added.success).toBe(true);
+    expect(saveHistoryToStorage(added.history).success).toBe(true);
+
+    const afterReload = loadHistoryFromStorage();
+    expect(afterReload.records.map(({ id }) => id)).toEqual(["first", "second"]);
+    expect(JSON.parse(storage.get(HISTORY_STORAGE_KEY) || "[]")).toHaveLength(2);
+  });
+
+  it("cleans expired and malformed entries during load and write", () => {
+    const expired = recentRecord("expired", 29);
+    const invalid = { ...recentRecord("invalid"), calories: "not-a-number" };
+    const valid = recentRecord("valid");
+    setupStorage(JSON.stringify([expired, invalid, valid]));
+
+    const loaded = loadHistoryFromStorage();
+    expect(loaded.records.map(({ id }) => id)).toEqual(["valid"]);
+
+    expect(saveHistoryToStorage([expired, valid]).success).toBe(true);
+    expect(loadHistoryFromStorage().records.map(({ id }) => id)).toEqual(["valid"]);
+  });
+
+  it("clears corrupted localStorage JSON safely", () => {
+    const storage = setupStorage("{not valid json");
+
+    const loaded = loadHistoryFromStorage();
+
+    expect(loaded.records).toEqual([]);
+    expect(loaded.error).toContain("Corrupted");
+    expect(storage.has(HISTORY_STORAGE_KEY)).toBe(false);
+  });
+
+  it("persists clearing all history", () => {
+    setupStorage(JSON.stringify([recentRecord("saved")]));
+
+    expect(saveHistoryToStorage([]).success).toBe(true);
+    expect(loadHistoryFromStorage().records).toEqual([]);
   });
 });
 
