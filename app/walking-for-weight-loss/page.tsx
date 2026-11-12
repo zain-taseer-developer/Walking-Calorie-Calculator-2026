@@ -12,7 +12,8 @@ import { MiniCalculator } from "@/components/calculator/MiniCalculator";
 import { Flame, TrendingDown, Scale, Target, Sparkles } from "lucide-react";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Walking for Weight Loss: How Many Steps to Lose a Pound?",
+  title: "Walking for Weight Loss",
+  absoluteTitle: true,
   description:
     "Can you lose weight by walking? Learn how many steps to lose a pound, sustainable caloric deficit planning, and realistic weekly fat loss routines.",
   canonicalPath: "/walking-for-weight-loss",
