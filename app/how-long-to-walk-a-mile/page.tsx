@@ -7,9 +7,8 @@ import { AuthorBox } from "@/components/content/AuthorBox";
 import { RelatedTools } from "@/components/content/RelatedTools";
 import { AdSlot } from "@/components/ads/AdSlot";
 import { DataTable } from "@/components/content/DataTable";
-import { Callout } from "@/components/content/Callout";
 import { MiniCalculator } from "@/components/calculator/MiniCalculator";
-import { Clock, Timer, CheckCircle, Navigation } from "lucide-react";
+import { Timer } from "lucide-react";
 
 export const metadata: Metadata = constructMetadata({
   title: "How Long Does It Take to Walk a Mile? (1–5 Mile Chart)",
@@ -27,50 +26,73 @@ export const metadata: Metadata = constructMetadata({
 
 export default function HowLongToWalkMilePage() {
   const distanceMatrix = [
-    ["1 Mile", "30:00", "24:00", "20:00", "17:08", "15:00", "13:20"],
+    ["1 Mile", "30:00", "24:00", "20:00", "17:09", "15:00", "13:20"],
     ["2 Miles", "1 hr 00 min", "48:00", "40:00", "34:17", "30:00", "26:40"],
-    ["3 Miles", "1 hr 30 min", "1 hr 12 min", "1 hr 00 min", "51:25", "45:00", "40:00"],
-    ["4 Miles", "2 hrs 00 min", "1 hr 36 min", "1 hr 20 min", "1 hr 08 min", "1 hr 00 min", "53:20"],
-    ["5 Miles", "2 hrs 30 min", "2 hrs 00 min", "1 hr 40 min", "1 hr 25 min", "1 hr 15 min", "1 hr 06 min"],
-    ["6.2 Miles (10K)", "3 hrs 06 min", "2 hrs 28 min", "2 hrs 04 min", "1 hr 46 min", "1 hr 33 min", "1 hr 22 min"],
+    ["3 Miles", "1 hr 30 min", "1 hr 12 min", "1 hr 00 min", "51:26", "45:00", "40:00"],
+    ["4 Miles", "2 hrs 00 min", "1 hr 36 min", "1 hr 20 min", "1 hr 09 min", "1 hr 00 min", "53:20"],
+    ["5 Miles", "2 hrs 30 min", "2 hrs 00 min", "1 hr 40 min", "1 hr 26 min", "1 hr 15 min", "1 hr 06 min"],
+    ["6.2 Miles (approximately 10K)", "3 hrs 06 min", "2 hrs 29 min", "2 hrs 04 min", "1 hr 46 min", "1 hr 33 min", "1 hr 23 min"],
     ["10 Miles", "5 hrs 00 min", "4 hrs 00 min", "3 hrs 20 min", "2 hrs 51 min", "2 hrs 30 min", "2 hrs 13 min"],
+  ];
+
+  const quickDistanceMatrix = [
+    ["0.5 mile", "12:00", "10:00", "8:34"],
+    ["1 mile", "24:00", "20:00", "17:09"],
+    ["2 miles", "48:00", "40:00", "34:17"],
+    ["3 miles", "1 hr 12 min", "1 hr 00 min", "51:26"],
+    ["5 miles", "2 hrs 00 min", "1 hr 40 min", "1 hr 25 min 43 sec"],
   ];
 
   const faqs: FAQItem[] = [
     {
-      question: "How long does it take to walk 1 mile at an average pace (how long would it take to walk a mile)?",
+      question: "How long does it take to walk 1 mile?",
       answer:
-        "When asking 'how long would it take to walk a mile', 'how many minutes is a mile', 'how many min are in a mile', or 'one mile is how many minutes?', for a healthy adult walking at a standard moderate pace of 3.0 mph, it takes exactly 20 minutes to walk one mile. At an easy stroll (2.5 mph), it takes 24 minutes, while a purposeful brisk walk (3.5 mph) covers a mile in 17 minutes and 8 seconds. By contrast, what is the average time to run 1 mile (what is the average time to run a mile)? The average recreational adult runs a mile in 9 to 11 minutes.",
+        "At 3 mph, one mile takes 20 minutes. At 2.5 mph it takes 24 minutes, and at 3.5 mph it takes about 17 minutes and 9 seconds. Your actual time depends on pace, route, and breaks.",
     },
     {
       question: "How long does it take to walk half a mile?",
       answer:
-        "Walking half a mile (0.5 miles) takes approximately 8.5 to 12 minutes depending on your cadence. At a brisk 3.5 mph pace, half a mile takes 8 minutes and 34 seconds.",
+        "At 2.5 mph, half a mile takes about 12 minutes; at 3 mph, 10 minutes; and at 3.5 mph, about 8 minutes and 34 seconds.",
     },
     {
-      question: "How long does it take to walk 2 miles (how long would it take to walk 2 miles / how long does it take to walk two miles)?",
+      question: "How long does it take to walk 2 miles?",
       answer:
-        "Walking 2 miles takes approximately 30 to 40 minutes for most adults. Walking briskly at 3.5 mph takes approximately 34 minutes, burning between 130 and 220 calories depending on your body weight.",
+        "At 3 mph, two miles takes 40 minutes. At 2.5 mph it takes 48 minutes, and at 3.5 mph it takes about 34 minutes and 17 seconds.",
     },
     {
-      question: "How long does it take to walk 3 miles (how long does it take to walk three miles / how long would it take to walk 3 miles)?",
+      question: "How long does it take to walk 3 miles?",
       answer:
-        "Walking 3 miles takes approximately 45 minutes to 1 hour. At a moderate 3.0 mph pace, 3 miles takes exactly 60 minutes. Maintaining a brisk 3.5 mph pace completes the distance in 51 minutes. Walking three miles a day burns between 210 and 320 calories and provides exceptional cardiovascular conditioning.",
+        "At 3 mph, three miles takes one hour. At 3.5 mph, it takes about 51 minutes and 26 seconds; at 2.5 mph, about 1 hour and 12 minutes.",
     },
     {
-      question: "How long to walk 5 miles (how long would it take to walk 5 miles / how long will it take to walk 5 miles)?",
+      question: "How long does it take to walk 5 miles?",
       answer:
-        "Walking 5 miles takes roughly 1 hour and 15 minutes to 1 hour and 40 minutes. At an average brisk pace of 3.2 mph, you will complete 5 miles in approximately 1 hour and 34 minutes.",
+        "At 3 mph, five miles takes 1 hour and 40 minutes. At 3.5 mph, it takes about 1 hour and 25 minutes and 43 seconds; at 2.5 mph, 2 hours.",
     },
     {
       question: "How long does it take to walk 6 miles and how long does it take to walk 7 miles?",
       answer:
-        "Walking 6 miles takes about 1 hour and 42 minutes at a brisk pace (or 2 hours at moderate pace). Walking 7 miles takes roughly 2 hours to 2 hours and 20 minutes.",
+        "At 3.5 mph, six miles takes about 1 hour and 43 minutes; at 3 mph, 2 hours. Seven miles takes 2 hours at 3.5 mph or 2 hours and 20 minutes at 3 mph.",
     },
     {
-      question: "How long does it take to walk 10 miles (how long would it take to walk 10 miles), 11 miles, and 20 miles?",
+      question: "How long does it take to walk 10, 11, or 20 miles?",
       answer:
-        "Walking 10 miles takes between 2 hours and 50 minutes (at a brisk 3.5 mph) and 3 hours and 20 minutes (at 3.0 mph). If wondering how long is 11 miles, it takes approximately 3 hours and 10 minutes to 3 hours and 40 minutes. Walking an ultra-distance like how long does it take to walk 20 miles takes between 5 hours and 45 minutes and 7 hours of continuous walking.",
+        "At 3.5 mph, 10 miles takes about 2 hours and 51 minutes; at 3 mph, 3 hours and 20 minutes. Eleven miles takes about 3 hours and 9 minutes at 3.5 mph or 3 hours and 40 minutes at 3 mph. Twenty miles takes about 5 hours and 43 minutes at 3.5 mph or 6 hours and 40 minutes at 3 mph, not including breaks.",
+    },
+    {
+      question: "How long does it take to run one mile?",
+      answer:
+        "Running time varies widely with fitness and individual ability. As a simple comparison, running at 6 mph covers a mile in 10 minutes, while walking at 3 mph takes 20 minutes. These are pace examples, not standards everyone should meet.",
+    },
+    {
+      question: "Is walking one mile a day enough exercise?",
+      answer:
+        "A daily mile can be a useful way to build a consistent activity habit and add movement to your day. Whether it is enough depends on your health, pace, and other activity. Public-health guidance recommends regular weekly activity, and one mile alone may not meet everyone’s needs.",
+    },
+    {
+      question: "Why might my walking time differ from the chart?",
+      answer:
+        "The chart assumes a steady speed on a continuous route. Hills, surface, weather, traffic stops, breaks, fitness, and fatigue can all change your actual time.",
     },
   ];
 
@@ -91,7 +113,7 @@ export default function HowLongToWalkMilePage() {
           </h1>
 
           <p className="mt-3 text-lg sm:text-xl font-medium text-teal-50 leading-relaxed">
-            For an average adult, walking <strong>1 mile takes between 15 and 22 minutes</strong>. At a normal everyday pace (3.0 mph), it takes exactly <strong>20 minutes</strong>; at a brisk aerobic pace (3.5 mph), it takes <strong>17 minutes</strong>; and at an easy stroll (2.5 mph), it takes <strong>24 minutes</strong>.
+            At common steady walking speeds of 2.5 to 4.0 mph, <strong>1 mile takes about 15 to 24 minutes</strong>. At 3.0 mph, it takes <strong>20 minutes</strong>; at 3.5 mph, about <strong>17 minutes</strong>; and at an easy 2.5 mph, <strong>24 minutes</strong>.
           </p>
 
           <div className="mt-6 pt-6 border-t border-white/20 grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
@@ -126,9 +148,38 @@ export default function HowLongToWalkMilePage() {
       />
 
       <div className="prose prose-slate dark:prose-invert max-w-none my-10 space-y-4">
+        <h2>How to Calculate Walking Time</h2>
+        <p>
+          Use <strong>Walking Time = Distance ÷ Walking Speed</strong>. Keep distance and speed in compatible units—for example, miles and miles per hour. The result is in hours, so multiply by 60 to convert it to minutes.
+        </p>
+        <p>
+          For example, 1 mile ÷ 3 mph = ⅓ hour, or <strong>20 minutes</strong>. For 2 miles at the same speed, 2 ÷ 3 hours is 40 minutes. To estimate a different trip, divide its distance by your expected speed and convert the hours to minutes. Add time for breaks or stops separately.
+        </p>
+
+        <h2>Walking Pace: Slow, Moderate, and Brisk</h2>
+        <p>
+          Pace labels are approximate; comfort, fitness, terrain, and individual ability affect what a speed feels like. These ranges are practical examples, not fixed medical definitions:
+        </p>
+        <ul>
+          <li><strong>Slow or easy (about 2.0–2.5 mph):</strong> A relaxed pace; one mile takes about 24–30 minutes.</li>
+          <li><strong>Moderate (about 2.5–3.5 mph):</strong> A steady everyday walk; one mile takes about 17–24 minutes.</li>
+          <li><strong>Brisk (about 3.5–4.5 mph):</strong> A purposeful faster walk; one mile takes about 13 minutes 20 seconds to 17 minutes 9 seconds.</li>
+        </ul>
+
+        <h2>Walking Time by Distance</h2>
+        <p>
+          Use this quick reference for common distances at three steady walking speeds. Times are calculated as distance divided by speed and rounded to the nearest second where shown.
+        </p>
+        <DataTable
+          title="Estimated Walking Time at Common Speeds"
+          caption="Estimates assume a continuous walk without stops."
+          headers={["Distance", "2.5 mph", "3.0 mph", "3.5 mph"]}
+          rows={quickDistanceMatrix}
+        />
+
         <h2>Complete Walking Duration Reference Matrix (1 to 10 Miles)</h2>
         <p>
-          Whether you are preparing for a charity walk, calculating your commute time, or tracking your aerobic workout duration, the reference matrix below outlines exact split times across speeds:
+          For more distance and speed combinations, use the larger reference matrix below. It includes estimates from 2.0 to 4.5 mph.
         </p>
 
         <DataTable
@@ -155,12 +206,28 @@ export default function HowLongToWalkMilePage() {
           to see your live metabolic burn.
         </p>
 
-        <h2>Factors That Change How Long It Takes to Walk a Mile</h2>
+        <h2>How to Walk a Mile Faster</h2>
         <ul>
-          <li><strong>Age &amp; Mobility:</strong> Gait velocity naturally slows by ~1.5% per decade after age 60 as stride amplitude shortens.</li>
-          <li><strong>Terrain Grade:</strong> Walking up an 8% outdoor grade reduces forward horizontal velocity by approximately 20% to 30%.</li>
-          <li><strong>Footwear:</strong> Supportive athletic walking shoes with low heel drop and responsive cushioning improve stride cadence compared to casual sneakers.</li>
+          <li><strong>Build consistency:</strong> Regular walks make it easier to maintain a comfortable routine.</li>
+          <li><strong>Use relaxed posture:</strong> Look ahead, keep your shoulders relaxed, and let your arms swing naturally.</li>
+          <li><strong>Choose comfortable footwear:</strong> Shoes that fit well can make walking more comfortable.</li>
+          <li><strong>Increase pace gradually:</strong> Try brief, slightly faster intervals and return to an easy pace as needed. Increase effort over time rather than forcing speed.</li>
         </ul>
+
+        <h2>Walking vs. Running: 1 Mile Time</h2>
+        <p>
+          At 3 mph, a one-mile walk takes 20 minutes. At 6 mph, a one-mile run takes 10 minutes. These examples illustrate how speed changes time; actual walking and running times vary with fitness, experience, route, and individual ability.
+        </p>
+
+        <h2>Is Walking One Mile a Day Enough?</h2>
+        <p>
+          Walking a mile each day can add regular movement to your routine and may be a manageable way to build consistency. Its benefits depend on your pace and overall activity, and one mile does not necessarily meet everyone’s physical-activity needs. Consider your health and goals, and build toward an activity level that works for you.
+        </p>
+
+        <h2>Walking Time Calculation Limitations</h2>
+        <p>
+          The chart and formula estimate time at a steady speed. Hills, uneven or soft terrain, weather, traffic lights, other stops, walking breaks, fitness level, and fatigue can all change your actual pace. Allow extra time for these conditions; your real trip may take longer or shorter than the estimate.
+        </p>
       </div>
 
       <FAQSection faqs={faqs} />
