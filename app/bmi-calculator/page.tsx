@@ -123,6 +123,11 @@ export default function BMICalculatorPage() {
           Imperial Formula: BMI = [Weight (lbs) ÷ Height (inches)²] × 703
         </div>
 
+        <h2>How to Calculate BMI</h2>
+        <p>
+          To calculate BMI, divide your weight in kilograms by your height in meters squared. For example, at 70 kg and 1.75 m tall, the calculation is 70 ÷ (1.75 × 1.75), giving a BMI of about 22.9. For pounds and inches, divide your weight by your height in inches squared, then multiply by 703. This adult screening measure is one useful health indicator, but it does not distinguish muscle from fat.
+        </p>
+
         <h2>BMI Index Chart for Females & Women BMI Calculator</h2>
         <p>
           When women seek a specialized <strong>women bmi calculator</strong>, <strong>calculate bmi women</strong>, or <strong>bmi measurement female</strong>, body composition changes across reproductive life stages, bone density, and pregnancy play vital roles. The <strong>body mass index table for female</strong> and <strong>senior female weight chart</strong> below provides target healthy boundaries across heights.
