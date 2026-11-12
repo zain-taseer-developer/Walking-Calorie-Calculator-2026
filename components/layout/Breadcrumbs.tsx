@@ -8,9 +8,10 @@ export interface BreadcrumbItem {
 }
 
 export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
+  const breadcrumbItems = items[0]?.href === "/" ? items.slice(1) : items;
   const schemaItems = [
     { name: "Home", path: "/" },
-    ...items.map((it) => ({
+    ...breadcrumbItems.map((it) => ({
       name: it.label,
       path: it.href || "",
     })),
@@ -36,8 +37,8 @@ export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
           <span>Home</span>
         </Link>
 
-        {items.map((item, index) => {
-          const isLast = index === items.length - 1;
+        {breadcrumbItems.map((item, index) => {
+          const isLast = index === breadcrumbItems.length - 1;
           return (
             <div key={item.label} className="flex items-center">
               <ChevronRight className="w-3.5 h-3.5 mx-1.5 text-slate-400 shrink-0" />
