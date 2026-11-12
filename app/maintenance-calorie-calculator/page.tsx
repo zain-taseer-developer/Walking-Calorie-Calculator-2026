@@ -7,7 +7,7 @@ import { AdSlot } from "@/components/ads/AdSlot";
 import { siteConfig } from "@/site.config";
 
 export const metadata: Metadata = {
-  title: "Maintenance Calorie Calculator & TDEE Macro Calculator",
+  title: { absolute: "Maintenance Calorie Calculator & TDEE Macro Calculator" },
   description:
     "Free maintenance calories calculator and daily calorie intake estimator. Calculate BMR, TDEE, calorie deficit for weight loss, body recomposition, and macros.",
   alternates: {
