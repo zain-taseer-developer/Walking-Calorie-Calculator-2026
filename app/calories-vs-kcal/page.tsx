@@ -22,63 +22,63 @@ export default function CaloriesVsKcalPage() {
 
   const comparisonRows = [
     ["1 Dietary Calorie (Cal)", "1 kcal", "1,000 small cal", "4.184 kJ", "Standard US nutrition label unit"],
-    ["100 kcal", "100 Calories", "100,000 small cal", "418.4 kJ", "Energy in 1 medium banana"],
-    ["250 kcal", "250 Calories", "250,000 small cal", "1,046 kJ", "Burned in ~35 min of brisk walking"],
-    ["259 kcal to calories", "259 kcal = 259 Calories", "259,000 small cal", "1,083.7 kJ", "Common snack nutrition entry"],
-    ["500 kcal", "500 Calories", "500,000 small cal", "2,092 kJ", "Standard daily deficit for 1 lb/wk loss"],
-    ["3,500 kcal", "3,500 Calories", "3,500,000 small cal", "14,644 kJ", "Energy stored in 1 lb of body fat"],
+    ["100 kcal", "100 Calories", "100,000 small cal", "418.4 kJ", "About the energy in one medium banana"],
+    ["250 kcal", "250 Calories", "250,000 small cal", "1,046 kJ", "Energy value (not a food equivalence)"],
+    ["259 kcal to calories", "259 kcal = 259 Calories", "259,000 small cal", "1,083.7 kJ", "Converted energy value"],
+    ["500 kcal", "500 Calories", "500,000 small cal", "2,092 kJ", "Energy amount; not a guaranteed weight-loss outcome"],
+    ["3,500 kcal", "3,500 Calories", "3,500,000 small cal", "14,644 kJ", "Traditional approximation per pound of body fat"],
   ];
 
   const faqs: FAQItem[] = [
     {
-      question: "Is kcal the same as calories (is kilocalorie the same as calorie / are kcals the same as calories)?",
+      question: "Is kcal the same as calories?",
       answer:
-        "Yes, in dietary and food contexts! If you ask 'is kcal and calories the same', 'is calorie same as kcal', 'are kcal and calories the same', or 'is kilocalories and calories the same', food labels use 'calorie' (often capitalized Calorie) as a direct synonym for kilocalorie (kcal). 1 food Calorie = 1 kcal = 1,000 scientific small calories.",
+        "On US food labels, yes: one dietary Calorie (capital C) equals 1 kilocalorie (kcal). In physics, one small calorie (cal, lowercase c) is one-thousandth of a kcal.",
     },
     {
-      question: "What is kcal vs cal (difference between kcal and cal / is kcal the same as cal)?",
+      question: "What is kcal vs cal?",
       answer:
-        "When exploring 'what is kcal vs cal', 'cal vs kcal', or 'difference between kcal and cal', 1 kcal contains exactly 1,000 small calories (cal). While 1 small cal warms 1 gram of water by 1°C, 1 kcal warms 1 kilogram (1 liter) of water by 1°C.",
+        "A kcal is 1,000 small calories (cal). Nutrition labels commonly call a kcal a Calorie, while scientific writing may use cal for the smaller unit.",
     },
     {
-      question: "What does 'kcal en cal' or 'kcal of cal' mean on international labels?",
+      question: "What does “kcal en cal” or “kcal of cal” mean on international labels?",
       answer:
-        "In Dutch, Flemish, and German packaging, 'kcal en cal' (kcal and cal) or 'kcal of cal' (kcal or cal) reflects multilingual labeling laws. In Italian, it is called 'calorie chilocalorie'. Across all these languages, 1 kcal equals 1 kilocalorie, directly translating kilocalories to calories for nutrition tracking.",
+        "These phrases may appear in multilingual labeling or searches referring to kilocalories and calories. Check the unit printed beside the number: on nutrition labels, kcal is the larger food-energy unit, while a small cal is 1/1,000 of a kcal.",
     },
     {
       question: "What is the official calorie definition?",
       answer:
-        "The scientific calorie definition describes a pre-SI unit of heat energy: 1 calorie is the amount of energy required at 1 atmosphere of pressure to raise the temperature of 1 gram of pure water by 1 degree Celsius. Because this is too tiny for human metabolism, nutritionists use the kilocalorie (kcal).",
+        "The calorie is a non-SI unit of energy; the joule is the SI unit. The thermochemical calorie is defined as exactly 4.184 joules, so 1 kcal equals 4.184 kJ. Older water-heating descriptions are approximate because heat capacity depends on conditions.",
     },
     {
-      question: "How many calories are in a pound of fat (how much calories is a pound / how many calories to equal a pound)?",
+      question: "How many calories are in a pound of fat?",
       answer:
-        "One pound of human adipose body fat contains approximately 3,500 calories (3,500 kcal). When asking 'how many calories are in a pound of fat?' or 'how many calories to equal a pound?', a sustained deficit of 500 kcal per day equals 3,500 kcal per week, resulting in about 1 lb of fat loss.",
+        "A traditional estimate is about 3,500 kcal per pound of body fat, but this is not an exact biological rule. Body weight and energy expenditure adapt over time, so a particular calorie deficit does not guarantee a precise amount or rate of fat loss.",
     },
     {
-      question: "1 gm of fat is how many calories?",
+      question: "How many calories are in 1 gram of fat?",
       answer:
-        "1 gm of fat is how many calories? Pure dietary fat contains 9 calories per gram (9 kcal/g). By contrast, 1 gram of protein contains 4 calories, and 1 gram of carbohydrates contains 4 calories.",
+        "A common nutrition estimate is about 9 kcal (9 dietary Calories) per gram of fat. Actual food-label energy values use approved calculation methods and can vary with food composition.",
     },
     {
-      question: "How many calories are in 1 gram of carbohydrates (how many calories are in one gram of carbohydrates)?",
+      question: "How many calories are in 1 gram of carbohydrates?",
       answer:
-        "Carbohydrates provide 4 calories per gram (4 kcal/g). If you wonder 'how many calories are in 1 gram of carbohydrates' or 'how many calories are in one gram of carbohydrates', a food with 25 grams of carbs yields 100 kcal of energy. When converting grams to calories, multiply protein and carbs by 4, and fats by 9.",
+        "A general estimate is about 4 kcal per gram of carbohydrate. The energy listed for a particular food can vary, including due to fiber and the method used to calculate its label value.",
     },
     {
       question: "What is the difference between carbs and calories?",
       answer:
-        "The difference between carbs and calories is that carbohydrates are a chemical macronutrient (sugars, starches, and fiber), while calories are the unit of measurement used to quantify the energy those carbohydrates release when metabolized by your body.",
+        "Carbohydrates are a nutrient found in foods; calories are units used to describe energy. Carbohydrate is one source of dietary energy, commonly estimated at 4 kcal per gram.",
     },
     {
       question: "What is the difference between active vs total calories?",
       answer:
-        "Active vs total calories: Active calories represent only the extra energy burned through movement, exercise, and walking. Total calories include those active calories PLUS your resting Basal Metabolic Rate (BMR) burned simply staying alive during that same time window.",
+        "Active calories estimate energy used for movement above rest, while total calories generally include resting energy as well. Definitions vary by tracker and time period; daily total energy expenditure also includes other movement and digestion.",
     },
     {
       question: "How do you convert 259 kcal to calories or kcal to calories?",
       answer:
-        "To convert kcal to calories, in dietary contexts 259 kcal to calories equals 259 food Calories (or 259,000 scientific small calories). If someone asks 'how many calories in ak cal', 1 kcal = 1 food Calorie.",
+        "259 kcal equals 259 dietary Calories, 259,000 small calories (cal), or about 1,083.7 kJ. To convert kcal to small cal, multiply by 1,000; to convert kcal to dietary Calories, the number stays the same.",
     },
   ];
 
@@ -192,29 +192,129 @@ export default function CaloriesVsKcalPage() {
         </div>
       </div>
 
+      <section className="prose prose-slate dark:prose-invert max-w-none my-8">
+        <h2>How to Use the Calories Converter</h2>
+        <ol>
+          <li>Under <strong>Enter Energy Value</strong>, type a number such as 259.</li>
+          <li>Under <strong>Input Unit</strong>, choose <strong>kcal (Calories)</strong>, <strong>Small cal</strong>, or <strong>Kilojoules (kJ)</strong>.</li>
+          <li>Read the automatically updated results in <strong>Converted Energy Units</strong>: dietary Calories, kilojoules, and scientific small calories.</li>
+        </ol>
+        <p>The displayed results are rounded to whole units. For example, 259 kcal is 259,000 small cal and approximately 1,084 kJ.</p>
+      </section>
+
       <AdSlot format="horizontal" slotId="kcal-top" />
 
       {/* Content */}
       <div className="prose prose-slate dark:prose-invert max-w-none my-12 space-y-4">
         <h2>The Core Rule: 1 kcal = 1 Food Calorie = 1,000 Small Calories</h2>
         <p>
-          In everyday language, people constantly ask: <strong>calories vs kcal</strong>, <strong>calories vs kilocalories</strong>, and <strong>is kcal the same as calories</strong>? The short answer is yes: on any food container or fitness tracker, 1 Calorie equals 1 kilocalorie (kcal).
+          On US nutrition labels, <strong>Calories</strong> is the dietary unit and is equivalent to <strong>kilocalories (kcal)</strong>. In scientific contexts, a lowercase <strong>calorie (cal)</strong> usually means a much smaller unit: 1 kcal = 1,000 cal. Capitalization helps distinguish a dietary Calorie (Cal) from a small calorie (cal), though everyday usage is not always consistent.
         </p>
 
         <p>
-          Whether written in Dutch as <strong>kcal en cal</strong> or <strong>kcal of cal</strong>, in English as <strong>kcal and cal</strong>, or in Italian as <strong>calorie chilocalorie</strong>, the underlying physics remains identical.
+          The word “calorie” can therefore refer to different-sized units depending on context. Look for kcal, cal, or kJ next to the number rather than relying on the word alone.
         </p>
+
+        <h2>Calories vs kcal vs cal: What&apos;s the Difference?</h2>
+        <p>These names describe related energy units, but they are not all the same size.</p>
+        <div className="not-prose my-6 overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
+          <table className="min-w-[34rem] divide-y divide-slate-200 text-left text-sm dark:divide-slate-800">
+            <caption className="sr-only">Comparison of small calories, kilocalories, and dietary Calories</caption>
+            <thead className="bg-slate-50 dark:bg-slate-900">
+              <tr>
+                <th scope="col" className="px-4 py-3 font-semibold">Name</th>
+                <th scope="col" className="px-4 py-3 font-semibold">Symbol</th>
+                <th scope="col" className="px-4 py-3 font-semibold">Relationship</th>
+                <th scope="col" className="px-4 py-3 font-semibold">Common use</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100 bg-white dark:divide-slate-800 dark:bg-slate-950">
+              <tr><th scope="row" className="px-4 py-3 font-semibold">Small calorie</th><td className="px-4 py-3">cal</td><td className="px-4 py-3">1/1,000 of a kcal</td><td className="px-4 py-3">Scientific energy measurements</td></tr>
+              <tr><th scope="row" className="px-4 py-3 font-semibold">Kilocalorie</th><td className="px-4 py-3">kcal</td><td className="px-4 py-3">1,000 small cal</td><td className="px-4 py-3">Nutrition and metabolism</td></tr>
+              <tr><th scope="row" className="px-4 py-3 font-semibold">Dietary Calorie</th><td className="px-4 py-3">Cal (often written Calories)</td><td className="px-4 py-3">1 Cal = 1 kcal</td><td className="px-4 py-3">US food labels</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Calories vs Kilojoules (kJ)</h2>
+        <p>
+          A joule is the SI unit of energy, and a kilojoule (kJ) is 1,000 joules. Some countries use kJ, or show both kJ and kcal, on food labels. The conversion is <strong>1 kcal = 4.184 kJ</strong>. For example, 100 kcal × 4.184 = 418.4 kJ.
+        </p>
+
+        <h2>How to Convert Calories to kcal and kJ</h2>
+        <ul>
+          <li><strong>kcal to small calories:</strong> kcal × 1,000. Example: 2.5 kcal = 2,500 cal.</li>
+          <li><strong>Small calories to kcal:</strong> cal ÷ 1,000. Example: 2,500 cal = 2.5 kcal.</li>
+          <li><strong>kcal to kJ:</strong> kcal × 4.184. Example: 259 kcal × 4.184 = 1,083.656 kJ, or about 1,083.7 kJ.</li>
+          <li><strong>kJ to kcal:</strong> kJ ÷ 4.184. Example: 418.4 kJ ÷ 4.184 = 100 kcal.</li>
+        </ul>
 
         <h2>Grams to Calories: Macronutrient Energy Density</h2>
         <p>
-          When converting <strong>grams to calories</strong>, each macronutrient provides a specific thermodynamic yield:
+          Common nutrition estimates use about 4 kcal per gram of protein, 4 kcal per gram of carbohydrate, 9 kcal per gram of fat, and 7 kcal per gram of alcohol. These are general factors, not exact values for every food; food composition, fiber, and labeling methods can affect reported energy.
         </p>
         <ul>
-          <li><strong>Protein:</strong> 4 calories per gram (4 kcal/g).</li>
-          <li><strong>Carbohydrates:</strong> 4 calories per gram (4 kcal/g).</li>
-          <li><strong>Fats:</strong> 9 calories per gram (9 kcal/g).</li>
-          <li><strong>Alcohol:</strong> 7 calories per gram (7 kcal/g).</li>
+          <li><strong>Protein:</strong> about 4 kcal/g.</li>
+          <li><strong>Carbohydrates:</strong> about 4 kcal/g.</li>
+          <li><strong>Fat:</strong> about 9 kcal/g.</li>
+          <li><strong>Alcohol:</strong> about 7 kcal/g.</li>
         </ul>
+
+        <h2>How to Read Calories on US Food Labels</h2>
+        <p>
+          The Nutrition Facts label lists a serving size, servings per container, and Calories per serving. To estimate the Calories in the whole package, multiply Calories per serving by the number of servings you eat. The % Daily Value (%DV) indicates how much a nutrient in one serving contributes to a general reference based on a 2,000-Calorie daily diet; it is not a personalized target.
+        </p>
+        <p>
+          <strong>Example:</strong> A package lists 2 servings, with 150 Calories per serving. Eating the entire package provides 2 × 150 = <strong>300 Calories</strong>. If the label shows 8% DV for a nutrient per serving, that percentage applies to one serving, not automatically to the whole package.
+        </p>
+        <p>
+          The FDA explains serving sizes and %DV in its{" "}
+          <a href="https://www.fda.gov/food/nutrition-facts-label/how-understand-and-use-nutrition-facts-label" target="_blank" rel="noopener noreferrer">
+            Nutrition Facts label guide
+          </a>
+          .
+        </p>
+
+        <h2>Active Calories vs Resting Calories vs Total Calories</h2>
+        <ul>
+          <li><strong>Active calories</strong> estimate energy used for movement or exercise above resting needs; device definitions vary.</li>
+          <li><strong>Resting calories</strong> estimate energy used to support basic functions while at rest.</li>
+          <li><strong>Total daily energy expenditure (TDEE)</strong> is the energy used across a day, including resting needs, movement, and digestion.</li>
+        </ul>
+        <p>
+          A fitness tracker may combine active and resting energy for a session or day, but its labels and methods differ by brand. These are estimates, not exact measurements of energy use.
+        </p>
+
+        <h2>Common Calorie Conversion Mistakes</h2>
+        <ul>
+          <li>Assuming a small cal and a dietary Calorie are the same size: 1 kcal = 1,000 small cal.</li>
+          <li>Missing the uppercase C: a dietary Calorie (Cal) equals 1 kcal; a small calorie is written cal.</li>
+          <li>Mixing kcal with kJ: multiply kcal by 4.184 to get kJ, or divide kJ by 4.184 to get kcal.</li>
+          <li>Ignoring serving size: label Calories are usually stated per serving, not necessarily per package.</li>
+        </ul>
+
+        <h2>Calories in Common Foods</h2>
+        <p>Values below are approximate; actual amounts vary by brand, portion, and preparation.</p>
+        <div className="not-prose my-6 overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
+          <table className="min-w-[28rem] divide-y divide-slate-200 text-left text-sm dark:divide-slate-800">
+            <caption className="sr-only">Approximate Calories in common food servings</caption>
+            <thead className="bg-slate-50 dark:bg-slate-900">
+              <tr>
+                <th scope="col" className="px-4 py-3 font-semibold">Food</th>
+                <th scope="col" className="px-4 py-3 font-semibold">Typical serving</th>
+                <th scope="col" className="px-4 py-3 font-semibold">Approx. Calories</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100 bg-white dark:divide-slate-800 dark:bg-slate-950">
+              <tr><th scope="row" className="px-4 py-3 font-semibold">Banana</th><td className="px-4 py-3">1 medium</td><td className="px-4 py-3">~105</td></tr>
+              <tr><th scope="row" className="px-4 py-3 font-semibold">Egg</th><td className="px-4 py-3">1 large</td><td className="px-4 py-3">~70</td></tr>
+              <tr><th scope="row" className="px-4 py-3 font-semibold">Milk</th><td className="px-4 py-3">1 cup (whole)</td><td className="px-4 py-3">~150</td></tr>
+              <tr><th scope="row" className="px-4 py-3 font-semibold">Bread</th><td className="px-4 py-3">1 slice</td><td className="px-4 py-3">~80</td></tr>
+              <tr><th scope="row" className="px-4 py-3 font-semibold">Cooked rice</th><td className="px-4 py-3">1 cup</td><td className="px-4 py-3">~205</td></tr>
+              <tr><th scope="row" className="px-4 py-3 font-semibold">Oats</th><td className="px-4 py-3">½ cup dry</td><td className="px-4 py-3">~150</td></tr>
+            </tbody>
+          </table>
+        </div>
 
         <DataTable
           title="Energy Conversion Equivalents Reference Table"
@@ -225,11 +325,23 @@ export default function CaloriesVsKcalPage() {
         />
 
         <p>
-          To calculate the exact dietary kilocalories your workouts burn, visit our homepage{" "}
+          The 3,500 kcal-per-pound figure is a traditional approximation, not an exact biological rule. A daily 500 kcal deficit does not guarantee exactly one pound of weight loss each week; actual changes vary over time.
+        </p>
+
+        <p>
+          To estimate energy used during a workout, visit our homepage{" "}
           <Link href="/" className="font-bold text-emerald-600 underline">
             walking calorie calculator
           </Link>.
         </p>
+
+        <h2>Scientific and Labeling References</h2>
+        <ul>
+            <li><a href="https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b8" target="_blank" rel="noopener noreferrer">NIST conversion factors for non-SI units</a> — calorie and joule conversion references.</li>
+            <li><a href="https://www.fda.gov/food/nutrition-facts-label/how-understand-and-use-nutrition-facts-label" target="_blank" rel="noopener noreferrer">U.S. FDA: How to Understand and Use the Nutrition Facts Label</a> — serving size, Calories, and %DV.</li>
+            <li><a href="https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-101/section-101.9" target="_blank" rel="noopener noreferrer">21 CFR § 101.9</a> — U.S. nutrition labeling requirements and energy calculation methods.</li>
+            <li><a href="https://fdc.nal.usda.gov/" target="_blank" rel="noopener noreferrer">USDA FoodData Central</a> — nutrient data for generic foods and common serving sizes.</li>
+        </ul>
       </div>
 
       <FAQSection faqs={faqs} />
