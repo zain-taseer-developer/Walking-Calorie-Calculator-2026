@@ -9,7 +9,7 @@ import { siteConfig } from "@/site.config";
 export const metadata: Metadata = {
   title: "Treadmill Incline Calculator & Pace Chart: Speed to Pace",
   description:
-    "Calculate calories burned on treadmill incline workouts with our ACSM equation calculator. Includes comprehensive treadmill pace chart and speed to pace conversion.",
+    "Calculate treadmill calories burned with our incline calculator. Convert treadmill speed to pace, compare incline levels, and explore the 12-3-30 workout.",
   alternates: {
     canonical: `${siteConfig.CANONICAL_URL}/treadmill-incline-calculator`,
   },
