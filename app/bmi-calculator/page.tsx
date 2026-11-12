@@ -7,7 +7,7 @@ import { AdSlot } from "@/components/ads/AdSlot";
 import { siteConfig } from "@/site.config";
 
 export const metadata: Metadata = {
-  title: "BMI Calculator: Body Mass Index & FFMI Calculator for Men & Women",
+  title: "BMI Calculator: Body Mass Index, Healthy Weight & FFMI",
   description:
     "Free Body Mass Index (BMI) and FFMI calculator for men and women. Check healthy height and weight charts, obesity classifications, and lean muscle mass.",
   alternates: {
