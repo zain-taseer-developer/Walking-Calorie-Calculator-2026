@@ -7,9 +7,9 @@ import { AdSlot } from "@/components/ads/AdSlot";
 import { siteConfig } from "@/site.config";
 
 export const metadata: Metadata = {
-  title: "Weight Converter: Pounds to Kilograms (lbs to kg) & kg to lbs",
+  title: "Weight Converter: lbs to kg & kg to lbs for Fitness",
   description:
-    "Convert pounds to kilograms (lbs to kg) and kg to lbs with our free live weight converter. Includes reference charts for 128 lbs, 152 lbs, 179 lbs, 183 lbs to kg.",
+    "Convert lbs to kg or kg to lbs with our fitness weight converter. Get accurate body weight measurements for walking calorie calculations and fitness tracking.",
   alternates: {
     canonical: `${siteConfig.CANONICAL_URL}/weight-converter`,
   },
