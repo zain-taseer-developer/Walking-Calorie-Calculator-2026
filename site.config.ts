@@ -87,7 +87,7 @@ export const siteConfig = {
       badge: "Weight Loss",
     },
     {
-      title: "Calories vs. kcal: What's the Difference?",
+      title: "Calories vs kcal: What's the Difference?",
       description: "Demystifying small calories, dietary kilocalories, and energy conversion math.",
       href: "/calories-vs-kcal",
       badge: "Nutrition Explainer",

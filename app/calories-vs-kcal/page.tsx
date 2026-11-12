@@ -84,7 +84,7 @@ export default function CaloriesVsKcalPage() {
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-      <Breadcrumbs items={[{ label: "Calories vs. kcal Explainer" }]} />
+      <Breadcrumbs items={[{ label: "Calories vs kcal Explainer" }]} />
 
       <div className="my-6 text-center max-w-3xl mx-auto">
         <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 text-xs font-semibold mb-2">
@@ -92,7 +92,7 @@ export default function CaloriesVsKcalPage() {
           <span>Scientific Energy Conversion Guide</span>
         </div>
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
-          Calories vs. kcal: What&apos;s the Difference?
+          Calories vs kcal: What&apos;s the Difference?
         </h1>
         <p className="mt-2 text-base text-slate-600 dark:text-slate-300">
           Demystifying food labels, dietary Calories, scientific small calories (cal), kilocalories (kcal), and energy conversion math.
