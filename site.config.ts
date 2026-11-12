@@ -75,7 +75,7 @@ export const siteConfig = {
       badge: "Printable Matrix",
     },
     {
-      title: "How Many Steps a Day Should You Take?",
+      title: "Recommended Steps Per Day: How Many Steps Should You Walk?",
       description: "Scientific evidence on mortality, heart health, and weight maintenance.",
       href: "/how-many-steps-a-day",
       badge: "Health Guide",
