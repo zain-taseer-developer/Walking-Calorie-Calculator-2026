@@ -12,7 +12,7 @@ import { MiniCalculator } from "@/components/calculator/MiniCalculator";
 import { Flame, TrendingDown, Scale, Target, Sparkles } from "lucide-react";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Walking for Weight Loss",
+  title: "Walking for Weight Loss: Steps, Calories & Weekly Plan",
   absoluteTitle: true,
   description:
     "Can you lose weight by walking? Learn how many steps to lose a pound, sustainable caloric deficit planning, and realistic weekly fat loss routines.",
