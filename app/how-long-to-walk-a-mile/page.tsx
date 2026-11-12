@@ -12,7 +12,7 @@ import { MiniCalculator } from "@/components/calculator/MiniCalculator";
 import { Clock, Timer, CheckCircle, Navigation } from "lucide-react";
 
 export const metadata: Metadata = constructMetadata({
-  title: "How Long Does It Take to Walk a Mile? (1, 2, 3, 5 Miles Chart)",
+  title: "How Long Does It Take to Walk a Mile? (1–5 Mile Chart)",
   absoluteTitle: true,
   description:
     "It takes 15 to 22 minutes to walk one mile for an average adult. See exact duration charts for 1, 2, 3, 4, 5, and 10 miles across casual, moderate, and brisk paces.",
