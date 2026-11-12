@@ -7,7 +7,7 @@ import { AdSlot } from "@/components/ads/AdSlot";
 import { siteConfig } from "@/site.config";
 
 export const metadata: Metadata = {
-  title: "Maintenance Calories Calculator & TDEE Macro Calculator",
+  title: "Maintenance Calorie Calculator & TDEE Macro Calculator",
   description:
     "Free maintenance calories calculator and daily calorie intake estimator. Calculate BMR, TDEE, calorie deficit for weight loss, body recomposition, and macros.",
   alternates: {
@@ -83,7 +83,7 @@ export default function MaintenanceCalorieCalculatorPage() {
 
       <header className="mb-8">
         <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
-          Maintenance Calories Calculator & Daily Intake Estimator
+          Maintenance Calorie Calculator & Daily Intake Estimator
         </h1>
         <p className="mt-3 text-lg text-slate-600 dark:text-slate-300">
           Find your exact maintenance calories, Total Daily Energy Expenditure (TDEE), and macronutrient distribution. Calculate your personal calorie deficit for healthy, sustainable weight loss.

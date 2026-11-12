@@ -93,7 +93,7 @@ export const siteConfig = {
       badge: "Nutrition Explainer",
     },
     {
-      title: "Maintenance Calories & TDEE Calculator",
+      title: "Maintenance Calorie & TDEE Calculator",
       description: "Calculate your Basal Metabolic Rate, daily maintenance calories, and target macro splits.",
       href: "/maintenance-calorie-calculator",
       badge: "Metabolism & Macros",
