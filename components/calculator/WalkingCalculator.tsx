@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useMemo, useRef } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import {
   CalculationMode,
   CalculatorInputs,
@@ -15,20 +15,8 @@ import {
 import { detectDefaultUnitSystem, kgToLbs, lbsToKg, cmToFtIn, ftInToCm } from "@/lib/format";
 import { SpeedSlider } from "./SpeedSlider";
 import { ResultsPanel } from "./ResultsPanel";
-import { CalculationHistory } from "./CalculationHistory";
 import { NumericInput } from "./NumericInput";
 import Image from "next/image";
-import {
-  SavedCalculation,
-  loadHistoryFromStorage,
-  saveHistoryToStorage,
-  addRecord,
-  updateRecord,
-  deleteRecord,
-  removeExpiredRecords,
-  MAX_HISTORY_RECORDS,
-  requestPersistentHistoryStorage,
-} from "@/lib/history";
 import {
   Clock,
   Compass,
@@ -37,25 +25,10 @@ import {
   Sliders,
   ChevronDown,
   ChevronUp,
-  Sparkles,
-  Check,
-  AlertCircle,
 } from "lucide-react";
 
 export function WalkingCalculator() {
   const [showAdvanced, setShowAdvanced] = useState(false);
-
-  // History states
-  const [history, setHistory] = useState<SavedCalculation[]>([]);
-  const [isHistoryOpen, setIsHistoryOpen] = useState(true);
-  const [loadedRecordId, setLoadedRecordId] = useState<string | null>(null);
-  const [isRecordEdited, setIsRecordEdited] = useState(false);
-  const [updateButtonStatus, setUpdateButtonStatus] = useState<"idle" | "updated">("idle");
-  const [recentlyUpdatedId, setRecentlyUpdatedId] = useState<string | null>(null);
-  const [storageError, setStorageError] = useState<string | null>(null);
-
-  const updateStatusTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const recentlyUpdatedTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Default Inputs
   const [inputs, setInputs] = useState<CalculatorInputs>({
@@ -80,15 +53,7 @@ export function WalkingCalculator() {
     showNetCalories: false,
   });
 
-  // Cleanup timeouts on unmount
-  useEffect(() => {
-    return () => {
-      if (updateStatusTimeoutRef.current) clearTimeout(updateStatusTimeoutRef.current);
-      if (recentlyUpdatedTimeoutRef.current) clearTimeout(recentlyUpdatedTimeoutRef.current);
-    };
-  }, []);
-
-  // On mount: check browser locale, localStorage, history and URL search params
+  // On mount: check browser locale, stored units and URL search params
   useEffect(() => {
     let resolvedUnits = detectDefaultUnitSystem();
 
@@ -98,23 +63,6 @@ export function WalkingCalculator() {
         resolvedUnits = storedUnits;
       }
     } catch {}
-
-    // Load saved history
-    const storedHistory = loadHistoryFromStorage();
-    if (storedHistory.records) {
-      // Browser storage is only available after hydration.
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setHistory(storedHistory.records);
-      if (storedHistory.records.length > 0) {
-        void requestPersistentHistoryStorage()
-          .catch((error) => {
-            console.error("Could not request persistent history storage.", error);
-          });
-      }
-    }
-    if (storedHistory.error) {
-      setStorageError(storedHistory.error);
-    }
 
     // Check URL parameters
     if (typeof window !== "undefined") {
@@ -127,6 +75,7 @@ export function WalkingCalculator() {
       const urlIncline = params.get("incline") ? parseFloat(params.get("incline")!) : null;
       const urlNet = params.get("net") === "1";
 
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setInputs((prev) => {
         const u = urlUnits || resolvedUnits;
         const next = { ...prev, unitSystem: u };
@@ -160,16 +109,6 @@ export function WalkingCalculator() {
     }
   }, []);
 
-  // Track edits to loaded records
-  const markInputsEdited = () => {
-    if (loadedRecordId) {
-      setIsRecordEdited(true);
-    }
-    if (updateButtonStatus === "updated") {
-      setUpdateButtonStatus("idle");
-    }
-  };
-
   // Sync unit switch
   const handleUnitToggle = (system: UnitSystem) => {
     try {
@@ -201,7 +140,6 @@ export function WalkingCalculator() {
         };
       }
     });
-    markInputsEdited();
   };
 
   // Live calculation results
@@ -209,117 +147,8 @@ export function WalkingCalculator() {
     return calculateWalkingCalories(inputs);
   }, [inputs]);
 
-  // Action button click: "Save to History" or "Update Record"
-  const handleActionButtonClick = () => {
-    setStorageError(null);
-
-    void requestPersistentHistoryStorage().catch((error) => {
-      console.error("Could not request persistent history storage.", error);
-    });
-
-    const retainedHistory = removeExpiredRecords(history);
-    if (retainedHistory.length !== history.length) {
-      const cleanupResult = saveHistoryToStorage(retainedHistory);
-      if (!cleanupResult.success) {
-        setStorageError(cleanupResult.error || "Unable to clean expired browser history.");
-        return;
-      }
-      setHistory(retainedHistory);
-    }
-
-    // Case 1: Updating an existing loaded record
-    if (loadedRecordId && isRecordEdited) {
-      const existing = retainedHistory.find((r) => r.id === loadedRecordId);
-      const updatedRecord: SavedCalculation = {
-        id: loadedRecordId,
-        timestamp: existing ? existing.timestamp : new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-        calories: result.caloriesToDisplay,
-        durationMinutes: result.durationTotalMinutes,
-        speedMph: result.speedMph,
-        weightLbs: inputs.weightLbs,
-        weightKg: inputs.weightKg,
-        distanceMiles: result.distanceMiles,
-        distanceKm: result.distanceKm,
-        unitSystem: inputs.unitSystem,
-        inputs: { ...inputs }, // Full input snapshot
-      };
-
-      const updateRes = updateRecord(retainedHistory, updatedRecord);
-      if (!updateRes.success) {
-        setStorageError(updateRes.error || "Failed to update record.");
-        return;
-      }
-
-      const saveRes = saveHistoryToStorage(updateRes.history);
-      if (!saveRes.success) {
-        setStorageError(saveRes.error || "Unable to save update to browser storage.");
-        return;
-      }
-
-      setHistory(updateRes.history);
-      setLoadedRecordId(null);
-      setIsRecordEdited(false);
-      setUpdateButtonStatus("updated");
-      setRecentlyUpdatedId(updatedRecord.id);
-      setIsHistoryOpen(true);
-
-      if (updateStatusTimeoutRef.current) clearTimeout(updateStatusTimeoutRef.current);
-      updateStatusTimeoutRef.current = setTimeout(() => {
-        setUpdateButtonStatus("idle");
-      }, 3000);
-
-      if (recentlyUpdatedTimeoutRef.current) clearTimeout(recentlyUpdatedTimeoutRef.current);
-      recentlyUpdatedTimeoutRef.current = setTimeout(() => {
-        setRecentlyUpdatedId(null);
-      }, 10000);
-
-      return;
-    }
-
-    // Case 2: Saving a new record
-    if (retainedHistory.length >= MAX_HISTORY_RECORDS) {
-      setStorageError(`History limit reached (${MAX_HISTORY_RECORDS}/${MAX_HISTORY_RECORDS} records). Please remove a saved record before adding a new one.`);
-      return;
-    }
-
-    const newRecord: SavedCalculation = {
-      id: Date.now().toString(),
-      timestamp: new Date().toISOString(),
-      calories: result.caloriesToDisplay,
-      durationMinutes: result.durationTotalMinutes,
-      speedMph: result.speedMph,
-      weightLbs: inputs.weightLbs,
-      weightKg: inputs.weightKg,
-      distanceMiles: result.distanceMiles,
-      distanceKm: result.distanceKm,
-      unitSystem: inputs.unitSystem,
-      inputs: { ...inputs }, // Full input snapshot
-    };
-
-    const addRes = addRecord(retainedHistory, newRecord, MAX_HISTORY_RECORDS);
-    if (!addRes.success) {
-      setStorageError(addRes.error || "Unable to save record.");
-      return;
-    }
-
-    const saveRes = saveHistoryToStorage(addRes.history);
-    if (!saveRes.success) {
-      setStorageError(saveRes.error || "Unable to save record to browser storage.");
-      return;
-    }
-
-    setHistory(addRes.history);
-    setIsHistoryOpen(true);
-    setLoadedRecordId(null);
-    setIsRecordEdited(false);
-  };
-
   // Reset to defaults
   const handleReset = () => {
-    setLoadedRecordId(null);
-    setIsRecordEdited(false);
-    setUpdateButtonStatus("idle");
     setInputs({
       unitSystem: inputs.unitSystem,
       mode: "time-speed",
@@ -343,67 +172,7 @@ export function WalkingCalculator() {
     });
   };
 
-  // Load from history: restores full input snapshot or falls back gracefully for older records
-  const handleLoadHistory = (calc: SavedCalculation) => {
-    setLoadedRecordId(calc.id);
-    setIsRecordEdited(false);
-    setUpdateButtonStatus("idle");
-
-    if (calc.inputs) {
-      setInputs({ ...calc.inputs });
-    } else {
-      // Legacy records fallback
-      setInputs((prev) => ({
-        ...prev,
-        unitSystem: calc.unitSystem || prev.unitSystem,
-        weightLbs: calc.weightLbs || prev.weightLbs,
-        weightKg: calc.weightKg || prev.weightKg,
-        speedMph: calc.speedMph || prev.speedMph,
-        speedKmh: parseFloat(((calc.speedMph || prev.speedMph) * 1.609344).toFixed(1)),
-        durationHours: Math.floor((calc.durationMinutes || 0) / 60),
-        durationMinutes: (calc.durationMinutes || 0) % 60,
-        distanceMiles: calc.distanceMiles || prev.distanceMiles,
-        distanceKm: calc.distanceKm || prev.distanceKm,
-      }));
-    }
-  };
-
-  // Delete individual record
-  const handleDeleteRecord = (id: string) => {
-    const updated = deleteRecord(history, id);
-    const saveRes = saveHistoryToStorage(updated);
-    if (!saveRes.success) {
-      setStorageError(saveRes.error || "Unable to update browser storage.");
-      return;
-    }
-    setHistory(updated);
-    if (loadedRecordId === id) {
-      setLoadedRecordId(null);
-      setIsRecordEdited(false);
-      setUpdateButtonStatus("idle");
-    }
-    if (recentlyUpdatedId === id) {
-      setRecentlyUpdatedId(null);
-    }
-  };
-
-  // Clear all history
-  const handleClearHistory = () => {
-    const saveRes = saveHistoryToStorage([]);
-    if (!saveRes.success) {
-      setStorageError(saveRes.error || "Unable to clear browser storage.");
-      return;
-    }
-    setHistory([]);
-    setLoadedRecordId(null);
-    setIsRecordEdited(false);
-    setUpdateButtonStatus("idle");
-    setRecentlyUpdatedId(null);
-  };
-
   const isImperial = inputs.unitSystem === "imperial";
-  const isUpdating = Boolean(loadedRecordId && isRecordEdited);
-  const isLimitReached = history.length >= MAX_HISTORY_RECORDS && !isUpdating;
 
   return (
     <>
@@ -444,7 +213,6 @@ export function WalkingCalculator() {
               checked={inputs.showNetCalories}
               onChange={(e) => {
                 setInputs({ ...inputs, showNetCalories: e.target.checked });
-                markInputsEdited();
               }}
               className="w-4 h-4 rounded text-brand-600 focus:ring-brand-500 border-slate-300 dark:border-slate-700"
             />
@@ -458,7 +226,6 @@ export function WalkingCalculator() {
             type="button"
             onClick={() => {
               setInputs({ ...inputs, mode: "time-speed" });
-              markInputsEdited();
             }}
             className={`flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all border ${
               inputs.mode === "time-speed"
@@ -474,7 +241,6 @@ export function WalkingCalculator() {
             type="button"
             onClick={() => {
               setInputs({ ...inputs, mode: "distance-time" });
-              markInputsEdited();
             }}
             className={`flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all border ${
               inputs.mode === "distance-time"
@@ -490,7 +256,6 @@ export function WalkingCalculator() {
             type="button"
             onClick={() => {
               setInputs({ ...inputs, mode: "steps" });
-              markInputsEdited();
             }}
             className={`flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all border ${
               inputs.mode === "steps"
@@ -506,7 +271,6 @@ export function WalkingCalculator() {
             type="button"
             onClick={() => {
               setInputs({ ...inputs, mode: "treadmill" });
-              markInputsEdited();
             }}
             className={`flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all border ${
               inputs.mode === "treadmill"
@@ -553,7 +317,6 @@ export function WalkingCalculator() {
                         weightLbs: kgToLbs(val),
                       });
                     }
-                    markInputsEdited();
                   }}
                   className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-base focus:ring-2 focus:ring-brand-500 focus:border-brand-500"
                 />
@@ -584,7 +347,6 @@ export function WalkingCalculator() {
                           heightFt: ft,
                           heightCm: ftInToCm(ft, inputs.heightIn),
                         });
-                        markInputsEdited();
                       }}
                       className="w-full px-3 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-base focus:ring-2 focus:ring-brand-500"
                     />
@@ -604,7 +366,6 @@ export function WalkingCalculator() {
                           heightIn: inch,
                           heightCm: ftInToCm(inputs.heightFt, inch),
                         });
-                        markInputsEdited();
                       }}
                       className="w-full px-3 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-base focus:ring-2 focus:ring-brand-500"
                     />
@@ -628,7 +389,6 @@ export function WalkingCalculator() {
                         heightFt: ft,
                         heightIn: inch,
                       });
-                      markInputsEdited();
                     }}
                     className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-base focus:ring-2 focus:ring-brand-500"
                   />
@@ -662,7 +422,6 @@ export function WalkingCalculator() {
                           ...inputs,
                           durationHours: Math.max(0, val),
                         });
-                        markInputsEdited();
                       }}
                       className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-base focus:ring-2 focus:ring-brand-500"
                     />
@@ -681,7 +440,6 @@ export function WalkingCalculator() {
                           ...inputs,
                           durationMinutes: Math.max(0, val),
                         });
-                        markInputsEdited();
                       }}
                       className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-base focus:ring-2 focus:ring-brand-500"
                     />
@@ -697,11 +455,9 @@ export function WalkingCalculator() {
                 speedKmh={inputs.speedKmh}
                 onChangeMph={(mph) => {
                   setInputs((prev) => ({ ...prev, speedMph: mph }));
-                  markInputsEdited();
                 }}
                 onChangeKmh={(kmh) => {
                   setInputs((prev) => ({ ...prev, speedKmh: kmh }));
-                  markInputsEdited();
                 }}
               />
 
@@ -728,7 +484,6 @@ export function WalkingCalculator() {
                         ...inputs,
                         inclinePercent: parseFloat(e.target.value) || 0,
                       });
-                      markInputsEdited();
                     }}
                     className="w-full h-2.5 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-amber-600"
                   />
@@ -773,7 +528,6 @@ export function WalkingCalculator() {
                           distanceMiles: parseFloat((val / 1.609344).toFixed(2)),
                         });
                       }
-                      markInputsEdited();
                     }}
                     className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-base focus:ring-2 focus:ring-brand-500"
                   />
@@ -802,7 +556,6 @@ export function WalkingCalculator() {
                           ...inputs,
                           durationHours: Math.max(0, val),
                         });
-                        markInputsEdited();
                       }}
                       className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-base focus:ring-2 focus:ring-brand-500"
                     />
@@ -821,7 +574,6 @@ export function WalkingCalculator() {
                           ...inputs,
                           durationMinutes: Math.max(0, val),
                         });
-                        markInputsEdited();
                       }}
                       className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-base focus:ring-2 focus:ring-brand-500"
                     />
@@ -853,7 +605,6 @@ export function WalkingCalculator() {
                         ...inputs,
                         steps: Math.max(0, val),
                       });
-                      markInputsEdited();
                     }}
                     className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-base focus:ring-2 focus:ring-brand-500"
                   />
@@ -871,7 +622,6 @@ export function WalkingCalculator() {
                     type="button"
                     onClick={() => {
                       setInputs({ ...inputs, steps: count });
-                      markInputsEdited();
                     }}
                     className={`px-2 py-1.5 rounded-lg text-xs font-medium border text-center transition-colors ${
                       inputs.steps === count
@@ -903,7 +653,6 @@ export function WalkingCalculator() {
                           ...inputs,
                           durationHours: Math.max(0, val),
                         });
-                        markInputsEdited();
                       }}
                       className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-base focus:ring-2 focus:ring-brand-500"
                     />
@@ -922,7 +671,6 @@ export function WalkingCalculator() {
                           ...inputs,
                           durationMinutes: Math.max(0, val),
                         });
-                        markInputsEdited();
                       }}
                       className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-base focus:ring-2 focus:ring-brand-500"
                     />
@@ -959,7 +707,6 @@ export function WalkingCalculator() {
                     value={inputs.terrain}
                     onChange={(e) => {
                       setInputs({ ...inputs, terrain: e.target.value as TerrainType });
-                      markInputsEdited();
                     }}
                     className="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-brand-500"
                   >
@@ -997,7 +744,6 @@ export function WalkingCalculator() {
                           backpackWeightLbs: kgToLbs(val),
                         });
                       }
-                      markInputsEdited();
                     }}
                     className="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm font-mono"
                     placeholder="0"
@@ -1010,73 +756,6 @@ export function WalkingCalculator() {
             )}
           </div>
 
-          {/* Primary Action Button Area */}
-          <div className="pt-2">
-            {/* 28-record limit notice above button */}
-            {isLimitReached && (
-              <div className="mb-2 p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-300 text-xs flex items-center gap-2">
-                <AlertCircle className="w-4 h-4 shrink-0 text-amber-600 dark:text-amber-400" />
-                <span>History limit reached (28/28 records). You must remove a saved record before adding a new one.</span>
-              </div>
-            )}
-
-            <button
-              type="button"
-              onClick={handleActionButtonClick}
-              disabled={isLimitReached}
-              className={`w-full py-3.5 px-6 rounded-2xl font-bold text-base shadow-lg transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-4 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed ${
-                updateButtonStatus === "updated"
-                  ? "bg-emerald-600 hover:bg-emerald-700 text-white shadow-emerald-600/25 focus:ring-emerald-500/30"
-                  : isUpdating
-                  ? "bg-brand-600 hover:bg-brand-700 text-white shadow-brand-600/25 focus:ring-brand-500/30"
-                  : "bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white shadow-accent-500/25 hover:shadow-accent-500/40 focus:ring-accent-500/30"
-              }`}
-            >
-              {updateButtonStatus === "updated" ? (
-                <>
-                  <Check className="w-5 h-5 text-white" />
-                  <span>Record Updated</span>
-                </>
-              ) : isUpdating ? (
-                <>
-                  <Sparkles className="w-5 h-5 text-white" />
-                  <span>Update Record</span>
-                </>
-              ) : (
-                <>
-                  <Sparkles className="w-5 h-5 text-white" />
-                  <span>Save to History</span>
-                </>
-              )}
-            </button>
-            {storageError && (
-              <div className="mt-2 p-3 rounded-xl bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 text-xs flex items-center justify-between gap-2">
-                <span>{storageError}</span>
-                <button
-                  type="button"
-                  onClick={() => setStorageError(null)}
-                  className="font-bold underline hover:no-underline shrink-0"
-                >
-                  Dismiss
-                </button>
-              </div>
-            )}
-            <p className="text-center text-[11px] text-slate-400 mt-2">
-              Results update live above &amp; below as you adjust values.
-            </p>
-          </div>
-
-          {/* Calculation History */}
-          <CalculationHistory
-            history={history}
-            loadedRecordId={loadedRecordId}
-            recentlyUpdatedId={recentlyUpdatedId}
-            isOpen={isHistoryOpen}
-            onToggleOpen={() => setIsHistoryOpen((prev) => !prev)}
-            onLoadCalculation={handleLoadHistory}
-            onDeleteRecord={handleDeleteRecord}
-            onClearHistory={handleClearHistory}
-          />
           <section
             aria-label="Live walking calculation summary and illustration"
             className="mt-4 overflow-hidden rounded-2xl border border-orange-200 bg-gradient-to-br from-orange-50 via-white to-slate-50 shadow-xs dark:border-slate-800 dark:from-slate-900 dark:via-slate-900 dark:to-slate-950"
