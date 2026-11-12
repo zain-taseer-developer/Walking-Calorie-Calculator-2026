@@ -7,9 +7,9 @@ import { AdSlot } from "@/components/ads/AdSlot";
 import { siteConfig } from "@/site.config";
 
 export const metadata: Metadata = {
-  title: "Marathon Pace Chart: 5K, 10K, Half & Full Marathon Pace Calculator",
+  title: "Marathon Pace Calculator: Half & Full Marathon, 5K & 10K",
   description:
-    "Official marathon pace chart and race pace calculator. Find exact min/mile and min/km splits for 3 hour, 3:30, 4 hour, and 5 hour marathon finishes.",
+    "Calculate your race pace with our marathon pace calculator. Get pace splits, finish times, and speed charts for 5K, 10K, half and full marathons.",
   alternates: {
     canonical: `${siteConfig.CANONICAL_URL}/marathon-pace-chart`,
   },
