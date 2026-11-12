@@ -15,21 +15,21 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-slate-200/80 dark:border-slate-800/80 bg-white/90 dark:bg-slate-950/90 backdrop-blur-md transition-colors">
       {/* Slim 20px Subheader above Main Header */}
-      <div className="w-full h-[20px] min-h-[20px] max-h-[20px] border-b border-slate-200/60 dark:border-slate-800/60 bg-slate-50/90 dark:bg-slate-900/90 text-[11px] leading-[20px] text-slate-500 dark:text-slate-400">
+      <div className="w-full h-[20px] min-h-[20px] max-h-[20px] border-b border-white/20 bg-[#0a9587] text-[11px] leading-[20px] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
           <span className="truncate pl-3 font-medium sm:pl-[13px]">
             Your Free Walking &amp; Fitness Calculator – 2026
           </span>
           <nav className="flex items-center gap-2.5 sm:gap-3 shrink-0 text-[11px]" aria-label="Quick links">
-            <Link href="/about" className="hover:text-slate-900 dark:hover:text-white transition-colors">
+            <Link href="/about" className="text-white/90 hover:text-white transition-colors">
               About
             </Link>
-            <span className="text-slate-300 dark:text-slate-700 select-none">·</span>
-            <Link href="/contact" className="hover:text-slate-900 dark:hover:text-white transition-colors">
+            <span className="text-white/60 select-none">·</span>
+            <Link href="/contact" className="text-white/90 hover:text-white transition-colors">
               Contact
             </Link>
-            <span className="text-slate-300 dark:text-slate-700 select-none">·</span>
-            <Link href="/privacy-policy" className="hover:text-slate-900 dark:hover:text-white transition-colors">
+            <span className="text-white/60 select-none">·</span>
+            <Link href="/privacy-policy" className="text-white/90 hover:text-white transition-colors">
               Privacy
             </Link>
           </nav>
