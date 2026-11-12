@@ -15,63 +15,73 @@ export const metadata: Metadata = {
   },
 };
 
-const weightTable = [
-  { lbs: "128 lbs to kg", lbVal: 128, kg: "58.06 kg", note: "Healthy weight benchmark for 5'1 - 5'5 individuals" },
-  { lbs: "144 lbs to kg", lbVal: 144, kg: "65.32 kg", note: "Common fitness target; 10 stone 4 lbs" },
-  { lbs: "149 lbs kg", lbVal: 149, kg: "67.59 kg", note: "Standard mid-range adult body mass" },
-  { lbs: "152 pounds kg", lbVal: 152, kg: "68.95 kg", note: "Also searched as 152 lb to kg, 152 pounds in kg, 152 pounds to kg" },
-  { lbs: "153 lbs to kg", lbVal: 153, kg: "69.40 kg", note: "Also searched as 153 pounds to kg" },
-  { lbs: "162 lbs to kg", lbVal: 162, kg: "73.48 kg", note: "Popular adult reference weight" },
-  { lbs: "163 lbs to kg", lbVal: 163, kg: "73.94 kg", note: "Also searched as 163 pounds in kg" },
-  { lbs: "164 pounds kg", lbVal: 164, kg: "74.39 kg", note: "Standard recreational walker baseline" },
-  { lbs: "169 lbs to kg", lbVal: 169, kg: "76.66 kg", note: "Also searched as 169 pounds in kg" },
-  { lbs: "173 lbs to kg", lbVal: 173, kg: "78.47 kg", note: "Also searched as 173 pounds kg" },
-  { lbs: "174 lbs in kg", lbVal: 174, kg: "78.93 kg", note: "78.93 kilograms adult mass" },
-  { lbs: "178 lb to kg", lbVal: 178, kg: "80.74 kg", note: "80.74 kilograms" },
-  { lbs: "179 lbs to kg", lbVal: 179, kg: "81.19 kg", note: "Also searched as 179 pounds kg and 179 pounds to kg" },
-  { lbs: "183 lbs to kg", lbVal: 183, kg: "83.01 kg", note: "Also searched as 183 pounds in kg, 183 pounds to kg, and 183 pounds kg" },
-  { lbs: "193 lbs to kg", lbVal: 193, kg: "87.54 kg", note: "Also searched as 193 pounds in kg" },
-  { lbs: "194 pounds in kg", lbVal: 194, kg: "88.00 kg", note: "88.00 kilograms" },
-  { lbs: "202 lbs to kg", lbVal: 202, kg: "91.63 kg", note: "91.63 kilograms" },
-  { lbs: "227 lbs to kg", lbVal: 227, kg: "102.97 kg", note: "102.97 kilograms" },
-  { lbs: "232 lbs to kg", lbVal: 232, kg: "105.23 kg", note: "105.23 kilograms" },
-];
+const commonWeightsLbs = [100, 120, 128, 140, 150, 152, 160, 162, 163, 179, 180, 183, 200, 220];
 
 const faqs = [
   {
     question: "How do you convert pounds to kilograms (lbs to kg)?",
     answer:
-      "To convert pounds to kilograms, multiply your weight in pounds by 0.45359237 (or divide by 2.20462). For quick everyday calculations, dividing by 2.2 gives an accurate approximation within 0.2%. For example, 152 pounds kg equals 68.95 kg.",
+      "Multiply the number of pounds by 0.45359237. For example, 150 lbs × 0.45359237 = 68.04 kg, rounded to two decimal places.",
   },
   {
-    question: "How much is 152 pounds in kg (152 lb to kg)?",
+    question: "How much is 152 pounds in kg?",
     answer:
-      "152 pounds in kg is exactly 68.946 kg (commonly rounded to 68.95 kg). Whether written as 152 pounds to kg, 152 lb to kg, or 152 pounds kg, the calculation is 152 × 0.45359237 = 68.95 kilograms.",
+      "152 lbs is 68.946 kg, or 68.95 kg rounded to two decimal places.",
   },
   {
     question: "How much is 128 lbs to kg?",
     answer:
-      "128 lbs to kg equals 58.06 kilograms (128 × 0.45359237 = 58.0598 kg). A 128-pound individual walking at 3.5 mph burns approximately 250 calories per hour.",
+      "128 lbs × 0.45359237 = 58.0598 kg, which rounds to 58.06 kg.",
   },
   {
-    question: "How much is 162 lbs to kg and 163 lbs to kg?",
+    question: "How much are 162 lbs and 163 lbs in kg?",
     answer:
-      "162 lbs to kg is 73.48 kg, and 163 lbs to kg (163 pounds in kg) is 73.94 kg. Both weights fall right around 73.5 to 74 kilograms in international metric standards.",
+      "162 lbs is 73.48 kg, and 163 lbs is 73.94 kg, rounded to two decimal places.",
   },
   {
-    question: "What is 179 lbs to kg and 183 lbs to kg?",
+    question: "What are 179 lbs and 183 lbs in kg?",
     answer:
-      "179 lbs to kg (179 pounds kg or 179 pounds to kg) equals 81.19 kg. 183 lbs to kg (searched as 183 pounds in kg, 183 pounds to kg, and 183 pounds kg) equals 83.01 kg.",
+      "179 lbs is 81.19 kg, and 183 lbs is 83.01 kg, rounded to two decimal places.",
   },
   {
-    question: "What is 18.5 kg lbs (18.5 kilograms in pounds)?",
+    question: "What is 18.5 kg in lbs?",
     answer:
-      "18.5 kg lbs equals 40.79 pounds (18.5 × 2.20462 = 40.785 lbs). 18.5 kg is also a common metric BMI threshold number in clinical nutrition.",
+      "18.5 kg × 2.20462262 = 40.7855 lbs, or 40.79 lbs rounded to two decimal places.",
   },
   {
     question: "Why does body weight in kilograms matter for walking calorie calculations?",
     answer:
-      "The scientific Compendium of Physical Activities and ACSM metabolic equations define energy expenditure as: kcal = MET × weight in kg × duration in hours. Because physiological formulas are metric, converting your weight from lbs to kg ensures exact calorie calculation without rounding errors.",
+      "Some MET-based formulas use kilograms as the body-mass input. Converting pounds with the correct factor keeps units consistent, but calorie estimates also depend on activity intensity, duration, and individual differences.",
+  },
+  {
+    question: "How many kilograms are in one pound?",
+    answer:
+      "One pound is exactly 0.45359237 kilograms. For everyday use, it is commonly rounded to 0.4536 kg.",
+  },
+  {
+    question: "How many pounds are in one kilogram?",
+    answer:
+      "One kilogram is approximately 2.20462262 pounds, usually rounded to 2.2046 lbs or 2.20 lbs for a quick estimate.",
+  },
+  {
+    question: "How do I convert lbs to kg without a calculator?",
+    answer:
+      "For a quick estimate, divide pounds by 2.2. For example, 150 ÷ 2.2 is about 68.18 kg; the exact conversion is about 68.04 kg.",
+  },
+  {
+    question: "Is 2.2 a correct conversion factor?",
+    answer:
+      "It is a convenient approximation, not the exact factor. One kilogram is 2.20462262 pounds, so using 2.2 introduces a small rounding difference.",
+  },
+  {
+    question: "Should I use lbs or kg in a fitness calculator?",
+    answer:
+      "Use the unit that matches the calculator field. If it accepts both, enter the unit you know; a correctly designed calculator converts it internally as needed.",
+  },
+  {
+    question: "How many decimal places should I use when converting weight?",
+    answer:
+      "Two decimal places are sufficient for most everyday fitness tracking. Keep more precision only when a specific calculation or device requires it.",
   },
 ];
 
@@ -90,7 +100,7 @@ export default function WeightConverterPage() {
           Weight Converter: Pounds to Kilograms (lbs to kg)
         </h1>
         <p className="mt-3 text-lg text-slate-600 dark:text-slate-300">
-          Fast, two-way instant conversion between pounds (lbs) and kilograms (kg). Built for fitness tracking, metabolic equations, and accurate walking calorie estimates.
+          Convert pounds to kilograms or kilograms to pounds, with quick reference values for fitness tracking and everyday use.
         </p>
       </header>
 
@@ -99,70 +109,99 @@ export default function WeightConverterPage() {
         <WeightConverterTool />
       </div>
 
+      <section className="prose prose-slate mb-10 max-w-none dark:prose-invert">
+        <h2>How to Use the Weight Converter</h2>
+        <p>
+          Enter a value in either field and the other unit updates automatically, rounded to two decimal places. You can edit either side of the converter.
+        </p>
+        <ul>
+          <li><strong>Pounds to kilograms:</strong> Type a nonnegative value in the Pounds (lbs) field. Its corresponding value appears in Kilograms (kg).</li>
+          <li><strong>Kilograms to pounds:</strong> Type in the Kilograms (kg) field to update the Pounds (lbs) value.</li>
+          <li><strong>Current Conversion:</strong> The result card summarizes the current values in both units and shows the conversion factors.</li>
+          <li><strong>Frequently searched weights:</strong> Select a weight preset to fill the pounds field and update its kilogram conversion.</li>
+        </ul>
+        <p>
+          The converter supports decimal inputs. It does not add or require a separate convert button.
+        </p>
+      </section>
+
       <AdSlot slotId="weight-converter-top" format="horizontal" />
 
-      {/* Main Content */}
       <section className="prose prose-slate mt-10 max-w-none dark:prose-invert">
-        <h2>Pounds to Kilograms Conversion Formula</h2>
+        <h2>Pounds vs Kilograms: What&apos;s the Difference?</h2>
         <p>
-          The international avoirdupois pound is officially defined as exactly <strong>0.45359237 kilograms</strong>. Conversely, one kilogram equals approximately <strong>2.20462262 pounds</strong>.
+          A pound (lb) is a customary unit of body weight commonly used in the United States. A kilogram (kg) is the standard metric unit of mass and is used in most countries. People often use “weight” for both in everyday conversation.
         </p>
-        <div className="not-prose my-6 grid gap-4 sm:grid-cols-2">
-          <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900">
-            <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
-              Pounds to Kilograms Formula
-            </span>
-            <div className="mt-2 font-mono text-base font-bold text-slate-800 dark:text-slate-100">
-              Weight in kg = Weight in lbs × 0.45359237
-            </div>
-            <p className="mt-1 text-xs text-slate-500">Quick approximation: divide pounds by 2.2</p>
-          </div>
-          <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900">
-            <span className="text-xs font-semibold uppercase tracking-wider text-teal-600 dark:text-teal-400">
-              Kilograms to Pounds Formula
-            </span>
-            <div className="mt-2 font-mono text-base font-bold text-slate-800 dark:text-slate-100">
-              Weight in lbs = Weight in kg × 2.20462262
-            </div>
-            <p className="mt-1 text-xs text-slate-500">Quick approximation: multiply kilograms by 2.2</p>
-          </div>
+        <p>
+          Fitness and health calculators may accept either unit to match the way people record body weight. Some exercise-science equations use kilograms directly, so converting correctly helps keep the units consistent in the calculation.
+        </p>
+
+        <h2>How to Convert Pounds to Kilograms Manually</h2>
+        <p>
+          Multiply the weight in pounds by the exact pound-to-kilogram conversion factor:
+        </p>
+        <div className="not-prose my-4 rounded-xl border border-slate-200 bg-slate-50 p-4 font-mono text-sm text-slate-800 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200">
+          Weight in kg = Weight in lbs × 0.45359237
         </div>
+        <ul>
+          <li><strong>150 lbs:</strong> 150 × 0.45359237 = 68.0388555 kg ≈ <strong>68.04 kg</strong></li>
+          <li><strong>160 lbs:</strong> 160 × 0.45359237 = 72.5747792 kg ≈ <strong>72.57 kg</strong></li>
+          <li><strong>180 lbs:</strong> 180 × 0.45359237 = 81.6466266 kg ≈ <strong>81.65 kg</strong></li>
+          <li><strong>200 lbs:</strong> 200 × 0.45359237 = 90.718474 kg ≈ <strong>90.72 kg</strong></li>
+        </ul>
 
-        <h2>Popular Pounds to Kilograms Reference Table</h2>
+        <h2>How to Convert Kilograms to Pounds Manually</h2>
         <p>
-          The table below provides exact conversions for frequently searched adult body weights, including queries like <strong>152 pounds kg</strong>, <strong>128 lbs to kg</strong>, <strong>162 lbs to kg</strong>, and <strong>183 lbs to kg</strong>.
+          Multiply the weight in kilograms by the pounds-per-kilogram conversion factor:
         </p>
+        <div className="not-prose my-4 rounded-xl border border-slate-200 bg-slate-50 p-4 font-mono text-sm text-slate-800 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200">
+          Weight in lbs = Weight in kg × 2.20462262
+        </div>
+        <ul>
+          <li><strong>50 kg:</strong> 50 × 2.20462262 = 110.231131 lbs ≈ <strong>110.23 lbs</strong></li>
+          <li><strong>60 kg:</strong> 60 × 2.20462262 = 132.2773572 lbs ≈ <strong>132.28 lbs</strong></li>
+          <li><strong>70 kg:</strong> 70 × 2.20462262 = 154.3235834 lbs ≈ <strong>154.32 lbs</strong></li>
+          <li><strong>80 kg:</strong> 80 × 2.20462262 = 176.3698096 lbs ≈ <strong>176.37 lbs</strong></li>
+          <li><strong>90 kg:</strong> 90 × 2.20462262 = 198.4160358 lbs ≈ <strong>198.42 lbs</strong></li>
+        </ul>
 
-        {/* Reference Table */}
+        <h2>Common Weight Conversions</h2>
+        <p>
+          These values use the exact pound-to-kilogram factor and are rounded to two decimal places. The table also retains frequently used examples from the existing converter reference.
+        </p>
         <div className="not-prose my-6 overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
           <table className="min-w-full divide-y divide-slate-200 text-left text-sm dark:divide-slate-800">
             <thead className="bg-slate-50 dark:bg-slate-900">
               <tr>
-                <th className="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">Search Query</th>
                 <th className="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">Pounds (lbs)</th>
-                <th className="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">Exact Kilograms (kg)</th>
-                <th className="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">Notes & Variations</th>
+                <th className="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">Kilograms (kg)</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 bg-white dark:divide-slate-800 dark:bg-slate-950">
-              {weightTable.map((row) => (
-                <tr key={row.lbs} className="hover:bg-slate-50/70 dark:hover:bg-slate-900/50">
-                  <td className="px-4 py-3 font-medium text-slate-900 dark:text-slate-100">{row.lbs}</td>
-                  <td className="px-4 py-3 text-slate-600 dark:text-slate-400">{row.lbVal} lbs</td>
-                  <td className="px-4 py-3 font-bold text-emerald-600 dark:text-emerald-400">{row.kg}</td>
-                  <td className="px-4 py-3 text-xs text-slate-500 dark:text-slate-400">{row.note}</td>
+              {commonWeightsLbs.map((lbs) => (
+                <tr key={lbs} className="hover:bg-slate-50/70 dark:hover:bg-slate-900/50">
+                  <td className="px-4 py-3 font-medium text-slate-900 dark:text-slate-100">{lbs} lbs</td>
+                  <td className="px-4 py-3 font-bold text-emerald-600 dark:text-emerald-400">{(lbs * 0.45359237).toFixed(2)} kg</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
 
-        <h2>Why Accurate Weight Matters in Physical Activity Science</h2>
+        <h2>Understanding Decimal Places and Rounding</h2>
         <p>
-          When you use our <Link href="/" className="font-semibold text-emerald-600 hover:underline dark:text-emerald-400">Walking Calorie Calculator</Link>, body mass is the single most influential variable determining total energy expenditure. In physics and exercise physiology, walking requires your skeletal muscles to generate force against gravity to propel your center of mass forward with each stride.
+          Converted weights often include decimals because pounds and kilograms use different-sized units and do not convert to whole numbers for most values. The exact factor, 1 lb = 0.45359237 kg, avoids the small difference created by a shortcut.
         </p>
         <p>
-          A person weighing <strong>183 lbs to kg (83.01 kg)</strong> expends approximately 43% more energy per mile than someone weighing <strong>128 lbs to kg (58.06 kg)</strong> at the exact same walking speed. Whether you track your metrics in imperial pounds or metric kilograms, our tools convert units seamlessly so you never face rounding discrepancies.
+          Dividing pounds by 2.2 is a convenient approximation because one kilogram is about 2.2 pounds. For precise conversion, multiply by 0.45359237 (or divide by 2.20462262). Rounding to two decimal places is generally enough for everyday fitness tracking; use more precision only when a specific application requires it.
+        </p>
+
+        <h2>Why Accurate Weight Matters in Physical Activity Science</h2>
+        <p>
+          A common simplified MET estimate is gross calories = MET × body weight in kg × duration in hours. Body mass is one input in this calculation, and some activity-science formulas are written with kilograms, so an accurate conversion keeps the units consistent. Weight is not the only factor: estimated expenditure also depends on activity intensity and duration, and real energy use varies among individuals.
+        </p>
+        <p>
+          Use your converted weight with our <Link href="/" className="font-semibold text-emerald-600 hover:underline dark:text-emerald-400">Walking Calorie Calculator</Link> or the <Link href="/calories-burned-calculator" className="font-semibold text-emerald-600 hover:underline dark:text-emerald-400">Calories Burned Calculator</Link>. You can also explore the <Link href="/maintenance-calorie-calculator" className="font-semibold text-emerald-600 hover:underline dark:text-emerald-400">Maintenance Calorie &amp; TDEE Calculator</Link>, <Link href="/bmi-calculator" className="font-semibold text-emerald-600 hover:underline dark:text-emerald-400">BMI &amp; FFMI Calculator</Link>, and <Link href="/walking-calories-burned-chart" className="font-semibold text-emerald-600 hover:underline dark:text-emerald-400">Walking Calories Burned Chart</Link>.
         </p>
       </section>
 
@@ -176,9 +215,9 @@ export default function WeightConverterPage() {
 
       {/* Internal Navigation to Flagship Tool */}
       <div className="mt-12 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 p-8 text-white shadow-lg">
-        <h3 className="text-2xl font-bold">Calculate Calories Burned for Your Weight</h3>
+        <h2 className="text-2xl font-bold">Calculate Calories Burned for Your Weight</h2>
         <p className="mt-2 text-emerald-100">
-          Now that you know your weight in kilograms and pounds, calculate your exact energy burn across different walking speeds, step counts, and inclines.
+          Use your weight in kilograms or pounds to estimate energy expenditure for different walking speeds, step counts, and inclines.
         </p>
         <div className="mt-6">
           <Link
