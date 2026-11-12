@@ -140,7 +140,6 @@ export default function BMICalculatorPage() {
     <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 sm:py-12">
       <Breadcrumbs
         items={[
-          { label: "Home", href: "/" },
           { label: "BMI Calculator", href: "/bmi-calculator" },
         ]}
       />
