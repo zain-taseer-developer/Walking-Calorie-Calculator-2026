@@ -7,7 +7,7 @@ import { AdSlot } from "@/components/ads/AdSlot";
 import { siteConfig } from "@/site.config";
 
 export const metadata: Metadata = {
-  title: "Calories Burned Calculator: Walking, Cycling, Swimming & Exercises",
+  title: "Calories Burned Calculator: Calories by Activity & Exercise",
   description:
     "Calculate calories burned across cycling, swimming, jumping rope, hiking, push-ups, and gym workouts. Compare exercise MET values and fat burning efficiency.",
   alternates: {
