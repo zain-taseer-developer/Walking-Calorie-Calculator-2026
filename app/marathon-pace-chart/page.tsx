@@ -15,62 +15,154 @@ export const metadata: Metadata = {
   },
 };
 
+const raceDistances = {
+  marathonMiles: 26.21875,
+  marathonKm: 42.195,
+  halfMiles: 13.1094,
+  halfKm: 21.0975,
+  fiveKmMiles: 3.10686,
+  tenKmMiles: 6.21371,
+};
+
 const marathonSplits = [
-  { finish: "2:45:00", paceMile: "6:18 /mi", paceKm: "3:55 /km", speedMph: "9.53 mph", halfSplit: "1:22:30", note: "Elite competitive amateur" },
-  { finish: "3:00:00 (3 hour marathon pace / marathon sub 3 hours pace)", paceMile: "6:52 /mi", paceKm: "4:16 /km", speedMph: "8.74 mph", halfSplit: "1:30:00", note: "Boston Marathon BQ benchmark" },
-  { finish: "3:15:00", paceMile: "7:26 /mi", paceKm: "4:37 /km", speedMph: "8.07 mph", halfSplit: "1:37:30", note: "Strong age-group standard" },
-  { finish: "3:30:00 (3:30 marathon pace)", paceMile: "8:00 /mi", paceKm: "4:59 /km", speedMph: "7.49 mph", halfSplit: "1:45:00", note: "Popular 8-minute mile target" },
-  { finish: "3:45:00", paceMile: "8:35 /mi", paceKm: "5:20 /km", speedMph: "6.99 mph", halfSplit: "1:52:30", note: "Solid endurance split" },
-  { finish: "4:00:00 (sub 4 hour marathon pace / what pace is a 4 hour marathon / marathon pace for sub 4 hours)", paceMile: "9:09 /mi", paceKm: "5:41 /km", speedMph: "6.55 mph", halfSplit: "2:00:00", note: "Benchmark milestone for recreational runners" },
-  { finish: "4:30:00", paceMile: "10:18 /mi", paceKm: "6:24 /km", speedMph: "5.83 mph", halfSplit: "2:15:00", note: "Comfortable long-distance cadence" },
-  { finish: "5:00:00 (5 hour marathon pace)", paceMile: "11:27 /mi", paceKm: "7:07 /km", speedMph: "5.24 mph", halfSplit: "2:30:00", note: "Run-walk interval strategy" },
+  { finishSeconds: 2 * 3600 + 45 * 60, note: "A fast marathon goal" },
+  { finishSeconds: 3 * 3600, note: "A demanding performance; qualifying standards vary" },
+  { finishSeconds: 3 * 3600 + 15 * 60, note: "A challenging endurance goal" },
+  { finishSeconds: 3 * 3600 + 30 * 60, note: "A common time goal" },
+  { finishSeconds: 3 * 3600 + 45 * 60, note: "A steady endurance goal" },
+  { finishSeconds: 4 * 3600, note: "A common recreational goal" },
+  { finishSeconds: 4 * 3600 + 30 * 60, note: "A longer finish-time goal" },
+  { finishSeconds: 5 * 3600, note: "May include planned walk breaks" },
 ];
+
+const evenPaceCheckpoints = [
+  { label: "5 miles", miles: 5 },
+  { label: "10 miles", miles: 10 },
+  { label: "13.1 miles", miles: 13.1 },
+  { label: "15 miles", miles: 15 },
+  { label: "20 miles", miles: 20 },
+  { label: "25 miles", miles: 25 },
+  { label: "Finish", miles: raceDistances.marathonMiles },
+];
+
+const halfMarathonGoals = [90, 105, 120, 135, 150].map((minutes) => minutes * 60);
+const shortRaceGoals = [
+  { event: "5K", distanceMiles: raceDistances.fiveKmMiles, finishSeconds: 20 * 60 },
+  { event: "5K", distanceMiles: raceDistances.fiveKmMiles, finishSeconds: 25 * 60 },
+  { event: "5K", distanceMiles: raceDistances.fiveKmMiles, finishSeconds: 30 * 60 },
+  { event: "10K", distanceMiles: raceDistances.tenKmMiles, finishSeconds: 45 * 60 },
+  { event: "10K", distanceMiles: raceDistances.tenKmMiles, finishSeconds: 50 * 60 },
+  { event: "10K", distanceMiles: raceDistances.tenKmMiles, finishSeconds: 60 * 60 },
+];
+
+function formatTime(totalSeconds: number) {
+  const roundedSeconds = Math.round(totalSeconds);
+  const hours = Math.floor(roundedSeconds / 3600);
+  const minutes = Math.floor((roundedSeconds % 3600) / 60);
+  const seconds = roundedSeconds % 60;
+  return `${hours}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+}
+
+function formatPace(totalSeconds: number, distance: number) {
+  const secondsPerUnit = Math.round(totalSeconds / distance);
+  const minutes = Math.floor(secondsPerUnit / 60);
+  const seconds = secondsPerUnit % 60;
+  return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+}
 
 const faqs = [
   {
-    question: "What pace is a 4 hour marathon (sub 4 hour marathon pace / marathon pace for sub 4 hours)?",
+    question: "What pace is needed for a 4-hour marathon?",
     answer:
-      "To run a sub-4-hour marathon (3:59:59), you must average a pace of 9:09 per mile (5:41 per kilometer). Your halfway split at the half marathon mark (13.1 miles) must be 1:59:59 or faster.",
+      "A 4:00:00 finish requires averaging about 9:09 per mile or 5:41 per kilometer over the official marathon distance. A sub-4 finish requires a slightly faster average, and actual splits may vary.",
   },
   {
-    question: "What is a 3 hour marathon pace (marathon sub 3 hours pace)?",
+    question: "What is a 3-hour marathon pace?",
     answer:
-      "A 3 hour marathon pace requires maintaining 6:52 per mile (4:16 per kilometer) across the entire 26.219-mile distance, running at a sustained velocity of 8.74 mph.",
+      "A 3:00:00 marathon averages about 6:52 per mile or 4:16 per kilometer, at roughly 8.74 mph. A sub-3 finish requires a little more speed on average. Boston qualifying standards are separate and vary by age group and gender.",
   },
   {
-    question: "What is a 3:30 marathon pace and 5 hour marathon pace?",
+    question: "What is a 3:30 marathon pace?",
     answer:
-      "A 3:30 marathon pace requires exactly an 8:00 min/mile split (4:59 min/km). A 5 hour marathon pace requires maintaining 11:27 per mile (7:07 min/km), which many runners achieve using a structured run-walk strategy.",
+      "A 3:30:00 marathon averages about 8:01 per mile or 4:59 per kilometer. The displayed pace is rounded to the nearest second; using a GPS watch or course markers can produce slightly different splits.",
   },
   {
-    question: "How do you calculate speed, distance, and time (formula of speed time and distance / formula distance time speed)?",
+    question: "What is a 5-hour marathon pace?",
     answer:
-      "In physics and athletic mechanics, the fundamental relationship is: Speed = Distance ÷ Time. Using our speed distance time calculator or calculating velocity calculator, Time = Distance ÷ Speed, and Distance = Speed × Time. When converting units, remember that 1 mph = 1.60934 km/h.",
+      "A 5:00:00 marathon averages about 11:27 per mile or 7:07 per kilometer. Some runners use planned walk breaks; the overall average pace includes those breaks.",
   },
   {
-    question: "How many steps is a 5k (how many steps is 5k)?",
+    question: "How do you calculate speed, distance, and time?",
     answer:
-      "A 5K race (3.1 miles or 5 kilometers) typically takes between 6,000 and 7,500 running steps, or roughly 6,200 to 7,000 brisk walking steps depending on stride length. Use our steps to miles calculator to model your exact stride.",
+      "Use speed = distance ÷ time, time = distance ÷ speed, or distance = speed × time. Keep units consistent: for example, 10 miles in 2 hours is 5 mph, and at that speed 15 miles takes 3 hours.",
   },
   {
-    question: "How many miles is 10k steps (how many miles is 10k steps / 10k steps in miles / 10k steps to miles / how far is 10k steps)?",
+    question: "How many steps is a 5K?",
     answer:
-      "For an average adult stride length (roughly 2.1 to 2.5 feet), 10,000 steps equals approximately 4.5 to 5.0 miles (7.2 to 8.0 kilometers). Whether searched as how many miles is a 10k steps, how many miles in 10k steps, how long is 10k steps, 10k steps is how many miles, or how much is 10k steps in miles, the rule of thumb is roughly 2,000 to 2,200 steps per mile.",
+      "A 5K race is 3.10686 miles. The number of running steps varies with stride and cadence; a broad estimate is around 5,000–7,000 steps.",
+    answerContent: (
+      <>
+        A 5K race is 3.10686 miles. The number of running steps varies with stride and cadence; a broad estimate is around 5,000–7,000 steps. Use the{" "}
+        <Link href="/steps-to-miles-calculator">Steps to Miles Calculator</Link> to estimate distance from your own step count.
+      </>
+    ),
   },
   {
-    question: "How many miles is 15k steps (15k steps to miles) and how many miles is 5k steps?",
+    question: "How many miles is 10K steps?",
     answer:
-      "15,000 steps (15k steps to miles) equals approximately 6.8 to 7.5 miles (11 to 12 km). Meanwhile, 5,000 steps (how many miles is 5k steps) equals roughly 2.3 to 2.5 miles.",
+      "For many adults, 10,000 steps is roughly 4.5–5 miles, but stride length changes the distance.",
+    answerContent: (
+      <>
+        For many adults, 10,000 steps is roughly 4.5–5 miles, but stride length changes the distance. Use our{" "}
+        <Link href="/steps-to-miles-calculator">Steps to Miles Calculator</Link> for a personalized estimate.
+      </>
+    ),
   },
   {
-    question: "How many miles in 20k and 1.5km to miles?",
+    question: "How many miles is 15K steps?",
     answer:
-      "A 20K road race (20 kilometers) equals 12.43 miles (searched as miles in 20k). A shorter distance like 1.5km to miles equals 0.93 miles (1,500 meters or about 15/16ths of a mile).",
+      "15,000 steps is approximately 6.8–7.5 miles for common adult stride lengths. The result is only a rule of thumb; use a stride-specific conversion for a closer estimate.",
+    answerContent: (
+      <>
+        15,000 steps is approximately 6.8–7.5 miles for common adult stride lengths. The result is only a rule of thumb; use the{" "}
+        <Link href="/steps-to-miles-calculator">Steps to Miles Calculator</Link> with your stride for a closer estimate.
+      </>
+    ),
   },
   {
-    question: "How does this compare to McMillan running calculator and Strava pace calculator?",
+    question: "How many miles is 20K?",
     answer:
-      "Our race pace calculator, fast calculator, and time average calculator use equivalent mathematical pace splits to tools like the McMillan running calculator, McMillan pace calculator, Strava pace calculator, and Atlanta Track Club pace calculator, while remaining 100% free and mobile-friendly.",
+      "A 20-kilometer race is about 12.43 miles. If you mean 20,000 steps instead, the distance depends on stride length and is often roughly 9–10 miles.",
+  },
+  {
+    question: "How does this compare to the McMillan or Strava pace calculators?",
+    answer:
+      "This page calculates average pace and speed from the selected distance and finish time. Other services may offer additional predictions or training features; their methods and settings can differ, so compare the inputs and definitions rather than assuming identical results.",
+  },
+  {
+    question: "What is a good marathon pace for beginners?",
+    answer:
+      "There is no single beginner pace. Choose a finish goal that fits your recent running, training consistency, and ability to complete long runs comfortably; a run-walk plan is also a valid pacing approach.",
+  },
+  {
+    question: "What is an average half marathon pace?",
+    answer:
+      "There is no one pace that represents every half-marathon field. Pace varies widely with experience, course, weather, and goals; calculate yours by dividing finish time by 13.1094 miles or 21.0975 kilometers.",
+  },
+  {
+    question: "Should I run a marathon at an even pace?",
+    answer:
+      "Even pacing is a useful planning baseline, especially for recreational runners, but it is not mandatory. Hills, crowding, weather, and how you feel may make small pace changes sensible.",
+  },
+  {
+    question: "How do I calculate my 5K or 10K pace?",
+    answer:
+      "Divide your total race time by 3.10686 miles for a 5K or 6.21371 miles for a 10K to get minutes per mile. For minutes per kilometer, divide by 5 or 10 kilometers, respectively.",
+  },
+  {
+    question: "Is marathon pace the same as easy running pace?",
+    answer:
+      "Usually not. Marathon pace is a goal-specific sustained effort, while easy pace should feel comfortable and allow recovery. The gap between them depends on fitness and training experience.",
   },
 ];
 
@@ -98,16 +190,33 @@ export default function MarathonPaceChartPage() {
         <RacePaceTool />
       </div>
 
+      <section className="prose prose-slate mb-10 max-w-none dark:prose-invert">
+        <h2>How to Use the Race Pace Calculator</h2>
+        <p>
+          Select the race distance and enter a target finish time to see the average pace and speed needed to cover that distance. You can change any input to compare different race goals.
+        </p>
+        <ul>
+          <li><strong>Select a race event:</strong> Choose 5K, 10K, Half Marathon, or Marathon. Each option uses the distance shown on its button.</li>
+          <li><strong>Enter your target time:</strong> Set hours, minutes, and seconds in the three fields.</li>
+          <li><strong>Use a popular marathon goal:</strong> The preset buttons fill in a target time: Sub 3 Hours (2:59), 3:30 Pace, Sub 4 Hours (3:59), 4:30 Goal, or 5 Hour Pace. They change the time fields; they do not select a race event.</li>
+          <li><strong>Required Mile Pace:</strong> The average minutes and seconds per mile needed for your selected distance and finish time.</li>
+          <li><strong>Required Metric Pace:</strong> The corresponding average minutes and seconds per kilometer.</li>
+          <li><strong>Average Speed:</strong> The average travel speed in mph and km/h over the full race.</li>
+        </ul>
+        <p>
+          Use the pace as a planning average, then decide how to distribute effort across the course. These outputs do not predict your finish or account for hills, weather, stops, or pace variation.
+        </p>
+      </section>
+
       <AdSlot slotId="pace-top" format="horizontal" />
 
       {/* Main Content */}
       <section className="prose prose-slate mt-10 max-w-none dark:prose-invert">
-        <h2>Official Marathon Pace Chart: Splits & Finish Times</h2>
+        <h2>Marathon Pace Chart: Splits & Finish Times</h2>
         <p>
-          Whether targeting a <strong>sub 4 hour marathon pace</strong>, an ambitious <strong>3 hour marathon pace</strong>, or a steady <strong>5 hour marathon pace</strong>, pacing discipline over 26.2 miles is paramount. The <strong>marathon pace chart</strong> below breaks down essential finish targets into per-mile and per-kilometer checkpoints.
+          This chart uses the official marathon distance of 26.21875 miles (42.195 km). Paces and speeds are rounded to the nearest second or hundredth, and the half-marathon split assumes even pacing. Your actual race splits can vary with course conditions and race-day decisions.
         </p>
 
-        {/* Pace Chart Table */}
         <div className="not-prose my-6 overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
           <table className="min-w-full divide-y divide-slate-200 text-left text-sm dark:divide-slate-800">
             <thead className="bg-slate-50 dark:bg-slate-900">
@@ -116,19 +225,52 @@ export default function MarathonPaceChartPage() {
                 <th className="px-4 py-3 font-semibold text-emerald-700 dark:text-emerald-400">Pace / Mile</th>
                 <th className="px-4 py-3 font-semibold text-teal-700 dark:text-teal-400">Pace / Km</th>
                 <th className="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">Average Speed</th>
-                <th className="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">Half Marathon Split</th>
+                <th className="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">Halfway Split</th>
                 <th className="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">Category</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 bg-white dark:divide-slate-800 dark:bg-slate-950">
               {marathonSplits.map((row) => (
-                <tr key={row.finish} className="hover:bg-slate-50/70 dark:hover:bg-slate-900/50">
-                  <td className="px-4 py-3 font-bold text-slate-900 dark:text-slate-100">{row.finish}</td>
-                  <td className="px-4 py-3 font-mono font-bold text-emerald-600 dark:text-emerald-400">{row.paceMile}</td>
-                  <td className="px-4 py-3 font-mono text-teal-600 dark:text-teal-400">{row.paceKm}</td>
-                  <td className="px-4 py-3 text-slate-600 dark:text-slate-400">{row.speedMph}</td>
-                  <td className="px-4 py-3 font-mono text-slate-700 dark:text-slate-300">{row.halfSplit}</td>
+                <tr key={row.finishSeconds} className="hover:bg-slate-50/70 dark:hover:bg-slate-900/50">
+                  <td className="px-4 py-3 font-bold text-slate-900 dark:text-slate-100">{formatTime(row.finishSeconds)}</td>
+                  <td className="px-4 py-3 font-mono font-bold text-emerald-600 dark:text-emerald-400">{formatPace(row.finishSeconds, raceDistances.marathonMiles)} /mi</td>
+                  <td className="px-4 py-3 font-mono text-teal-600 dark:text-teal-400">{formatPace(row.finishSeconds, raceDistances.marathonKm)} /km</td>
+                  <td className="px-4 py-3 text-slate-600 dark:text-slate-400">{(raceDistances.marathonMiles / (row.finishSeconds / 3600)).toFixed(2)} mph<br />{(raceDistances.marathonKm / (row.finishSeconds / 3600)).toFixed(2)} km/h</td>
+                  <td className="px-4 py-3 font-mono text-slate-700 dark:text-slate-300">{formatTime(row.finishSeconds / 2)}</td>
                   <td className="px-4 py-3 text-xs text-slate-500 dark:text-slate-400">{row.note}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Marathon Mile-by-Mile Split Chart</h2>
+        <p>
+          These are estimated even-pace checkpoint splits for four common finish goals. Each time is calculated as target finish time multiplied by the checkpoint distance divided by 26.21875 miles, then rounded to the nearest second. The 13.1-mile checkpoint is slightly before the exact halfway point.
+        </p>
+        <div className="not-prose my-6 overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
+          <table className="min-w-full divide-y divide-slate-200 text-left text-sm dark:divide-slate-800">
+            <thead className="bg-slate-50 dark:bg-slate-900">
+              <tr>
+                <th className="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">Checkpoint</th>
+                {marathonSplits
+                  .filter((row) => [3, 3.5, 4, 4.5].includes(row.finishSeconds / 3600))
+                  .map((row) => (
+                    <th key={row.finishSeconds} className="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">{formatTime(row.finishSeconds)}</th>
+                  ))}
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100 bg-white dark:divide-slate-800 dark:bg-slate-950">
+              {evenPaceCheckpoints.map((checkpoint) => (
+                <tr key={checkpoint.label}>
+                  <th scope="row" className="px-4 py-3 font-semibold text-slate-900 dark:text-slate-100">{checkpoint.label}</th>
+                  {marathonSplits
+                    .filter((row) => [3, 3.5, 4, 4.5].includes(row.finishSeconds / 3600))
+                    .map((row) => (
+                      <td key={row.finishSeconds} className="px-4 py-3 font-mono text-slate-700 dark:text-slate-300">
+                        {formatTime(row.finishSeconds * checkpoint.miles / raceDistances.marathonMiles)}
+                      </td>
+                    ))}
                 </tr>
               ))}
             </tbody>
@@ -137,7 +279,7 @@ export default function MarathonPaceChartPage() {
 
         <h2>Half Marathon Pace Chart</h2>
         <p>
-          Use this <strong>half marathon pace chart</strong> to estimate the average pace needed for a 13.1-mile (21.1-kilometer) race. Choose a finish-time goal and aim to keep your mile or kilometer splits close to the listed pace. These rounded estimates assume an even pace throughout the race.
+          These rounded pace estimates use the half-marathon distance of 13.1094 miles (21.0975 km) and assume an even average pace.
         </p>
         <div className="not-prose my-6 overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
           <table className="min-w-full divide-y divide-slate-200 text-left text-sm dark:divide-slate-800">
@@ -149,17 +291,11 @@ export default function MarathonPaceChartPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 bg-white dark:divide-slate-800 dark:bg-slate-950">
-              {[
-                ["1:30:00", "6:52 /mi", "4:16 /km"],
-                ["1:45:00", "8:00 /mi", "4:59 /km"],
-                ["2:00:00", "9:09 /mi", "5:41 /km"],
-                ["2:15:00", "10:18 /mi", "6:24 /km"],
-                ["2:30:00", "11:27 /mi", "7:07 /km"],
-              ].map(([finish, milePace, kmPace]) => (
-                <tr key={finish}>
-                  <td className="px-4 py-3 font-bold text-slate-900 dark:text-slate-100">{finish}</td>
-                  <td className="px-4 py-3 font-mono text-emerald-600 dark:text-emerald-400">{milePace}</td>
-                  <td className="px-4 py-3 font-mono text-teal-600 dark:text-teal-400">{kmPace}</td>
+              {halfMarathonGoals.map((finishSeconds) => (
+                <tr key={finishSeconds}>
+                  <td className="px-4 py-3 font-bold text-slate-900 dark:text-slate-100">{formatTime(finishSeconds)}</td>
+                  <td className="px-4 py-3 font-mono text-emerald-600 dark:text-emerald-400">{formatPace(finishSeconds, raceDistances.halfMiles)} /mi</td>
+                  <td className="px-4 py-3 font-mono text-teal-600 dark:text-teal-400">{formatPace(finishSeconds, raceDistances.halfKm)} /km</td>
                 </tr>
               ))}
             </tbody>
@@ -168,33 +304,164 @@ export default function MarathonPaceChartPage() {
 
         <h2>5K Pace Chart & 10K Pace Chart</h2>
         <p>
-          Before tackling 26.2 miles, runners build speed on shorter courses or train for a specific <strong>half marathon pace</strong> (13.1 miles). A dedicated <strong>5k pace chart</strong> and <strong>10k pace chart</strong> (or <strong>pace chart 10km</strong> and <strong>5k running pace chart</strong>) helps calibrate early splits:
+          These examples use 5K = 3.10686 miles and 10K = 6.21371 miles. Pace and average speed are calculated from each finish time; displayed values are rounded.
         </p>
-        <ul>
-          <li><strong>20-Minute 5K Pace:</strong> 6:26 per mile (4:00 per km) at 9.32 mph.</li>
-          <li><strong>25-Minute 5K Pace:</strong> 8:03 per mile (5:00 per km) at 7.46 mph.</li>
-          <li><strong>30-Minute 5K Pace:</strong> 9:39 per mile (6:00 per km) at 6.21 mph.</li>
-          <li><strong>45-Minute 10K Pace:</strong> 7:15 per mile (4:30 per km) at 8.28 mph.</li>
-          <li><strong>50-Minute 10K Pace:</strong> 8:03 per mile (5:00 per km) at 7.46 mph.</li>
-          <li><strong>60-Minute 10K Pace:</strong> 9:39 per mile (6:00 per km) at 6.21 mph.</li>
-        </ul>
+        <div className="not-prose my-6 overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
+          <table className="min-w-full divide-y divide-slate-200 text-left text-sm dark:divide-slate-800">
+            <thead className="bg-slate-50 dark:bg-slate-900">
+              <tr>
+                <th className="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">Event</th>
+                <th className="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">Finish</th>
+                <th className="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">Pace / Mile</th>
+                <th className="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">Pace / Km</th>
+                <th className="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">Average Speed</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100 bg-white dark:divide-slate-800 dark:bg-slate-950">
+              {shortRaceGoals.map((goal) => (
+                <tr key={`${goal.event}-${goal.finishSeconds}`}>
+                  <td className="px-4 py-3 font-semibold text-slate-900 dark:text-slate-100">{goal.event}</td>
+                  <td className="px-4 py-3">{formatTime(goal.finishSeconds)}</td>
+                  <td className="px-4 py-3 font-mono">{formatPace(goal.finishSeconds, goal.distanceMiles)} /mi</td>
+                  <td className="px-4 py-3 font-mono">{formatPace(goal.finishSeconds, goal.event === "5K" ? 5 : 10)} /km</td>
+                  <td className="px-4 py-3">{(goal.distanceMiles / (goal.finishSeconds / 3600)).toFixed(2)} mph<br />{((goal.event === "5K" ? 5 : 10) / (goal.finishSeconds / 3600)).toFixed(2)} km/h</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
-        <h2>Physics: How to Calculate Speed, Distance, and Time</h2>
+        <h2>Speed, Distance, and Time Formula</h2>
         <p>
-          When you want to know <strong>how to calculate speed</strong> using our <strong>speed distance time calculator</strong>, <strong>fast calculator</strong>, <strong>time average calculator</strong>, or <strong>time calculator from speed and distance</strong>, use the classic <strong>formula of speed time and distance</strong> (also referred to as the <strong>formula distance time speed</strong>):
+          These formulas describe the relationship between distance, time, and average speed:
         </p>
         <div className="not-prose my-4 rounded-xl border border-slate-200 bg-slate-50 p-4 font-mono text-sm text-slate-800 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200">
-          Velocity = Distance ÷ Time
+          Speed = Distance ÷ Time
           <br />
-          Time = Distance ÷ Velocity
+          Time = Distance ÷ Speed
           <br />
-          Distance = Velocity × Time
+          Distance = Speed × Time
         </div>
         <p>
-          Athletes using a <strong>calculator running pace</strong>, <strong>race pace calculator</strong>, or training for a milestone race can record their split progress in their <strong>pace calendar</strong> or compare against platforms like the <strong>mcmillan running calculator</strong>, <strong>mcmillan pace calculator</strong>, <strong>strava pace calculator</strong>, and <strong>atlanta track club pace calculator</strong>.
+          For example, covering 26.21875 miles in 4 hours averages 6.55 mph. At 8 mph, covering 10 miles takes 1.25 hours, or 1 hour 15 minutes. Keep distance and speed units consistent.
         </p>
+        <p>A 2-hour marathon is a full-marathon performance, not a half-marathon distance. A 2-hour half marathon is a different event and requires a much slower average pace.</p>
+
+        <h2>How to Pace a Marathon</h2>
         <p>
-          Note: If you are an endurance walker aiming for a <strong>marathon pace for 2 hours</strong> (which would be half marathon territory for elite runners, as the world record full marathon pace is just over 2 hours at 4:35/mile), our tools adjust for every athletic speed and walking pace.
+          Treat goal pace as an average, not a demand to hit an identical split every mile. A controlled plan can help you avoid spending too much effort early, when the race still feels easy.
+        </p>
+        <ol>
+          <li><strong>Start controlled:</strong> Crowds and race-day excitement can make the opening miles feel effortless. Settle in near your planned effort instead of banking time with a fast start.</li>
+          <li><strong>Stay steady through the middle:</strong> Find a sustainable rhythm, take fluids and fuel according to your practiced plan, and make small adjustments for hills, turns, and weather.</li>
+          <li><strong>Manage fatigue after mile 20:</strong> Focus on relaxed form and effort. If your pace begins to fade, make a measured adjustment or use planned walk breaks rather than forcing a sudden surge.</li>
+          <li><strong>Finish strong if you can:</strong> If you still feel controlled late in the race, gradually increase effort. Finishing strong is an option, not an expectation.</li>
+        </ol>
+        <p>
+          Starting too fast can use more energy than intended and make later miles feel harder, increasing the chance that pace drops. Training, conditions, and individual response matter; even pacing is a useful baseline rather than a guarantee.
+        </p>
+
+        <h2>Negative Splits vs. Positive Splits</h2>
+        <p>
+          Splits compare how long different parts of a race take. Here, “faster” means covering the same distance in less time.
+        </p>
+        <div className="not-prose my-6 overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
+          <table className="min-w-full divide-y divide-slate-200 text-left text-sm dark:divide-slate-800">
+            <thead className="bg-slate-50 dark:bg-slate-900">
+              <tr>
+                <th className="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">Strategy</th>
+                <th className="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">Meaning</th>
+                <th className="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">Potential benefit</th>
+                <th className="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">Consideration</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100 bg-white dark:divide-slate-800 dark:bg-slate-950">
+              <tr>
+                <th scope="row" className="px-4 py-3 font-semibold">Negative splits</th>
+                <td className="px-4 py-3">The second half is faster than the first.</td>
+                <td className="px-4 py-3">A conservative start may leave room to increase effort later.</td>
+                <td className="px-4 py-3">An overly cautious first half can require an aggressive finish.</td>
+              </tr>
+              <tr>
+                <th scope="row" className="px-4 py-3 font-semibold">Even pacing</th>
+                <td className="px-4 py-3">Race segments are run at a similar average pace.</td>
+                <td className="px-4 py-3">A simple target can make effort easier to monitor.</td>
+                <td className="px-4 py-3">Terrain, weather, crowds, and aid stations disrupt exact splits.</td>
+              </tr>
+              <tr>
+                <th scope="row" className="px-4 py-3 font-semibold">Positive splits</th>
+                <td className="px-4 py-3">The second half is slower than the first.</td>
+                <td className="px-4 py-3">Can happen naturally on hilly courses or as fatigue builds.</td>
+                <td className="px-4 py-3">A large late slowdown may follow an overly fast early pace.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Controlled pacing gives recreational runners a practical way to manage effort across a long event. It does not require identical splits or guarantee a particular result.
+        </p>
+
+        <h2>Race Pace vs. Training Pace</h2>
+        <p>
+          Training includes different effort levels, each serving a different purpose. A target marathon pace is not the pace for every run, and the right speeds depend on current fitness and race goals.
+        </p>
+        <ul>
+          <li><strong>Easy running pace:</strong> Comfortable, conversational effort that supports recovery and aerobic volume.</li>
+          <li><strong>Long-run pace:</strong> Often easy or moderate; some plans include sections at a faster effort. Long runs build endurance, not just race-pace practice.</li>
+          <li><strong>Tempo pace:</strong> A sustained “comfortably hard” effort, typically held for a limited duration.</li>
+          <li><strong>Threshold pace:</strong> A controlled hard effort around the intensity a runner can sustain for a limited period; it is not an all-out sprint.</li>
+          <li><strong>Interval pace:</strong> Faster repetitions with recovery periods, adjusted to the workout and runner’s experience.</li>
+          <li><strong>Goal marathon pace:</strong> The planned average pace for a specific marathon finish time. Some training plans include it, but not every run should be at this pace.</li>
+        </ul>
+        <p>
+          Use a plan appropriate to your experience, and base training speeds on current ability rather than forcing a goal pace that no longer feels realistic.
+        </p>
+
+        <h2>Running Pace Conversion: Minutes per Mile vs. Minutes per Kilometer</h2>
+        <p>
+          Pace is elapsed time divided by distance. To convert a pace expressed per mile to the equivalent time per kilometer, multiply by 1.60934. To convert per-kilometer pace to per-mile pace, divide by 1.60934.
+        </p>
+        <div className="not-prose my-4 rounded-xl border border-slate-200 bg-slate-50 p-4 font-mono text-sm text-slate-800 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200">
+          Minutes per km = minutes per mile ÷ 1.60934
+          <br />
+          Minutes per mile = minutes per km × 1.60934
+          <br />
+          Speed (km/h) = speed (mph) × 1.60934
+          <br />
+          Speed (mph) = speed (km/h) ÷ 1.60934
+        </div>
+        <p>
+          For example, 8:00 per mile is 8 × 1.60934 = 12.87 minutes per kilometer, or about 12:52/km. A 5:00/km pace is 5 × 1.60934 = 8.05 minutes per mile, or about 8:03/mi. For speed, 8 mph is about 12.87 km/h. The{" "}
+          <Link href="/walking-pace-calculator">Walking Pace Calculator</Link> can also help convert walking speeds and paces.
+        </p>
+
+        <h2>How to Choose a Realistic Marathon Goal</h2>
+        <p>
+          Shorter races can provide useful context for a marathon goal, but they cannot guarantee a marathon result. Choose a target by looking at the whole training picture:
+        </p>
+        <ul>
+          <li><strong>Previous 5K and 10K results:</strong> These show current speed over shorter distances, but a marathon also requires endurance and fueling preparation.</li>
+          <li><strong>Half-marathon performance:</strong> A recent half can offer a closer endurance reference, though marathon outcomes still vary.</li>
+          <li><strong>Training consistency:</strong> Consider how regularly you have been able to run and recover over recent months.</li>
+          <li><strong>Weekly mileage and long runs:</strong> A goal should fit the training volume you can build and sustain safely.</li>
+          <li><strong>Running experience:</strong> Newer runners may prioritize completing the distance comfortably; experienced runners can weigh prior race execution and training history.</li>
+        </ul>
+        <p>
+          Use shorter race times as one input, not a promise. Course elevation, weather, health, and race-day execution can all affect the result. For walking and general activity context, see our <Link href="/walking-for-weight-loss">Walking for Weight Loss Guide</Link> and <Link href="/">Walking Calorie Calculator</Link>.
+        </p>
+
+        <h2>Common Marathon Pacing Mistakes</h2>
+        <ul>
+          <li><strong>Starting too fast:</strong> Do not let early excitement push you well ahead of a sustainable effort.</li>
+          <li><strong>Ignoring the plan:</strong> Have a pace or effort range, but allow reasonable adjustments for real conditions.</li>
+          <li><strong>Making sudden pace changes:</strong> Gradual adjustments are usually easier to manage than repeated surges.</li>
+          <li><strong>Never practicing goal effort:</strong> If your training plan includes race-pace segments, practice them in appropriate workouts rather than improvising on race day.</li>
+          <li><strong>Leaving hydration and fueling to chance:</strong> Practice a suitable plan during training; needs and tolerances differ.</li>
+          <li><strong>Choosing an unrealistic finish goal:</strong> Reassess if current training or recent performances no longer support the original target.</li>
+          <li><strong>Ignoring course and weather:</strong> Heat, wind, hills, altitude, and surface can change the effort required for a given pace.</li>
+        </ul>
+        <p>
+          Pace charts are planning references, not guarantees. For walking-specific information, explore <Link href="/how-long-to-walk-a-mile">How Long Does It Take to Walk a Mile?</Link> and the <Link href="/walking-pace-calculator">Walking Pace Calculator</Link>.
         </p>
       </section>
 
@@ -208,9 +475,9 @@ export default function MarathonPaceChartPage() {
 
       {/* Internal Navigation to Flagship Tool */}
       <div className="mt-12 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 p-8 text-white shadow-lg">
-        <h3 className="text-2xl font-bold">Calculate Walking Energy Burn</h3>
+        <h2 className="text-2xl font-bold">Calculate Walking Energy Burn</h2>
         <p className="mt-2 text-emerald-100">
-          Whether you walk 5,000 steps, a full 10K, or train for a marathon walk, calculate your exact calories burned with our flagship tool.
+          Estimate calories burned for walking pace, duration, distance, and terrain with our flagship tool. See the <Link href="/walking-calories-burned-chart" className="font-semibold underline">Walking Calories Burned Chart</Link> for reference estimates.
         </p>
         <div className="mt-6">
           <Link
