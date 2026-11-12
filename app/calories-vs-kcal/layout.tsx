@@ -6,7 +6,6 @@ export const metadata: Metadata = constructMetadata({
   description:
     "Learn how food Calories, kilocalories, small calories, and kilojoules compare, with a quick energy unit converter.",
   canonicalPath: "/calories-vs-kcal",
-  absoluteTitle: true,
 });
 
 export default function CaloriesVsKcalLayout({

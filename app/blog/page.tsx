@@ -7,11 +7,10 @@ import { AdSlot } from "@/components/ads/AdSlot";
 import { BookOpen, Sparkles } from "lucide-react";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Walking, Steps & Calorie Guides | walkingcaloriecalc.com",
+  title: "Walking, Steps & Calorie Guides",
   description:
     "Evidence-based walking guides on calories burned, daily steps, treadmill workouts, and weight loss, with clear answers and tools you can use today.",
   canonicalPath: "/blog",
-  absoluteTitle: true,
   keywords: [
     "walking blog",
     "calories burned walking articles",

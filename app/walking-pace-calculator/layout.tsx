@@ -7,7 +7,6 @@ export const metadata: Metadata = constructMetadata({
   description:
     "Calculate your walking pace in min/mile or min/km instantly. Enter distance and time to get your speed, pace, and splits. 100% free.",
   canonicalPath: "/walking-pace-calculator",
-  absoluteTitle: true,
 });
 
 export default function WalkingPaceCalculatorLayout({

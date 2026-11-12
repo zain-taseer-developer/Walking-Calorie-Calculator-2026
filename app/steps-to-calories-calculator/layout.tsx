@@ -6,7 +6,6 @@ export const metadata: Metadata = constructMetadata({
   description:
     "Estimate calories burned from your steps using your weight, height, and walking pace with this free steps-to-calories calculator.",
   canonicalPath: "/steps-to-calories-calculator",
-  absoluteTitle: true,
 });
 
 export default function StepsToCaloriesLayout({

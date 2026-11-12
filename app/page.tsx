@@ -30,7 +30,6 @@ export const metadata: Metadata = constructMetadata({
   description:
     "Calculate calories burned walking with our walking calorie calculator. Track calories, steps, distance, pace, speed, and incline using official 2011 Compendium MET data.",
   canonicalPath: "/",
-  absoluteTitle: true,
   keywords: [
     "walking calorie calculator",
     "calories burned walking",

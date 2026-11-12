@@ -10,7 +10,6 @@ export interface GenerateSeoProps {
   modifiedTime?: string;
   keywords?: string[];
   noindex?: boolean;
-  absoluteTitle?: boolean;
 }
 
 export function constructMetadata({
@@ -22,13 +21,10 @@ export function constructMetadata({
   modifiedTime,
   keywords,
   noindex = false,
-  absoluteTitle = false,
 }: GenerateSeoProps): Metadata {
   const cleanPath = canonicalPath.startsWith("/") ? canonicalPath : `/${canonicalPath}`;
   const canonicalUrl = `${siteConfig.CANONICAL_URL}${cleanPath === "/" ? "" : cleanPath}`;
-  const fullTitle = absoluteTitle || title.includes(siteConfig.SITE_NAME)
-    ? title
-    : `${title} | ${siteConfig.SITE_NAME}`;
+  const fullTitle = title;
 
   return {
     title: { absolute: fullTitle },

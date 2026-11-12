@@ -6,7 +6,7 @@ import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { AlertTriangle, ShieldAlert, HeartPulse, Stethoscope } from "lucide-react";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Medical & Health Disclaimer | WalkingCalorieCalc.com",
+  title: "Medical & Health Disclaimer",
   description:
     "Important medical and health disclaimer regarding the use of our walking calorie calculators, metabolic estimates, and exercise advice.",
   canonicalPath: "/medical-disclaimer",

@@ -7,10 +7,7 @@ import { CookieBanner } from "@/components/layout/CookieBanner";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.CANONICAL_URL),
-  title: {
-    default: "Walking Calorie Calculator: Calories Burned Walking by Weight, Speed & Steps",
-    template: `%s | ${siteConfig.SITE_NAME}`,
-  },
+  title: "Walking Calorie Calculator: Calories Burned Walking by Weight, Speed & Steps",
   description:
     "Calculate exact calories burned walking based on body weight, walking speed, duration, incline, and pedometer steps using the 2011 Compendium of Physical Activities.",
   keywords: [

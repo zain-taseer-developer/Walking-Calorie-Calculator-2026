@@ -27,11 +27,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const categoryName = current ? current.name : category.replace(/-/g, " ");
 
   return constructMetadata({
-    title: `${categoryName} Guides | walkingcaloriecalc.com`,
+    title: `${categoryName} Guides`,
     description: `Browse all articles, calculators, and research guides filed under ${categoryName}.`,
     canonicalPath: `/blog/category/${category}`,
     noindex: false,
-    absoluteTitle: true,
   });
 }
 

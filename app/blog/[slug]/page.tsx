@@ -43,7 +43,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: post.frontmatter.seoTitle || post.frontmatter.title,
     description: post.frontmatter.description,
     canonicalPath: `/blog/${post.frontmatter.slug}`,
-    absoluteTitle: true,
     ogType: "article",
     publishedTime: post.frontmatter.publishedAt,
     modifiedTime: post.frontmatter.updatedAt || post.frontmatter.publishedAt,
