@@ -5,6 +5,7 @@ import { BMICalculatorTool } from "@/components/calculator/BMICalculatorTool";
 import { FAQSection } from "@/components/content/FAQSection";
 import { AdSlot } from "@/components/ads/AdSlot";
 import { siteConfig } from "@/site.config";
+import { ArrowRight, Calculator } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "BMI Calculator: Body Mass Index, Healthy Weight & FFMI",
@@ -35,6 +36,39 @@ const bmiCategories = [
     range: "30.0 or higher",
     category: "Obesity",
     interpretation: "At or above the standard adult BMI screening threshold; it is not a diagnosis by itself.",
+  },
+];
+
+const relatedCalculators = [
+  {
+    title: "Weight Converter",
+    description: "Convert body weight between pounds and kilograms with a quick two-way converter.",
+    href: "/weight-converter",
+    badge: "Unit Converter",
+  },
+  {
+    title: "Maintenance Calorie & TDEE Calculator",
+    description: "Estimate daily maintenance calories and explore your total daily energy needs.",
+    href: "/maintenance-calorie-calculator",
+    badge: "Metabolism",
+  },
+  {
+    title: "Walking Calorie Calculator",
+    description: "Estimate calories burned from your walking time, pace, weight, and terrain.",
+    href: "/",
+    badge: "Walking",
+  },
+  {
+    title: "Calories Burned Calculator",
+    description: "Compare estimated calorie burn across walking, cycling, swimming, and more.",
+    href: "/calories-burned-calculator",
+    badge: "Activity",
+  },
+  {
+    title: "Steps to Calories Calculator",
+    description: "Estimate calories from your step count, body weight, and walking profile.",
+    href: "/steps-to-calories-calculator",
+    badge: "Steps",
   },
 ];
 
@@ -246,17 +280,49 @@ export default function BMICalculatorPage() {
         <FAQSection faqs={faqs} />
       </div>
 
-      <section aria-labelledby="related-calculators" className="mt-12">
-        <h2 id="related-calculators" className="text-2xl font-bold text-slate-900 dark:text-white">
-          Related Calculators
-        </h2>
-        <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-          <li><Link className="text-emerald-700 underline dark:text-emerald-400" href="/weight-converter">Weight Converter (lbs to kg &amp; kg to lbs)</Link></li>
-          <li><Link className="text-emerald-700 underline dark:text-emerald-400" href="/maintenance-calorie-calculator">Maintenance Calorie &amp; TDEE Calculator</Link></li>
-          <li><Link className="text-emerald-700 underline dark:text-emerald-400" href="/">Walking Calorie Calculator</Link></li>
-          <li><Link className="text-emerald-700 underline dark:text-emerald-400" href="/calories-burned-calculator">Calories Burned Calculator</Link></li>
-          <li><Link className="text-emerald-700 underline dark:text-emerald-400" href="/steps-to-calories-calculator">Steps to Calories Calculator</Link></li>
-        </ul>
+      <section className="not-prose my-12" aria-labelledby="related-calculators">
+        <div className="mb-6">
+          <span className="mb-1 block text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+            Connected Fitness Suite
+          </span>
+          <h2 id="related-calculators" className="text-xl font-bold text-slate-900 dark:text-white sm:text-2xl">
+            Explore More Free Walking &amp; Health Calculators
+          </h2>
+          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+            Continue exploring useful tools for weight, daily energy needs, walking, and activity.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {relatedCalculators.map((calculator) => (
+            <Link
+              key={calculator.href}
+              href={calculator.href}
+              className="group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-5 transition-all hover:border-brand-500/60 hover:shadow-md dark:border-slate-800 dark:bg-slate-900 dark:hover:border-brand-500/60"
+            >
+              <div>
+                <div className="mb-3 flex items-center justify-between gap-2">
+                  <span className="rounded-xl bg-brand-50 p-2 text-brand-600 transition-transform group-hover:scale-105 dark:bg-brand-950/60 dark:text-brand-400">
+                    <Calculator className="h-4 w-4" aria-hidden="true" />
+                  </span>
+                  <span className="rounded-full bg-brand-50 px-2 py-0.5 text-[10px] font-semibold text-brand-700 dark:bg-brand-950 dark:text-brand-300">
+                    {calculator.badge}
+                  </span>
+                </div>
+                <h3 className="text-sm font-bold text-slate-900 transition-colors group-hover:text-brand-600 dark:text-white dark:group-hover:text-brand-400">
+                  {calculator.title}
+                </h3>
+                <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+                  {calculator.description}
+                </p>
+              </div>
+              <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-brand-600 transition-transform group-hover:translate-x-0.5 dark:text-brand-400">
+                <span>Open Calculator</span>
+                <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+              </div>
+            </Link>
+          ))}
+        </div>
       </section>
 
       <section aria-labelledby="scientific-references" className="mt-12">
