@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${siteConfig.CANONICAL_URL}/bmi-calculator`,
   },
+  openGraph: {
+    url: `${siteConfig.CANONICAL_URL}/bmi-calculator`,
+  },
 };
 
 const bmiCategories = [

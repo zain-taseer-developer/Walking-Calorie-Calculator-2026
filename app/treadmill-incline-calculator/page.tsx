@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${siteConfig.CANONICAL_URL}/treadmill-incline-calculator`,
   },
+  openGraph: {
+    url: `${siteConfig.CANONICAL_URL}/treadmill-incline-calculator`,
+  },
 };
 
 const paceChartSpeeds = [2.0, 2.5, 3.0, 3.2, 3.5, 4.0, 4.5, 5.0];

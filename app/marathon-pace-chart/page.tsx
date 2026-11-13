@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${siteConfig.CANONICAL_URL}/marathon-pace-chart`,
   },
+  openGraph: {
+    url: `${siteConfig.CANONICAL_URL}/marathon-pace-chart`,
+  },
 };
 
 const raceDistances = {

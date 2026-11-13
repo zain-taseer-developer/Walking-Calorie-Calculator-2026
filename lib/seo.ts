@@ -23,7 +23,7 @@ export function constructMetadata({
   noindex = false,
 }: GenerateSeoProps): Metadata {
   const cleanPath = canonicalPath.startsWith("/") ? canonicalPath : `/${canonicalPath}`;
-  const canonicalUrl = `${siteConfig.CANONICAL_URL}${cleanPath === "/" ? "" : cleanPath}`;
+  const canonicalUrl = `${siteConfig.CANONICAL_URL}${cleanPath === "/" ? "/" : cleanPath}`;
   const fullTitle = title;
 
   return {

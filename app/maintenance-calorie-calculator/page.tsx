@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${siteConfig.CANONICAL_URL}/maintenance-calorie-calculator`,
   },
+  openGraph: {
+    url: `${siteConfig.CANONICAL_URL}/maintenance-calorie-calculator`,
+  },
 };
 
 const activityLevels = [

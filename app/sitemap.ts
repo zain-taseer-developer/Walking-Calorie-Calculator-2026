@@ -1,43 +1,38 @@
+import fs from "fs";
+import path from "path";
 import { MetadataRoute } from "next";
 import { siteConfig } from "@/site.config";
 import { getAllCategories, getAllPosts } from "@/lib/blog";
+
+function getStaticPageRoutes(directory: string, routeSegments: string[] = []): string[] {
+  return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    const entryPath = path.join(directory, entry.name);
+
+    if (entry.isFile() && /^page\.(ts|tsx|js|jsx)$/.test(entry.name)) {
+      return [`/${routeSegments.join("/")}`.replace(/\/$/, "") || "/"];
+    }
+
+    if (!entry.isDirectory() || entry.name === "api" || entry.name.startsWith("[")) {
+      return [];
+    }
+
+    const isRouteGroup = entry.name.startsWith("(") && entry.name.endsWith(")");
+    return getStaticPageRoutes(
+      entryPath,
+      isRouteGroup ? routeSegments : [...routeSegments, entry.name]
+    );
+  });
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.CANONICAL_URL;
   const now = new Date();
 
-  // Core static pages
-  const staticRoutes = [
-    "",
-    "/steps-to-miles-calculator",
-    "/how-many-miles-is-10000-steps",
-    "/steps-to-calories-calculator",
-    "/walking-pace-calculator",
-    "/how-long-to-walk-a-mile",
-    "/walking-calories-burned-chart",
-    "/how-many-steps-a-day",
-    "/walking-for-weight-loss",
-    "/calories-vs-kcal",
-    "/maintenance-calorie-calculator",
-    "/treadmill-incline-calculator",
-    "/calories-burned-calculator",
-    "/bmi-calculator",
-    "/marathon-pace-chart",
-    "/weight-converter",
-    "/fitness-apps-and-trackers",
-    "/about",
-    "/contact",
-    "/privacy-policy",
-    "/terms",
-    "/medical-disclaimer",
-    "/editorial-policy-and-methodology",
-    "/cookie-policy",
-    "/blog",
-  ].map((route) => ({
+  const staticRoutes = getStaticPageRoutes(path.join(process.cwd(), "app")).map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: now,
-    changeFrequency: route === "" ? ("daily" as const) : ("weekly" as const),
-    priority: route === "" ? 1.0 : route.startsWith("/blog") ? 0.8 : 0.9,
+    changeFrequency: route === "/" ? ("daily" as const) : ("weekly" as const),
+    priority: route === "/" ? 1.0 : route === "/blog" ? 0.8 : 0.9,
   }));
 
   // Dynamic blog post routes
@@ -57,6 +52,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...categoryRoutes, ...blogRoutes];
+  const uniqueRoutes: MetadataRoute.Sitemap = [];
+  const seenUrls = new Set<string>();
+
+  for (const route of [...staticRoutes, ...categoryRoutes, ...blogRoutes]) {
+    if (!seenUrls.has(route.url)) {
+      seenUrls.add(route.url);
+      uniqueRoutes.push(route);
+    }
+  }
+
+  return uniqueRoutes;
 }
 

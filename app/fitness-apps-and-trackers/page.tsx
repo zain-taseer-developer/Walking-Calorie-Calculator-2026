@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${siteConfig.CANONICAL_URL}/fitness-apps-and-trackers`,
   },
+  openGraph: {
+    url: `${siteConfig.CANONICAL_URL}/fitness-apps-and-trackers`,
+  },
 };
 
 const appComparison = [

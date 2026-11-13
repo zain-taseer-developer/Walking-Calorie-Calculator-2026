@@ -2,11 +2,12 @@
 
 import React, { useState } from "react";
 import { Share2, Link as LinkIcon, Check, Twitter, Facebook } from "lucide-react";
+import { siteConfig } from "@/site.config";
 
 export function ShareButtons({ title, slug }: { title: string; slug: string }) {
   const [copied, setCopied] = useState(false);
 
-  const url = typeof window !== "undefined" ? window.location.href : `https://walkingcaloriecalc.com/blog/${slug}`;
+  const url = `${siteConfig.CANONICAL_URL}/blog/${slug}`;
 
   const copyLink = () => {
     if (navigator.clipboard) {

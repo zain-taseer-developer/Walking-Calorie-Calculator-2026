@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${siteConfig.CANONICAL_URL}/calories-burned-calculator`,
   },
+  openGraph: {
+    url: `${siteConfig.CANONICAL_URL}/calories-burned-calculator`,
+  },
 };
 
 const activityTable = [

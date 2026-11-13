@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${siteConfig.CANONICAL_URL}/weight-converter`,
   },
+  openGraph: {
+    url: `${siteConfig.CANONICAL_URL}/weight-converter`,
+  },
 };
 
 const commonWeightsLbs = [100, 120, 128, 140, 150, 152, 160, 162, 163, 179, 180, 183, 200, 220];

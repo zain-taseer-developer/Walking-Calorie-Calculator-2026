@@ -4,11 +4,21 @@
  * Never invent fake medical credentials or artificial testimonials.
  */
 
+const canonicalUrl = new URL(
+  process.env.NEXT_PUBLIC_CANONICAL_URL || "https://www.walkingcaloriecalc.com"
+);
+canonicalUrl.protocol = "https:";
+canonicalUrl.hostname = "www.walkingcaloriecalc.com";
+canonicalUrl.port = "";
+canonicalUrl.pathname = "/";
+canonicalUrl.search = "";
+canonicalUrl.hash = "";
+
 export const siteConfig = {
   SITE_NAME: process.env.NEXT_PUBLIC_SITE_NAME || "WalkingCalorieCalc.com",
   SITE_TAGLINE: "Accurate, Science-Backed Calories Burned Walking Calculator",
-  DOMAIN: process.env.NEXT_PUBLIC_DOMAIN || "walkingcaloriecalc.com",
-  CANONICAL_URL: process.env.NEXT_PUBLIC_CANONICAL_URL || "https://walkingcaloriecalc.com",
+  DOMAIN: process.env.NEXT_PUBLIC_DOMAIN || "www.walkingcaloriecalc.com",
+  CANONICAL_URL: canonicalUrl.origin,
   CONTACT_EMAIL: "zainndevv@gmail.com",
   
   // Author & Editorial Transparency (placeholders for the publisher to fill in their real name & bio)
