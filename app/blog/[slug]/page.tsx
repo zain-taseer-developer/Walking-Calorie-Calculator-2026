@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getPostBySlug, getAllPosts, slugifyCategory } from "@/lib/blog";
+import { getPostBySlug, getAllPosts, getAllCategories, getPostsByCategory, slugifyCategory } from "@/lib/blog";
 import { constructMetadata, generateArticleSchema } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { TableOfContents, TocItem } from "@/components/content/TableOfContents";
@@ -11,6 +11,7 @@ import { RelatedTools } from "@/components/content/RelatedTools";
 import { FAQSection } from "@/components/content/FAQSection";
 import { AdSlot } from "@/components/ads/AdSlot";
 import { MDXContent } from "@/components/blog/MDXContent";
+import { BlogCard } from "@/components/blog/BlogCard";
 import {
   Clock,
   Calendar,
@@ -27,17 +28,46 @@ interface Props {
   }>;
 }
 
+const FLAT_CATEGORY_NAMES = ["Walking Basics", "Pace & Speed", "Beginners & Seniors"];
+
+function getFlatCategoryBySlug(slug: string) {
+  return getAllCategories().find(
+    (category) => FLAT_CATEGORY_NAMES.includes(category.name) && category.slug === slug
+  );
+}
+
+function getCategoryHref(categoryName: string) {
+  const categorySlug = slugifyCategory(categoryName);
+  return FLAT_CATEGORY_NAMES.includes(categoryName)
+    ? `/blog/${categorySlug}`
+    : `/blog/category/${categorySlug}`;
+}
+
 export async function generateStaticParams() {
   const posts = getAllPosts();
-  return posts.map((post) => ({
-    slug: post.frontmatter.slug,
-  }));
+  const slugs = new Set([
+    ...posts.map((post) => post.frontmatter.slug),
+    ...getAllCategories()
+      .filter((category) => FLAT_CATEGORY_NAMES.includes(category.name))
+      .map((category) => category.slug),
+  ]);
+  return Array.from(slugs, (slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = getPostBySlug(slug);
-  if (!post) return {};
+  if (!post) {
+    const category = getFlatCategoryBySlug(slug);
+    if (!category) return {};
+
+    return constructMetadata({
+      title: `${category.name} Guides`,
+      description: `Browse all articles, calculators, and research guides filed under ${category.name}.`,
+      canonicalPath: `/blog/${category.slug}`,
+      noindex: false,
+    });
+  }
 
   return constructMetadata({
     title: post.frontmatter.seoTitle || post.frontmatter.title,
@@ -53,6 +83,39 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
+  const category = post ? undefined : getFlatCategoryBySlug(slug);
+  if (!post && category) {
+    const posts = getPostsByCategory(category.name);
+    return (
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <Breadcrumbs items={[{ label: "Blog", href: "/blog" }, { label: category.name }]} />
+        <div className="my-6">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-50 dark:bg-brand-950 text-brand-700 dark:text-brand-300 text-xs font-semibold mb-2">
+            <span>Category Archive</span>
+          </div>
+          <h1 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
+            {category.name}
+          </h1>
+          <p className="mt-2 text-base text-slate-600 dark:text-slate-300">
+            Showing {posts.length} article{posts.length === 1 ? "" : "s"} filed under &quot;{category.name}&quot;.
+          </p>
+        </div>
+        <AdSlot format="horizontal" slotId="category-top" />
+        {posts.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
+            {posts.map((categoryPost) => (
+              <BlogCard key={categoryPost.frontmatter.slug} post={categoryPost} />
+            ))}
+          </div>
+        ) : (
+          <div className="my-8 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-8 text-center">
+            <p className="text-slate-600 dark:text-slate-300">Articles in this category are coming soon.</p>
+          </div>
+        )}
+      </div>
+    );
+  }
+
   if (!post) notFound();
 
   const allPosts = getAllPosts();
@@ -92,7 +155,7 @@ export default async function BlogPostPage({ params }: Props) {
       <Breadcrumbs
         items={[
           { label: "Blog", href: "/blog" },
-          { label: post.frontmatter.category, href: `/blog/category/${slugifyCategory(post.frontmatter.category)}` },
+          { label: post.frontmatter.category, href: getCategoryHref(post.frontmatter.category) },
           { label: post.frontmatter.title },
         ]}
       />
@@ -100,7 +163,7 @@ export default async function BlogPostPage({ params }: Props) {
       {/* Article Header */}
       <header className="max-w-4xl mx-auto my-6 text-center">
         <Link
-          href={`/blog/category/${slugifyCategory(post.frontmatter.category)}`}
+          href={getCategoryHref(post.frontmatter.category)}
           className="inline-block px-3 py-1 rounded-full text-xs font-bold bg-brand-50 dark:bg-brand-950 text-brand-700 dark:text-brand-300 mb-3 hover:bg-brand-100"
         >
           {post.frontmatter.category}

@@ -45,8 +45,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // Category archives are indexable; tag archives are intentionally noindex.
+  const flatCategoryNames = new Set(["Walking Basics", "Pace & Speed", "Beginners & Seniors"]);
   const categoryRoutes = getAllCategories().map((category) => ({
-    url: `${baseUrl}/blog/category/${category.slug}`,
+    url: `${baseUrl}${flatCategoryNames.has(category.name) ? `/blog/${category.slug}` : `/blog/category/${category.slug}`}`,
     lastModified: now,
     changeFrequency: "weekly" as const,
     priority: 0.6,

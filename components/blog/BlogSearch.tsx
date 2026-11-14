@@ -4,6 +4,7 @@ import React, { useState, useMemo } from "react";
 import { BlogPost } from "@/lib/blog";
 import { BlogCard } from "./BlogCard";
 import { Search } from "lucide-react";
+import Link from "next/link";
 
 interface BlogSearchProps {
   posts: BlogPost[];
@@ -83,6 +84,15 @@ export function BlogSearch({ posts, categories }: BlogSearchProps) {
               >
                 {cat.name}
               </button>
+            ))}
+            {categories.filter((cat) => cat.count === 0).map((cat) => (
+              <Link
+                key={cat.name}
+                href={`/blog/${cat.slug}`}
+                className="px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+              >
+                {cat.name}
+              </Link>
             ))}
           </div>
         </section>
