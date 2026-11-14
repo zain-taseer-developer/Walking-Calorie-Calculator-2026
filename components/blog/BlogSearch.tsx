@@ -59,7 +59,7 @@ export function BlogSearch({ posts, categories }: BlogSearchProps) {
           <p className="mt-1 mb-3 text-xs text-slate-500 dark:text-slate-400">
             Choose a category to see guides on that topic.
           </p>
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+          <div className="flex flex-wrap items-center gap-2">
             <button
               type="button"
               onClick={() => setSelectedCategory("All")}
