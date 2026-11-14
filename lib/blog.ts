@@ -41,6 +41,8 @@ const BLOG_CATEGORIES = [
   "Beginners & Seniors",
 ];
 
+export const FLAT_CATEGORY_NAMES = ["Walking Basics", "Pace & Speed", "Beginners & Seniors"];
+
 export function calculateReadingTime(text: string): { minutes: number; words: number } {
   const words = text.trim().split(/\s+/).filter(Boolean).length;
   const minutes = Math.max(1, Math.ceil(words / 220)); // ~220 wpm reading speed

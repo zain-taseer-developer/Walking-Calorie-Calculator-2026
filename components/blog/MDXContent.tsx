@@ -6,7 +6,7 @@ import { KeyTakeaways } from "@/components/content/KeyTakeaways";
 import { DataTable } from "@/components/content/DataTable";
 import { AdSlot } from "@/components/ads/AdSlot";
 import { RelatedTools } from "@/components/content/RelatedTools";
-import { FAQSection } from "@/components/content/FAQSection";
+import { HomeWalkTracker } from "@/components/calculator/HomeWalkTracker";
 
 export function MDXContent({ content }: { content: string }) {
   // Split content by custom tag markers or double newlines to process paragraphs and interactive components
@@ -30,6 +30,22 @@ export function MDXContent({ content }: { content: string }) {
         // 3. RelatedTools component
         if (trimmed.startsWith("<RelatedTools") || trimmed === "<RelatedTools />") {
           return <RelatedTools key={index} />;
+        }
+
+        if (trimmed === "<HomeWalkTracker />") {
+          return <HomeWalkTracker key={index} />;
+        }
+
+        if (trimmed.startsWith("<HomeWalkImagePlaceholder")) {
+          const caption = trimmed.match(/caption="([^"]+)"/)?.[1] || "Add a relevant image here.";
+          return (
+            <figure key={index} className="my-8">
+              <div className="flex min-h-40 items-center justify-center rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50 px-5 py-8 text-center text-sm text-slate-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400 sm:min-h-52">
+                Image placeholder — add your own image here
+              </div>
+              <figcaption className="mt-2 text-center text-xs text-slate-500 dark:text-slate-400">{caption}</figcaption>
+            </figure>
+          );
         }
 
         // 4. Headings

@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getAllCategories, getPostsByCategory } from "@/lib/blog";
+import { FLAT_CATEGORY_NAMES, getAllCategories, getPostsByCategory } from "@/lib/blog";
 import { constructMetadata } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { BlogCard } from "@/components/blog/BlogCard";
@@ -15,7 +15,7 @@ interface Props {
 
 export async function generateStaticParams() {
   const categories = getAllCategories();
-  return categories.filter((c) => c.count > 0).map((c) => ({
+  return categories.filter((c) => c.count > 0 && !FLAT_CATEGORY_NAMES.includes(c.name)).map((c) => ({
     category: c.slug,
   }));
 }

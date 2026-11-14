@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getPostBySlug, getAllPosts, getAllCategories, getPostsByCategory, slugifyCategory } from "@/lib/blog";
+import { getPostBySlug, getAllPosts, getAllCategories, getPostsByCategory, slugifyCategory, FLAT_CATEGORY_NAMES } from "@/lib/blog";
 import { constructMetadata, generateArticleSchema } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { TableOfContents, TocItem } from "@/components/content/TableOfContents";
@@ -27,8 +27,6 @@ interface Props {
     slug: string;
   }>;
 }
-
-const FLAT_CATEGORY_NAMES = ["Walking Basics", "Pace & Speed", "Beginners & Seniors"];
 
 function getFlatCategoryBySlug(slug: string) {
   return getAllCategories().find(
