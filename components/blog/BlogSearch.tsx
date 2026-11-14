@@ -4,7 +4,6 @@ import React, { useState, useMemo } from "react";
 import { BlogPost } from "@/lib/blog";
 import { BlogCard } from "./BlogCard";
 import { Search } from "lucide-react";
-import Link from "next/link";
 
 interface BlogSearchProps {
   posts: BlogPost[];
@@ -86,13 +85,18 @@ export function BlogSearch({ posts, categories }: BlogSearchProps) {
               </button>
             ))}
             {categories.filter((cat) => cat.count === 0).map((cat) => (
-              <Link
+              <button
+                type="button"
                 key={cat.name}
-                href={`/blog/${cat.slug}`}
-                className="px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+                onClick={() => setSelectedCategory(cat.name)}
+                className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors ${
+                  selectedCategory === cat.name
+                    ? "bg-brand-600 text-white"
+                    : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200"
+                }`}
               >
                 {cat.name}
-              </Link>
+              </button>
             ))}
           </div>
         </section>
@@ -108,7 +112,9 @@ export function BlogSearch({ posts, categories }: BlogSearchProps) {
       ) : (
         <div className="p-12 text-center rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900">
           <p className="text-slate-500 dark:text-slate-400 text-sm">
-            No articles found matching &quot;{searchTerm}&quot;.
+            {searchTerm === "" && selectedCategory !== "All"
+              ? `No articles in ${selectedCategory} yet.`
+              : `No articles found matching "${searchTerm}".`}
           </p>
           <button
             type="button"
