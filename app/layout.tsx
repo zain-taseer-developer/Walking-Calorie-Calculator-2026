@@ -4,6 +4,7 @@ import { siteConfig } from "@/site.config";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CookieBanner } from "@/components/layout/CookieBanner";
+import { BackToTop } from "@/components/layout/BackToTop";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.CANONICAL_URL),
@@ -117,6 +118,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <CookieBanner />
+        <BackToTop />
       </body>
     </html>
   );
