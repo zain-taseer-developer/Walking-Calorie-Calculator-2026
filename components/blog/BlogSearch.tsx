@@ -116,16 +116,6 @@ export function BlogSearch({ posts, categories }: BlogSearchProps) {
               ? `No articles in ${selectedCategory} yet.`
               : `No articles found matching "${searchTerm}".`}
           </p>
-          <button
-            type="button"
-            onClick={() => {
-              setSearchTerm("");
-              setSelectedCategory("All");
-            }}
-            className="mt-3 px-4 py-2 rounded-xl bg-brand-600 text-white text-xs font-semibold"
-          >
-            Reset Filters
-          </button>
         </div>
       )}
     </div>
