@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { MiniCalculator } from "@/components/calculator/MiniCalculator";
 import { Callout } from "@/components/content/Callout";
 import { KeyTakeaways } from "@/components/content/KeyTakeaways";
@@ -37,13 +38,20 @@ export function MDXContent({ content }: { content: string }) {
         }
 
         if (trimmed.startsWith("<HomeWalkImagePlaceholder")) {
-          const caption = trimmed.match(/caption="([^"]+)"/)?.[1] || "Add a relevant image here.";
           return (
             <figure key={index} className="my-8">
-              <div className="flex min-h-40 items-center justify-center rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50 px-5 py-8 text-center text-sm text-slate-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400 sm:min-h-52">
-                Image placeholder — add your own image here
-              </div>
-              <figcaption className="mt-2 text-center text-xs text-slate-500 dark:text-slate-400">{caption}</figcaption>
+              <Image
+                src="/homewalk-indoor-walking-guide.webp"
+                alt="HomeWalk indoor walking setup in a bright and comfortable living room."
+                title="HomeWalk – Walking at Home"
+                width={1536}
+                height={1024}
+                sizes="(max-width: 768px) 100vw, 768px"
+                className="h-auto w-full rounded-2xl"
+              />
+              <figcaption className="mt-2 text-center text-xs text-slate-500 dark:text-slate-400">
+                HomeWalk: A simple way to stay active indoors.
+              </figcaption>
             </figure>
           );
         }
