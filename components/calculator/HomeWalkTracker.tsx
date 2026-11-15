@@ -340,7 +340,7 @@ export function HomeWalkTracker() {
   );
 
   return (
-    <section id="home-walking-tracker" className="my-12 scroll-mt-24" aria-labelledby="tracker-heading">
+    <section id="home-walking-tracker" className="not-prose my-12 scroll-mt-24" aria-labelledby="tracker-heading">
       <div className="mb-5 max-w-3xl">
         <div className="mb-2 inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700 dark:bg-brand-950 dark:text-brand-300">
           <Footprints className="h-3.5 w-3.5" aria-hidden="true" /> Indoor walking tool
