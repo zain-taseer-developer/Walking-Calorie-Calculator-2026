@@ -345,7 +345,7 @@ export function HomeWalkTracker() {
         <div className="mb-2 inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700 dark:bg-brand-950 dark:text-brand-300">
           <Footprints className="h-3.5 w-3.5" aria-hidden="true" /> Indoor walking tool
         </div>
-        <h2 id="tracker-heading" className="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-3xl">
+        <h2 id="tracker-heading" className="!mt-0 text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-3xl">
           Home Walking Tracker &amp; Calorie Calculator
         </h2>
         <p className="mt-2 text-slate-600 dark:text-slate-300">
