@@ -9,11 +9,9 @@ import {
   detectStepFromMagnitude,
   getElapsedSessionSeconds,
   isValidHomeWalkProfile,
-  isValidManualHomeWalkInput,
   HOMEWALK_STEP_THRESHOLD,
 } from "@/lib/homewalk";
 
-type TrackerMode = "live" | "manual";
 type LiveStatus = "idle" | "running" | "paused" | "stopped" | "unsupported" | "denied" | "error";
 
 const fieldClass = "mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white";
@@ -40,7 +38,6 @@ function MetricCard({ icon: Icon, label, value }: { icon: LucideIcon; label: str
 }
 
 export function HomeWalkTracker() {
-  const [mode, setMode] = useState<TrackerMode>("live");
   const [liveStatus, setLiveStatus] = useState<LiveStatus>("idle");
   const [isStarting, setIsStarting] = useState(false);
   const [unitSystem, setUnitSystem] = useState<"metric" | "imperial">("metric");
@@ -52,10 +49,6 @@ export function HomeWalkTracker() {
   const [sensitivity, setSensitivity] = useState(HOMEWALK_STEP_THRESHOLD);
   const [motionMessage, setMotionMessage] = useState("Live tracking needs a supported phone browser with motion access.");
   const [sensorReceived, setSensorReceived] = useState(false);
-  const [manualDuration, setManualDuration] = useState("");
-  const [manualSteps, setManualSteps] = useState("");
-  const [manualSpeed, setManualSpeed] = useState("");
-
   const elapsedBeforeRunRef = useRef(0);
   const runStartedAtRef = useRef(0);
   const startInProgressRef = useRef(false);
@@ -83,32 +76,6 @@ export function HomeWalkTracker() {
         minimumReliableDurationSeconds: 30,
       })
     : null, [weightKg, heightCm, customStrideNumber, steps, elapsedSeconds, validProfile]);
-
-  const manualDurationNumber = Number(manualDuration);
-  const manualDurationSeconds = Number.isFinite(manualDurationNumber) && manualDurationNumber > 0 && manualDurationNumber <= 1440
-    ? manualDurationNumber * 60
-    : 0;
-  const manualStepsNumber = manualSteps === "" ? undefined : Number(manualSteps);
-  const manualSpeedNumber = manualSpeed === "" ? undefined : Number(manualSpeed);
-  const manualInputValid = isValidManualHomeWalkInput({
-    weightKg: weightKg ?? 0,
-    heightCm: heightCm ?? 0,
-    customStrideLengthCm: customStrideNumber,
-    durationSeconds: manualDurationNumber * 60,
-    steps: manualStepsNumber,
-    speedMph: manualSpeedNumber,
-  });
-
-  const manualMetrics = useMemo(() => manualInputValid
-    ? calculateHomeWalkMetrics({
-        weightKg: weightKg ?? 0,
-        heightCm: heightCm ?? 0,
-        customStrideLengthCm: customStrideNumber,
-        durationSeconds: manualDurationNumber * 60,
-        steps: manualStepsNumber,
-        speedMph: manualSpeedNumber,
-      })
-    : null, [manualInputValid, weightKg, heightCm, customStrideNumber, manualDurationNumber, manualStepsNumber, manualSpeedNumber]);
 
   const removeMotionListener = useCallback(() => {
     if (motionHandlerRef.current && typeof window !== "undefined") {
@@ -149,7 +116,7 @@ export function HomeWalkTracker() {
         stopClock();
         removeMotionListener();
         setLiveStatus("paused");
-        setMotionMessage("Motion readings are unavailable or stopped, so the session has been paused. Resume to retry, or use Manual Calculator.");
+        setMotionMessage("Motion readings are unavailable or stopped, so the session has been paused. Resume to retry.");
       }
     }, 250);
   }, [removeMotionListener, stopClock]);
@@ -211,7 +178,7 @@ export function HomeWalkTracker() {
       }
       if (!window.isSecureContext) {
         setLiveStatus("unsupported");
-        setMotionMessage("Motion tracking requires a secure HTTPS page. Use Manual Calculator mode here.");
+        setMotionMessage("Motion tracking requires a secure HTTPS page.");
         return;
       }
       const motionConstructor = window.DeviceMotionEvent as (typeof DeviceMotionEvent & {
@@ -219,7 +186,7 @@ export function HomeWalkTracker() {
       }) | undefined;
       if (typeof motionConstructor !== "function") {
         setLiveStatus("unsupported");
-        setMotionMessage("This browser does not expose device motion sensors. Use Manual Calculator mode instead.");
+        setMotionMessage("This browser does not expose device motion sensors. Try a supported phone browser.");
         return;
       }
 
@@ -228,12 +195,12 @@ export function HomeWalkTracker() {
           const permission = await motionConstructor.requestPermission();
           if (permission !== "granted") {
             setLiveStatus("denied");
-            setMotionMessage("Motion permission was not granted. Switch to Manual Calculator to continue.");
+            setMotionMessage("Motion permission was not granted. Allow motion access in your browser to track steps.");
             return;
           }
         } catch {
           setLiveStatus("denied");
-          setMotionMessage("The browser could not grant motion access. Check browser permissions or use Manual Calculator.");
+          setMotionMessage("The browser could not grant motion access. Check your browser permissions and try again.");
           return;
         }
       }
@@ -256,7 +223,7 @@ export function HomeWalkTracker() {
         stopClock();
         removeMotionListener();
         setLiveStatus("error");
-        setMotionMessage("The browser could not start device motion tracking. Try again or use Manual Calculator.");
+        setMotionMessage("The browser could not start device motion tracking. Try again.");
       }
     } finally {
       startInProgressRef.current = false;
@@ -277,7 +244,7 @@ export function HomeWalkTracker() {
       stopClock();
       removeMotionListener();
       setLiveStatus("error");
-      setMotionMessage("The browser could not resume device motion tracking. Try again or use Manual Calculator.");
+      setMotionMessage("The browser could not resume device motion tracking. Try again.");
     }
   };
 
@@ -291,13 +258,6 @@ export function HomeWalkTracker() {
     removeMotionListener();
     setLiveStatus("stopped");
     setMotionMessage("Session stopped. Review the estimate below or reset to start again.");
-  };
-
-  const selectMode = (nextMode: TrackerMode) => {
-    if (nextMode === "manual" && liveStatus === "running") {
-      pauseSession("Live tracking paused because you switched modes. Resume it from the Live Walking Tracker tab.");
-    }
-    setMode(nextMode);
   };
 
   useEffect(() => {
@@ -385,17 +345,7 @@ export function HomeWalkTracker() {
         {!validProfile && weightKg === null && heightCm === null && customStrideCm === "" && <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">Enter your weight and height to enable the tracker and calculations.</p>}
         {!validProfile && (weightKg !== null || heightCm !== null || customStrideCm !== "") && <p className="mt-3 text-sm text-rose-600 dark:text-rose-400" role="alert">Use a weight of 20–300 kg, height of 100–230 cm, and optional stride of 30–150 cm.</p>}
 
-        <div className="mt-6 flex flex-wrap gap-2" role="group" aria-label="Choose a tracking method">
-          <button type="button" aria-pressed={mode === "live"} disabled={isStarting} onClick={() => selectMode("live")} className={`rounded-xl px-4 py-2.5 text-sm font-bold transition-colors disabled:cursor-not-allowed disabled:opacity-60 ${mode === "live" ? "bg-brand-600 text-white" : "bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"}`}>
-            Live Walking Tracker
-          </button>
-          <button type="button" aria-pressed={mode === "manual"} disabled={isStarting} onClick={() => selectMode("manual")} className={`rounded-xl px-4 py-2.5 text-sm font-bold transition-colors disabled:cursor-not-allowed disabled:opacity-60 ${mode === "manual" ? "bg-brand-600 text-white" : "bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"}`}>
-            Manual Calculator
-          </button>
-        </div>
-
-        {mode === "live" ? (
-          <div className="mt-5 space-y-5">
+        <div className="mt-5 space-y-5">
             <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950/60">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <h3 className="font-bold text-slate-900 dark:text-white">Live sensor status</h3>
@@ -407,7 +357,7 @@ export function HomeWalkTracker() {
               {!sensorReceived && liveStatus === "running" && <p className="mt-1 text-xs text-amber-700 dark:text-amber-300">Waiting for device motion data; no steps are added until real sensor peaks are detected.</p>}
             </div>
 
-            {showMetrics(liveMetrics, elapsedSeconds)}
+            {(liveStatus === "running" || liveStatus === "paused" || liveStatus === "stopped") && showMetrics(liveMetrics, elapsedSeconds)}
 
             {liveStatus === "stopped" && (
               <div className="rounded-2xl border border-brand-200 bg-brand-50 p-4 dark:border-brand-900 dark:bg-brand-950/50">
@@ -447,27 +397,6 @@ export function HomeWalkTracker() {
 
             <p className="text-xs leading-relaxed text-slate-500 dark:text-slate-400">Live step counts are estimates, not medical-grade readings. Phone position and arm movement affect detection. Keep this page open and the screen active; the tracker does not promise background or locked-screen tracking.</p>
           </div>
-        ) : (
-          <div className="mt-5 space-y-5">
-            <div className="grid gap-4 sm:grid-cols-3">
-              <div>
-                <label htmlFor="manual-duration" className={labelClass}>Walking duration (minutes)</label>
-                <input id="manual-duration" className={fieldClass} type="number" inputMode="decimal" min="0.1" max="1440" step="0.1" value={manualDuration} onChange={(event) => setManualDuration(event.target.value)} />
-              </div>
-              <div>
-                <label htmlFor="manual-steps" className={labelClass}>Steps (optional)</label>
-                <input id="manual-steps" className={fieldClass} type="number" inputMode="numeric" min="1" max="200000" step="1" placeholder="Enter steps" value={manualSteps} onChange={(event) => setManualSteps(event.target.value)} />
-              </div>
-              <div>
-                <label htmlFor="manual-speed" className={labelClass}>Walking speed (mph, optional)</label>
-                <input id="manual-speed" className={fieldClass} type="number" inputMode="decimal" min="0.5" max="6" step="0.1" placeholder="e.g. 3.0" value={manualSpeed} onChange={(event) => setManualSpeed(event.target.value)} />
-              </div>
-            </div>
-            {!manualInputValid && <p className="text-sm text-slate-600 dark:text-slate-300" role="status">Enter a valid duration and either steps or a walking speed to calculate an estimate.</p>}
-            {showMetrics(manualMetrics, manualDurationSeconds)}
-            <p className="text-xs leading-relaxed text-slate-500 dark:text-slate-400">When speed is blank, the calculator estimates pace from steps, stride length, and duration. When steps are blank, it estimates steps from speed, duration, and stride length.</p>
-          </div>
-        )}
 
         <div className="mt-5 rounded-2xl bg-slate-100 p-4 text-sm text-slate-600 dark:bg-slate-800/70 dark:text-slate-300">
           <strong className="text-slate-900 dark:text-white">How estimates are calculated:</strong> estimated distance = steps × stride length. Stride length defaults to height × 0.414 unless you enter a custom value. Calorie estimates use the existing site walking calculator’s gross-calorie MET method. Indoor distance is not GPS-measured.

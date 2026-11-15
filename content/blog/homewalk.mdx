@@ -11,23 +11,23 @@ draft: false
 relatedPosts: []
 faq:
   - question: "Can I count my steps while walking at home?"
-    answer: "Yes. A phone motion sensor or fitness tracker may count indoor steps. HomeWalk's live mode estimates steps from phone motion when the browser and device expose sensor data; manual mode lets you enter a step count from another device."
+    answer: "Yes. A phone motion sensor or fitness tracker may count indoor steps. HomeWalk estimates steps from phone motion when the browser and device expose sensor data."
   - question: "Does my phone count steps without a fitness tracker?"
     answer: "Some phones count steps through built-in health or fitness features. This page's live tracker uses browser motion data where available, but support and results differ by phone, browser, permissions, and how you carry the phone."
   - question: "Can I measure indoor walking distance with my phone?"
     answer: "Distance can be estimated from steps multiplied by stride length. This is not an indoor GPS measurement, and the result changes if your actual stride differs from the estimate or you walk in place."
   - question: "How many calories does 30 minutes of home walking burn?"
-    answer: "It depends on body weight and walking intensity. Enter your weight, duration, and speed or steps in the manual calculator to get an estimate based on the site's walking MET calculation."
+    answer: "It depends on body weight and walking intensity. Use the live tracker with your weight and height entered; it estimates calories from detected steps and walking duration using the site's walking MET calculation."
   - question: "Can I walk at home without a treadmill?"
     answer: "Yes. You can walk through a clear room or hallway, or march in place. A treadmill is optional; choose a safe space and a pace that feels manageable."
   - question: "Does walking in place count as exercise?"
     answer: "Walking in place is physical activity. Its effort depends on pace, duration, and how actively you move. A step-based distance estimate may not represent forward distance when you stay in one spot."
   - question: "Why is my phone not detecting my steps?"
-    answer: "The browser may not support motion events, permission may be denied, the page may not be using HTTPS, or the phone may be held too steadily or in a position that hides walking motion. Use Manual Calculator mode if live data is unavailable."
+    answer: "The browser may not support motion events, permission may be denied, the page may not be using HTTPS, or the phone may be held too steadily or in a position that hides walking motion. Live tracking requires a supported browser with motion access."
   - question: "Can I use this tracker on an iPhone?"
-    answer: "You can try it in a supported iPhone browser. iOS may ask for motion permission after you press Start Walking. If permission or sensor data is unavailable, use Manual Calculator mode."
+    answer: "You can try it in a supported iPhone browser. iOS may ask for motion permission after you press Start Walking. Live tracking needs motion permission and sensor data."
   - question: "Can I use this tracker on Android?"
-    answer: "You can try live tracking in a supported Android browser over HTTPS. Sensor behavior varies by device and browser. Manual Calculator mode is available as a fallback."
+    answer: "You can try live tracking in a supported Android browser over HTTPS. Sensor behavior varies by device and browser."
 ---
 
 ## HomeWalk: Benefits, Tips, and How to Walk at Home
@@ -75,7 +75,7 @@ To make your home walking sessions more effective, maintain a steady pace and av
 9. Press **Stop** when the session ends.
 10. Review your estimated distance and calories burned.
 
-If live motion tracking is unavailable or denied, choose **Manual Calculator**. Enter your duration and either steps or walking speed. The calculator estimates the missing pace or step count from the values you provide.
+Live motion tracking requires a supported phone browser, an HTTPS connection, and motion permission when requested. If the browser or device cannot provide motion data, the live tracker cannot count steps.
 
 ## How Accurate Is a Home Walking Tracker?
 
