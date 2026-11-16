@@ -365,7 +365,7 @@ export function HomeWalkTracker() {
             </select>
           </div>
           <div>
-            <div className="flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2">
               <label htmlFor={heightUnit === "cm" ? "homewalk-height-cm" : "homewalk-height-feet"} className={labelClass}>Height</label>
               <div role="group" aria-label="Height units" className="inline-flex rounded-lg bg-slate-100 p-0.5 dark:bg-slate-800">
                 <button type="button" aria-pressed={heightUnit === "cm"} onClick={() => changeHeightUnit("cm")} className={`rounded-md px-2.5 py-1 text-xs font-semibold transition-colors ${heightUnit === "cm" ? "bg-white text-slate-900 shadow-sm dark:bg-slate-700 dark:text-white" : "text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200"}`}>cm</button>
