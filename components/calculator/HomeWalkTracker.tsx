@@ -347,7 +347,7 @@ export function HomeWalkTracker() {
       <div className="rounded-3xl border border-slate-200 bg-white p-4 shadow-xl shadow-slate-900/5 dark:border-slate-800 dark:bg-slate-900 sm:p-7">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <label htmlFor="homewalk-weight" className={labelClass}>Body weight ({weightUnitLabel})</label>
+            <label htmlFor="homewalk-weight" className={`${labelClass} flex min-h-10 items-center`}>Body weight ({weightUnitLabel})</label>
             <input id="homewalk-weight" className={fieldClass} type="number" inputMode="decimal" min={unitSystem === "metric" ? 20 : 44} max={unitSystem === "metric" ? 300 : 661} step="0.1" placeholder="Enter weight" value={displayedWeight === "" ? "" : formatNumber(displayedWeight, 1).replace(/\.0$/, "")} onChange={(event) => {
               if (event.target.value === "") {
                 setWeightKg(null);
@@ -358,21 +358,21 @@ export function HomeWalkTracker() {
             }} />
           </div>
           <div>
-            <label htmlFor="homewalk-units" className={labelClass}>Weight units</label>
+            <label htmlFor="homewalk-units" className={`${labelClass} flex min-h-10 items-center`}>Weight units</label>
             <select id="homewalk-units" className={fieldClass} value={unitSystem} onChange={(event) => setUnitSystem(event.target.value as "metric" | "imperial")}>
               <option value="metric">Metric (kg)</option>
               <option value="imperial">Imperial (lb)</option>
             </select>
           </div>
           <div>
-            <div className="flex items-center gap-2">
+            <div className="flex min-h-10 items-center gap-2">
               <label htmlFor={heightUnit === "cm" ? "homewalk-height-cm" : "homewalk-height-feet"} className={labelClass}>Height</label>
               <div role="group" aria-label="Height units" className="inline-flex rounded-lg bg-slate-100 p-0.5 dark:bg-slate-800">
                 <button type="button" aria-pressed={heightUnit === "cm"} onClick={() => changeHeightUnit("cm")} className={`rounded-md px-2.5 py-1 text-xs font-semibold transition-colors ${heightUnit === "cm" ? "bg-white text-slate-900 shadow-sm dark:bg-slate-700 dark:text-white" : "text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200"}`}>cm</button>
                 <button type="button" aria-pressed={heightUnit === "ft-in"} onClick={() => changeHeightUnit("ft-in")} className={`rounded-md px-2.5 py-1 text-xs font-semibold transition-colors ${heightUnit === "ft-in" ? "bg-white text-slate-900 shadow-sm dark:bg-slate-700 dark:text-white" : "text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200"}`}>ft/in</button>
               </div>
             </div>
-            <div className={`mt-1 grid gap-2 ${heightUnit === "cm" ? "grid-cols-1" : "grid-cols-2"}`}>
+            <div className={`grid gap-2 ${heightUnit === "cm" ? "grid-cols-1" : "grid-cols-2"}`}>
               {heightUnit === "cm" ? (
                 <input id="homewalk-height-cm" className={fieldClass} type="number" inputMode="numeric" min="100" max="230" placeholder="cm" aria-label="Height in centimeters" value={heightCm ?? ""} onChange={(event) => setHeightCm(event.target.value === "" ? null : Number(event.target.value))} />
               ) : (
@@ -384,8 +384,8 @@ export function HomeWalkTracker() {
             </div>
           </div>
           <div>
-            <label htmlFor="homewalk-stride" className={labelClass}>Custom stride (cm, optional)</label>
-            <input id="homewalk-stride" className={fieldClass} type="number" inputMode="decimal" min="30" max="150" placeholder="Use height estimate" value={customStrideCm} onChange={(event) => setCustomStrideCm(event.target.value)} />
+            <label htmlFor="homewalk-stride" className={`${labelClass} flex min-h-10 items-center`}>Custom stride (cm)</label>
+            <input id="homewalk-stride" className={fieldClass} type="number" inputMode="decimal" min="30" max="150" aria-label="Custom stride in centimeters, optional" placeholder="Use height estimate" value={customStrideCm} onChange={(event) => setCustomStrideCm(event.target.value)} />
           </div>
         </div>
         {!validProfile && weightKg === null && !hasHeightInput && customStrideCm === "" && <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">Enter your weight and height to enable the tracker and calculations.</p>}
