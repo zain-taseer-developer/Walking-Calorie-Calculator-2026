@@ -25,6 +25,11 @@ function formatDuration(totalSeconds: number) {
   return [hours, minutes, seconds].map((part) => String(part).padStart(2, "0")).join(":");
 }
 
+function centimetersToFeetAndInches(heightCm: number) {
+  const totalInches = Math.round(heightCm / 2.54);
+  return { feet: Math.floor(totalInches / 12), inches: totalInches % 12 };
+}
+
 function MetricCard({ icon: Icon, label, value }: { icon: LucideIcon; label: string; value: string }) {
   return (
     <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950/70">
@@ -43,6 +48,9 @@ export function HomeWalkTracker() {
   const [unitSystem, setUnitSystem] = useState<"metric" | "imperial">("metric");
   const [weightKg, setWeightKg] = useState<number | null>(null);
   const [heightCm, setHeightCm] = useState<number | null>(null);
+  const [heightUnit, setHeightUnit] = useState<"cm" | "ft-in">("cm");
+  const [heightFeet, setHeightFeet] = useState<number | null>(null);
+  const [heightInches, setHeightInches] = useState<number | null>(null);
   const [customStrideCm, setCustomStrideCm] = useState("");
   const [steps, setSteps] = useState(0);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
@@ -63,19 +71,27 @@ export function HomeWalkTracker() {
   sensitivityRef.current = sensitivity;
 
   const customStrideNumber = customStrideCm === "" ? undefined : Number(customStrideCm);
-  const validProfile = weightKg !== null && heightCm !== null
-    && isValidHomeWalkProfile(weightKg, heightCm, customStrideNumber);
+  const resolvedHeightCm = heightUnit === "cm"
+    ? heightCm
+    : heightFeet !== null && heightInches !== null
+      ? Math.round((heightFeet * 12 + heightInches) * 2.54)
+      : null;
+  const hasHeightInput = heightUnit === "cm"
+    ? heightCm !== null
+    : heightFeet !== null || heightInches !== null;
+  const validProfile = weightKg !== null && resolvedHeightCm !== null
+    && isValidHomeWalkProfile(weightKg, resolvedHeightCm, customStrideNumber);
 
   const liveMetrics = useMemo(() => validProfile
     ? calculateHomeWalkMetrics({
         weightKg: weightKg ?? 0,
-        heightCm: heightCm ?? 0,
+        heightCm: resolvedHeightCm ?? 0,
         customStrideLengthCm: customStrideNumber,
         steps,
         durationSeconds: elapsedSeconds,
         minimumReliableDurationSeconds: 30,
       })
-    : null, [weightKg, heightCm, customStrideNumber, steps, elapsedSeconds, validProfile]);
+    : null, [weightKg, resolvedHeightCm, customStrideNumber, steps, elapsedSeconds, validProfile]);
 
   const removeMotionListener = useCallback(() => {
     if (motionHandlerRef.current && typeof window !== "undefined") {
@@ -334,16 +350,43 @@ export function HomeWalkTracker() {
             </select>
           </div>
           <div>
-            <label htmlFor="homewalk-height" className={labelClass}>Height (cm)</label>
-            <input id="homewalk-height" className={fieldClass} type="number" inputMode="numeric" min="100" max="230" placeholder="Enter height" value={heightCm ?? ""} onChange={(event) => setHeightCm(event.target.value === "" ? null : Number(event.target.value))} />
+            <label htmlFor={heightUnit === "cm" ? "homewalk-height-cm" : "homewalk-height-feet"} className={labelClass}>Height</label>
+            <div className={`mt-1 grid gap-2 ${heightUnit === "cm" ? "grid-cols-[minmax(0,1fr)_auto]" : "grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto]"}`}>
+              {heightUnit === "cm" ? (
+                <input id="homewalk-height-cm" className={fieldClass} type="number" inputMode="numeric" min="100" max="230" placeholder="cm" aria-label="Height in centimeters" value={heightCm ?? ""} onChange={(event) => setHeightCm(event.target.value === "" ? null : Number(event.target.value))} />
+              ) : (
+                <>
+                  <input id="homewalk-height-feet" className={fieldClass} type="number" inputMode="numeric" min="3" max="7" step="1" placeholder="ft" aria-label="Height in feet" value={heightFeet ?? ""} onChange={(event) => setHeightFeet(event.target.value === "" ? null : Number(event.target.value))} />
+                  <input id="homewalk-height-inches" className={fieldClass} type="number" inputMode="numeric" min="0" max="11" step="1" placeholder="in" aria-label="Additional height in inches" value={heightInches ?? ""} onChange={(event) => setHeightInches(event.target.value === "" ? null : Number(event.target.value))} />
+                </>
+              )}
+              <select id="homewalk-height-units" className={fieldClass} aria-label="Height units" value={heightUnit} onChange={(event) => {
+                const nextUnit = event.target.value as "cm" | "ft-in";
+                if (nextUnit === heightUnit) return;
+                if (nextUnit === "ft-in" && heightCm !== null) {
+                  const parts = centimetersToFeetAndInches(heightCm);
+                  setHeightFeet(parts.feet);
+                  setHeightInches(parts.inches);
+                }
+                if (nextUnit === "cm") {
+                  setHeightCm(heightFeet !== null && heightInches !== null
+                    ? Math.round((heightFeet * 12 + heightInches) * 2.54)
+                    : null);
+                }
+                setHeightUnit(nextUnit);
+              }}>
+                <option value="cm">cm</option>
+                <option value="ft-in">ft/in</option>
+              </select>
+            </div>
           </div>
           <div>
             <label htmlFor="homewalk-stride" className={labelClass}>Custom stride (cm, optional)</label>
             <input id="homewalk-stride" className={fieldClass} type="number" inputMode="decimal" min="30" max="150" placeholder="Use height estimate" value={customStrideCm} onChange={(event) => setCustomStrideCm(event.target.value)} />
           </div>
         </div>
-        {!validProfile && weightKg === null && heightCm === null && customStrideCm === "" && <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">Enter your weight and height to enable the tracker and calculations.</p>}
-        {!validProfile && (weightKg !== null || heightCm !== null || customStrideCm !== "") && <p className="mt-3 text-sm text-rose-600 dark:text-rose-400" role="alert">Use a weight of 20–300 kg, height of 100–230 cm, and optional stride of 30–150 cm.</p>}
+        {!validProfile && weightKg === null && !hasHeightInput && customStrideCm === "" && <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">Enter your weight and height to enable the tracker and calculations.</p>}
+        {!validProfile && (weightKg !== null || hasHeightInput || customStrideCm !== "") && <p className="mt-3 text-sm text-rose-600 dark:text-rose-400" role="alert">Use a weight of 20–300 kg, height of 100–230 cm (or the equivalent in ft/in), and optional stride of 30–150 cm.</p>}
 
         <div className="mt-5 space-y-5">
             <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950/60">
