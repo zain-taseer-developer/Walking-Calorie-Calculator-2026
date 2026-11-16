@@ -309,7 +309,6 @@ export function HomeWalkTracker() {
   const displayedWeight = weightKg === null
     ? ""
     : unitSystem === "metric" ? weightKg : weightKg / 0.45359237;
-  const weightUnitLabel = unitSystem === "metric" ? "kg" : "lb";
   const liveStatusLabel = {
     idle: "Ready",
     running: "Tracking",
@@ -345,9 +344,15 @@ export function HomeWalkTracker() {
       </div>
 
       <div className="rounded-3xl border border-slate-200 bg-white p-4 shadow-xl shadow-slate-900/5 dark:border-slate-800 dark:bg-slate-900 sm:p-7">
-        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           <div>
-            <label htmlFor="homewalk-weight" className={`${labelClass} flex min-h-10 items-center`}>Body weight ({weightUnitLabel})</label>
+            <div className="flex min-h-10 items-center gap-2">
+              <label htmlFor="homewalk-weight" className={labelClass}>Body weight</label>
+              <div role="group" aria-label="Weight units" className="inline-flex rounded-lg bg-slate-100 p-0.5 dark:bg-slate-800">
+                <button type="button" aria-pressed={unitSystem === "metric"} onClick={() => setUnitSystem("metric")} className={`rounded-md px-2.5 py-1 text-xs font-semibold transition-colors ${unitSystem === "metric" ? "bg-white text-slate-900 shadow-sm dark:bg-slate-700 dark:text-white" : "text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200"}`}>kg</button>
+                <button type="button" aria-pressed={unitSystem === "imperial"} onClick={() => setUnitSystem("imperial")} className={`rounded-md px-2.5 py-1 text-xs font-semibold transition-colors ${unitSystem === "imperial" ? "bg-white text-slate-900 shadow-sm dark:bg-slate-700 dark:text-white" : "text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200"}`}>lb</button>
+              </div>
+            </div>
             <input id="homewalk-weight" className={fieldClass} type="number" inputMode="decimal" min={unitSystem === "metric" ? 20 : 44} max={unitSystem === "metric" ? 300 : 661} step="0.1" placeholder="Enter weight" value={displayedWeight === "" ? "" : formatNumber(displayedWeight, 1).replace(/\.0$/, "")} onChange={(event) => {
               if (event.target.value === "") {
                 setWeightKg(null);
@@ -356,13 +361,6 @@ export function HomeWalkTracker() {
               const value = Number(event.target.value);
               if (Number.isFinite(value)) setWeightKg(unitSystem === "metric" ? value : value * 0.45359237);
             }} />
-          </div>
-          <div>
-            <label htmlFor="homewalk-units" className={`${labelClass} flex min-h-10 items-center`}>Weight units</label>
-            <select id="homewalk-units" className={fieldClass} value={unitSystem} onChange={(event) => setUnitSystem(event.target.value as "metric" | "imperial")}>
-              <option value="metric">Metric (kg)</option>
-              <option value="imperial">Imperial (lb)</option>
-            </select>
           </div>
           <div>
             <div className="flex min-h-10 items-center gap-2">
