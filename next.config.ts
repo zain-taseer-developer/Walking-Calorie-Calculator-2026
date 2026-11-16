@@ -28,6 +28,11 @@ const nextConfig: NextConfig = {
         destination: "/blog/category/beginners-and-seniors",
         permanent: true,
       },
+      {
+        source: "/blog/walking-basics",
+        destination: "/blog/category/walking-basics",
+        permanent: true,
+      },
     ];
   },
 };
