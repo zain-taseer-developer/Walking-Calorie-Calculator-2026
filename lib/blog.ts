@@ -41,7 +41,7 @@ const BLOG_CATEGORIES = [
   "Beginners & Seniors",
 ];
 
-export const FLAT_CATEGORY_NAMES = ["Walking Basics", "Pace & Speed", "Beginners & Seniors"];
+export const FLAT_CATEGORY_NAMES = ["Walking Basics"];
 
 export function calculateReadingTime(text: string): { minutes: number; words: number } {
   const words = text.trim().split(/\s+/).filter(Boolean).length;

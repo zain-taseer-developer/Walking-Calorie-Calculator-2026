@@ -18,6 +18,16 @@ const nextConfig: NextConfig = {
         destination: "/blog/category/steps-and-distance",
         permanent: true,
       },
+      {
+        source: "/blog/pace-and-speed",
+        destination: "/blog/category/pace-and-speed",
+        permanent: true,
+      },
+      {
+        source: "/blog/beginners-and-seniors",
+        destination: "/blog/category/beginners-and-seniors",
+        permanent: true,
+      },
     ];
   },
 };

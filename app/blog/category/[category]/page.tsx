@@ -15,7 +15,8 @@ interface Props {
 
 export async function generateStaticParams() {
   const categories = getAllCategories();
-  return categories.filter((c) => c.count > 0 && !FLAT_CATEGORY_NAMES.includes(c.name)).map((c) => ({
+  const comingSoonCategorySlugs = new Set(["pace-and-speed", "beginners-and-seniors"]);
+  return categories.filter((c) => (c.count > 0 && !FLAT_CATEGORY_NAMES.includes(c.name)) || comingSoonCategorySlugs.has(c.slug)).map((c) => ({
     category: c.slug,
   }));
 }
@@ -41,7 +42,8 @@ export default async function CategoryArchivePage({ params }: Props) {
   const categoryName = current ? current.name : category.replace(/-/g, " ");
   const posts = getPostsByCategory(categoryName);
 
-  if (posts.length === 0) notFound();
+  const isComingSoonCategory = category === "pace-and-speed" || category === "beginners-and-seniors";
+  if (posts.length === 0 && !isComingSoonCategory) notFound();
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
@@ -67,11 +69,17 @@ export default async function CategoryArchivePage({ params }: Props) {
 
       <AdSlot format="horizontal" slotId="category-top" />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
-        {posts.map((post) => (
-          <BlogCard key={post.frontmatter.slug} post={post} />
-        ))}
-      </div>
+      {posts.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
+          {posts.map((post) => (
+            <BlogCard key={post.frontmatter.slug} post={post} />
+          ))}
+        </div>
+      ) : (
+        <div className="my-8 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-8 text-center">
+          <p className="text-slate-600 dark:text-slate-300">Articles in this category are coming soon.</p>
+        </div>
+      )}
     </div>
   );
 }
