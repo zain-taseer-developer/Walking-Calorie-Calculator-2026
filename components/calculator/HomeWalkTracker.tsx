@@ -93,6 +93,21 @@ export function HomeWalkTracker() {
       })
     : null, [weightKg, resolvedHeightCm, customStrideNumber, steps, elapsedSeconds, validProfile]);
 
+  const changeHeightUnit = (nextUnit: "cm" | "ft-in") => {
+    if (nextUnit === heightUnit) return;
+    if (nextUnit === "ft-in" && heightCm !== null) {
+      const parts = centimetersToFeetAndInches(heightCm);
+      setHeightFeet(parts.feet);
+      setHeightInches(parts.inches);
+    }
+    if (nextUnit === "cm") {
+      setHeightCm(heightFeet !== null && heightInches !== null
+        ? Math.round((heightFeet * 12 + heightInches) * 2.54)
+        : null);
+    }
+    setHeightUnit(nextUnit);
+  };
+
   const removeMotionListener = useCallback(() => {
     if (motionHandlerRef.current && typeof window !== "undefined") {
       window.removeEventListener("devicemotion", motionHandlerRef.current);
@@ -350,8 +365,14 @@ export function HomeWalkTracker() {
             </select>
           </div>
           <div>
-            <label htmlFor={heightUnit === "cm" ? "homewalk-height-cm" : "homewalk-height-feet"} className={labelClass}>Height</label>
-            <div className={`mt-1 grid gap-2 ${heightUnit === "cm" ? "grid-cols-[minmax(0,1fr)_auto]" : "grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto]"}`}>
+            <div className="flex items-center justify-between gap-2">
+              <label htmlFor={heightUnit === "cm" ? "homewalk-height-cm" : "homewalk-height-feet"} className={labelClass}>Height</label>
+              <div role="group" aria-label="Height units" className="inline-flex rounded-lg bg-slate-100 p-0.5 dark:bg-slate-800">
+                <button type="button" aria-pressed={heightUnit === "cm"} onClick={() => changeHeightUnit("cm")} className={`rounded-md px-2.5 py-1 text-xs font-semibold transition-colors ${heightUnit === "cm" ? "bg-white text-slate-900 shadow-sm dark:bg-slate-700 dark:text-white" : "text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200"}`}>cm</button>
+                <button type="button" aria-pressed={heightUnit === "ft-in"} onClick={() => changeHeightUnit("ft-in")} className={`rounded-md px-2.5 py-1 text-xs font-semibold transition-colors ${heightUnit === "ft-in" ? "bg-white text-slate-900 shadow-sm dark:bg-slate-700 dark:text-white" : "text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200"}`}>ft/in</button>
+              </div>
+            </div>
+            <div className={`mt-1 grid gap-2 ${heightUnit === "cm" ? "grid-cols-1" : "grid-cols-2"}`}>
               {heightUnit === "cm" ? (
                 <input id="homewalk-height-cm" className={fieldClass} type="number" inputMode="numeric" min="100" max="230" placeholder="cm" aria-label="Height in centimeters" value={heightCm ?? ""} onChange={(event) => setHeightCm(event.target.value === "" ? null : Number(event.target.value))} />
               ) : (
@@ -360,24 +381,6 @@ export function HomeWalkTracker() {
                   <input id="homewalk-height-inches" className={fieldClass} type="number" inputMode="numeric" min="0" max="11" step="1" placeholder="in" aria-label="Additional height in inches" value={heightInches ?? ""} onChange={(event) => setHeightInches(event.target.value === "" ? null : Number(event.target.value))} />
                 </>
               )}
-              <select id="homewalk-height-units" className={fieldClass} aria-label="Height units" value={heightUnit} onChange={(event) => {
-                const nextUnit = event.target.value as "cm" | "ft-in";
-                if (nextUnit === heightUnit) return;
-                if (nextUnit === "ft-in" && heightCm !== null) {
-                  const parts = centimetersToFeetAndInches(heightCm);
-                  setHeightFeet(parts.feet);
-                  setHeightInches(parts.inches);
-                }
-                if (nextUnit === "cm") {
-                  setHeightCm(heightFeet !== null && heightInches !== null
-                    ? Math.round((heightFeet * 12 + heightInches) * 2.54)
-                    : null);
-                }
-                setHeightUnit(nextUnit);
-              }}>
-                <option value="cm">cm</option>
-                <option value="ft-in">ft/in</option>
-              </select>
             </div>
           </div>
           <div>
