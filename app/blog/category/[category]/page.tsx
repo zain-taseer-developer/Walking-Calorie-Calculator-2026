@@ -26,9 +26,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const categories = getAllCategories();
   const current = categories.find((c) => c.slug === category);
   const categoryName = current ? current.name : category.replace(/-/g, " ");
+  const brandedCategorySlugs = new Set([
+    "treadmill-and-workouts",
+    "calories-and-nutrition",
+    "weight-loss",
+    "walking-for-health",
+    "walking-basics",
+    "steps-and-distance",
+  ]);
 
   return constructMetadata({
-    title: `${categoryName} Guides`,
+    title: `${categoryName} Guides${brandedCategorySlugs.has(category) ? " | WalkingCalorieCalc.com" : ""}`,
     description: `Browse all articles, calculators, and research guides filed under ${categoryName}.`,
     canonicalPath: `/blog/category/${category}`,
     noindex: false,
