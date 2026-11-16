@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
 };
 
-const commonWeightsLbs = [100, 120, 128, 140, 150, 152, 160, 162, 163, 179, 180, 183, 200, 220];
+const commonWeightsLbs = [100, 120, 128, 140, 150, 152, 160, 162, 163, 179, 180, 183, 200, 202, 220];
 
 const faqs = [
   {
@@ -30,6 +30,11 @@ const faqs = [
     question: "How much is 152 pounds in kg?",
     answer:
       "152 lbs is 68.946 kg, or 68.95 kg rounded to two decimal places.",
+  },
+  {
+    question: "How much is 202 lbs in kg?",
+    answer:
+      "202 pounds is equal to approximately 91.63 kilograms. To convert 202 lbs to kg, multiply 202 by 0.45359237.",
   },
   {
     question: "How much is 128 lbs to kg?",
@@ -151,6 +156,7 @@ export default function WeightConverterPage() {
           <li><strong>160 lbs:</strong> 160 × 0.45359237 = 72.5747792 kg ≈ <strong>72.57 kg</strong></li>
           <li><strong>180 lbs:</strong> 180 × 0.45359237 = 81.6466266 kg ≈ <strong>81.65 kg</strong></li>
           <li><strong>200 lbs:</strong> 200 × 0.45359237 = 90.718474 kg ≈ <strong>90.72 kg</strong></li>
+          <li><strong>202 lbs:</strong> 202 × 0.45359237 = 91.62565874 kg ≈ <strong>91.63 kg</strong></li>
         </ul>
 
         <h2>How to Convert Kilograms to Pounds Manually</h2>
