@@ -12,7 +12,7 @@ import { MiniCalculator } from "@/components/calculator/MiniCalculator";
 import { Footprints } from "lucide-react";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Recommended Steps Per Day: How Many Steps Should You Walk?",
+  title: "Recommended Steps Per Day: How Many Steps Per Day?",
   description:
     "How many steps a day is good? Research shows 7,500 to 10,000 steps per day provides peak longevity, cardiovascular protection, and metabolic health.",
   canonicalPath: "/how-many-steps-a-day",
