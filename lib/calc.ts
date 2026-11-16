@@ -7,18 +7,18 @@ import {
 } from "./types";
 
 /**
- * Standard Walking MET values from the 2011 Compendium of Physical Activities
- * (Ainsworth et al., Medicine & Science in Sports & Exercise).
- * Speed in mph -> MET value on firm, level ground.
+ * Walking MET reference points from the 2024 Adult Compendium of Physical Activities.
+ * Speed in mph -> MET value on firm, level ground. Values between reference points
+ * are estimated by linear interpolation.
  */
 export const MET_TABLE: Array<{ mph: number; kmh: number; met: number; code: string; label: string }> = [
-  { mph: 2.0, kmh: 3.22, met: 2.8, code: "17151", label: "Slow stroll (2.0 mph)" },
-  { mph: 2.5, kmh: 4.02, met: 3.0, code: "17152", label: "Casual pace (2.5 mph)" },
-  { mph: 3.0, kmh: 4.83, met: 3.5, code: "17170", label: "Moderate pace (3.0 mph)" },
-  { mph: 3.5, kmh: 5.63, met: 4.3, code: "17190", label: "Brisk walking (3.5 mph)" },
-  { mph: 4.0, kmh: 6.44, met: 5.0, code: "17200", label: "Very brisk (4.0 mph)" },
-  { mph: 4.5, kmh: 7.24, met: 7.0, code: "17220", label: "Power walk (4.5 mph)" },
-  { mph: 5.0, kmh: 8.05, met: 8.3, code: "17230", label: "Race walk (5.0 mph)" },
+  { mph: 2.0, kmh: 3.22, met: 2.8, code: "17152", label: "Slow walk (2.0–2.4 mph)" },
+  { mph: 2.5, kmh: 4.02, met: 3.0, code: "17170", label: "Walking (2.5 mph)" },
+  { mph: 3.0, kmh: 4.83, met: 3.8, code: "17190", label: "Moderate walk (2.8–3.4 mph)" },
+  { mph: 3.5, kmh: 5.63, met: 4.8, code: "17200", label: "Brisk walk (3.5–3.9 mph)" },
+  { mph: 4.0, kmh: 6.44, met: 5.5, code: "17220", label: "Very brisk walk (4.0–4.4 mph)" },
+  { mph: 4.5, kmh: 7.24, met: 7.0, code: "17230", label: "Very fast walk (4.5–4.9 mph)" },
+  { mph: 5.0, kmh: 8.05, met: 8.5, code: "17231", label: "Fast walk (5.0–5.5 mph)" },
 ];
 
 /**
@@ -49,13 +49,13 @@ export const TERRAIN_OPTIONS: TerrainOption[] = [
 export function getWalkingMet(speedMph: number): number {
   if (speedMph <= 0) return 1.0; // Resting MET
 
-  // If below the first point (2.0 mph, 2.8 MET), interpolate down to 0 mph (1.0 MET)
+  // If below the first point (2.0 mph, 2.8 MET), estimate down to 0 mph (1.0 MET)
   if (speedMph <= MET_TABLE[0].mph) {
     const fraction = speedMph / MET_TABLE[0].mph;
     return 1.0 + fraction * (MET_TABLE[0].met - 1.0);
   }
 
-  // If above the last point (5.0 mph, 8.3 MET), extrapolate with the slope of the last segment
+  // If above the last point (5.0 mph, 8.5 MET), extrapolate with the slope of the last segment
   const lastIndex = MET_TABLE.length - 1;
   if (speedMph >= MET_TABLE[lastIndex].mph) {
     const prev = MET_TABLE[lastIndex - 1];

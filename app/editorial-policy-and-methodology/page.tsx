@@ -8,12 +8,12 @@ import { BookOpen, CheckCircle, ShieldCheck, Database, Award, ExternalLink } fro
 export const metadata: Metadata = constructMetadata({
   title: "Editorial Policy & Scientific Methodology",
   description:
-    "Explore how our walking calorie algorithms work: 2011 Compendium MET interpolation, ACSM incline equations, review standards, and update policy.",
+    "Explore how our walking calorie algorithms work: 2024 Adult Compendium MET interpolation, ACSM incline equations, review standards, and update policy.",
   canonicalPath: "/editorial-policy-and-methodology",
 });
 
 export default function EditorialMethodologyPage() {
-  const lastUpdated = "November 4, 2026";
+  const lastUpdated = "November 16, 2026";
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
@@ -37,9 +37,9 @@ export default function EditorialMethodologyPage() {
           At <strong>{siteConfig.SITE_NAME}</strong>, we are committed to providing the most scientifically accurate, evidence-based, and mathematically transparent fitness calculators and guides on the internet. This document outlines our mathematical foundations, literature sources, and editorial review standards.
         </p>
 
-        <h2>1. The Primary Metabolic Model: 2011 Compendium of Physical Activities</h2>
+        <h2>1. Walking MET Model: 2024 Adult Compendium of Physical Activities</h2>
         <p>
-          Our baseline energy expenditure equations for level ground walking are rooted in the landmark work of Dr. Barbara E. Ainsworth and colleagues, published in <em>Medicine &amp; Science in Sports &amp; Exercise</em>. The Compendium provides standardized Metabolic Equivalent of Task (MET) codes determined by laboratory indirect calorimetry:
+          Our level-ground walking MET reference points use the 2024 Adult Compendium of Physical Activities. The Compendium provides standardized Metabolic Equivalent of Task (MET) values for walking speed ranges; our calculator interpolates between listed reference points for intermediate speeds:
         </p>
 
         <div className="overflow-x-auto not-prose my-6">
@@ -54,46 +54,46 @@ export default function EditorialMethodologyPage() {
             </thead>
             <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
               <tr>
-                <td className="p-3 font-mono">17151</td>
+                <td className="p-3 font-mono">17152</td>
                 <td className="p-3">2.0 mph (3.2 km/h)</td>
                 <td className="p-3 font-bold text-brand-600">2.8 MET</td>
-                <td className="p-3">Slow walk, level, firm surface</td>
-              </tr>
-              <tr>
-                <td className="p-3 font-mono">17152</td>
-                <td className="p-3">2.5 mph (4.0 km/h)</td>
-                <td className="p-3 font-bold text-brand-600">3.0 MET</td>
-                <td className="p-3">Casual stroll, level ground</td>
+                <td className="p-3">Slow walk, 2.0–2.4 mph, level, firm surface</td>
               </tr>
               <tr>
                 <td className="p-3 font-mono">17170</td>
-                <td className="p-3">3.0 mph (4.8 km/h)</td>
-                <td className="p-3 font-bold text-brand-600">3.5 MET</td>
-                <td className="p-3">Moderate everyday walking pace</td>
+                <td className="p-3">2.5 mph (4.0 km/h)</td>
+                <td className="p-3 font-bold text-brand-600">3.0 MET</td>
+                <td className="p-3">Walking, 2.5 mph, level ground</td>
               </tr>
               <tr>
                 <td className="p-3 font-mono">17190</td>
-                <td className="p-3">3.5 mph (5.6 km/h)</td>
-                <td className="p-3 font-bold text-brand-600">4.3 MET</td>
-                <td className="p-3">Brisk, purposeful aerobic pace</td>
+                <td className="p-3">3.0 mph (4.8 km/h)</td>
+                <td className="p-3 font-bold text-brand-600">3.8 MET</td>
+                <td className="p-3">Moderate walk, 2.8–3.4 mph, level firm surface</td>
               </tr>
               <tr>
                 <td className="p-3 font-mono">17200</td>
-                <td className="p-3">4.0 mph (6.4 km/h)</td>
-                <td className="p-3 font-bold text-brand-600">5.0 MET</td>
-                <td className="p-3">Very brisk, active arm drive</td>
+                <td className="p-3">3.5 mph (5.6 km/h)</td>
+                <td className="p-3 font-bold text-brand-600">4.8 MET</td>
+                <td className="p-3">Brisk walk, 3.5–3.9 mph, firm surface</td>
               </tr>
               <tr>
                 <td className="p-3 font-mono">17220</td>
-                <td className="p-3">4.5 mph (7.2 km/h)</td>
-                <td className="p-3 font-bold text-brand-600">7.0 MET</td>
-                <td className="p-3">Power walking, intense stride</td>
+                <td className="p-3">4.0 mph (6.4 km/h)</td>
+                <td className="p-3 font-bold text-brand-600">5.5 MET</td>
+                <td className="p-3">Very brisk walk, 4.0–4.4 mph</td>
               </tr>
               <tr>
                 <td className="p-3 font-mono">17230</td>
+                <td className="p-3">4.5 mph (7.2 km/h)</td>
+                <td className="p-3 font-bold text-brand-600">7.0 MET</td>
+                <td className="p-3">Very fast walk, 4.5–4.9 mph</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-mono">17231</td>
                 <td className="p-3">5.0 mph (8.0 km/h)</td>
-                <td className="p-3 font-bold text-brand-600">8.3 MET</td>
-                <td className="p-3">Competitive race walking</td>
+                <td className="p-3 font-bold text-brand-600">8.5 MET</td>
+                <td className="p-3">Fast walk, 5.0–5.5 mph</td>
               </tr>
             </tbody>
           </table>
@@ -101,7 +101,7 @@ export default function EditorialMethodologyPage() {
 
         <h3>Piecewise Linear MET Interpolation</h3>
         <p>
-          Unlike competitors that snap your calculation to the nearest integer speed or rely on coarse approximations, our engine implements <strong>continuous piecewise linear interpolation</strong>. If you enter 3.25 mph, our algorithm interpolates precisely between 3.0 mph (3.5 MET) and 3.5 mph (4.3 MET), yielding an exact calculated MET of 3.90.
+          Our engine implements piecewise linear interpolation between the Compendium reference points. If you enter 3.25 mph, it estimates 4.3 MET between 3.0 mph (3.8 MET) and 3.5 mph (4.8 MET). This interpolated value is an estimate, not a separately measured Compendium entry.
         </p>
 
         <h2>2. Incline &amp; Treadmill Equation: ACSM Metabolic Formula</h2>

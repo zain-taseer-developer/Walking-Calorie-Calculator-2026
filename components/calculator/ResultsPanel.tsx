@@ -354,7 +354,7 @@ export function ResultsPanel({ result, inputs, unitSystem, onReset }: ResultsPan
 
       {/* Medical disclaimer link */}
       <div className="text-center text-[11px] text-slate-400 dark:text-slate-500">
-        Estimates based on Ainsworth 2011 Compendium.{" "}
+        Walking MET estimates use the 2024 Adult Compendium.{" "}
         <Link href="/medical-disclaimer" className="underline hover:text-brand-600">
           Medical Disclaimer
         </Link>

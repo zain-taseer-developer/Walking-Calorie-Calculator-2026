@@ -17,7 +17,7 @@ export function Footer() {
               imageClassName="h-auto w-[220px]"
             />
             <p className="text-xs leading-relaxed text-slate-500 dark:text-slate-400">
-              Science-backed exercise energy metrics powered by the 2011 Compendium of Physical Activities and ACSM metabolic equations. Free and privacy-first.
+              Walking estimates use 2024 Adult Compendium MET references and ACSM incline equations. Free and privacy-first.
             </p>
             <div className="flex items-center gap-2 text-xs text-slate-500">
               <ShieldCheck className="w-4 h-4 text-brand-600 dark:text-brand-400" />

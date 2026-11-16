@@ -9,7 +9,7 @@ import {
 import { CalculatorInputs } from "./types";
 
 describe("Walking Calorie Calculator Core Logic", () => {
-  it("sanity check: 70 kg, 3.5 mph, 1 hour gives exactly ~301 kcal", () => {
+  it("sanity check: 70 kg, 3.5 mph, 1 hour gives exactly ~336 kcal", () => {
     const inputs: CalculatorInputs = {
       unitSystem: "metric",
       mode: "time-speed",
@@ -33,9 +33,9 @@ describe("Walking Calorie Calculator Core Logic", () => {
     };
 
     const result = calculateWalkingCalories(inputs);
-    // 4.3 MET * 70 kg * 1 hr = 301.0 kcal
-    expect(result.grossCalories).toBe(301);
-    expect(result.met).toBe(4.3);
+    // 4.8 MET * 70 kg * 1 hr = 336.0 kcal
+    expect(result.grossCalories).toBe(336);
+    expect(result.met).toBe(4.8);
   });
 
   it("calculates net calories correctly (MET - 1) * weight * hours", () => {
@@ -62,27 +62,27 @@ describe("Walking Calorie Calculator Core Logic", () => {
     };
 
     const result = calculateWalkingCalories(inputs);
-    // (4.3 - 1.0) * 70 * 1 = 231 kcal
-    expect(result.netCalories).toBe(231);
-    expect(result.caloriesToDisplay).toBe(231);
+    // (4.8 - 1.0) * 70 * 1 = 266 kcal
+    expect(result.netCalories).toBe(266);
+    expect(result.caloriesToDisplay).toBe(266);
 
     const grossDisplayResult = calculateWalkingCalories({ ...inputs, showNetCalories: false });
     expect(result.projections).toEqual(grossDisplayResult.projections);
     expect(result.projections).toEqual({
-      days3PerWeekLbs: 0.9,
+      days3PerWeekLbs: 1,
       days3PerWeekKg: 0.4,
-      days5PerWeekLbs: 1.4,
-      days5PerWeekKg: 0.6,
-      days7PerWeekLbs: 2,
-      days7PerWeekKg: 0.9,
+      days5PerWeekLbs: 1.6,
+      days5PerWeekKg: 0.7,
+      days7PerWeekLbs: 2.3,
+      days7PerWeekKg: 1,
     });
   });
 
   it("interpolates MET values linearly between table points", () => {
-    // 3.0 mph is 3.5 MET, 3.5 mph is 4.3 MET
-    // Midpoint: 3.25 mph should be 3.5 + 0.5 * (4.3 - 3.5) = 3.9 MET
+    // 3.0 mph is 3.8 MET, 3.5 mph is 4.8 MET
+    // Midpoint: 3.25 mph should be 3.8 + 0.5 * (4.8 - 3.8) = 4.3 MET
     const midMet = getWalkingMet(3.25);
-    expect(midMet).toBeCloseTo(3.9, 2);
+    expect(midMet).toBeCloseTo(4.3, 2);
 
     // 2.0 mph is 2.8, 2.5 mph is 3.0
     // Midpoint: 2.25 mph should be 2.8 + 0.5 * (3.0 - 2.8) = 2.9 MET
@@ -145,7 +145,7 @@ describe("Walking Calorie Calculator Core Logic", () => {
     const result = calculateWalkingCalories(inputs);
     expect(result.isAcsmFormula).toBe(true);
     // Incline walking at 5% grade must burn significantly more than level ground
-    // Level ground at 3.0 mph for 30 min: 3.5 MET * 70 kg * 0.5 hr = 122.5 kcal
+    // Level ground at 3.0 mph for 30 min: 3.8 MET * 70 kg * 0.5 hr = 133 kcal
     // With 5% incline: ACSM yields ~196 kcal
     expect(result.grossCalories).toBeGreaterThan(160);
     expect(result.grossCalories).toBeLessThan(250);

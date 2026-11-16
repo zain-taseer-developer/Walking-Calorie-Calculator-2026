@@ -17,7 +17,7 @@ export interface ActivityOption {
 }
 
 const activities: ActivityOption[] = [
-  { id: "walking_brisk", name: "Walking (Brisk, 3.5 mph)", met: 4.3, category: "Walking & Hiking" },
+  { id: "walking_brisk", name: "Walking (Brisk, 3.5 mph)", met: 4.8, category: "Walking & Hiking" },
   { id: "hiking", name: "Hiking (Cross-country / Hills)", met: 6.0, category: "Walking & Hiking" },
   { id: "cycling_moderate", name: "Cycling / Biking (Moderate, 12-14 mph)", met: 6.8, category: "Cycling" },
   { id: "swimming_freestyle", name: "Swimming (Freestyle, Moderate)", met: 7.0, category: "Water Sports" },

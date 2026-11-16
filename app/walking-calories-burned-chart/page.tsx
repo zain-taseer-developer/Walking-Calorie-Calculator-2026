@@ -119,7 +119,7 @@ export default function WalkingCaloriesBurnedChartPage() {
 
       <div className="not-prose my-6 rounded-2xl border border-amber-200 dark:border-amber-900/60 bg-amber-50 dark:bg-amber-950/30 p-5">
         <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300">
-          <strong>Quick answer:</strong> A 155 lb (70 kg) person burns about 151 calories in 30 minutes, or about 302 calories in 60 minutes, walking at a brisk 3.5 mph. Heavier body weights and faster paces burn more calories. Find your weight in the tables below.
+          <strong>Quick answer:</strong> A 155 lb (70.3 kg) person burns about 169 calories in 30 minutes, or about 337 calories in 60 minutes, walking at a brisk 3.5 mph. Heavier body weights and faster paces burn more calories. Find your weight in the tables below.
         </p>
       </div>
 
@@ -128,7 +128,7 @@ export default function WalkingCaloriesBurnedChartPage() {
       {/* 30-Minute Chart */}
       <DataTable
         title="Calories Burned in 30 Minutes of Walking"
-        caption="Values based on 2011 Compendium of Physical Activities MET regression on firm, level ground."
+        caption="Values use 2024 Adult Compendium walking MET reference points with linear interpolation on firm, level ground."
         headers={[
           "Body Weight",
           "2.0 mph (Stroll)",
@@ -169,12 +169,12 @@ export default function WalkingCaloriesBurnedChartPage() {
       </div>
       <DataTable
         headers={["Speed", "2.0 mph", "2.5 mph", "3.0 mph", "3.5 mph", "4.0 mph", "4.5 mph"]}
-        rows={[["Net factor", "0.64", "0.67", "0.71", "0.77", "0.80", "0.86"]]}
+        rows={[["Net factor", "0.64", "0.67", "0.74", "0.79", "0.82", "0.86"]]}
         highlightColumnIndex={4}
       />
       <div className="prose prose-slate dark:prose-invert max-w-none my-10 space-y-4">
         <p>
-          Example: a 155 lb person walking for 30 minutes at 3.5 mph burns 151 calories gross, or about 116 calories net (151 x 0.77). Our{" "}
+          Example: a 155 lb person walking for 30 minutes at 3.5 mph burns 169 calories gross, or about 134 calories net (169 x 0.79). Our{" "}
           <Link href="/" className="font-bold text-brand-600 underline">
             walking calorie calculator
           </Link>{" "}
@@ -203,10 +203,10 @@ export default function WalkingCaloriesBurnedChartPage() {
       <div className="prose prose-slate dark:prose-invert max-w-none my-10 space-y-4">
         <h2>How This Chart Is Calculated</h2>
         <p>
-          Calories burned = MET x body weight (kg) x time (hours). MET values come from the 2011 Compendium of Physical Activities: 2.0 mph = 2.8, 2.5 mph = 3.0, 3.0 mph = 3.5, 3.5 mph = 4.3, 4.0 mph = 5.0, and 4.5 mph = 7.0.
+          Calories burned = MET x body weight (kg) x time (hours). Walking MET reference points come from the 2024 Adult Compendium: 2.0 mph = 2.8, 2.5 mph = 3.0, 3.0 mph = 3.8, 3.5 mph = 4.8, 4.0 mph = 5.5, 4.5 mph = 7.0, and 5.0 mph = 8.5. Intermediate speeds are estimated by linear interpolation.
         </p>
         <p>
-          Example: a 155 lb (70.3 kg) person walking at 3.5 mph for 30 minutes burns 4.3 x 70.3 x 0.5 = about 151 calories.
+          Example: a 155 lb (70.3 kg) person walking at 3.5 mph for 30 minutes burns 4.8 x 70.3 x 0.5 = about 169 calories.
         </p>
         <p>
           Values assume level, firm ground with no backpack, and are rounded to the nearest whole calorie. Incline, terrain, and carried load increase calorie burn. Use our{" "}
@@ -220,7 +220,7 @@ export default function WalkingCaloriesBurnedChartPage() {
           for treadmill grades. All figures are estimates, not exact measurements.
         </p>
         <p className="text-xs text-slate-500 dark:text-slate-400">
-          Source: Ainsworth BE, et al. 2011 Compendium of Physical Activities: a second update of codes and MET values. Medicine &amp; Science in Sports &amp; Exercise. 2011;43(8):1575-1581.
+          Source: <a href="https://pacompendium.com/walking/" target="_blank" rel="noopener noreferrer" className="underline hover:text-brand-600">2024 Adult Compendium of Physical Activities, Walking</a>.
         </p>
       </div>
 
@@ -230,9 +230,9 @@ export default function WalkingCaloriesBurnedChartPage() {
           To utilize these charts for targeted fat loss, calculate your total weekly walking volume. For example, if a 170-pound adult walks at a brisk 3.5 mph pace for 30 minutes, 5 days per week:
         </p>
         <ul>
-          <li><strong>Single session burn:</strong> 166 kcal gross (about 127 kcal net of resting energy)</li>
-          <li><strong>Weekly net calorie burn:</strong> 127 kcal x 5 sessions = about 635 kcal/week</li>
-          <li><strong>Monthly cumulative net burn:</strong> about 2,700 kcal (roughly 0.8 lb of body fat per month from walking alone, using the 3,500 kcal per pound rule of thumb and assuming no change in eating)</li>
+          <li><strong>Single session burn:</strong> 185 kcal gross (about 147 kcal net of resting energy)</li>
+          <li><strong>Weekly net calorie burn:</strong> 147 kcal x 5 sessions = about 735 kcal/week</li>
+          <li><strong>Monthly cumulative net burn:</strong> about 3,150 kcal (roughly 0.9 lb of body fat per month from walking alone, using the 3,500 kcal per pound rule of thumb and assuming no change in eating)</li>
         </ul>
         <p>
           Net calories are used here because the resting energy you would burn anyway should not count toward a deficit. Real results vary with diet, appetite, and metabolism.

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.CANONICAL_URL),
   title: "Walking Calorie Calculator: Calories Burned Walking by Weight, Speed & Steps",
   description:
-    "Calculate exact calories burned walking based on body weight, walking speed, duration, incline, and pedometer steps using the 2011 Compendium of Physical Activities.",
+    "Estimate calories burned walking based on body weight, walking speed, duration, incline, and steps using 2024 Adult Compendium MET reference data.",
   keywords: [
     "walking calorie calculator",
     "calories burned walking",

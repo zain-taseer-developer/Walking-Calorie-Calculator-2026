@@ -50,7 +50,7 @@ export default function MedicalDisclaimerPage() {
 
         <h2>2. Inherent Variability in Caloric Calculations</h2>
         <p>
-          All calorie burn values provided on {siteConfig.SITE_NAME} are mathematical models based on the <em>2011 Compendium of Physical Activities</em> and metabolic formulas established by the American College of Sports Medicine (ACSM). These figures represent population-level averages derived from laboratory indirect calorimetry studies.
+          Walking calorie estimates use 2024 Adult Compendium MET reference points, while eligible treadmill incline estimates use metabolic equations established by the American College of Sports Medicine (ACSM). Other activity pages state their MET reference where applicable. These models represent population-level estimates and cannot predict an individual&apos;s exact energy use.
         </p>
         <p>
           Actual individual caloric expenditure will vary considerably based on biological variables that no software calculator can measure directly, including:

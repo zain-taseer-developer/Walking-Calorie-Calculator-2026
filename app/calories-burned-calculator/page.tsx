@@ -26,7 +26,7 @@ const activityTable = [
   { activity: "Cycling / Biking (Moderate 12-14 mph)", met: 6.8, note: "Moderate cycling effort" },
   { activity: "Hiking (Cross-country / Hills)", met: 6.0, note: "Cross-country or hilly hiking" },
   { activity: "Push-ups, Sit-ups & Calisthenics", met: 5.0, note: "Vigorous calisthenics" },
-  { activity: "Walking (Brisk, 3.5 mph)", met: 4.3, note: "Brisk level walking" },
+  { activity: "Walking (Brisk, 3.5 mph)", met: 4.8, note: "2024 Compendium brisk level walking" },
   { activity: "Weight Lifting (Strength Training)", met: 3.5, note: "General strength training" },
 ];
 
@@ -96,7 +96,7 @@ const faqs = [
   {
     question: "How many calories do you burn running vs. walking?",
     answer:
-      "It depends on speed, distance, body weight, and time. In this calculator, brisk walking is 4.3 MET and running at 5 mph is 8.3 MET, so running at those selected intensities has a higher estimated burn per minute. This is not a universal per-mile comparison.",
+      "It depends on speed, distance, body weight, and time. In this calculator, brisk walking is 4.8 MET and running at 5 mph is 8.3 MET, so running at those selected intensities has a higher estimated burn per minute. This is not a universal per-mile comparison.",
   },
   {
     question: "What exercise burns the most calories in 30 minutes?",
@@ -145,7 +145,7 @@ export default function CaloriesBurnedCalculatorPage() {
           Calories Burned Calculator: Multi-Exercise & Activity Burn
         </h1>
         <p className="mt-3 text-lg text-slate-600 dark:text-slate-300">
-          Estimate calories burned across cycling, swimming, jumping rope, hiking, running, and other activities. Compare exercise intensity using MET values from the 2011 Compendium of Physical Activities.
+          Estimate calories burned across cycling, swimming, jumping rope, hiking, running, and other activities. Walking uses the 2024 Adult Compendium; other listed exercise MET values use the 2011 Compendium.
         </p>
       </header>
 
@@ -166,7 +166,7 @@ export default function CaloriesBurnedCalculatorPage() {
           <li><strong>Use the quick-duration buttons:</strong> Select 15m, 30m, 45m, or 60m to set the workout time.</li>
           <li><strong>Total Calories Burned:</strong> This is the estimated gross energy for the selected activity, weight, and duration.</li>
           <li><strong>Burn Rate &amp; MET:</strong> The rate is the estimated kcal per minute for your entered weight, and the MET is the activity intensity value used by the calculator.</li>
-          <li><strong>Walking Equivalent:</strong> This estimates how many minutes of brisk walking at 3.5 mph (4.3 MET) have the same MET-based energy estimate at the same weight.</li>
+          <li><strong>Walking Equivalent:</strong> This estimates how many minutes of brisk walking at 3.5 mph (4.8 MET) have the same MET-based energy estimate at the same weight.</li>
         </ul>
         <p>
           To keep a calculation, select <strong>Save to History</strong>. Saved entries appear in Saved History on this device for 28 days; use Load to restore an entry, Delete to remove one, or Clear All to remove the listed history. This tool stores history in the browser, so it is not a synced account or cross-device record.
@@ -211,7 +211,7 @@ export default function CaloriesBurnedCalculatorPage() {
 
         <h2>How Are Calories Burned Calculated?</h2>
         <p>
-          MET means metabolic equivalent of task. It is a standardized way to describe the energy demand of an activity relative to resting; higher MET values represent more energy used per minute at the same body weight. The calculator uses activity MET values based on the 2011 Compendium of Physical Activities, along with your weight and time.
+          MET means metabolic equivalent of task. It is a standardized way to describe the energy demand of an activity relative to resting; higher MET values represent more energy used per minute at the same body weight. Listed non-walking activities use 2011 Compendium MET values; the walking comparison uses the 2024 Adult Compendium.
         </p>
         <div className="not-prose my-4 rounded-xl border border-slate-200 bg-slate-50 p-4 font-mono text-sm text-slate-800 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200">
           Estimated gross kcal = MET × weight (kg) × duration (hours)
@@ -288,7 +288,7 @@ export default function CaloriesBurnedCalculatorPage() {
 
         <h2>Which Exercise Burns the Most Calories?</h2>
         <p>
-          The calculator&apos;s MET values provide one way to compare activity intensity, not a ranking of what every person will burn. Its selected values range from 4.3 MET for brisk walking to 11.0 MET for moderate jump rope. Running is 8.3 MET; swimming and rowing are 7.0; cycling is 6.8; hiking is 6.0; and general weight lifting is 3.5. A higher MET can mean a higher estimate per minute at a given weight, but actual expenditure also depends on duration and personal effort.
+          The calculator&apos;s MET values provide one way to compare activity intensity, not a ranking of what every person will burn. Its selected values range from 4.8 MET for brisk walking to 11.0 MET for moderate jump rope. Running is 8.3 MET; swimming and rowing are 7.0; cycling is 6.8; hiking is 6.0; and general weight lifting is 3.5. A higher MET can mean a higher estimate per minute at a given weight, but actual expenditure also depends on duration and personal effort.
         </p>
         <ul>
           <li><strong>Jumping rope and running</strong> can provide vigorous cardio, but involve repetitive impact and may not feel accessible to everyone.</li>

@@ -29,7 +29,7 @@ describe("HomeWalk estimates", () => {
       speedMph: 3.5,
     });
 
-    expect(result.grossCalories).toBe(151);
+    expect(result.grossCalories).toBe(168);
     expect(result.pacePerMile).toBe("17:09 /mi");
   });
 

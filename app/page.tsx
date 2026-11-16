@@ -28,7 +28,7 @@ import {
 export const metadata: Metadata = constructMetadata({
   title: "Walking Calorie Calculator Free – Calories, Steps & Pace",
   description:
-    "Calculate calories burned walking with our walking calorie calculator. Track calories, steps, distance, pace, speed, and incline using official 2011 Compendium MET data.",
+    "Calculate calories burned walking with our walking calorie calculator. Track calories, steps, distance, pace, speed, and incline using 2024 Adult Compendium MET reference data.",
   canonicalPath: "/",
   keywords: [
     "walking calorie calculator",
@@ -169,7 +169,7 @@ export default function HomePage() {
     {
       question: "How many calories can I burn walking for an hour?",
       answer:
-        "Walking for one hour burns anywhere from 200 to 500 calories depending on your walking pace, body weight, and incline. A 160-pound adult walking at a casual 2.5 mph stroll expends roughly 218 calories in 60 minutes. Increasing your speed to a brisk 3.5 mph elevates that expenditure to approximately 312 calories, while walking on a 5% treadmill incline or steep outdoor hills can push the one-hour burn past 480 calories.",
+        "Walking for one hour burns anywhere from 200 to 500 calories depending on your walking pace, body weight, and incline. A 160-pound adult walking at a casual 2.5 mph pace expends roughly 218 calories in 60 minutes. Increasing speed to a brisk 3.5 mph estimates about 348 calories, while walking on a 5% treadmill incline or steep outdoor hills can push the one-hour burn past 480 calories.",
     },
     {
       question: "Can you realistically lose weight by walking?",
@@ -214,7 +214,7 @@ export default function HomePage() {
               name: "Walking Calorie Calculator",
               url: "/",
               description:
-                "Free, scientifically validated walking calorie calculator using 2011 Compendium MET interpolation and ACSM incline formulas.",
+                "Walking calorie calculator using 2024 Adult Compendium MET reference points, interpolation, and ACSM incline formulas.",
             })
           ),
         }}
@@ -230,7 +230,7 @@ export default function HomePage() {
           <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-100/70 dark:bg-brand-950/80 text-brand-800 dark:text-brand-300 text-xs font-bold mb-3 shadow-2xs">
               <Flame className="w-3.5 h-3.5 text-amber-500" />
-              <span>Evidence-Based 2011 Compendium MET Engine</span>
+              <span>2024 Adult Compendium Walking MET Engine</span>
             </div>
             
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
@@ -275,7 +275,7 @@ export default function HomePage() {
               Calories (kcal) = MET × Weight (kg) × Duration (hours)
             </div>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">
-              Source: Ainsworth BE, et al. <em>2011 Compendium of Physical Activities</em>. Medicine &amp; Science in Sports &amp; Exercise.
+              Source: <a href="https://pacompendium.com/walking/" target="_blank" rel="noopener noreferrer" className="underline hover:text-brand-600">2024 Adult Compendium of Physical Activities, Walking</a>.
             </p>
           </div>
 
@@ -286,10 +286,10 @@ export default function HomePage() {
             Consider a walker weighing <strong>160 pounds (72.57 kg)</strong> who completes a <strong>45-minute (0.75 hours)</strong> brisk walk at a speed of <strong>3.5 mph (5.6 km/h)</strong> on level asphalt:
           </p>
           <ul className="list-disc list-inside space-y-1.5 text-slate-700 dark:text-slate-300 text-sm sm:text-base pl-2">
-            <li><strong>Determine MET value:</strong> According to the 2011 Compendium (code 17190), walking at 3.5 mph has a benchmark MET of <strong>4.3</strong>.</li>
+            <li><strong>Determine MET value:</strong> The 2024 Adult Compendium (code 17200) lists 3.5–3.9 mph brisk walking at <strong>4.8 MET</strong>.</li>
             <li><strong>Convert body weight:</strong> 160 lbs ÷ 2.20462 = <strong>72.57 kg</strong>.</li>
             <li><strong>Convert duration:</strong> 45 minutes ÷ 60 = <strong>0.75 hours</strong>.</li>
-            <li><strong>Calculate gross expenditure:</strong> 4.3 × 72.57 kg × 0.75 hours = <strong>234.04 kcal</strong>.</li>
+            <li><strong>Calculate gross expenditure:</strong> 4.8 × 72.57 kg × 0.75 hours = <strong>261.25 kcal</strong>.</li>
           </ul>
           <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
             Our calculator executes this exact calculation with real-time linear interpolation between speeds so you receive smooth, scientifically rigorous numbers whether you walk at 2.8 mph, 3.3 mph, or 4.2 mph.
@@ -302,7 +302,7 @@ export default function HomePage() {
             Walking Calories Examples &amp; Charts (30 Minutes &amp; 1 Hour)
           </h2>
           <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
-            These examples show approximate gross calories burned at different body weights, walking durations, and speeds. Estimates use the same calculator engine and official 2011 Compendium MET values for level pavement with no incline; individual results vary.
+            These examples show approximate gross calories burned at different body weights, walking durations, and speeds. Estimates use the same calculator engine and 2024 Adult Compendium walking MET reference points for level pavement with no incline; individual results vary.
           </p>
 
           <DataTable
@@ -339,7 +339,7 @@ export default function HomePage() {
           />
 
           <Callout type="tip" title="Notice the Speed Threshold">
-            Notice how increasing your walking speed from 3.0 mph (3.5 MET) to 4.5 mph (7.0 MET) doubles your caloric burn rate. Power walking introduces significant vertical center-of-mass oscillation and aggressive arm drive, making it substantially more calorically demanding than flat leisure strolling.
+            At the same weight and duration, increasing walking speed from 3.0 mph (3.8 MET) to 4.5 mph (7.0 MET) substantially increases estimated calorie use. Actual energy expenditure varies with the individual and walking conditions.
           </Callout>
         </section>
 
@@ -645,7 +645,7 @@ export default function HomePage() {
                 MET-Based Walking Calorie Estimates
               </h3>
               <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                Estimates use activity MET values from the 2011 Compendium of Physical Activities.
+                Walking estimates use 2024 Adult Compendium MET reference points.
               </p>
             </div>
             <div className="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs">
@@ -682,7 +682,7 @@ export default function HomePage() {
               How We Calculate Walking Calories, Steps, and Pace
             </h3>
             <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-              Walking calorie estimates use activity MET values from the 2011 Compendium of Physical Activities, interpolated for walking speeds between listed benchmarks. Gross calories are estimated with MET × body weight (kg) × duration (hours); net calories subtract the resting 1-MET baseline. For eligible treadmill speeds, incline estimates use the ACSM walking equation. Distance and step estimates are derived from the entered activity details and estimated or custom stride length. Terrain and carried load are included where applicable.
+              Walking calorie estimates use 2024 Adult Compendium MET reference points, interpolated for speeds between listed benchmarks. Gross calories are estimated with MET × body weight (kg) × duration (hours); net calories subtract the resting 1-MET baseline. For eligible treadmill speeds, incline estimates use the ACSM walking equation. Distance and step estimates are derived from the entered activity details and estimated or custom stride length. Terrain and carried load are included where applicable.
             </p>
           </div>
 
@@ -701,14 +701,14 @@ export default function HomePage() {
             </h3>
             <ol className="list-decimal list-inside space-y-1.5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
               <li>
-                Ainsworth BE, Haskell WL, Herrmann SD, et al. <em>2011 Compendium of Physical Activities: a second update of codes and MET values.</em> Medicine &amp; Science in Sports &amp; Exercise. 2011;43(8):1575-1581.{" "}
+                2024 Adult Compendium of Physical Activities, Walking. {" "}
                 <a
-                  href="https://pubmed.ncbi.nlm.nih.gov/21681120/"
+                  href="https://pacompendium.com/walking/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="underline hover:text-brand-600 inline-flex items-center gap-0.5"
                 >
-                  PubMed PMID: 21681120 <ExternalLink className="w-2.5 h-2.5" />
+                  Official walking MET reference table <ExternalLink className="w-2.5 h-2.5" />
                 </a>
               </li>
               <li>

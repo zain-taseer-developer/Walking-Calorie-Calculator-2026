@@ -155,9 +155,9 @@ export default function WalkingForWeightLossPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 bg-white dark:divide-slate-800 dark:bg-slate-950">
-              <tr><th scope="row" className="px-4 py-3 font-semibold text-slate-900 dark:text-slate-100">30 minutes</th><td className="px-4 py-3">1.5 miles</td><td className="px-4 py-3">~120 kcal</td><td className="px-4 py-3">~160 kcal</td></tr>
-              <tr><th scope="row" className="px-4 py-3 font-semibold text-slate-900 dark:text-slate-100">45 minutes</th><td className="px-4 py-3">2.25 miles</td><td className="px-4 py-3">~180 kcal</td><td className="px-4 py-3">~240 kcal</td></tr>
-              <tr><th scope="row" className="px-4 py-3 font-semibold text-slate-900 dark:text-slate-100">60 minutes</th><td className="px-4 py-3">3 miles</td><td className="px-4 py-3">~240 kcal</td><td className="px-4 py-3">~310 kcal</td></tr>
+              <tr><th scope="row" className="px-4 py-3 font-semibold text-slate-900 dark:text-slate-100">30 minutes</th><td className="px-4 py-3">1.5 miles</td><td className="px-4 py-3">~130 kcal</td><td className="px-4 py-3">~170 kcal</td></tr>
+              <tr><th scope="row" className="px-4 py-3 font-semibold text-slate-900 dark:text-slate-100">45 minutes</th><td className="px-4 py-3">2.25 miles</td><td className="px-4 py-3">~195 kcal</td><td className="px-4 py-3">~260 kcal</td></tr>
+              <tr><th scope="row" className="px-4 py-3 font-semibold text-slate-900 dark:text-slate-100">60 minutes</th><td className="px-4 py-3">3 miles</td><td className="px-4 py-3">~260 kcal</td><td className="px-4 py-3">~345 kcal</td></tr>
             </tbody>
           </table>
         </div>

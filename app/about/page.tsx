@@ -47,7 +47,7 @@ export default function AboutPage() {
             </div>
             <h3 className="font-bold text-slate-900 dark:text-white text-base">Peer-Reviewed Math</h3>
             <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-              Every formula is derived from published medical literature, primarily the 2011 Compendium of Physical Activities and ACSM guidelines.
+              Walking MET reference points use the 2024 Adult Compendium of Physical Activities; incline estimates use ACSM equations. Other activity estimates identify their own MET sources.
             </p>
           </div>
 
