@@ -345,7 +345,7 @@ export function HomeWalkTracker() {
       </div>
 
       <div className="rounded-3xl border border-slate-200 bg-white p-4 shadow-xl shadow-slate-900/5 dark:border-slate-800 dark:bg-slate-900 sm:p-7">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           <div>
             <label htmlFor="homewalk-weight" className={`${labelClass} flex min-h-10 items-center`}>Body weight ({weightUnitLabel})</label>
             <input id="homewalk-weight" className={fieldClass} type="number" inputMode="decimal" min={unitSystem === "metric" ? 20 : 44} max={unitSystem === "metric" ? 300 : 661} step="0.1" placeholder="Enter weight" value={displayedWeight === "" ? "" : formatNumber(displayedWeight, 1).replace(/\.0$/, "")} onChange={(event) => {
