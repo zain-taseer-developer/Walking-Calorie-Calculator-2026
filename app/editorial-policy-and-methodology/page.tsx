@@ -6,7 +6,7 @@ import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { BookOpen, CheckCircle, ShieldCheck, Database, Award, ExternalLink } from "lucide-react";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Editorial Policy & Scientific Methodology",
+  title: "Editorial Policy & Methodology | WalkingCalorieCalc.com",
   description:
     "Explore how our walking calorie algorithms work: 2024 Adult Compendium MET interpolation, ACSM incline equations, review standards, and update policy.",
   canonicalPath: "/editorial-policy-and-methodology",
