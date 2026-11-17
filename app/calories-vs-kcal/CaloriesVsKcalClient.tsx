@@ -82,7 +82,7 @@ export default function CaloriesVsKcalPage() {
           <div className="space-y-4">
             <div>
               <label htmlFor="energy-input" className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
-                Enter Energy Value
+                Enter Calories or Energy Value
               </label>
               <input
                 id="energy-input"
@@ -186,7 +186,7 @@ export default function CaloriesVsKcalPage() {
       <section className="prose prose-slate dark:prose-invert max-w-none my-8">
         <h2>How to Use the Calories Converter</h2>
         <ol>
-          <li>Under <strong>Enter Energy Value</strong>, type a number such as 259.</li>
+          <li>Under <strong>Enter Calories or Energy Value</strong>, type a number such as 259.</li>
           <li>Under <strong>Input Unit</strong>, choose <strong>Food Calories (kcal)</strong>, <strong>Small cal</strong>, or <strong>Kilojoules (kJ)</strong>.</li>
           <li>Read the live results for food Calories (Cal), kilocalories (kcal), kilojoules, and small calories.</li>
         </ol>
