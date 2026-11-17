@@ -19,6 +19,8 @@ export default function CaloriesVsKcalPage() {
   const smallCal = kcal * 1000;
   const dietaryCal = kcal;
   const kilojoules = kcal * 4.184;
+  const formatEnergy = (value: number) =>
+    new Intl.NumberFormat(undefined, { maximumFractionDigits: 2 }).format(value);
 
   const comparisonRows = [
     ["1 Dietary Calorie (Cal)", "1 kcal", "1,000 small cal", "4.184 kJ", "Standard US nutrition label unit"],
@@ -85,6 +87,9 @@ export default function CaloriesVsKcalPage() {
               <input
                 id="energy-input"
                 type="number"
+                min="0"
+                step="any"
+                inputMode="decimal"
                 value={val}
                 onChange={(e) => setVal(parseFloat(e.target.value) || 0)}
                 className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-xl font-bold"
@@ -92,12 +97,13 @@ export default function CaloriesVsKcalPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
+              <label id="energy-unit-label" className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
                 Input Unit
               </label>
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-1 gap-2 sm:grid-cols-3" role="group" aria-labelledby="energy-unit-label">
                 <button
                   type="button"
+                  aria-pressed={unit === "kcal"}
                   onClick={() => setUnit("kcal")}
                   className={`py-2 text-xs font-bold rounded-xl border ${
                     unit === "kcal"
@@ -105,10 +111,11 @@ export default function CaloriesVsKcalPage() {
                       : "bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300"
                   }`}
                 >
-                  kcal (Calories)
+                  Food Calories (kcal)
                 </button>
                 <button
                   type="button"
+                  aria-pressed={unit === "cal"}
                   onClick={() => setUnit("cal")}
                   className={`py-2 text-xs font-bold rounded-xl border ${
                     unit === "cal"
@@ -120,6 +127,7 @@ export default function CaloriesVsKcalPage() {
                 </button>
                 <button
                   type="button"
+                  aria-pressed={unit === "kj"}
                   onClick={() => setUnit("kj")}
                   className={`py-2 text-xs font-bold rounded-xl border ${
                     unit === "kj"
@@ -136,23 +144,31 @@ export default function CaloriesVsKcalPage() {
           {/* Results Output */}
           <div className="p-6 rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-700 text-white shadow-lg space-y-3 text-center">
             <span className="text-xs font-semibold text-teal-100 uppercase tracking-wider block">
-              Converted Energy Units
+              Conversion Results
             </span>
 
-            <div className="grid grid-cols-2 gap-3 text-left">
+            <div className="grid grid-cols-1 gap-3 text-left sm:grid-cols-2">
               <div className="p-3 rounded-xl bg-white/10 backdrop-blur-xs">
-                <span className="text-xs text-teal-200 block">Dietary Calories (kcal)</span>
-                <span className="text-xl font-bold font-mono">{Math.round(dietaryCal).toLocaleString()} kcal</span>
+                <span className="text-xs text-teal-200 block">Food Calories (Cal)</span>
+                <span className="text-xl font-bold font-mono">{formatEnergy(dietaryCal)} Cal</span>
+              </div>
+              <div className="p-3 rounded-xl bg-white/10 backdrop-blur-xs">
+                <span className="text-xs text-teal-200 block">Kilocalories (kcal)</span>
+                <span className="text-xl font-bold font-mono">{formatEnergy(kcal)} kcal</span>
               </div>
               <div className="p-3 rounded-xl bg-white/10 backdrop-blur-xs">
                 <span className="text-xs text-teal-200 block">Kilojoules</span>
-                <span className="text-xl font-bold font-mono">{Math.round(kilojoules).toLocaleString()} kJ</span>
+                <span className="text-xl font-bold font-mono">{formatEnergy(kilojoules)} kJ</span>
               </div>
-              <div className="p-3 rounded-xl bg-white/10 backdrop-blur-xs col-span-2">
+              <div className="p-3 rounded-xl bg-white/10 backdrop-blur-xs">
                 <span className="text-xs text-teal-200 block">Scientific Small Calories</span>
-                <span className="text-xl font-bold font-mono">{Math.round(smallCal).toLocaleString()} cal</span>
+                <span className="text-xl font-bold font-mono">{formatEnergy(smallCal)} cal</span>
               </div>
             </div>
+
+            <p className="text-xs leading-relaxed text-teal-100">
+              Food-label Calories (Cal) and kilocalories (kcal) are equal; 1 kcal = 1,000 small cal = 4.184 kJ.
+            </p>
 
             <div className="pt-2">
               <Link
@@ -171,10 +187,10 @@ export default function CaloriesVsKcalPage() {
         <h2>How to Use the Calories Converter</h2>
         <ol>
           <li>Under <strong>Enter Energy Value</strong>, type a number such as 259.</li>
-          <li>Under <strong>Input Unit</strong>, choose <strong>kcal (Calories)</strong>, <strong>Small cal</strong>, or <strong>Kilojoules (kJ)</strong>.</li>
-          <li>Read the automatically updated results in <strong>Converted Energy Units</strong>: dietary Calories, kilojoules, and scientific small calories.</li>
+          <li>Under <strong>Input Unit</strong>, choose <strong>Food Calories (kcal)</strong>, <strong>Small cal</strong>, or <strong>Kilojoules (kJ)</strong>.</li>
+          <li>Read the live results for food Calories (Cal), kilocalories (kcal), kilojoules, and small calories.</li>
         </ol>
-        <p>The displayed results are rounded to whole units. For example, 259 kcal is 259,000 small cal and approximately 1,084 kJ.</p>
+        <p>Results show up to two decimal places. For example, 259 kcal is 259,000 small cal and 1,083.66 kJ.</p>
       </section>
 
       <AdSlot format="horizontal" slotId="kcal-top" />
