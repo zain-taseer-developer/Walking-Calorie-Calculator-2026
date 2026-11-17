@@ -10,14 +10,14 @@ import { constructSocialMetadata } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Weight Converter: lbs to kg & kg to lbs for Fitness",
   description:
-    "Convert lbs to kg or kg to lbs with our fitness weight converter. Get accurate body weight measurements for walking calorie calculations and fitness tracking.",
+    "Convert lbs to kg or kg to lbs with our fitness weight converter. Get accurate measurements for walking calorie calculations and fitness tracking.",
   alternates: {
     canonical: `${siteConfig.CANONICAL_URL}/weight-converter`,
   },
   ...constructSocialMetadata({
     title: "Weight Converter: lbs to kg & kg to lbs for Fitness",
     description:
-      "Convert lbs to kg or kg to lbs with our fitness weight converter. Get accurate body weight measurements for walking calorie calculations and fitness tracking.",
+      "Convert lbs to kg or kg to lbs with our fitness weight converter. Get accurate measurements for walking calorie calculations and fitness tracking.",
     url: `${siteConfig.CANONICAL_URL}/weight-converter`,
   }),
 };

@@ -28,7 +28,7 @@ import {
 export const metadata: Metadata = constructMetadata({
   title: "Walking Calorie Calculator Free – Calories, Steps & Pace",
   description:
-    "Calculate calories burned walking with our walking calorie calculator. Track calories, steps, distance, pace, speed, and incline using 2024 Adult Compendium MET reference data.",
+    "Calculate calories burned walking with our walking calorie calculator. Track steps, distance, pace, speed, and incline using 2024 Adult Compendium MET data.",
   canonicalPath: "/",
   keywords: [
     "walking calorie calculator",

@@ -10,14 +10,14 @@ import { constructSocialMetadata } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Calories Burned Calculator: Calories by Activity & Exercise",
   description:
-    "Calculate calories burned across cycling, swimming, jumping rope, hiking, push-ups, and gym workouts. Compare exercise MET values and fat burning efficiency.",
+    "Calculate calories burned across cycling, swimming, jumping rope, hiking, push-ups, and gym workouts. Compare exercise MET values and fat-burning rates.",
   alternates: {
     canonical: `${siteConfig.CANONICAL_URL}/calories-burned-calculator`,
   },
   ...constructSocialMetadata({
     title: "Calories Burned Calculator: Calories by Activity & Exercise",
     description:
-      "Calculate calories burned across cycling, swimming, jumping rope, hiking, push-ups, and gym workouts. Compare exercise MET values and fat burning efficiency.",
+      "Calculate calories burned across cycling, swimming, jumping rope, hiking, push-ups, and gym workouts. Compare exercise MET values and fat-burning rates.",
     url: `${siteConfig.CANONICAL_URL}/calories-burned-calculator`,
   }),
 };

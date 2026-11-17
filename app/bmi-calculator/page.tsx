@@ -11,14 +11,14 @@ import { ArrowRight, Calculator } from "lucide-react";
 export const metadata: Metadata = {
   title: "BMI Calculator: Body Mass Index, Healthy Weight & FFMI",
   description:
-    "Calculate your BMI and healthy weight range with our free BMI calculator. Check BMI categories, understand FFMI, and explore results for adults and children.",
+    "Calculate your BMI and healthy weight range with our free BMI calculator. Check categories, explore FFMI, and see results for adults and children.",
   alternates: {
     canonical: `${siteConfig.CANONICAL_URL}/bmi-calculator`,
   },
   ...constructSocialMetadata({
     title: "BMI Calculator: Body Mass Index, Healthy Weight & FFMI",
     description:
-      "Calculate your BMI and healthy weight range with our free BMI calculator. Check BMI categories, understand FFMI, and explore results for adults and children.",
+      "Calculate your BMI and healthy weight range with our free BMI calculator. Check categories, explore FFMI, and see results for adults and children.",
     url: `${siteConfig.CANONICAL_URL}/bmi-calculator`,
   }),
 };

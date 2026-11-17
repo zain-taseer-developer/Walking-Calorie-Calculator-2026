@@ -10,14 +10,14 @@ import { constructSocialMetadata } from "@/lib/seo";
 export const metadata: Metadata = {
   title: { absolute: "Maintenance Calorie Calculator & TDEE Macro Calculator" },
   description:
-    "Free maintenance calories calculator and daily calorie intake estimator. Calculate BMR, TDEE, calorie deficit for weight loss, body recomposition, and macros.",
+    "Free maintenance calorie calculator and daily intake estimator. Calculate BMR, TDEE, calorie deficits for weight loss, body recomposition, and macros.",
   alternates: {
     canonical: `${siteConfig.CANONICAL_URL}/maintenance-calorie-calculator`,
   },
   ...constructSocialMetadata({
     title: "Maintenance Calorie Calculator & TDEE Macro Calculator",
     description:
-      "Free maintenance calories calculator and daily calorie intake estimator. Calculate BMR, TDEE, calorie deficit for weight loss, body recomposition, and macros.",
+      "Free maintenance calorie calculator and daily intake estimator. Calculate BMR, TDEE, calorie deficits for weight loss, body recomposition, and macros.",
     url: `${siteConfig.CANONICAL_URL}/maintenance-calorie-calculator`,
   }),
 };

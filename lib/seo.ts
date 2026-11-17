@@ -28,7 +28,7 @@ export function constructMetadata({
 
   return {
     title: { absolute: fullTitle },
-    description: description.slice(0, 160),
+    description: description.slice(0, 155),
     metadataBase: new URL(siteConfig.CANONICAL_URL),
     alternates: {
       canonical: canonicalUrl,
@@ -53,7 +53,7 @@ export function constructMetadata({
     ],
     openGraph: {
       title: fullTitle,
-      description,
+      description: description.slice(0, 155),
       url: canonicalUrl,
       siteName: siteConfig.SITE_NAME,
       locale: "en_US",
@@ -72,7 +72,7 @@ export function constructMetadata({
     twitter: {
       card: "summary_large_image",
       title: fullTitle,
-      description,
+      description: description.slice(0, 155),
       images: [`${siteConfig.CANONICAL_URL}/og-image.jpg`],
     },
   };
@@ -87,7 +87,7 @@ export function constructSocialMetadata({
   description: string;
   url: string;
 }): Pick<Metadata, "openGraph" | "twitter"> {
-  const imageUrl = `${siteConfig.CANONICAL_URL}/og-image.jpg`;
+  const imageUrl = `${siteConfig.CANONICAL_URL}/og-image.png`;
 
   return {
     openGraph: {
