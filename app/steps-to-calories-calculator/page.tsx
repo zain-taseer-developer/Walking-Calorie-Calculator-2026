@@ -245,6 +245,7 @@ export default function StepsToCaloriesPage() {
 
         <DataTable
           title="Steps to Calories Reference Matrix"
+          titleLevel={3}
           caption="Energy burn (kcal) across common body weights at a brisk 3.5 mph pace."
           headers={["Step Count", "120 lbs", "140 lbs", "160 lbs", "180 lbs", "200 lbs", "220 lbs", "250 lbs"]}
           rows={matrixRows}
