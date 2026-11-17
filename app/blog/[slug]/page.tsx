@@ -168,7 +168,9 @@ export default async function BlogPostPage({ params }: Props) {
         </Link>
 
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
-          {post.frontmatter.title}
+          {post.frontmatter.slug === "12-3-30-treadmill-workout-explained"
+            ? "12-3-30 Treadmill Workout: Calories Burned, Benefits & Tips"
+            : post.frontmatter.title}
         </h1>
 
         <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
