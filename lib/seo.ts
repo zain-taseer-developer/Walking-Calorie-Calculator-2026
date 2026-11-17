@@ -62,7 +62,7 @@ export function constructMetadata({
       ...(modifiedTime && { modifiedTime }),
       images: [
         {
-          url: `${siteConfig.CANONICAL_URL}/og-image.png`,
+          url: `${siteConfig.CANONICAL_URL}/og-image.jpg`,
           width: 1200,
           height: 630,
           alt: title,
@@ -73,7 +73,7 @@ export function constructMetadata({
       card: "summary_large_image",
       title: fullTitle,
       description,
-      images: [`${siteConfig.CANONICAL_URL}/og-image.png`],
+      images: [`${siteConfig.CANONICAL_URL}/og-image.jpg`],
     },
   };
 }

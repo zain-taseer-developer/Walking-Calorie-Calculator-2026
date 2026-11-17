@@ -830,7 +830,7 @@ export function WalkingCalculator() {
             </div>
             </div>
             <Image
-              src="/walking-calorie-calculator-banner.png"
+              src="/walking-calorie-calculator-banner.jpg"
               alt="Walk more, burn more: track calories, steps, distance, pace, and incline"
               width={2242}
               height={701}

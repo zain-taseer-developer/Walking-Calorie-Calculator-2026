@@ -41,7 +41,7 @@ export function MDXContent({ content }: { content: string }) {
           return (
             <figure key={index} className="my-8">
               <Image
-                src="/homewalk-indoor-walking-guide.png"
+                src="/homewalk-indoor-walking-guide.jpg"
                 alt="HomeWalk indoor walking setup in a bright and comfortable living room."
                 title="HomeWalk – Walking at Home"
                 width={1536}
