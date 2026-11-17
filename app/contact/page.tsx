@@ -193,9 +193,9 @@ export default function ContactPage() {
         {/* Sidebar Info (5 cols) */}
         <div className="md:col-span-5 space-y-6">
           <div className="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
-            <h3 className="font-bold text-slate-900 dark:text-white text-base">
+            <h2 className="font-bold text-slate-900 dark:text-white text-base">
               Direct Correspondence
-            </h3>
+            </h2>
             <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
               For editorial reviews, errata notifications, or technical partnership inquiries, email our team directly:
             </p>
@@ -205,9 +205,9 @@ export default function ContactPage() {
           </div>
 
           <div className="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
-            <h3 className="font-bold text-slate-900 dark:text-white text-base">
+            <h2 className="font-bold text-slate-900 dark:text-white text-base">
               Privacy Guarantee
-            </h3>
+            </h2>
             <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
               We never sell, rent, or distribute your email address or personal contact details. Your inquiry is used strictly to respond to your specific question.
             </p>
