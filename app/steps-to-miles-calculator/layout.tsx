@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { siteConfig } from "@/site.config";
+import { constructSocialMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: {
@@ -11,9 +12,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${siteConfig.CANONICAL_URL}/steps-to-miles-calculator`,
   },
-  openGraph: {
+  ...constructSocialMetadata({
+    title: "Steps to Miles Calculator – Convert Steps to Miles & KM",
+    description:
+      "Convert steps to miles & km instantly. Free calculator adjusts for your height and stride. Includes charts for 1,000 to 30,000 steps.",
     url: `${siteConfig.CANONICAL_URL}/steps-to-miles-calculator`,
-  },
+  }),
 };
 
 export default function StepsToMilesLayout({ children }: { children: ReactNode }) {

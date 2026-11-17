@@ -5,6 +5,7 @@ import { WeightConverterTool } from "@/components/calculator/WeightConverterTool
 import { FAQSection } from "@/components/content/FAQSection";
 import { AdSlot } from "@/components/ads/AdSlot";
 import { siteConfig } from "@/site.config";
+import { constructSocialMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Weight Converter: lbs to kg & kg to lbs for Fitness",
@@ -13,9 +14,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${siteConfig.CANONICAL_URL}/weight-converter`,
   },
-  openGraph: {
+  ...constructSocialMetadata({
+    title: "Weight Converter: lbs to kg & kg to lbs for Fitness",
+    description:
+      "Convert lbs to kg or kg to lbs with our fitness weight converter. Get accurate body weight measurements for walking calorie calculations and fitness tracking.",
     url: `${siteConfig.CANONICAL_URL}/weight-converter`,
-  },
+  }),
 };
 
 const commonWeightsLbs = [100, 120, 128, 140, 150, 152, 160, 162, 163, 179, 180, 183, 200, 202, 220];

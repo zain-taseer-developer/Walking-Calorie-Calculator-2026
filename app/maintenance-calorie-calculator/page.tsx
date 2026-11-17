@@ -5,6 +5,7 @@ import { MaintenanceCalorieTool } from "@/components/calculator/MaintenanceCalor
 import { FAQSection } from "@/components/content/FAQSection";
 import { AdSlot } from "@/components/ads/AdSlot";
 import { siteConfig } from "@/site.config";
+import { constructSocialMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: { absolute: "Maintenance Calorie Calculator & TDEE Macro Calculator" },
@@ -13,9 +14,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${siteConfig.CANONICAL_URL}/maintenance-calorie-calculator`,
   },
-  openGraph: {
+  ...constructSocialMetadata({
+    title: "Maintenance Calorie Calculator & TDEE Macro Calculator",
+    description:
+      "Free maintenance calories calculator and daily calorie intake estimator. Calculate BMR, TDEE, calorie deficit for weight loss, body recomposition, and macros.",
     url: `${siteConfig.CANONICAL_URL}/maintenance-calorie-calculator`,
-  },
+  }),
 };
 
 const activityLevels = [

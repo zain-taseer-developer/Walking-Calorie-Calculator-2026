@@ -5,6 +5,7 @@ import { RacePaceTool } from "@/components/calculator/RacePaceTool";
 import { FAQSection } from "@/components/content/FAQSection";
 import { AdSlot } from "@/components/ads/AdSlot";
 import { siteConfig } from "@/site.config";
+import { constructSocialMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Marathon Pace Calculator: Half & Full Marathon, 5K & 10K",
@@ -13,9 +14,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${siteConfig.CANONICAL_URL}/marathon-pace-chart`,
   },
-  openGraph: {
+  ...constructSocialMetadata({
+    title: "Marathon Pace Calculator: Half & Full Marathon, 5K & 10K",
+    description:
+      "Calculate your race pace with our marathon pace calculator. Get pace splits, finish times, and speed charts for 5K, 10K, half and full marathons.",
     url: `${siteConfig.CANONICAL_URL}/marathon-pace-chart`,
-  },
+  }),
 };
 
 const raceDistances = {

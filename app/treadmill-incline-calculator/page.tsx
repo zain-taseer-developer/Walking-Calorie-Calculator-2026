@@ -5,6 +5,7 @@ import { TreadmillInclineTool } from "@/components/calculator/TreadmillInclineTo
 import { FAQSection } from "@/components/content/FAQSection";
 import { AdSlot } from "@/components/ads/AdSlot";
 import { siteConfig } from "@/site.config";
+import { constructSocialMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Treadmill Incline Calculator & Pace Chart: Speed to Pace",
@@ -13,9 +14,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${siteConfig.CANONICAL_URL}/treadmill-incline-calculator`,
   },
-  openGraph: {
+  ...constructSocialMetadata({
+    title: "Treadmill Incline Calculator & Pace Chart: Speed to Pace",
+    description:
+      "Calculate treadmill calories burned with our incline calculator. Convert treadmill speed to pace, compare incline levels, and explore the 12-3-30 workout.",
     url: `${siteConfig.CANONICAL_URL}/treadmill-incline-calculator`,
-  },
+  }),
 };
 
 const paceChartSpeeds = [2.0, 2.5, 3.0, 3.2, 3.5, 4.0, 4.5, 5.0];

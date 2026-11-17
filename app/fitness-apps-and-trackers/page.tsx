@@ -4,6 +4,7 @@ import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { FAQSection } from "@/components/content/FAQSection";
 import { AdSlot } from "@/components/ads/AdSlot";
 import { siteConfig } from "@/site.config";
+import { constructSocialMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Fitness Apps & Trackers: Reviews, Accuracy & Comparison",
@@ -12,9 +13,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${siteConfig.CANONICAL_URL}/fitness-apps-and-trackers`,
   },
-  openGraph: {
+  ...constructSocialMetadata({
+    title: "Fitness Apps & Trackers: Reviews, Accuracy & Comparison",
+    description:
+      "Compare fitness apps, walking trackers and smartwatches. Explore WalkFit reviews, Apple Watch calorie accuracy, GPS tracking and free fitness tools.",
     url: `${siteConfig.CANONICAL_URL}/fitness-apps-and-trackers`,
-  },
+  }),
 };
 
 const appComparison = [
