@@ -51,31 +51,6 @@ export default function CaloriesVsKcalPage() {
         "The calorie is a non-SI unit of energy; the joule is the SI unit. The thermochemical calorie is defined as exactly 4.184 joules, so 1 kcal equals 4.184 kJ. Older water-heating descriptions are approximate because heat capacity depends on conditions.",
     },
     {
-      question: "How many calories are in a pound of fat?",
-      answer:
-        "A traditional estimate is about 3,500 kcal per pound of body fat, but this is not an exact biological rule. Body weight and energy expenditure adapt over time, so a particular calorie deficit does not guarantee a precise amount or rate of fat loss.",
-    },
-    {
-      question: "How many calories are in 1 gram of fat?",
-      answer:
-        "A common nutrition estimate is about 9 kcal (9 dietary Calories) per gram of fat. Actual food-label energy values use approved calculation methods and can vary with food composition.",
-    },
-    {
-      question: "How many calories are in 1 gram of carbohydrates?",
-      answer:
-        "A general estimate is about 4 kcal per gram of carbohydrate. The energy listed for a particular food can vary, including due to fiber and the method used to calculate its label value.",
-    },
-    {
-      question: "What is the difference between carbs and calories?",
-      answer:
-        "Carbohydrates are a nutrient found in foods; calories are units used to describe energy. Carbohydrate is one source of dietary energy, commonly estimated at 4 kcal per gram.",
-    },
-    {
-      question: "What is the difference between active vs total calories?",
-      answer:
-        "Active calories estimate energy used for movement above rest, while total calories generally include resting energy as well. Definitions vary by tracker and time period; daily total energy expenditure also includes other movement and digestion.",
-    },
-    {
       question: "How do you convert 259 kcal to calories or kcal to calories?",
       answer:
         "259 kcal equals 259 dietary Calories, 259,000 small calories (cal), or about 1,083.7 kJ. To convert kcal to small cal, multiply by 1,000; to convert kcal to dietary Calories, the number stays the same.",
@@ -92,10 +67,10 @@ export default function CaloriesVsKcalPage() {
           <span>Scientific Energy Conversion Guide</span>
         </div>
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
-          Calories vs kcal: What&apos;s the Difference?
+          Kcal vs Calories: What&apos;s the Difference?
         </h1>
         <p className="mt-2 text-base text-slate-600 dark:text-slate-300">
-          Demystifying food labels, dietary Calories, scientific small calories (cal), kilocalories (kcal), and energy conversion math.
+          Learn why 1 kcal equals 1 food Calorie, how small calories (cal) differ, and convert kcal to Calories or kilojoules (kJ).
         </p>
       </div>
 
@@ -166,7 +141,7 @@ export default function CaloriesVsKcalPage() {
 
             <div className="grid grid-cols-2 gap-3 text-left">
               <div className="p-3 rounded-xl bg-white/10 backdrop-blur-xs">
-                <span className="text-xs text-teal-200 block">Dietary Calories</span>
+                <span className="text-xs text-teal-200 block">Dietary Calories (kcal)</span>
                 <span className="text-xl font-bold font-mono">{Math.round(dietaryCal).toLocaleString()} kcal</span>
               </div>
               <div className="p-3 rounded-xl bg-white/10 backdrop-blur-xs">
