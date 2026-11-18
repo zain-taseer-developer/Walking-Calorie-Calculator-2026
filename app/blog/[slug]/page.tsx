@@ -172,7 +172,9 @@ export default async function BlogPostPage({ params }: Props) {
             ? "12-3-30 Treadmill Workout: Calories Burned, Benefits & Tips"
             : post.frontmatter.slug === "how-many-calories-in-a-pound-of-fat"
               ? "How Many Calories in a Pound of Fat?"
-              : post.frontmatter.title}
+              : post.frontmatter.slug === "how-accurate-are-apple-watch-and-fitness-tracker-calories"
+                ? "How Accurate Are Apple Watch & Fitness Tracker Calories? (Stanford Study)"
+                : post.frontmatter.title}
         </h1>
 
         <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
