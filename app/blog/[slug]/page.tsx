@@ -174,7 +174,9 @@ export default async function BlogPostPage({ params }: Props) {
               ? "How Many Calories in a Pound of Fat?"
               : post.frontmatter.slug === "how-accurate-are-apple-watch-and-fitness-tracker-calories"
                 ? "How Accurate Are Apple Watch & Fitness Tracker Calories? (Stanford Study)"
-                : post.frontmatter.title}
+                : post.frontmatter.slug === "how-many-calories-does-walking-10000-steps-burn"
+                  ? "How Many Calories Does Walking 10,000 Steps Burn?"
+                  : post.frontmatter.title}
         </h1>
 
         <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
