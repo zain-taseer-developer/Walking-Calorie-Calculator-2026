@@ -36,8 +36,7 @@ export function BrandLogoLink({
       />
       <Image
         src="/walking-calories-logo-dark.svg"
-        alt=""
-        aria-hidden="true"
+        alt="walking-calorie-calculator-logo-dark"
         width={260}
         height={65}
         priority={priority}
