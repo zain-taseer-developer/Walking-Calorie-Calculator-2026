@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CookieBanner } from "@/components/layout/CookieBanner";
 import { BackToTop } from "@/components/layout/BackToTop";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.CANONICAL_URL),
@@ -103,6 +104,9 @@ export default function RootLayout({
             />
           </>
         )}
+
+        {/* Google Tag Manager */}
+        <GoogleTagManager gtmId={siteConfig.GTM_ID} />
 
         {/* Google AdSense Script (only injected when real Client ID is populated) */}
         {siteConfig.ADSENSE_CLIENT_ID && (

@@ -11,6 +11,7 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "@next/third-parties": "^16.4.6",
     "clsx": "^2.1.1",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.469.0",

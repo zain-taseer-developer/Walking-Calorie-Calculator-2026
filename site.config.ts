@@ -31,6 +31,7 @@ export const siteConfig = {
 
   // Analytics & Monetisation (AdSense starts disabled until client ID is provided)
   GA4_ID: process.env.NEXT_PUBLIC_GA4_ID || "",
+  GTM_ID: process.env.NEXT_PUBLIC_GTM_ID || "GTM-KCXR6XJH",
   ADSENSE_CLIENT_ID: process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || "", // e.g. "ca-pub-XXXXXXXXXXXXXXXX"
   ADSENSE_TEST_MODE: process.env.NODE_ENV !== "production" || process.env.NEXT_PUBLIC_ADS_TEST_MODE === "true",
 
