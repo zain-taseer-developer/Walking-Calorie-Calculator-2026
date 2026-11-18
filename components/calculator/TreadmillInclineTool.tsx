@@ -39,7 +39,7 @@ export function TreadmillInclineTool() {
           <h2 className="text-xl font-bold text-slate-900 dark:text-white">
             Treadmill Incline & Pace Calculator
           </h2>
-          <p className="text-xs text-slate-500">Live ACSM metabolic incline equation</p>
+          <p className="text-xs text-slate-600 dark:text-slate-400">Live ACSM metabolic incline equation</p>
         </div>
         <div className="flex rounded-lg border border-slate-200 bg-slate-100 p-0.5 text-xs font-semibold dark:border-slate-800 dark:bg-slate-800">
           <button
@@ -66,6 +66,7 @@ export function TreadmillInclineTool() {
             Speed ({unit === "imperial" ? "mph" : "km/h"})
           </label>
           <input
+            aria-label={`Walking speed in ${unit === "imperial" ? "miles per hour" : "kilometers per hour"}`}
             type="number"
             step="0.1"
             min="0.5"
@@ -77,7 +78,7 @@ export function TreadmillInclineTool() {
             }}
             className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-lg font-bold text-slate-900 outline-none focus:border-emerald-600 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
           />
-          <span className="text-[11px] text-slate-500">
+          <span className="text-[11px] text-slate-600 dark:text-slate-400">
             Pace: {paceMinutes}:{paceSeconds < 10 ? `0${paceSeconds}` : paceSeconds} /mi
           </span>
         </div>
@@ -89,6 +90,7 @@ export function TreadmillInclineTool() {
           </label>
           <div className="flex items-center gap-2">
             <input
+              aria-label="Treadmill incline percentage"
               type="number"
               step="0.5"
               min="0"
@@ -97,9 +99,9 @@ export function TreadmillInclineTool() {
               onChange={(e) => setIncline(parseFloat(e.target.value) || 0)}
               className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-lg font-bold text-slate-900 outline-none focus:border-emerald-600 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
             />
-            <span className="text-sm font-bold text-slate-400">%</span>
+            <span className="text-sm font-bold text-slate-600 dark:text-slate-400">%</span>
           </div>
-          <span className="text-[11px] text-slate-500">12% = 12-3-30 protocol</span>
+          <span className="text-[11px] text-slate-600 dark:text-slate-400">12% = 12-3-30 protocol</span>
         </div>
 
         {/* Duration */}
@@ -108,6 +110,7 @@ export function TreadmillInclineTool() {
             Duration (Minutes)
           </label>
           <input
+            aria-label="Workout duration in minutes"
             type="number"
             step="5"
             min="1"
@@ -116,7 +119,7 @@ export function TreadmillInclineTool() {
             onChange={(e) => setDurationMin(parseFloat(e.target.value) || 0)}
             className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-lg font-bold text-slate-900 outline-none focus:border-emerald-600 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
           />
-          <span className="text-[11px] text-slate-500">Typical workout: 30-45 min</span>
+          <span className="text-[11px] text-slate-600 dark:text-slate-400">Typical workout: 30-45 min</span>
         </div>
 
         {/* Weight */}
@@ -125,6 +128,7 @@ export function TreadmillInclineTool() {
             Weight ({unit === "imperial" ? "lbs" : "kg"})
           </label>
           <input
+            aria-label={`Body weight in ${unit === "imperial" ? "pounds" : "kilograms"}`}
             type="number"
             step="1"
             min="30"
@@ -136,13 +140,13 @@ export function TreadmillInclineTool() {
             }}
             className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-lg font-bold text-slate-900 outline-none focus:border-emerald-600 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
           />
-          <span className="text-[11px] text-slate-500">{weightKg.toFixed(1)} kg body mass</span>
+          <span className="text-[11px] text-slate-600 dark:text-slate-400">{weightKg.toFixed(1)} kg body mass</span>
         </div>
       </div>
 
       {/* Preset Buttons */}
       <div className="mt-4 flex flex-wrap items-center gap-2">
-        <span className="text-xs font-semibold text-slate-500">Incline Presets:</span>
+        <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">Incline Presets:</span>
         {[
           { label: "Flat (0%)", inc: 0, spd: 3.5 },
           { label: "Zone 2 Hill (4%)", inc: 4, spd: 3.2 },
@@ -164,31 +168,31 @@ export function TreadmillInclineTool() {
       </div>
 
       {/* Result Metrics */}
-      <div className="mt-6 grid gap-4 rounded-xl bg-gradient-to-br from-emerald-600 to-teal-700 p-6 text-white sm:grid-cols-3">
+      <div className="mt-6 grid gap-4 rounded-xl bg-gradient-to-br from-emerald-700 to-teal-800 p-6 text-white sm:grid-cols-3">
         <div>
-          <span className="text-xs font-semibold uppercase tracking-wider text-emerald-200">
+          <span className="text-xs font-semibold uppercase tracking-wider text-white">
             Total Incline Burn
           </span>
           <div className="mt-1 text-4xl font-extrabold">{totalCalories}</div>
-          <span className="text-xs text-emerald-100">estimated kcal burned</span>
+          <span className="text-xs text-white">estimated kcal burned</span>
         </div>
 
         <div>
-          <span className="text-xs font-semibold uppercase tracking-wider text-emerald-200">
+          <span className="text-xs font-semibold uppercase tracking-wider text-white">
             Incline Advantage
           </span>
           <div className="mt-1 text-3xl font-bold">+{extraBurn} kcal</div>
-          <span className="text-xs text-emerald-100">{burnMultiplier}× vs. flat walking ({flatCalories} kcal)</span>
+          <span className="text-xs text-white">{burnMultiplier}× vs. flat walking ({flatCalories} kcal)</span>
         </div>
 
         <div>
-          <span className="text-xs font-semibold uppercase tracking-wider text-emerald-200">
+          <span className="text-xs font-semibold uppercase tracking-wider text-white">
             Pace & Speed
           </span>
           <div className="mt-1 text-2xl font-bold">
             {paceMinutes}:{paceSeconds < 10 ? `0${paceSeconds}` : paceSeconds} /mi
           </div>
-          <span className="text-xs text-emerald-100">{speedMph.toFixed(1)} mph ({ (speedMph * 1.60934).toFixed(1) } km/h)</span>
+          <span className="text-xs text-white">{speedMph.toFixed(1)} mph ({ (speedMph * 1.60934).toFixed(1) } km/h)</span>
         </div>
       </div>
     </div>

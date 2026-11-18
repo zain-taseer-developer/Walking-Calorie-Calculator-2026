@@ -139,21 +139,23 @@ export default function WalkingPaceCalculatorPage() {
               <div className="grid grid-cols-2 gap-3">
                 <div className="relative">
                   <input
+                    aria-label="Walking time in hours"
                     type="number"
                     value={hours}
                     onChange={(e) => setHours(Math.max(0, parseInt(e.target.value, 10) || 0))}
                     className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono"
                   />
-                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400">hours</span>
+                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-600 dark:text-slate-400">hours</span>
                 </div>
                 <div className="relative">
                   <input
+                    aria-label="Walking time in minutes"
                     type="number"
                     value={minutes}
                     onChange={(e) => setMinutes(Math.max(0, parseInt(e.target.value, 10) || 0))}
                     className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono"
                   />
-                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400">mins</span>
+                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-600 dark:text-slate-400">mins</span>
                 </div>
               </div>
             </div>
@@ -164,7 +166,7 @@ export default function WalkingPaceCalculatorPage() {
                 onClick={() => setUnitSystem("imperial")}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-lg border ${
                   unitSystem === "imperial"
-                    ? "bg-brand-600 border-brand-600 text-white"
+                    ? "bg-brand-700 border-brand-600 text-white"
                     : "bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400"
                 }`}
               >
@@ -175,7 +177,7 @@ export default function WalkingPaceCalculatorPage() {
                 onClick={() => setUnitSystem("metric")}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-lg border ${
                   unitSystem === "metric"
-                    ? "bg-brand-600 border-brand-600 text-white"
+                    ? "bg-brand-700 border-brand-600 text-white"
                     : "bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400"
                 }`}
               >
@@ -185,15 +187,15 @@ export default function WalkingPaceCalculatorPage() {
           </div>
 
           {/* Results Block */}
-          <div className="p-6 rounded-2xl bg-gradient-to-br from-brand-600 to-teal-700 text-white shadow-lg space-y-4 text-center">
-            <span className="text-xs font-semibold text-teal-100 uppercase tracking-wider block">
+          <div className="p-6 rounded-2xl bg-gradient-to-br from-brand-700 to-teal-800 text-white shadow-lg space-y-4 text-center">
+            <span className="text-xs font-semibold text-white uppercase tracking-wider block">
               Walking Pace &amp; Velocity
             </span>
             <div>
               <div className="text-5xl font-black font-mono tracking-tight">
                 {paceFormatted}
               </div>
-              <div className="text-xl font-bold text-teal-100">
+              <div className="text-xl font-bold text-white">
                 per {unitSystem === "imperial" ? "mile" : "km"}
               </div>
             </div>
@@ -332,7 +334,7 @@ export default function WalkingPaceCalculatorPage() {
 
         <p>
           Check out our main{" "}
-          <Link href="/" className="font-bold text-brand-600 underline">
+          <Link href="/" className="font-bold text-brand-700 underline">
             walking calorie calculator
           </Link>{" "}
           to see how modifying your walking pace affects total calories burned.

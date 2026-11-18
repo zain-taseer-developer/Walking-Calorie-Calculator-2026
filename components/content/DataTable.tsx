@@ -13,7 +13,7 @@ export interface DataTableProps {
 
 export function DataTable({
   title,
-  titleLevel = 4,
+  titleLevel = 3,
   caption,
   headers,
   rows,
@@ -39,7 +39,7 @@ export function DataTable({
               </TitleHeading>
             )}
             {caption && (
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+              <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5">
                 {caption}
               </p>
             )}
@@ -47,6 +47,7 @@ export function DataTable({
           {rows.length > 8 && (
             <input
               type="text"
+              aria-label="Search in table"
               placeholder="Search in table..."
               value={filter}
               onChange={(e) => setFilter(e.target.value)}

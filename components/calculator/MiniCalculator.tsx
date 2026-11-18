@@ -56,7 +56,7 @@ export function MiniCalculator({
     <div className="not-prose my-8 p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-brand-50 via-white to-teal-50/60 dark:from-slate-900 dark:via-slate-900/90 dark:to-brand-950/40 border border-brand-200 dark:border-brand-900/60 shadow-lg">
       <div className="flex items-center justify-between pb-3 border-b border-brand-100 dark:border-slate-800">
         <div className="flex items-center gap-2">
-          <div className="p-1.5 rounded-lg bg-brand-600 text-white shadow-xs">
+          <div className="p-1.5 rounded-lg bg-brand-700 text-white shadow-xs">
             <Flame className="w-4 h-4" />
           </div>
           <TitleHeading className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
@@ -74,6 +74,7 @@ export function MiniCalculator({
             Weight (lbs)
           </label>
           <NumericInput
+            aria-label="Body weight in pounds"
             value={weight}
             onChange={(val) => setWeight(val)}
             min={40}
@@ -87,6 +88,7 @@ export function MiniCalculator({
             Duration (minutes)
           </label>
           <NumericInput
+            aria-label="Walking duration in minutes"
             value={minutes}
             onChange={(val) => setMinutes(val)}
             min={1}
@@ -100,6 +102,7 @@ export function MiniCalculator({
             Pace / Speed
           </label>
           <select
+            aria-label="Walking pace or speed"
             value={speed}
             onChange={(e) => setSpeed(parseFloat(e.target.value))}
             className="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm"
@@ -116,13 +119,13 @@ export function MiniCalculator({
 
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-brand-100 dark:border-slate-800 bg-white/70 dark:bg-slate-800/50 p-3 rounded-xl">
         <div className="flex items-baseline gap-2">
-          <span className="text-2xl sm:text-3xl font-black text-brand-600 dark:text-brand-400 font-mono">
+          <span className="text-2xl sm:text-3xl font-black text-brand-700 dark:text-brand-400 font-mono">
             {result.grossCalories}
           </span>
           <span className="text-sm font-bold text-slate-700 dark:text-slate-300">
             kcal burned
           </span>
-          <span className="text-xs text-slate-500">
+          <span className="text-xs text-slate-600 dark:text-slate-400">
             ({result.distanceMiles} miles, ~{result.steps.toLocaleString()} steps)
           </span>
         </div>

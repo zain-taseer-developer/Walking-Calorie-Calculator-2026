@@ -274,8 +274,8 @@ export default function HomePage() {
             <div className="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-mono text-sm sm:text-base text-brand-700 dark:text-brand-300 font-bold overflow-x-auto">
               Calories (kcal) = MET × Weight (kg) × Duration (hours)
             </div>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">
-              Source: <a href="https://pacompendium.com/walking/" target="_blank" rel="noopener noreferrer" className="underline hover:text-brand-600">2024 Adult Compendium of Physical Activities, Walking</a>.
+            <p className="text-xs text-slate-600 dark:text-slate-400 mt-2">
+              Source: <a href="https://pacompendium.com/walking/" target="_blank" rel="noopener noreferrer" className="underline hover:text-brand-700">2024 Adult Compendium of Physical Activities, Walking</a>.
             </p>
           </div>
 
@@ -375,11 +375,11 @@ export default function HomePage() {
 
           <p className="text-sm text-slate-600 dark:text-slate-400 italic">
             Need a dedicated conversion from steps to miles or steps to calories? Explore our dedicated{" "}
-            <Link href="/steps-to-miles-calculator" className="text-brand-600 dark:text-brand-400 font-semibold underline">
+            <Link href="/steps-to-miles-calculator" className="text-brand-700 dark:text-brand-400 font-semibold underline">
               steps to miles calculator
             </Link>{" "}
             and{" "}
-            <Link href="/steps-to-calories-calculator" className="text-brand-600 dark:text-brand-400 font-semibold underline">
+            <Link href="/steps-to-calories-calculator" className="text-brand-700 dark:text-brand-400 font-semibold underline">
               steps to calories calculator
             </Link>{" "}
             for personalized stride length calibrations.
@@ -481,9 +481,9 @@ export default function HomePage() {
             </div>
 
             <div className="p-5 rounded-2xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/60">
-              <h4 className="font-bold text-amber-900 dark:text-amber-200 text-base mb-1">
+              <h3 className="font-bold text-amber-900 dark:text-amber-200 text-base mb-1">
                 Net Calories (Active Exercise Burn)
-              </h4>
+              </h3>
               <p className="text-xs sm:text-sm text-amber-800 dark:text-amber-300 leading-relaxed">
                 Net expenditure subtracts your resting metabolic rate (1.0 MET). It answers the precise question: <em>&quot;How many extra calories did I burn specifically by choosing to walk rather than resting on the couch?&quot;</em>
               </p>
@@ -519,7 +519,7 @@ export default function HomePage() {
 
           <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
             Read our full evidence-based{" "}
-            <Link href="/walking-for-weight-loss" className="text-brand-600 dark:text-brand-400 font-semibold underline">
+            <Link href="/walking-for-weight-loss" className="text-brand-700 dark:text-brand-400 font-semibold underline">
               Walking for Weight Loss Guide
             </Link>{" "}
             for structured 4-week progression plans and nutrition strategies.
@@ -546,45 +546,45 @@ export default function HomePage() {
             </div>
 
             <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-              <h4 className="font-bold text-slate-900 dark:text-white text-base">
+              <h3 className="font-bold text-slate-900 dark:text-white text-base">
                 2. Practice Interval Walking (Fartlek Style)
-              </h4>
+              </h3>
               <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
                 Alternate between 3 minutes of moderate walking (3.0 mph) and 1 minute of vigorous power walking (4.5 mph). Studies demonstrate that interval walking stimulates greater post-exercise oxygen consumption (EPOC) than steady-state walking.
               </p>
             </div>
 
             <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-              <h4 className="font-bold text-slate-900 dark:text-white text-base">
+              <h3 className="font-bold text-slate-900 dark:text-white text-base">
                 3. Engage a 90-Degree Arm Swing
-              </h4>
+              </h3>
               <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
                 Bending your elbows to 90 degrees and actively driving your arms from the shoulder joint increases upper body muscle recruitment, boosting total calorie expenditure by an estimated 5% to 10%.
               </p>
             </div>
 
             <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-              <h4 className="font-bold text-slate-900 dark:text-white text-base">
+              <h3 className="font-bold text-slate-900 dark:text-white text-base">
                 4. Add a Weighted Ruck or Backpack
-              </h4>
+              </h3>
               <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
                 Carrying 10% to 15% of your body weight in a secure backpack challenges core stabilizers and lower-extremity musculature without putting excessive rotational shearing forces on joints.
               </p>
             </div>
 
             <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-              <h4 className="font-bold text-slate-900 dark:text-white text-base">
+              <h3 className="font-bold text-slate-900 dark:text-white text-base">
                 5. Seek Out Natural Hills &amp; Stairs
-              </h4>
+              </h3>
               <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
                 Incorporating outdoor hill climbs or a flight of stairs engages the gluteal muscles intensely. Climbing stairs has a high MET value of 8.8 to 9.0—comparable to high-speed swimming or running.
               </p>
             </div>
 
             <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-              <h4 className="font-bold text-slate-900 dark:text-white text-base">
+              <h3 className="font-bold text-slate-900 dark:text-white text-base">
                 6. Walk in Nature / Mixed Terrain
-              </h4>
+              </h3>
               <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
                 Trading manicured sidewalks for dirt trails, grass, or gravel forces your stabilizer muscles to compensate for subtle foot rolls, burning 10% to 20% more calories per mile.
               </p>
@@ -706,7 +706,7 @@ export default function HomePage() {
                   href="https://pacompendium.com/walking/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline hover:text-brand-600 inline-flex items-center gap-0.5"
+                  className="underline hover:text-brand-700 inline-flex items-center gap-0.5"
                 >
                   Official walking MET reference table <ExternalLink className="w-2.5 h-2.5" />
                 </a>
@@ -720,7 +720,7 @@ export default function HomePage() {
                   href="https://www.cdc.gov/healthy-weight-growth/physical-activity/index.html"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline hover:text-brand-600 inline-flex items-center gap-0.5"
+                  className="underline hover:text-brand-700 inline-flex items-center gap-0.5"
                 >
                   CDC Walking Guidelines <ExternalLink className="w-2.5 h-2.5" />
                 </a>
@@ -734,7 +734,7 @@ export default function HomePage() {
                   href="https://pubmed.ncbi.nlm.nih.gov/28538107/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline hover:text-brand-600 inline-flex items-center gap-0.5"
+                  className="underline hover:text-brand-700 inline-flex items-center gap-0.5"
                 >
                   Stanford Validation Study <ExternalLink className="w-2.5 h-2.5" />
                 </a>

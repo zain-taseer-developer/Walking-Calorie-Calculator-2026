@@ -202,11 +202,11 @@ export default function CaloriesBurnedCalculatorPage() {
               {activityTable.map((row) => (
                 <tr key={row.activity} className="hover:bg-slate-50/70 dark:hover:bg-slate-900/50">
                   <td className="px-4 py-3 font-semibold text-slate-900 dark:text-slate-100">{row.activity}</td>
-                  <td className="px-4 py-3 font-mono text-emerald-600 dark:text-emerald-400">{row.met}</td>
+                  <td className="px-4 py-3 font-mono text-emerald-700 dark:text-emerald-400">{row.met}</td>
                   <td className="px-4 py-3 text-slate-700 dark:text-slate-300">{estimateCalories(row.met, poundsToKg(130), 30)} kcal</td>
                   <td className="px-4 py-3 font-bold text-emerald-700 dark:text-emerald-300">{estimateCalories(row.met, poundsToKg(154), 30)} kcal</td>
                   <td className="px-4 py-3 text-slate-700 dark:text-slate-300">{estimateCalories(row.met, poundsToKg(180), 30)} kcal</td>
-                  <td className="px-4 py-3 text-xs text-slate-500 dark:text-slate-400">{row.note}</td>
+                  <td className="px-4 py-3 text-xs text-slate-600 dark:text-slate-400">{row.note}</td>
                 </tr>
               ))}
             </tbody>
@@ -246,7 +246,7 @@ export default function CaloriesBurnedCalculatorPage() {
               {durationComparison.map((row) => (
                 <tr key={row.activity}>
                   <th scope="row" className="px-4 py-3 font-semibold text-slate-900 dark:text-slate-100">{row.activity}</th>
-                  <td className="px-4 py-3 font-mono text-emerald-600 dark:text-emerald-400">{row.met}</td>
+                  <td className="px-4 py-3 font-mono text-emerald-700 dark:text-emerald-400">{row.met}</td>
                   {[15, 30, 45, 60].map((minutes) => (
                     <td key={minutes} className="px-4 py-3 text-slate-700 dark:text-slate-300">{estimateCalories(row.met, poundsToKg(154), minutes)} kcal</td>
                   ))}
@@ -279,7 +279,7 @@ export default function CaloriesBurnedCalculatorPage() {
               {weightComparison.map((row) => (
                 <tr key={row.activity}>
                   <th scope="row" className="px-4 py-3 font-semibold text-slate-900 dark:text-slate-100">{row.activity}</th>
-                  <td className="px-4 py-3 font-mono text-emerald-600 dark:text-emerald-400">{row.met}</td>
+                  <td className="px-4 py-3 font-mono text-emerald-700 dark:text-emerald-400">{row.met}</td>
                   {[130, 154, 180].map((pounds) => (
                     <td key={pounds} className="px-4 py-3 text-slate-700 dark:text-slate-300">{estimateCalories(row.met, poundsToKg(pounds), 30)} kcal</td>
                   ))}
@@ -365,9 +365,9 @@ export default function CaloriesBurnedCalculatorPage() {
       </div>
 
       {/* Internal Navigation to Flagship Tool */}
-      <div className="mt-12 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 p-8 text-white shadow-lg">
+      <div className="mt-12 rounded-2xl bg-gradient-to-r from-emerald-700 to-teal-800 p-8 text-white shadow-lg">
         <h2 className="text-2xl font-bold">Looking to Calculate Walking Calories?</h2>
-        <p className="mt-2 text-emerald-100">
+        <p className="mt-2 text-white">
           Return to our dedicated homepage calculator to model walking speeds, incline percentages, stride lengths, and step counts.
         </p>
         <div className="mt-6">

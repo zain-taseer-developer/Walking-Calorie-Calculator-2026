@@ -33,8 +33,8 @@ function centimetersToFeetAndInches(heightCm: number) {
 function MetricCard({ icon: Icon, label, value }: { icon: LucideIcon; label: string; value: string }) {
   return (
     <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950/70">
-      <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
-        <Icon className="h-4 w-4 text-brand-600 dark:text-brand-400" aria-hidden="true" />
+      <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400">
+        <Icon className="h-4 w-4 text-brand-700 dark:text-brand-400" aria-hidden="true" />
         {label}
       </div>
       <p className="mt-2 break-words text-xl font-black text-slate-900 dark:text-white sm:text-2xl">{value}</p>
@@ -349,11 +349,11 @@ export function HomeWalkTracker() {
             <div className="flex min-h-10 items-center gap-2">
               <label htmlFor="homewalk-weight" className={labelClass}>Body weight</label>
               <div role="group" aria-label="Weight units" className="inline-flex rounded-lg bg-slate-100 p-0.5 dark:bg-slate-800">
-                <button type="button" aria-pressed={unitSystem === "metric"} onClick={() => setUnitSystem("metric")} className={`rounded-md px-2.5 py-1 text-xs font-semibold transition-colors ${unitSystem === "metric" ? "bg-white text-slate-900 shadow-sm dark:bg-slate-700 dark:text-white" : "text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200"}`}>kg</button>
-                <button type="button" aria-pressed={unitSystem === "imperial"} onClick={() => setUnitSystem("imperial")} className={`rounded-md px-2.5 py-1 text-xs font-semibold transition-colors ${unitSystem === "imperial" ? "bg-white text-slate-900 shadow-sm dark:bg-slate-700 dark:text-white" : "text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200"}`}>lb</button>
+                <button type="button" aria-pressed={unitSystem === "metric"} onClick={() => setUnitSystem("metric")} className={`rounded-md px-2.5 py-1 text-xs font-semibold transition-colors ${unitSystem === "metric" ? "bg-white text-slate-900 shadow-sm dark:bg-slate-700 dark:text-white" : "text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200"}`}>kg</button>
+                <button type="button" aria-pressed={unitSystem === "imperial"} onClick={() => setUnitSystem("imperial")} className={`rounded-md px-2.5 py-1 text-xs font-semibold transition-colors ${unitSystem === "imperial" ? "bg-white text-slate-900 shadow-sm dark:bg-slate-700 dark:text-white" : "text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200"}`}>lb</button>
               </div>
             </div>
-            <input id="homewalk-weight" className={fieldClass} type="number" inputMode="decimal" min={unitSystem === "metric" ? 20 : 44} max={unitSystem === "metric" ? 300 : 661} step="0.1" placeholder="Enter weight" value={displayedWeight === "" ? "" : formatNumber(displayedWeight, 1).replace(/\.0$/, "")} onChange={(event) => {
+            <input id="homewalk-weight" aria-label="Body weight" className={fieldClass} type="number" inputMode="decimal" min={unitSystem === "metric" ? 20 : 44} max={unitSystem === "metric" ? 300 : 661} step="0.1" placeholder="Enter weight" value={displayedWeight === "" ? "" : formatNumber(displayedWeight, 1).replace(/\.0$/, "")} onChange={(event) => {
               if (event.target.value === "") {
                 setWeightKg(null);
                 return;
@@ -366,8 +366,8 @@ export function HomeWalkTracker() {
             <div className="flex min-h-10 items-center gap-2">
               <label htmlFor={heightUnit === "cm" ? "homewalk-height-cm" : "homewalk-height-feet"} className={labelClass}>Height</label>
               <div role="group" aria-label="Height units" className="inline-flex rounded-lg bg-slate-100 p-0.5 dark:bg-slate-800">
-                <button type="button" aria-pressed={heightUnit === "cm"} onClick={() => changeHeightUnit("cm")} className={`rounded-md px-2.5 py-1 text-xs font-semibold transition-colors ${heightUnit === "cm" ? "bg-white text-slate-900 shadow-sm dark:bg-slate-700 dark:text-white" : "text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200"}`}>cm</button>
-                <button type="button" aria-pressed={heightUnit === "ft-in"} onClick={() => changeHeightUnit("ft-in")} className={`rounded-md px-2.5 py-1 text-xs font-semibold transition-colors ${heightUnit === "ft-in" ? "bg-white text-slate-900 shadow-sm dark:bg-slate-700 dark:text-white" : "text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200"}`}>ft/in</button>
+                <button type="button" aria-pressed={heightUnit === "cm"} onClick={() => changeHeightUnit("cm")} className={`rounded-md px-2.5 py-1 text-xs font-semibold transition-colors ${heightUnit === "cm" ? "bg-white text-slate-900 shadow-sm dark:bg-slate-700 dark:text-white" : "text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200"}`}>cm</button>
+                <button type="button" aria-pressed={heightUnit === "ft-in"} onClick={() => changeHeightUnit("ft-in")} className={`rounded-md px-2.5 py-1 text-xs font-semibold transition-colors ${heightUnit === "ft-in" ? "bg-white text-slate-900 shadow-sm dark:bg-slate-700 dark:text-white" : "text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200"}`}>ft/in</button>
               </div>
             </div>
             <div className={`grid gap-2 ${heightUnit === "cm" ? "grid-cols-1" : "grid-cols-2"}`}>
@@ -386,8 +386,8 @@ export function HomeWalkTracker() {
             <input id="homewalk-stride" className={fieldClass} type="number" inputMode="decimal" min="30" max="150" aria-label="Custom stride in centimeters, optional" placeholder="Use height estimate" value={customStrideCm} onChange={(event) => setCustomStrideCm(event.target.value)} />
           </div>
         </div>
-        {!validProfile && weightKg === null && !hasHeightInput && customStrideCm === "" && <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">Enter your weight and height to enable the tracker and calculations.</p>}
-        {!validProfile && (weightKg !== null || hasHeightInput || customStrideCm !== "") && <p className="mt-3 text-sm text-rose-600 dark:text-rose-400" role="alert">Use a weight of 20–300 kg, height of 100–230 cm (or the equivalent in ft/in), and optional stride of 30–150 cm.</p>}
+        {!validProfile && weightKg === null && !hasHeightInput && customStrideCm === "" && <p className="mt-3 text-sm text-slate-600 dark:text-slate-400">Enter your weight and height to enable the tracker and calculations.</p>}
+        {!validProfile && (weightKg !== null || hasHeightInput || customStrideCm !== "") && <p className="mt-3 text-sm text-rose-700 dark:text-rose-400" role="alert">Use a weight of 20–300 kg, height of 100–230 cm (or the equivalent in ft/in), and optional stride of 30–150 cm.</p>}
 
         <div className="mt-5 space-y-5">
             <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950/60">
@@ -412,19 +412,19 @@ export function HomeWalkTracker() {
 
             <div className="flex flex-wrap gap-2">
               {(liveStatus === "idle" || liveStatus === "unsupported" || liveStatus === "denied" || liveStatus === "error") && (
-                <button type="button" onClick={startWalking} disabled={!validProfile || isStarting} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-brand-600 px-5 py-2.5 font-bold text-white hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-50">
+                <button type="button" onClick={startWalking} disabled={!validProfile || isStarting} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-brand-700 px-5 py-2.5 font-bold text-white hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-50">
                   <Play className="h-4 w-4" aria-hidden="true" /> {isStarting ? "Requesting motion access…" : "Start Walking"}
                 </button>
               )}
               {liveStatus === "running" && (
                 <>
-                  <button type="button" onClick={() => pauseSession()} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-amber-500 px-5 py-2.5 font-bold text-white hover:bg-amber-600"><Pause className="h-4 w-4" aria-hidden="true" /> Pause</button>
+                  <button type="button" onClick={() => pauseSession()} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-amber-700 px-5 py-2.5 font-bold text-white hover:bg-amber-700"><Pause className="h-4 w-4" aria-hidden="true" /> Pause</button>
                   <button type="button" onClick={stopWalking} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-slate-800 px-5 py-2.5 font-bold text-white hover:bg-slate-900 dark:bg-slate-700 dark:hover:bg-slate-600"><Square className="h-4 w-4" aria-hidden="true" /> Stop</button>
                 </>
               )}
               {liveStatus === "paused" && (
                 <>
-                  <button type="button" onClick={resumeWalking} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-brand-600 px-5 py-2.5 font-bold text-white hover:bg-brand-700"><Play className="h-4 w-4" aria-hidden="true" /> Resume</button>
+                  <button type="button" onClick={resumeWalking} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-brand-700 px-5 py-2.5 font-bold text-white hover:bg-brand-700"><Play className="h-4 w-4" aria-hidden="true" /> Resume</button>
                   <button type="button" onClick={stopWalking} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-slate-800 px-5 py-2.5 font-bold text-white hover:bg-slate-900 dark:bg-slate-700 dark:hover:bg-slate-600"><Square className="h-4 w-4" aria-hidden="true" /> Stop</button>
                 </>
               )}
@@ -436,10 +436,10 @@ export function HomeWalkTracker() {
             <div className="rounded-2xl border border-slate-200 p-4 dark:border-slate-800">
               <label htmlFor="step-sensitivity" className={labelClass}>Motion peak threshold: {sensitivity.toFixed(1)} m/s²</label>
               <input id="step-sensitivity" type="range" min="0.3" max="2.5" step="0.1" value={sensitivity} onChange={(event) => setSensitivity(Number(event.target.value))} className="mt-2 w-full accent-brand-600" />
-              <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">Lower thresholds detect smaller movement; higher thresholds may reduce false peaks but miss steps. Detection uses a smoothed acceleration magnitude and a 300 ms minimum interval.</p>
+              <p className="mt-1 text-xs text-slate-600 dark:text-slate-400">Lower thresholds detect smaller movement; higher thresholds may reduce false peaks but miss steps. Detection uses a smoothed acceleration magnitude and a 300 ms minimum interval.</p>
             </div>
 
-            <p className="text-xs leading-relaxed text-slate-500 dark:text-slate-400">Live step counts are estimates, not medical-grade readings. Phone position and arm movement affect detection. Keep this page open and the screen active; the tracker does not promise background or locked-screen tracking.</p>
+            <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-400">Live step counts are estimates, not medical-grade readings. Phone position and arm movement affect detection. Keep this page open and the screen active; the tracker does not promise background or locked-screen tracking.</p>
           </div>
 
         <div className="mt-5 rounded-2xl bg-slate-100 p-4 text-sm text-slate-600 dark:bg-slate-800/70 dark:text-slate-300">

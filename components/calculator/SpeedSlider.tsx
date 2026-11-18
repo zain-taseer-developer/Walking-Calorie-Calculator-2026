@@ -46,7 +46,7 @@ export function SpeedSlider({
         <label htmlFor="speed-slider" className="text-sm font-medium text-slate-700 dark:text-slate-300">
           Walking Speed
         </label>
-        <span className="text-base font-bold text-brand-600 dark:text-brand-400 font-mono">
+        <span className="text-base font-bold text-brand-700 dark:text-brand-400 font-mono">
           {currentSpeed.toFixed(1)} {unitSystem === "imperial" ? "mph" : "km/h"}
         </span>
       </div>
@@ -63,7 +63,7 @@ export function SpeedSlider({
           onChange={handleSliderChange}
           className="w-full h-2.5 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-brand-600 dark:accent-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-500"
         />
-        <div className="flex justify-between text-[11px] text-slate-400 dark:text-slate-500 mt-1">
+        <div className="flex justify-between text-[11px] text-slate-600 dark:text-slate-400 mt-1">
           <span>{minSpeed} {unitSystem === "imperial" ? "mph" : "km/h"} (Stroll)</span>
           <span>{maxSpeed} {unitSystem === "imperial" ? "mph" : "km/h"} (Race)</span>
         </div>
@@ -84,12 +84,12 @@ export function SpeedSlider({
               onClick={() => handlePresetClick(preset)}
               className={`px-2 py-1.5 rounded-lg text-xs font-medium transition-all text-center flex flex-col items-center justify-center border ${
                 isSelected
-                  ? "bg-brand-600 border-brand-600 text-white shadow-sm ring-2 ring-brand-500/20"
+                  ? "bg-brand-700 border-brand-600 text-white shadow-sm ring-2 ring-brand-500/20"
                   : "bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/60"
               }`}
             >
               <span className="font-semibold">{preset.label}</span>
-              <span className={`text-[10px] ${isSelected ? "text-teal-100" : "text-slate-400 dark:text-slate-500"}`}>
+              <span className={`text-[10px] ${isSelected ? "text-white" : "text-slate-600 dark:text-slate-400"}`}>
                 {unitSystem === "imperial" ? `${preset.mph} mph` : `${preset.kmh} km/h`}
               </span>
             </button>

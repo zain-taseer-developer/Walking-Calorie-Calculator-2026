@@ -31,7 +31,7 @@ export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
       >
         <Link
           href="/"
-          className="flex items-center gap-1 hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
+          className="flex items-center gap-1 hover:text-brand-700 dark:hover:text-brand-400 transition-colors"
         >
           <Home className="w-3.5 h-3.5" />
           <span>Home</span>
@@ -45,7 +45,7 @@ export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
               {item.href && !isLast ? (
                 <Link
                   href={item.href}
-                  className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
+                  className="hover:text-brand-700 dark:hover:text-brand-400 transition-colors"
                 >
                   {item.label}
                 </Link>

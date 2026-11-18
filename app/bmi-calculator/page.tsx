@@ -288,7 +288,7 @@ export default function BMICalculatorPage() {
 
       <section className="not-prose my-12" aria-labelledby="related-calculators">
         <div className="mb-6">
-          <span className="mb-1 block text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+          <span className="mb-1 block text-xs font-semibold uppercase tracking-wider text-brand-700 dark:text-brand-400">
             Connected Fitness Suite
           </span>
           <h2 id="related-calculators" className="text-xl font-bold text-slate-900 dark:text-white sm:text-2xl">
@@ -308,21 +308,21 @@ export default function BMICalculatorPage() {
             >
               <div>
                 <div className="mb-3 flex items-center justify-between gap-2">
-                  <span className="rounded-xl bg-brand-50 p-2 text-brand-600 transition-transform group-hover:scale-105 dark:bg-brand-950/60 dark:text-brand-400">
+                  <span className="rounded-xl bg-brand-50 p-2 text-brand-700 transition-transform group-hover:scale-105 dark:bg-brand-950/60 dark:text-brand-400">
                     <Calculator className="h-4 w-4" aria-hidden="true" />
                   </span>
                   <span className="rounded-full bg-brand-50 px-2 py-0.5 text-[10px] font-semibold text-brand-700 dark:bg-brand-950 dark:text-brand-300">
                     {calculator.badge}
                   </span>
                 </div>
-                <h3 className="text-sm font-bold text-slate-900 transition-colors group-hover:text-brand-600 dark:text-white dark:group-hover:text-brand-400">
+                <h3 className="text-sm font-bold text-slate-900 transition-colors group-hover:text-brand-700 dark:text-white dark:group-hover:text-brand-400">
                   {calculator.title}
                 </h3>
-                <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+                <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-slate-600 dark:text-slate-400">
                   {calculator.description}
                 </p>
               </div>
-              <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-brand-600 transition-transform group-hover:translate-x-0.5 dark:text-brand-400">
+              <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-brand-700 transition-transform group-hover:translate-x-0.5 dark:text-brand-400">
                 <span>Open Calculator</span>
                 <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
               </div>

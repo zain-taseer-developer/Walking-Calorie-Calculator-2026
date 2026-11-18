@@ -30,10 +30,10 @@ export function SpeedComparisonChart({
   return (
     <div className="w-full bg-slate-50 dark:bg-slate-900/50 rounded-xl p-4 border border-slate-200 dark:border-slate-800">
       <div className="flex items-center justify-between mb-3">
-        <h4 className="text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+        <h3 className="text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
           Calories at Different Speeds (Same Time)
-        </h4>
-        <span className="text-[11px] text-slate-500 dark:text-slate-400">
+        </h3>
+        <span className="text-[11px] text-slate-600 dark:text-slate-400">
           Compendium MET scale
         </span>
       </div>
@@ -98,7 +98,7 @@ export function SpeedComparisonChart({
           })}
         </svg>
       </div>
-      <p className="text-[11px] text-slate-500 dark:text-slate-400 text-center mt-1">
+      <p className="text-[11px] text-slate-600 dark:text-slate-400 text-center mt-1">
         Highlighted bar represents your currently selected pace.
       </p>
     </div>

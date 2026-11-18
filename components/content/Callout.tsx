@@ -8,7 +8,7 @@ interface CalloutProps {
   children: React.ReactNode;
 }
 
-export function Callout({ type = "info", title, titleLevel = 5, children }: CalloutProps) {
+export function Callout({ type = "info", title, titleLevel = 3, children }: CalloutProps) {
   const configs = {
     info: {
       bg: "bg-blue-50 dark:bg-blue-950/40 border-blue-200 dark:border-blue-900",

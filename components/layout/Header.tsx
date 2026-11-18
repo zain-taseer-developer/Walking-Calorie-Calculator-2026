@@ -106,7 +106,7 @@ export function Header() {
           })}
 
           <div className="pt-3 border-t border-slate-200 dark:border-slate-800 mt-2">
-            <div className="px-3 py-1 text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+            <div className="px-3 py-1 text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-500">
               Popular Calculators
             </div>
             <div className="grid grid-cols-1 gap-1 mt-1">
@@ -115,7 +115,7 @@ export function Header() {
                   key={tool.href}
                   href={tool.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400"
+                  className="px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:text-brand-700 dark:hover:text-brand-400"
                 >
                   {tool.title}
                 </Link>

@@ -52,6 +52,7 @@ export function WeightConverterTool() {
           </label>
           <div className="mt-2 flex items-center rounded-lg border border-slate-300 bg-white px-3 py-2 shadow-inner focus-within:border-emerald-600 focus-within:ring-2 focus-within:ring-emerald-500/20 dark:border-slate-700 dark:bg-slate-950">
             <input
+              aria-label="Weight in pounds"
               type="number"
               step="any"
               min="0"
@@ -60,9 +61,9 @@ export function WeightConverterTool() {
               className="w-full bg-transparent text-2xl font-bold text-slate-900 outline-none dark:text-white"
               placeholder="150"
             />
-            <span className="text-sm font-semibold text-slate-400">lbs</span>
+            <span className="text-sm font-semibold text-slate-600 dark:text-slate-400">lbs</span>
           </div>
-          <p className="mt-2 text-xs text-slate-500">Imperial mass standard (US / UK)</p>
+          <p className="mt-2 text-xs text-slate-600 dark:text-slate-400">Imperial mass standard (US / UK)</p>
         </div>
 
         {/* Kilograms Input */}
@@ -72,6 +73,7 @@ export function WeightConverterTool() {
           </label>
           <div className="mt-2 flex items-center rounded-lg border border-slate-300 bg-white px-3 py-2 shadow-inner focus-within:border-teal-600 focus-within:ring-2 focus-within:ring-teal-500/20 dark:border-slate-700 dark:bg-slate-950">
             <input
+              aria-label="Weight in kilograms"
               type="number"
               step="any"
               min="0"
@@ -80,15 +82,15 @@ export function WeightConverterTool() {
               className="w-full bg-transparent text-2xl font-bold text-slate-900 outline-none dark:text-white"
               placeholder="68"
             />
-            <span className="text-sm font-semibold text-slate-400">kg</span>
+            <span className="text-sm font-semibold text-slate-600 dark:text-slate-400">kg</span>
           </div>
-          <p className="mt-2 text-xs text-slate-500">Metric standard (SI / Scientific MET)</p>
+          <p className="mt-2 text-xs text-slate-600 dark:text-slate-400">Metric standard (SI / Scientific MET)</p>
         </div>
       </div>
 
       {/* Quick Presets */}
       <div className="mt-6">
-        <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+        <span className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
           Frequently Searched Weights:
         </span>
         <div className="mt-2 flex flex-wrap gap-2">
@@ -109,7 +111,7 @@ export function WeightConverterTool() {
       <div className="mt-6 rounded-xl bg-slate-900 p-4 text-white dark:bg-slate-800">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <span className="text-xs font-medium text-slate-400">Current Conversion</span>
+            <span className="text-xs font-medium text-slate-600 dark:text-slate-400">Current Conversion</span>
             <div className="text-lg font-bold text-emerald-400">
               {lbs || "0"} lbs = {kg || "0"} kg
             </div>
@@ -117,7 +119,7 @@ export function WeightConverterTool() {
           <div className="mt-2 text-xs text-slate-300 sm:mt-0 sm:text-right">
             <span>Exact Factor: 1 lb = 0.45359237 kg</span>
             <br />
-            <span className="text-slate-400">1 kg = 2.20462262 lbs</span>
+            <span className="text-slate-600 dark:text-slate-400">1 kg = 2.20462262 lbs</span>
           </div>
         </div>
       </div>

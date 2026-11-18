@@ -42,7 +42,7 @@ export function RacePaceTool() {
           <h2 className="text-xl font-bold text-slate-900 dark:text-white">
             Race Pace & Speed Distance Time Calculator
           </h2>
-          <p className="text-xs text-slate-500">Fast velocity, pace splits, and target finish predictor</p>
+          <p className="text-xs text-slate-600 dark:text-slate-400">Fast velocity, pace splits, and target finish predictor</p>
         </div>
       </div>
 
@@ -57,10 +57,10 @@ export function RacePaceTool() {
               key={r.name}
               type="button"
               onClick={() => setSelectedRace(r.name)}
-              className={`rounded-xl border p-3 text-center transition ${selectedRace === r.name ? "border-emerald-600 bg-emerald-50 text-emerald-900 shadow-sm dark:border-emerald-500 dark:bg-emerald-950/40 dark:text-emerald-200" : "border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 dark:border-slate-800 dark:bg-slate-800 dark:text-slate-300"}`}
+              className={`rounded-xl border p-3 text-center transition ${selectedRace === r.name ? "border-emerald-600 bg-emerald-50 text-emerald-900 shadow-sm dark:border-emerald-500 dark:bg-emerald-950/40 dark:text-white" : "border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 dark:border-slate-800 dark:bg-slate-800 dark:text-slate-300"}`}
             >
               <div className="font-bold">{r.name}</div>
-              <div className="text-[11px] text-slate-500 dark:text-slate-400">
+              <div className="text-[11px] text-slate-600 dark:text-slate-400">
                 {r.miles.toFixed(2)} mi / {r.km} km
               </div>
             </button>
@@ -75,6 +75,7 @@ export function RacePaceTool() {
             Hours
           </label>
           <input
+            aria-label="Target finish time in hours"
             type="number"
             min="0"
             max="48"
@@ -88,6 +89,7 @@ export function RacePaceTool() {
             Minutes
           </label>
           <input
+            aria-label="Target finish time in minutes"
             type="number"
             min="0"
             max="59"
@@ -101,6 +103,7 @@ export function RacePaceTool() {
             Seconds
           </label>
           <input
+            aria-label="Target finish time in seconds"
             type="number"
             min="0"
             max="59"
@@ -113,7 +116,7 @@ export function RacePaceTool() {
 
       {/* Quick Finish Presets for Selected Race */}
       <div className="mt-4 flex flex-wrap items-center gap-2">
-        <span className="text-xs font-semibold text-slate-500">Popular Marathon Goals:</span>
+        <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">Popular Marathon Goals:</span>
         {[
           { label: "Sub 3 Hours", h: 2, m: 59, s: 0 },
           { label: "3:30 Pace", h: 3, m: 30, s: 0 },
@@ -137,33 +140,33 @@ export function RacePaceTool() {
       </div>
 
       {/* Output Results */}
-      <div className="mt-6 grid gap-4 rounded-xl bg-gradient-to-br from-emerald-600 to-teal-700 p-6 text-white sm:grid-cols-3">
+      <div className="mt-6 grid gap-4 rounded-xl bg-gradient-to-br from-emerald-700 to-teal-800 p-6 text-white sm:grid-cols-3">
         <div>
-          <span className="text-xs font-semibold uppercase tracking-wider text-emerald-200">
+          <span className="text-xs font-semibold uppercase tracking-wider text-white">
             Required Mile Pace
           </span>
           <div className="mt-1 text-4xl font-extrabold">
             {paceMinMile}:{paceSecMile < 10 ? `0${paceSecMile}` : paceSecMile}
           </div>
-          <span className="text-xs text-emerald-100">min/mile average split</span>
+          <span className="text-xs text-white">min/mile average split</span>
         </div>
 
         <div>
-          <span className="text-xs font-semibold uppercase tracking-wider text-emerald-200">
+          <span className="text-xs font-semibold uppercase tracking-wider text-white">
             Required Metric Pace
           </span>
           <div className="mt-1 text-4xl font-extrabold">
             {paceMinKm}:{paceSecKm < 10 ? `0${paceSecKm}` : paceSecKm}
           </div>
-          <span className="text-xs text-emerald-100">min/kilometer split</span>
+          <span className="text-xs text-white">min/kilometer split</span>
         </div>
 
         <div>
-          <span className="text-xs font-semibold uppercase tracking-wider text-emerald-200">
+          <span className="text-xs font-semibold uppercase tracking-wider text-white">
             Average Speed
           </span>
           <div className="mt-1 text-3xl font-bold">{speedMph} mph</div>
-          <span className="text-xs text-emerald-100">{speedKmh} km/h velocity</span>
+          <span className="text-xs text-white">{speedKmh} km/h velocity</span>
         </div>
       </div>
     </div>

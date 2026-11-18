@@ -20,7 +20,7 @@ export function RelatedTools({
     <section className="not-prose my-12" aria-labelledby="related-tools-heading">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <span className="text-xs font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-wider block mb-1">
+          <span className="text-xs font-semibold text-brand-700 dark:text-brand-400 uppercase tracking-wider block mb-1">
             Connected Fitness Suite
           </span>
           <h2 id="related-tools-heading" className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
@@ -47,7 +47,7 @@ export function RelatedTools({
                   </span>
                 )}
               </div>
-              <h3 className="font-bold text-slate-900 dark:text-white text-sm group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+              <h3 className="font-bold text-slate-900 dark:text-white text-sm group-hover:text-brand-700 dark:group-hover:text-brand-400 transition-colors">
                 {tool.title}
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed line-clamp-2">
@@ -55,7 +55,7 @@ export function RelatedTools({
               </p>
             </div>
 
-            <div className="flex items-center gap-1 text-xs font-semibold text-brand-600 dark:text-brand-400 mt-4 group-hover:translate-x-0.5 transition-transform">
+            <div className="flex items-center gap-1 text-xs font-semibold text-brand-700 dark:text-brand-400 mt-4 group-hover:translate-x-0.5 transition-transform">
               <span>Open Calculator</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </div>

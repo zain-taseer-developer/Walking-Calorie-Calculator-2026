@@ -35,9 +35,9 @@ export function TableOfContents({ items }: { items: TocItem[] }) {
     <div className="not-prose my-6 p-5 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
       <div className="flex items-center gap-2 mb-3">
         <ListOrdered className="w-4 h-4 text-brand-600 dark:text-brand-400" />
-        <h4 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">
+        <h2 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">
           Table of Contents
-        </h4>
+        </h2>
       </div>
       <nav aria-label="Table of Contents">
         <ul className="space-y-1.5 text-xs sm:text-sm">

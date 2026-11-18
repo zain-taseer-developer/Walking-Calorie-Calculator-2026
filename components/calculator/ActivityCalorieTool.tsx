@@ -129,7 +129,7 @@ export function ActivityCalorieTool() {
           <h2 className="text-xl font-bold text-slate-900 dark:text-white">
             Multi-Activity Calorie Burned Calculator
           </h2>
-          <p className="text-xs text-slate-500">Compendium of Physical Activities MET standard</p>
+          <p className="text-xs text-slate-600 dark:text-slate-400">Compendium of Physical Activities MET standard</p>
         </div>
         <div className="flex rounded-lg border border-slate-200 bg-slate-100 p-0.5 text-xs font-semibold dark:border-slate-800 dark:bg-slate-800">
           <button
@@ -156,6 +156,7 @@ export function ActivityCalorieTool() {
             Select Physical Activity / Sport
           </label>
           <select
+            aria-label="Select physical activity or sport"
             value={selectedActivity}
             onChange={(e) => setSelectedActivity(e.target.value)}
             className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-base font-semibold text-slate-900 outline-none focus:border-emerald-600 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
@@ -174,6 +175,7 @@ export function ActivityCalorieTool() {
             Your Body Weight ({unit === "imperial" ? "lbs" : "kg"})
           </label>
           <input
+            aria-label="Body weight"
             type="number"
             step="1"
             min="30"
@@ -185,7 +187,7 @@ export function ActivityCalorieTool() {
             }}
             className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-lg font-bold text-slate-900 outline-none focus:border-emerald-600 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
           />
-          <span className="text-[11px] text-slate-500">{weightKg.toFixed(1)} kg body mass</span>
+          <span className="text-[11px] text-slate-600 dark:text-slate-400">{weightKg.toFixed(1)} kg body mass</span>
         </div>
 
         {/* Duration */}
@@ -194,6 +196,7 @@ export function ActivityCalorieTool() {
             Duration (Minutes)
           </label>
           <input
+            aria-label="Activity duration in minutes"
             type="number"
             step="5"
             min="1"
@@ -202,7 +205,7 @@ export function ActivityCalorieTool() {
             onChange={(e) => setDurationMin(parseFloat(e.target.value) || 0)}
             className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-lg font-bold text-slate-900 outline-none focus:border-emerald-600 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
           />
-          <span className="text-[11px] text-slate-500">{hours.toFixed(2)} hours active</span>
+          <span className="text-[11px] text-slate-600 dark:text-slate-400">{hours.toFixed(2)} hours active</span>
         </div>
 
         {/* Quick presets */}
@@ -226,47 +229,47 @@ export function ActivityCalorieTool() {
       </div>
 
       {/* Results Box */}
-      <div className="mt-6 grid gap-4 rounded-xl bg-gradient-to-br from-emerald-600 to-teal-700 p-6 text-white sm:grid-cols-3">
+      <div className="mt-6 grid gap-4 rounded-xl bg-gradient-to-br from-emerald-700 to-teal-800 p-6 text-white sm:grid-cols-3">
         <div>
-          <span className="text-xs font-semibold uppercase tracking-wider text-emerald-200">
+          <span className="text-xs font-semibold uppercase tracking-wider text-white">
             Total Calories Burned
           </span>
           <div className="mt-1 text-4xl font-extrabold">{totalCalories}</div>
-          <span className="text-xs text-emerald-100">kcal total energy</span>
+          <span className="text-xs text-white">kcal total energy</span>
         </div>
 
         <div>
-          <span className="text-xs font-semibold uppercase tracking-wider text-emerald-200">
+          <span className="text-xs font-semibold uppercase tracking-wider text-white">
             Burn Rate & MET
           </span>
           <div className="mt-1 text-3xl font-bold">{kcalPerMinute} kcal/min</div>
-          <span className="text-xs text-emerald-100">Activity MET: {currentAct.met}</span>
+          <span className="text-xs text-white">Activity MET: {currentAct.met}</span>
         </div>
 
         <div>
-          <span className="text-xs font-semibold uppercase tracking-wider text-emerald-200">
+          <span className="text-xs font-semibold uppercase tracking-wider text-white">
             Walking Equivalent
           </span>
           <div className="mt-1 text-2xl font-bold">{walkingMinutesEquivalent} min</div>
-          <span className="text-xs text-emerald-100">of brisk walking (3.5 mph)</span>
+          <span className="text-xs text-white">of brisk walking (3.5 mph)</span>
         </div>
       </div>
 
       <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
-        <p className="text-xs text-slate-500 dark:text-slate-400">
+        <p className="text-xs text-slate-600 dark:text-slate-400">
           Saved activity history is kept on this device for 28 days.
         </p>
         <button
           type="button"
           onClick={handleSave}
-          className="rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700"
+          className="rounded-lg bg-emerald-700 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700"
         >
           Save to History
         </button>
       </div>
 
       {historyError && (
-        <p role="alert" className="mt-3 text-sm text-rose-600 dark:text-rose-400">
+        <p role="alert" className="mt-3 text-sm text-rose-700 dark:text-rose-400">
           {historyError}
         </p>
       )}
@@ -280,7 +283,7 @@ export function ActivityCalorieTool() {
             <button
               type="button"
               onClick={handleClearHistory}
-              className="text-xs font-semibold text-rose-600 hover:text-rose-700 dark:text-rose-400"
+              className="text-xs font-semibold text-rose-700 hover:text-rose-700 dark:text-rose-400"
             >
               Clear All
             </button>
@@ -288,7 +291,7 @@ export function ActivityCalorieTool() {
         </div>
 
         {history.length === 0 ? (
-          <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">
+          <p className="mt-2 text-xs text-slate-600 dark:text-slate-400">
             Your saved activity calculations will appear here.
           </p>
         ) : (
@@ -306,7 +309,7 @@ export function ActivityCalorieTool() {
                     <p className="font-semibold text-slate-800 dark:text-slate-200">
                       {activity.name} · {record.calories} kcal
                     </p>
-                    <p className="text-xs text-slate-500 dark:text-slate-400">
+                    <p className="text-xs text-slate-600 dark:text-slate-400">
                       {record.durationMinutes} min · {record.weightKg.toFixed(1)} kg ·{" "}
                       {new Intl.DateTimeFormat(undefined, {
                         dateStyle: "medium",
@@ -325,7 +328,7 @@ export function ActivityCalorieTool() {
                     <button
                       type="button"
                       onClick={() => handleDelete(record.id)}
-                      className="rounded-md px-2 py-1 text-xs font-semibold text-rose-600 hover:bg-rose-50 dark:text-rose-400 dark:hover:bg-rose-950"
+                      className="rounded-md px-2 py-1 text-xs font-semibold text-rose-700 hover:bg-rose-50 dark:text-rose-400 dark:hover:bg-rose-950"
                       aria-label={`Delete saved ${activity.name} calculation`}
                     >
                       Delete

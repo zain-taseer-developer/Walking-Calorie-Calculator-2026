@@ -165,11 +165,11 @@ export default function TreadmillInclinePage() {
                 <tr key={mph} className="hover:bg-slate-50/70 dark:hover:bg-slate-900/50">
                   <td className="px-4 py-3 font-bold text-slate-900 dark:text-slate-100">{mph.toFixed(1)} mph</td>
                   <td className="px-4 py-3 text-slate-600 dark:text-slate-400">{(mph * 1.60934).toFixed(1)} km/h</td>
-                  <td className="px-4 py-3 font-mono font-medium text-emerald-600 dark:text-emerald-400">{formatPace(60 / mph)}</td>
-                  <td className="px-4 py-3 font-mono text-slate-500 dark:text-slate-400">{formatPace(60 / (mph * 1.60934))}</td>
+                  <td className="px-4 py-3 font-mono font-medium text-emerald-700 dark:text-emerald-400">{formatPace(60 / mph)}</td>
+                  <td className="px-4 py-3 font-mono text-slate-600 dark:text-slate-400">{formatPace(60 / (mph * 1.60934))}</td>
                   <td className="px-4 py-3 text-slate-700 dark:text-slate-300">{estimateInclineCalories(mph, 0)} kcal</td>
                   <td className="px-4 py-3 font-medium text-emerald-700 dark:text-emerald-300">{estimateInclineCalories(mph, 6)} kcal</td>
-                  <td className="px-4 py-3 font-bold text-emerald-600 dark:text-emerald-400">{estimateInclineCalories(mph, 12)} kcal</td>
+                  <td className="px-4 py-3 font-bold text-emerald-700 dark:text-emerald-400">{estimateInclineCalories(mph, 12)} kcal</td>
                 </tr>
               ))}
             </tbody>
@@ -282,9 +282,9 @@ export default function TreadmillInclinePage() {
       </div>
 
       {/* Internal Navigation to Flagship Tool */}
-      <div className="mt-12 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 p-8 text-white shadow-lg">
+      <div className="mt-12 rounded-2xl bg-gradient-to-r from-emerald-700 to-teal-800 p-8 text-white shadow-lg">
         <h3 className="text-2xl font-bold">Calculate Outdoor or Treadmill Walking Calories</h3>
-        <p className="mt-2 text-emerald-100">
+        <p className="mt-2 text-white">
           Explore our flagship walking calculator for fine-grained terrain adjustments, backpack loads, gross vs. net calories, and step tracking.
         </p>
         <div className="mt-6">

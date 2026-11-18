@@ -214,7 +214,7 @@ export function WalkingCalculator() {
               onChange={(e) => {
                 setInputs({ ...inputs, showNetCalories: e.target.checked });
               }}
-              className="w-4 h-4 rounded text-brand-600 focus:ring-brand-500 border-slate-300 dark:border-slate-700"
+              className="w-4 h-4 rounded text-brand-700 focus:ring-brand-500 border-slate-300 dark:border-slate-700"
             />
             <span>Show Net Calories (Exclude Resting Burn)</span>
           </label>
@@ -229,7 +229,7 @@ export function WalkingCalculator() {
             }}
             className={`flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all border ${
               inputs.mode === "time-speed"
-                ? "bg-brand-600 border-brand-600 text-white shadow-md shadow-brand-600/20"
+                ? "bg-brand-700 border-brand-600 text-white shadow-md shadow-brand-600/20"
                 : "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-slate-300 dark:hover:border-slate-700"
             }`}
           >
@@ -244,7 +244,7 @@ export function WalkingCalculator() {
             }}
             className={`flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all border ${
               inputs.mode === "distance-time"
-                ? "bg-brand-600 border-brand-600 text-white shadow-md shadow-brand-600/20"
+                ? "bg-brand-700 border-brand-600 text-white shadow-md shadow-brand-600/20"
                 : "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-slate-300 dark:hover:border-slate-700"
             }`}
           >
@@ -259,7 +259,7 @@ export function WalkingCalculator() {
             }}
             className={`flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all border ${
               inputs.mode === "steps"
-                ? "bg-brand-600 border-brand-600 text-white shadow-md shadow-brand-600/20"
+                ? "bg-brand-700 border-brand-600 text-white shadow-md shadow-brand-600/20"
                 : "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-slate-300 dark:hover:border-slate-700"
             }`}
           >
@@ -274,7 +274,7 @@ export function WalkingCalculator() {
             }}
             className={`flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all border ${
               inputs.mode === "treadmill"
-                ? "bg-brand-600 border-brand-600 text-white shadow-md shadow-brand-600/20"
+                ? "bg-brand-700 border-brand-600 text-white shadow-md shadow-brand-600/20"
                 : "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-slate-300 dark:hover:border-slate-700"
             }`}
           >
@@ -320,7 +320,7 @@ export function WalkingCalculator() {
                   }}
                   className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-base focus:ring-2 focus:ring-brand-500 focus:border-brand-500"
                 />
-                <span className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs font-semibold text-slate-400 pointer-events-none">
+                <span className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs font-semibold text-slate-600 dark:text-slate-400 pointer-events-none">
                   {isImperial ? "lbs" : "kg"}
                 </span>
               </div>
@@ -336,6 +336,7 @@ export function WalkingCalculator() {
                   <div className="relative">
                     <NumericInput
                       id="user-height-ft"
+                      aria-label="Height in feet"
                       inputMode="numeric"
                       min={3}
                       max={7}
@@ -350,11 +351,12 @@ export function WalkingCalculator() {
                       }}
                       className="w-full px-3 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-base focus:ring-2 focus:ring-brand-500"
                     />
-                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 pointer-events-none">ft</span>
+                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-600 dark:text-slate-400 pointer-events-none">ft</span>
                   </div>
                   <div className="relative">
                     <NumericInput
                       id="user-height-in"
+                      aria-label="Additional height in inches"
                       inputMode="numeric"
                       min={0}
                       max={11}
@@ -369,7 +371,7 @@ export function WalkingCalculator() {
                       }}
                       className="w-full px-3 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-base focus:ring-2 focus:ring-brand-500"
                     />
-                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 pointer-events-none">in</span>
+                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-600 dark:text-slate-400 pointer-events-none">in</span>
                   </div>
                 </div>
               ) : (
@@ -392,7 +394,7 @@ export function WalkingCalculator() {
                     }}
                     className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-base focus:ring-2 focus:ring-brand-500"
                   />
-                  <span className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs font-semibold text-slate-400 pointer-events-none">
+                  <span className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs font-semibold text-slate-600 dark:text-slate-400 pointer-events-none">
                     cm
                   </span>
                 </div>
@@ -412,6 +414,7 @@ export function WalkingCalculator() {
                   <div className="relative">
                     <NumericInput
                       id="duration-hours"
+                      aria-label="Walking duration in hours"
                       inputMode="numeric"
                       min={0}
                       max={23}
@@ -425,11 +428,12 @@ export function WalkingCalculator() {
                       }}
                       className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-base focus:ring-2 focus:ring-brand-500"
                     />
-                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 pointer-events-none">hours</span>
+                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-600 dark:text-slate-400 pointer-events-none">hours</span>
                   </div>
                   <div className="relative">
                     <NumericInput
                       id="duration-minutes"
+                      aria-label="Walking duration in minutes"
                       inputMode="numeric"
                       min={0}
                       max={59}
@@ -443,7 +447,7 @@ export function WalkingCalculator() {
                       }}
                       className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-base focus:ring-2 focus:ring-brand-500"
                     />
-                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 pointer-events-none">minutes</span>
+                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-600 dark:text-slate-400 pointer-events-none">minutes</span>
                   </div>
                 </div>
               </div>
@@ -463,12 +467,12 @@ export function WalkingCalculator() {
 
               {/* Incline Slider for Treadmill mode */}
               {inputs.mode === "treadmill" && (
-                <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 space-y-2">
+                <div className="p-4 rounded-xl bg-amber-700/10 border border-amber-500/20 space-y-2">
                   <div className="flex items-center justify-between">
                     <label htmlFor="treadmill-incline" className="text-xs font-semibold text-slate-800 dark:text-slate-200 uppercase tracking-wider">
                       Treadmill Incline (%)
                     </label>
-                    <span className="text-base font-bold text-amber-600 dark:text-amber-400 font-mono">
+                    <span className="text-base font-bold text-amber-700 dark:text-amber-400 font-mono">
                       {inputs.inclinePercent}%
                     </span>
                   </div>
@@ -487,7 +491,7 @@ export function WalkingCalculator() {
                     }}
                     className="w-full h-2.5 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-amber-600"
                   />
-                  <div className="flex justify-between text-[11px] text-slate-400">
+                  <div className="flex justify-between text-[11px] text-slate-600 dark:text-slate-400">
                     <span>0% (Flat)</span>
                     <span>5% (Moderate Hill)</span>
                     <span>12% (12-3-30 Workout)</span>
@@ -531,7 +535,7 @@ export function WalkingCalculator() {
                     }}
                     className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-base focus:ring-2 focus:ring-brand-500"
                   />
-                  <span className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs font-semibold text-slate-400 pointer-events-none">
+                  <span className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs font-semibold text-slate-600 dark:text-slate-400 pointer-events-none">
                     {isImperial ? "miles" : "km"}
                   </span>
                 </div>
@@ -546,6 +550,7 @@ export function WalkingCalculator() {
                   <div className="relative">
                     <NumericInput
                       id="dist-duration-hours"
+                      aria-label="Time taken in hours"
                       inputMode="numeric"
                       min={0}
                       max={23}
@@ -559,11 +564,12 @@ export function WalkingCalculator() {
                       }}
                       className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-base focus:ring-2 focus:ring-brand-500"
                     />
-                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 pointer-events-none">hours</span>
+                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-600 dark:text-slate-400 pointer-events-none">hours</span>
                   </div>
                   <div className="relative">
                     <NumericInput
                       id="dist-duration-minutes"
+                      aria-label="Time taken in minutes"
                       inputMode="numeric"
                       min={0}
                       max={59}
@@ -577,7 +583,7 @@ export function WalkingCalculator() {
                       }}
                       className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-base focus:ring-2 focus:ring-brand-500"
                     />
-                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 pointer-events-none">minutes</span>
+                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-600 dark:text-slate-400 pointer-events-none">minutes</span>
                   </div>
                 </div>
               </div>
@@ -608,7 +614,7 @@ export function WalkingCalculator() {
                     }}
                     className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-base focus:ring-2 focus:ring-brand-500"
                   />
-                  <span className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs font-semibold text-slate-400 pointer-events-none">
+                  <span className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs font-semibold text-slate-600 dark:text-slate-400 pointer-events-none">
                     steps
                   </span>
                 </div>
@@ -643,6 +649,7 @@ export function WalkingCalculator() {
                   <div className="relative">
                     <NumericInput
                       id="steps-duration-hours"
+                      aria-label="Optional walking time in hours"
                       inputMode="numeric"
                       min={0}
                       max={23}
@@ -656,11 +663,12 @@ export function WalkingCalculator() {
                       }}
                       className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-base focus:ring-2 focus:ring-brand-500"
                     />
-                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 pointer-events-none">hours</span>
+                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-600 dark:text-slate-400 pointer-events-none">hours</span>
                   </div>
                   <div className="relative">
                     <NumericInput
                       id="steps-duration-minutes"
+                      aria-label="Optional walking time in minutes"
                       inputMode="numeric"
                       min={0}
                       max={59}
@@ -674,7 +682,7 @@ export function WalkingCalculator() {
                       }}
                       className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-base focus:ring-2 focus:ring-brand-500"
                     />
-                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 pointer-events-none">minutes</span>
+                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-600 dark:text-slate-400 pointer-events-none">minutes</span>
                   </div>
                 </div>
               </div>
@@ -686,7 +694,7 @@ export function WalkingCalculator() {
             <button
               type="button"
               onClick={() => setShowAdvanced(!showAdvanced)}
-              className="flex items-center justify-between w-full text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 py-1"
+              className="flex items-center justify-between w-full text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-brand-700 dark:hover:text-brand-400 py-1"
             >
               <span className="flex items-center gap-1.5">
                 <Sliders className="w-3.5 h-3.5" />
@@ -748,7 +756,7 @@ export function WalkingCalculator() {
                     className="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm font-mono"
                     placeholder="0"
                   />
-                  <span className="text-[11px] text-slate-400 mt-0.5 block">
+                  <span className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5 block">
                     Carrying a loaded backpack increases aerobic demand proportionally.
                   </span>
                 </div>
@@ -766,12 +774,12 @@ export function WalkingCalculator() {
                 <p className="text-[11px] font-bold uppercase tracking-wider text-orange-700 dark:text-orange-300">
                   Live walking estimate
                 </p>
-                <h3 className="mt-1 text-lg font-extrabold text-slate-900 dark:text-white">
+                <h2 className="mt-1 text-lg font-extrabold text-slate-900 dark:text-white">
                   Your Walking Calculation
-                </h3>
+                </h2>
               </div>
               <p className="shrink-0 text-right">
-                <span className="block text-2xl font-black tabular-nums text-orange-600 dark:text-orange-400">
+                <span className="block text-2xl font-black tabular-nums text-orange-700 dark:text-orange-400">
                   {result.caloriesToDisplay.toLocaleString()}
                 </span>
                 <span className="text-xs font-bold text-slate-600 dark:text-slate-300">
@@ -782,7 +790,7 @@ export function WalkingCalculator() {
 
             <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3">
               <div className="rounded-xl border border-slate-200/80 bg-white/80 p-2.5 dark:border-slate-700 dark:bg-slate-800/80">
-                <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Duration</p>
+                <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400">Duration</p>
                 <p className="mt-0.5 text-sm font-bold text-slate-900 dark:text-white">
                   {result.durationTotalMinutes >= 60
                     ? `${Math.floor(result.durationTotalMinutes / 60)} hr ${Math.round(result.durationTotalMinutes % 60)} min`
@@ -790,39 +798,39 @@ export function WalkingCalculator() {
                 </p>
               </div>
               <div className="rounded-xl border border-slate-200/80 bg-white/80 p-2.5 dark:border-slate-700 dark:bg-slate-800/80">
-                <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Speed</p>
+                <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400">Speed</p>
                 <p className="mt-0.5 text-sm font-bold text-slate-900 dark:text-white">
                   {inputs.unitSystem === "imperial" ? `${result.speedMph} mph` : `${result.speedKmh} km/h`}
                 </p>
               </div>
               {inputs.inclinePercent > 0 && (
                 <div className="rounded-xl border border-slate-200/80 bg-white/80 p-2.5 dark:border-slate-700 dark:bg-slate-800/80">
-                  <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Incline</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400">Incline</p>
                   <p className="mt-0.5 text-sm font-bold text-slate-900 dark:text-white">{inputs.inclinePercent}%</p>
                 </div>
               )}
               <div className="rounded-xl border border-slate-200/80 bg-white/80 p-2.5 dark:border-slate-700 dark:bg-slate-800/80">
-                <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Distance</p>
+                <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400">Distance</p>
                 <p className="mt-0.5 text-sm font-bold text-slate-900 dark:text-white">
                   {inputs.unitSystem === "imperial" ? `${result.distanceMiles} mi` : `${result.distanceKm} km`}
                 </p>
               </div>
               <div className="rounded-xl border border-slate-200/80 bg-white/80 p-2.5 dark:border-slate-700 dark:bg-slate-800/80">
-                <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Estimated steps</p>
+                <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400">Estimated steps</p>
                 <p className="mt-0.5 text-sm font-bold text-slate-900 dark:text-white">~{result.steps.toLocaleString()}</p>
               </div>
               <div className="rounded-xl border border-slate-200/80 bg-white/80 p-2.5 dark:border-slate-700 dark:bg-slate-800/80">
-                <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Intensity</p>
+                <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400">Intensity</p>
                 <p className="mt-0.5 text-sm font-bold text-slate-900 dark:text-white">{result.met} MET</p>
               </div>
               <div className="rounded-xl border border-slate-200/80 bg-white/80 p-2.5 dark:border-slate-700 dark:bg-slate-800/80">
-                <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Body weight</p>
+                <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400">Body weight</p>
                 <p className="mt-0.5 text-sm font-bold text-slate-900 dark:text-white">
                   {inputs.unitSystem === "imperial" ? `${inputs.weightLbs} lbs` : `${inputs.weightKg} kg`}
                 </p>
               </div>
               <div className="rounded-xl border border-slate-200/80 bg-white/80 p-2.5 dark:border-slate-700 dark:bg-slate-800/80">
-                <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Pace</p>
+                <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400">Pace</p>
                 <p className="mt-0.5 text-sm font-bold text-slate-900 dark:text-white">
                   {inputs.unitSystem === "imperial" ? result.paceFormattedMile : result.paceFormattedKm}
                 </p>

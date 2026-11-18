@@ -149,7 +149,7 @@ export default function StepsToCaloriesPage() {
                     onClick={() => setSteps(s)}
                     className={`px-2.5 py-1 text-xs rounded-lg border font-medium transition-colors ${
                       steps === s
-                        ? "bg-brand-600 border-brand-600 text-white font-bold"
+                        ? "bg-brand-700 border-brand-600 text-white font-bold"
                         : "bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100"
                     }`}
                   >
@@ -178,6 +178,7 @@ export default function StepsToCaloriesPage() {
                   Walking Intensity
                 </label>
                 <select
+                  aria-label="Walking intensity"
                   value={paceType}
                   onChange={(e) => setPaceType(e.target.value as any)}
                   className="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm"
@@ -191,15 +192,15 @@ export default function StepsToCaloriesPage() {
           </div>
 
           {/* Results Block */}
-          <div className="p-6 rounded-2xl bg-gradient-to-br from-brand-600 to-teal-700 text-white shadow-lg space-y-4 text-center">
-            <span className="text-xs font-semibold text-teal-100 uppercase tracking-wider block">
+          <div className="p-6 rounded-2xl bg-gradient-to-br from-brand-700 to-teal-800 text-white shadow-lg space-y-4 text-center">
+            <span className="text-xs font-semibold text-white uppercase tracking-wider block">
               Estimated Energy Expended
             </span>
             <div>
               <div className="text-5xl font-black font-mono tracking-tight">
                 {calcResult.grossCalories}
               </div>
-              <div className="text-xl font-bold text-teal-100">Calories (kcal)</div>
+              <div className="text-xl font-bold text-white">Calories (kcal)</div>
             </div>
 
             <div className="pt-3 border-t border-white/20 grid grid-cols-3 gap-2 text-xs">
@@ -254,7 +255,7 @@ export default function StepsToCaloriesPage() {
 
         <p>
           Looking for additional variables such as hill incline, backpack weight, or terrain? Head over to our homepage{" "}
-          <Link href="/" className="font-bold text-brand-600 underline">
+          <Link href="/" className="font-bold text-brand-700 underline">
             walking calorie calculator
           </Link>{" "}
           for complete customization.

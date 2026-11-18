@@ -55,7 +55,7 @@ export function MaintenanceCalorieTool() {
           <h2 className="text-xl font-bold text-slate-900 dark:text-white">
             Maintenance Calories & TDEE Macro Calculator
           </h2>
-          <p className="text-xs text-slate-500">Mifflin-St Jeor energy expenditure & macro split</p>
+          <p className="text-xs text-slate-600 dark:text-slate-400">Mifflin-St Jeor energy expenditure & macro split</p>
         </div>
         <div className="flex rounded-lg border border-slate-200 bg-slate-100 p-0.5 text-xs font-semibold dark:border-slate-800 dark:bg-slate-800">
           <button
@@ -99,8 +99,10 @@ export function MaintenanceCalorieTool() {
             </button>
           </div>
           <div className="mt-2 flex items-center gap-1">
-            <span className="text-xs text-slate-500">Age:</span>
+            <label htmlFor="maintenance-age" className="text-xs text-slate-600">Age:</label>
             <input
+              id="maintenance-age"
+              aria-label="Age in years"
               type="number"
               min="15"
               max="110"
@@ -108,7 +110,7 @@ export function MaintenanceCalorieTool() {
               onChange={(e) => setAge(parseInt(e.target.value) || 25)}
               className="w-16 rounded border border-slate-300 px-2 py-0.5 text-xs font-bold dark:border-slate-700 dark:bg-slate-950"
             />
-            <span className="text-xs text-slate-400">years</span>
+            <span className="text-xs text-slate-600 dark:text-slate-400">years</span>
           </div>
         </div>
 
@@ -121,6 +123,7 @@ export function MaintenanceCalorieTool() {
             <div className="mt-1 flex gap-2">
               <div className="flex-1">
                 <input
+                  aria-label="Height in feet"
                   type="number"
                   min="3"
                   max="7"
@@ -128,10 +131,11 @@ export function MaintenanceCalorieTool() {
                   onChange={(e) => setFeet(parseInt(e.target.value) || 0)}
                   className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-lg font-bold text-slate-900 outline-none focus:border-emerald-600 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
                 />
-                <span className="text-[10px] text-slate-400">ft</span>
+                <span className="text-[10px] text-slate-600 dark:text-slate-400">ft</span>
               </div>
               <div className="flex-1">
                 <input
+                  aria-label="Additional height in inches"
                   type="number"
                   min="0"
                   max="11"
@@ -139,12 +143,13 @@ export function MaintenanceCalorieTool() {
                   onChange={(e) => setInches(parseInt(e.target.value) || 0)}
                   className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-lg font-bold text-slate-900 outline-none focus:border-emerald-600 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
                 />
-                <span className="text-[10px] text-slate-400">in</span>
+                <span className="text-[10px] text-slate-600 dark:text-slate-400">in</span>
               </div>
             </div>
           ) : (
             <div className="mt-1">
               <input
+                aria-label="Height in centimeters"
                 type="number"
                 min="100"
                 max="240"
@@ -152,7 +157,7 @@ export function MaintenanceCalorieTool() {
                 onChange={(e) => setCm(parseInt(e.target.value) || 0)}
                 className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-lg font-bold text-slate-900 outline-none focus:border-emerald-600 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
               />
-              <span className="text-[10px] text-slate-400">cm</span>
+              <span className="text-[10px] text-slate-600 dark:text-slate-400">cm</span>
             </div>
           )}
         </div>
@@ -165,6 +170,7 @@ export function MaintenanceCalorieTool() {
           {unit === "imperial" ? (
             <div className="mt-1">
               <input
+                aria-label="Body weight in pounds"
                 type="number"
                 min="60"
                 max="450"
@@ -172,11 +178,12 @@ export function MaintenanceCalorieTool() {
                 onChange={(e) => setWeightLbs(parseFloat(e.target.value) || 0)}
                 className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-lg font-bold text-slate-900 outline-none focus:border-emerald-600 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
               />
-              <span className="text-[10px] text-slate-400">lbs ({finalWeightKg.toFixed(1)} kg)</span>
+              <span className="text-[10px] text-slate-600 dark:text-slate-400">lbs ({finalWeightKg.toFixed(1)} kg)</span>
             </div>
           ) : (
             <div className="mt-1">
               <input
+                aria-label="Body weight in kilograms"
                 type="number"
                 min="30"
                 max="220"
@@ -184,7 +191,7 @@ export function MaintenanceCalorieTool() {
                 onChange={(e) => setWeightKg(parseFloat(e.target.value) || 0)}
                 className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-lg font-bold text-slate-900 outline-none focus:border-emerald-600 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
               />
-              <span className="text-[10px] text-slate-400">kg ({Math.round(weightKg * 2.20462)} lbs)</span>
+              <span className="text-[10px] text-slate-600 dark:text-slate-400">kg ({Math.round(weightKg * 2.20462)} lbs)</span>
             </div>
           )}
         </div>
@@ -194,7 +201,7 @@ export function MaintenanceCalorieTool() {
           <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
             Activity Level
           </label>
-          <select
+          <select aria-label="Daily activity level"
             value={activity}
             onChange={(e) => setActivity(parseFloat(e.target.value))}
             className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-2.5 py-2.5 text-xs font-medium text-slate-900 outline-none focus:border-emerald-600 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
@@ -225,10 +232,10 @@ export function MaintenanceCalorieTool() {
               key={g.id}
               type="button"
               onClick={() => setGoal(g.id)}
-              className={`rounded-xl border p-2.5 text-center transition ${goal === g.id ? "border-emerald-600 bg-emerald-50 text-emerald-900 font-bold dark:border-emerald-500 dark:bg-emerald-950/40 dark:text-emerald-200" : "border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 dark:border-slate-800 dark:bg-slate-800 dark:text-slate-300"}`}
+              className={`rounded-xl border p-2.5 text-center transition ${goal === g.id ? "border-emerald-600 bg-emerald-50 text-emerald-900 font-bold dark:border-emerald-500 dark:bg-emerald-950/40 dark:text-white" : "border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 dark:border-slate-800 dark:bg-slate-800 dark:text-slate-300"}`}
             >
               <div className="text-xs">{g.label}</div>
-              <div className="text-[10px] text-slate-500 dark:text-slate-400">{g.delta}</div>
+              <div className="text-[10px] text-slate-600 dark:text-slate-400">{g.delta}</div>
             </button>
           ))}
         </div>
@@ -238,25 +245,25 @@ export function MaintenanceCalorieTool() {
       <div className="mt-8 rounded-xl bg-slate-900 p-6 text-white dark:bg-slate-950">
         <div className="grid gap-6 sm:grid-cols-3">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+            <span className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
               Daily Target Calories
             </span>
             <div className="mt-1 text-5xl font-black text-emerald-400">{targetCalories}</div>
-            <span className="text-xs text-emerald-200">kcal to eat per day</span>
+            <span className="text-xs text-white">kcal to eat per day</span>
           </div>
 
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+            <span className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
               Maintenance TDEE & BMR
             </span>
             <div className="mt-1 text-2xl font-bold text-slate-100">{tdee} kcal/day</div>
-            <div className="mt-1 text-xs text-slate-400">
+            <div className="mt-1 text-xs text-slate-600 dark:text-slate-400">
               Basal Metabolic Rate (BMR): {roundedBmr} kcal
             </div>
           </div>
 
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+            <span className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
               Recommended Daily Macros
             </span>
             <div className="mt-1 space-y-1 text-xs">

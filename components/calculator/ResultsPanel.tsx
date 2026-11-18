@@ -121,7 +121,7 @@ export function ResultsPanel({ result, inputs, unitSystem, onReset }: ResultsPan
   return (
     <div className="w-full space-y-6">
       {/* Primary Hero Calorie Card */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-brand-600 via-teal-600 to-emerald-700 p-6 sm:p-7 text-white shadow-xl shadow-brand-900/15">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-brand-700 via-teal-700 to-emerald-700 p-6 sm:p-7 text-white shadow-xl shadow-brand-900/15">
         {/* Subtle decorative glow */}
         <div className="absolute -right-8 -top-8 w-44 h-44 rounded-full bg-white/10 blur-2xl pointer-events-none" />
 
@@ -140,12 +140,12 @@ export function ResultsPanel({ result, inputs, unitSystem, onReset }: ResultsPan
               >
                 {animatedCal.toLocaleString()}
               </span>
-              <span className="text-xl sm:text-2xl font-bold text-teal-100">
+              <span className="text-xl sm:text-2xl font-bold text-white">
                 kcal
               </span>
             </div>
 
-            <p className="text-xs text-teal-100/90 pt-1">
+            <p className="text-xs text-white/90 pt-1">
               {inputs.showNetCalories
                 ? "Excludes baseline resting metabolic burn (pure exercise expenditure)."
                 : "Includes basal metabolic rate + active walking energy expenditure."}
@@ -178,7 +178,7 @@ export function ResultsPanel({ result, inputs, unitSystem, onReset }: ResultsPan
               />
             </svg>
             <div className="absolute flex flex-col items-center justify-center text-center">
-              <span className="text-xs font-semibold text-teal-100">MET</span>
+              <span className="text-xs font-semibold text-white">MET</span>
               <span className="text-lg font-bold font-mono">{result.met}</span>
             </div>
           </div>
@@ -186,7 +186,7 @@ export function ResultsPanel({ result, inputs, unitSystem, onReset }: ResultsPan
 
         {/* Notes / ACSM alerts if any */}
         {result.notes.length > 0 && (
-          <div className="mt-4 pt-3 border-t border-white/15 text-xs text-teal-100 flex items-center gap-1.5">
+          <div className="mt-4 pt-3 border-t border-white/15 text-xs text-white flex items-center gap-1.5">
             <AlertCircle className="w-4 h-4 shrink-0 text-amber-300" />
             <span>{result.notes[0]}</span>
           </div>
@@ -197,56 +197,56 @@ export function ResultsPanel({ result, inputs, unitSystem, onReset }: ResultsPan
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {/* Metric 1: Rate (kcal/min) */}
         <div className="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
-          <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
-            <Activity className="w-3.5 h-3.5 text-brand-600 dark:text-brand-400" />
+          <div className="flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-400">
+            <Activity className="w-3.5 h-3.5 text-brand-700 dark:text-brand-400" />
             <span>Burn Rate</span>
           </div>
           <div className="mt-1 text-lg font-bold text-slate-900 dark:text-white font-mono">
-            {result.caloriesPerMinute} <span className="text-xs font-normal text-slate-500">kcal/min</span>
+            {result.caloriesPerMinute} <span className="text-xs font-normal text-slate-600 dark:text-slate-400">kcal/min</span>
           </div>
-          <div className="text-[11px] text-slate-400 mt-0.5">
+          <div className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
             {unitSystem === "imperial" ? `~${result.caloriesPerMile} /mi` : `~${result.caloriesPerKm} /km`}
           </div>
         </div>
 
         {/* Metric 2: Distance */}
         <div className="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
-          <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
-            <Navigation className="w-3.5 h-3.5 text-brand-600 dark:text-brand-400" />
+          <div className="flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-400">
+            <Navigation className="w-3.5 h-3.5 text-brand-700 dark:text-brand-400" />
             <span>Distance</span>
           </div>
           <div className="mt-1 text-lg font-bold text-slate-900 dark:text-white font-mono">
             {unitSystem === "imperial" ? `${result.distanceMiles} mi` : `${result.distanceKm} km`}
           </div>
-          <div className="text-[11px] text-slate-400 mt-0.5">
+          <div className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
             {unitSystem === "imperial" ? `${result.distanceKm} km` : `${result.distanceMiles} mi`}
           </div>
         </div>
 
         {/* Metric 3: Steps */}
         <div className="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
-          <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
-            <Footprints className="w-3.5 h-3.5 text-brand-600 dark:text-brand-400" />
+          <div className="flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-400">
+            <Footprints className="w-3.5 h-3.5 text-brand-700 dark:text-brand-400" />
             <span>Steps</span>
           </div>
           <div className="mt-1 text-lg font-bold text-slate-900 dark:text-white font-mono">
             ~{result.steps.toLocaleString()}
           </div>
-          <div className="text-[11px] text-slate-400 mt-0.5">
+          <div className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
             {unitSystem === "imperial" ? `${result.stepsPerMile} steps/mi` : `${result.stepsPerKm} steps/km`}
           </div>
         </div>
 
         {/* Metric 4: Pace */}
         <div className="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
-          <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
-            <Clock className="w-3.5 h-3.5 text-brand-600 dark:text-brand-400" />
+          <div className="flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-400">
+            <Clock className="w-3.5 h-3.5 text-brand-700 dark:text-brand-400" />
             <span>Average Pace</span>
           </div>
           <div className="mt-1 text-lg font-bold text-slate-900 dark:text-white font-mono">
             {unitSystem === "imperial" ? result.paceFormattedMile : result.paceFormattedKm}
           </div>
-          <div className="text-[11px] text-slate-400 mt-0.5">
+          <div className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
             {unitSystem === "imperial" ? result.paceFormattedKm : result.paceFormattedMile}
           </div>
         </div>
@@ -264,7 +264,7 @@ export function ResultsPanel({ result, inputs, unitSystem, onReset }: ResultsPan
             <div className="mt-1 text-base font-bold text-slate-900 dark:text-white font-mono">
               {result.fatGramsBurned} g
             </div>
-            <div className="text-[11px] text-slate-500 dark:text-slate-400">
+            <div className="text-[11px] text-slate-600 dark:text-slate-400">
               body fat ({result.fatLbsBurned} lb)
             </div>
           </div>
@@ -274,7 +274,7 @@ export function ResultsPanel({ result, inputs, unitSystem, onReset }: ResultsPan
             <div className="mt-1 text-base font-bold text-slate-900 dark:text-white font-mono">
               {result.foodEquivalents.bananas}
             </div>
-            <div className="text-[11px] text-slate-500 dark:text-slate-400">
+            <div className="text-[11px] text-slate-600 dark:text-slate-400">
               medium bananas (~105 kcal)
             </div>
           </div>
@@ -284,7 +284,7 @@ export function ResultsPanel({ result, inputs, unitSystem, onReset }: ResultsPan
             <div className="mt-1 text-base font-bold text-slate-900 dark:text-white font-mono">
               {result.foodEquivalents.pizzaSlices}
             </div>
-            <div className="text-[11px] text-slate-500 dark:text-slate-400">
+            <div className="text-[11px] text-slate-600 dark:text-slate-400">
               slices of pizza (~285 kcal)
             </div>
           </div>
@@ -294,7 +294,7 @@ export function ResultsPanel({ result, inputs, unitSystem, onReset }: ResultsPan
             <div className="mt-1 text-base font-bold text-slate-900 dark:text-white font-mono">
               {result.foodEquivalents.cookies}
             </div>
-            <div className="text-[11px] text-slate-500 dark:text-slate-400">
+            <div className="text-[11px] text-slate-600 dark:text-slate-400">
               cookies (~150 kcal)
             </div>
           </div>
@@ -319,7 +319,7 @@ export function ResultsPanel({ result, inputs, unitSystem, onReset }: ResultsPan
             onClick={handleCopy}
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-medium transition-colors"
           >
-            {copied ? <Check className="w-3.5 h-3.5 text-brand-600" /> : <Copy className="w-3.5 h-3.5" />}
+            {copied ? <Check className="w-3.5 h-3.5 text-brand-700" /> : <Copy className="w-3.5 h-3.5" />}
             <span>{copied ? "Copied!" : "Copy Result"}</span>
           </button>
 
@@ -328,7 +328,7 @@ export function ResultsPanel({ result, inputs, unitSystem, onReset }: ResultsPan
             onClick={handleShare}
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-medium transition-colors"
           >
-            {shared ? <Check className="w-3.5 h-3.5 text-brand-600" /> : <Share2 className="w-3.5 h-3.5" />}
+            {shared ? <Check className="w-3.5 h-3.5 text-brand-700" /> : <Share2 className="w-3.5 h-3.5" />}
             <span>{shared ? "Link Copied!" : "Share Link"}</span>
           </button>
 
@@ -345,7 +345,7 @@ export function ResultsPanel({ result, inputs, unitSystem, onReset }: ResultsPan
         <button
           type="button"
           onClick={onReset}
-          className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition-colors"
+          className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition-colors"
         >
           <RotateCcw className="w-3.5 h-3.5" />
           <span>Reset Defaults</span>
@@ -353,9 +353,9 @@ export function ResultsPanel({ result, inputs, unitSystem, onReset }: ResultsPan
       </div>
 
       {/* Medical disclaimer link */}
-      <div className="text-center text-[11px] text-slate-400 dark:text-slate-500">
+      <div className="text-center text-[11px] text-slate-600 dark:text-slate-400">
         Walking MET estimates use the 2024 Adult Compendium.{" "}
-        <Link href="/medical-disclaimer" className="underline hover:text-brand-600">
+        <Link href="/medical-disclaimer" className="underline hover:text-brand-700">
           Medical Disclaimer
         </Link>
       </div>

@@ -30,47 +30,47 @@ export function BMICalculatorTool() {
 
   // Classification
   let category = "Normal weight";
-  let colorClass = "text-emerald-500";
+  let colorClass = "text-emerald-700";
   let bgClass = "bg-emerald-500";
 
   if (isAsianStandard) {
     if (bmi < 18.5) {
       category = "Underweight";
-      colorClass = "text-amber-500";
-      bgClass = "bg-amber-500";
+      colorClass = "text-amber-700";
+      bgClass = "bg-amber-700";
     } else if (bmi <= 22.9) {
       category = "Normal weight";
-      colorClass = "text-emerald-500";
+      colorClass = "text-emerald-700";
       bgClass = "bg-emerald-500";
     } else if (bmi <= 27.4) {
       category = "Overweight";
-      colorClass = "text-orange-500";
+      colorClass = "text-orange-700";
       bgClass = "bg-orange-500";
     } else {
       category = "Obesity";
-      colorClass = "text-rose-500";
+      colorClass = "text-rose-700";
       bgClass = "bg-rose-500";
     }
   } else {
     if (bmi < 18.5) {
       category = "Underweight";
-      colorClass = "text-amber-500";
-      bgClass = "bg-amber-500";
+      colorClass = "text-amber-700";
+      bgClass = "bg-amber-700";
     } else if (bmi <= 24.9) {
       category = "Normal weight";
-      colorClass = "text-emerald-500";
+      colorClass = "text-emerald-700";
       bgClass = "bg-emerald-500";
     } else if (bmi <= 29.9) {
       category = "Overweight";
-      colorClass = "text-orange-500";
+      colorClass = "text-orange-700";
       bgClass = "bg-orange-500";
     } else if (bmi <= 34.9) {
       category = "Obese (Class 1)";
-      colorClass = "text-rose-500";
+      colorClass = "text-rose-700";
       bgClass = "bg-rose-500";
     } else {
       category = "Obese (Class 2 / 3)";
-      colorClass = "text-rose-600";
+      colorClass = "text-rose-700";
       bgClass = "bg-rose-600";
     }
   }
@@ -94,7 +94,7 @@ export function BMICalculatorTool() {
           <h2 className="text-xl font-bold text-slate-900 dark:text-white">
             Body Mass Index & FFMI Calculator
           </h2>
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-slate-600 dark:text-slate-400">
             Adult BMI categories; age and sex do not change these results
           </p>
         </div>
@@ -149,8 +149,10 @@ export function BMICalculatorTool() {
             </button>
           </div>
           <div className="mt-2 flex items-center gap-1">
-            <span className="text-xs text-slate-500">Age:</span>
+            <label htmlFor="bmi-age" className="text-xs text-slate-600">Age:</label>
             <input
+              id="bmi-age"
+              aria-label="Age in years"
               type="number"
               min="2"
               max="120"
@@ -158,7 +160,7 @@ export function BMICalculatorTool() {
               onChange={(e) => setAge(parseInt(e.target.value) || 20)}
               className="w-16 rounded border border-slate-300 px-2 py-0.5 text-xs font-bold dark:border-slate-700 dark:bg-slate-950"
             />
-            <span className="text-xs text-slate-400">yrs</span>
+            <span className="text-xs text-slate-600 dark:text-slate-400">yrs</span>
           </div>
         </div>
 
@@ -171,6 +173,7 @@ export function BMICalculatorTool() {
             <div className="mt-1 flex gap-2">
               <div className="flex-1">
                 <input
+                  aria-label="Height in feet"
                   type="number"
                   min="3"
                   max="7"
@@ -178,10 +181,11 @@ export function BMICalculatorTool() {
                   onChange={(e) => setFeet(parseInt(e.target.value) || 0)}
                   className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-lg font-bold text-slate-900 outline-none focus:border-emerald-600 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
                 />
-                <span className="text-[10px] text-slate-400">ft</span>
+                <span className="text-[10px] text-slate-600 dark:text-slate-400">ft</span>
               </div>
               <div className="flex-1">
                 <input
+                  aria-label="Additional height in inches"
                   type="number"
                   min="0"
                   max="11"
@@ -189,12 +193,13 @@ export function BMICalculatorTool() {
                   onChange={(e) => setInches(parseInt(e.target.value) || 0)}
                   className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-lg font-bold text-slate-900 outline-none focus:border-emerald-600 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
                 />
-                <span className="text-[10px] text-slate-400">in</span>
+                <span className="text-[10px] text-slate-600 dark:text-slate-400">in</span>
               </div>
             </div>
           ) : (
             <div className="mt-1">
               <input
+                aria-label="Height in centimeters"
                 type="number"
                 min="90"
                 max="240"
@@ -202,7 +207,7 @@ export function BMICalculatorTool() {
                 onChange={(e) => setCm(parseInt(e.target.value) || 0)}
                 className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-lg font-bold text-slate-900 outline-none focus:border-emerald-600 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
               />
-              <span className="text-[10px] text-slate-400">cm</span>
+              <span className="text-[10px] text-slate-600 dark:text-slate-400">cm</span>
             </div>
           )}
         </div>
@@ -215,6 +220,7 @@ export function BMICalculatorTool() {
           {unit === "imperial" ? (
             <div className="mt-1">
               <input
+                aria-label="Body weight in pounds"
                 type="number"
                 min="40"
                 max="500"
@@ -222,11 +228,12 @@ export function BMICalculatorTool() {
                 onChange={(e) => setWeightLbs(parseFloat(e.target.value) || 0)}
                 className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-lg font-bold text-slate-900 outline-none focus:border-emerald-600 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
               />
-              <span className="text-[10px] text-slate-400">lbs ({finalWeightKg.toFixed(1)} kg)</span>
+              <span className="text-[10px] text-slate-600 dark:text-slate-400">lbs ({finalWeightKg.toFixed(1)} kg)</span>
             </div>
           ) : (
             <div className="mt-1">
               <input
+                aria-label="Body weight in kilograms"
                 type="number"
                 min="20"
                 max="250"
@@ -234,7 +241,7 @@ export function BMICalculatorTool() {
                 onChange={(e) => setWeightKg(parseFloat(e.target.value) || 0)}
                 className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-lg font-bold text-slate-900 outline-none focus:border-emerald-600 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
               />
-              <span className="text-[10px] text-slate-400">kg ({Math.round(weightKg * 2.20462)} lbs)</span>
+              <span className="text-[10px] text-slate-600 dark:text-slate-400">kg ({Math.round(weightKg * 2.20462)} lbs)</span>
             </div>
           )}
         </div>
@@ -246,6 +253,7 @@ export function BMICalculatorTool() {
           </label>
           <div className="mt-1 flex items-center">
             <input
+              aria-label="Body fat percentage, optional"
               type="number"
               step="0.5"
               min="4"
@@ -255,9 +263,9 @@ export function BMICalculatorTool() {
               className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-lg font-bold text-slate-900 outline-none focus:border-emerald-600 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
               placeholder="e.g. 20"
             />
-            <span className="ml-2 text-sm font-bold text-slate-400">%</span>
+            <span className="ml-2 text-sm font-bold text-slate-600 dark:text-slate-400">%</span>
           </div>
-          <span className="text-[10px] text-slate-400">Enables FFMI muscle index</span>
+          <span className="text-[10px] text-slate-600 dark:text-slate-400">Enables FFMI muscle index</span>
         </div>
       </div>
 
@@ -265,7 +273,7 @@ export function BMICalculatorTool() {
       <div className="mt-8 rounded-xl bg-slate-900 p-6 text-white dark:bg-slate-950">
         <div className="grid gap-6 sm:grid-cols-3">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+            <span className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
               Your Body Mass Index (BMI)
             </span>
             <div className="mt-2 text-5xl font-black text-emerald-400">{bmi}</div>
@@ -273,7 +281,7 @@ export function BMICalculatorTool() {
           </div>
 
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+            <span className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
               Healthy Weight for Your Height
             </span>
             <div className="mt-2 text-lg font-bold text-slate-100">
@@ -281,19 +289,19 @@ export function BMICalculatorTool() {
                 ? `${minHealthyLbs} - ${maxHealthyLbs} lbs`
                 : `${minHealthyKg} - ${maxHealthyKg} kg`}
             </div>
-            <p className="mt-1 text-xs text-slate-400">
+            <p className="mt-1 text-xs text-slate-600 dark:text-slate-400">
               Represents standard normal BMI range (18.5 - 24.9)
             </p>
           </div>
 
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+            <span className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
               Fat-Free Mass Index (FFMI)
             </span>
             <div className="mt-2 text-lg font-bold text-teal-300">
               {normalizedFfmi ? `${normalizedFfmi} (Normalized)` : "Add BF% above"}
             </div>
-            <p className="mt-1 text-xs text-slate-400">
+            <p className="mt-1 text-xs text-slate-600 dark:text-slate-400">
               {normalizedFfmi
                 ? "Height-adjusted estimate; not a health classification"
                 : "Enter body fat % to estimate FFMI"}
@@ -309,7 +317,7 @@ export function BMICalculatorTool() {
               style={{ width: `${Math.min(Math.max((bmi / 40) * 100, 5), 100)}%` }}
             />
           </div>
-          <div className="mt-2 flex justify-between text-[11px] text-slate-400">
+          <div className="mt-2 flex justify-between text-[11px] text-slate-600 dark:text-slate-400">
             <span>&lt; 18.5 (Underweight)</span>
             <span>18.5 - 24.9 (Normal)</span>
             <span>25.0 - 29.9 (Overweight)</span>

@@ -140,7 +140,7 @@ export default function StepsToMilesPage() {
                     onClick={() => setSteps(count)}
                     className={`px-2.5 py-1 text-xs rounded-lg border font-medium transition-colors ${
                       steps === count
-                        ? "bg-brand-600 border-brand-600 text-white font-bold"
+                        ? "bg-brand-700 border-brand-600 text-white font-bold"
                         : "bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100"
                     }`}
                   >
@@ -158,39 +158,41 @@ export default function StepsToMilesPage() {
               <div className="grid grid-cols-2 gap-3">
                 <div className="relative">
                   <input
+                    aria-label="Height in feet"
                     type="number"
                     value={heightFt}
                     onChange={(e) => setHeightFt(parseInt(e.target.value, 10) || 5)}
                     className="w-full px-3.5 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono"
                   />
-                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400">ft</span>
+                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-600 dark:text-slate-400">ft</span>
                 </div>
                 <div className="relative">
                   <input
+                    aria-label="Additional height in inches"
                     type="number"
                     value={heightIn}
                     onChange={(e) => setHeightIn(parseInt(e.target.value, 10) || 0)}
                     className="w-full px-3.5 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono"
                   />
-                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400">in</span>
+                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-600 dark:text-slate-400">in</span>
                 </div>
               </div>
-              <p className="text-[11px] text-slate-400 mt-1">
+              <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-1">
                 Estimated stride: {activeStrideFt.toFixed(2)} ft ({activeStrideM.toFixed(2)} m)
               </p>
             </div>
           </div>
 
           {/* Results Box */}
-          <div className="p-6 rounded-2xl bg-gradient-to-br from-brand-600 to-teal-700 text-white shadow-lg space-y-4 text-center">
-            <span className="text-xs font-semibold text-teal-100 uppercase tracking-wider block">
+          <div className="p-6 rounded-2xl bg-gradient-to-br from-brand-700 to-teal-800 text-white shadow-lg space-y-4 text-center">
+            <span className="text-xs font-semibold text-white uppercase tracking-wider block">
               Calculated Ground Distance
             </span>
             <div>
               <div className="text-5xl font-black font-mono tracking-tight">
                 {distanceMiles.toFixed(2)}
               </div>
-              <div className="text-xl font-bold text-teal-100">Miles</div>
+              <div className="text-xl font-bold text-white">Miles</div>
             </div>
 
             <div className="pt-3 border-t border-white/20 grid grid-cols-2 gap-2 text-xs">
@@ -233,7 +235,7 @@ export default function StepsToMilesPage() {
               key={instruction}
               className="flex items-start gap-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 text-sm text-slate-700 dark:text-slate-300"
             >
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-600 text-xs font-bold text-white">
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-700 text-xs font-bold text-white">
                 {index + 1}
               </span>
               <span className="leading-relaxed">{instruction}</span>
@@ -278,7 +280,7 @@ export default function StepsToMilesPage() {
 
         <p>
           If you also want to see how many calories your daily walk burns, head over to our flagship{" "}
-          <Link href="/" className="font-bold text-brand-600 underline">
+          <Link href="/" className="font-bold text-brand-700 underline">
             walking calorie calculator
           </Link>{" "}
           to input your exact body weight and terrain factors.

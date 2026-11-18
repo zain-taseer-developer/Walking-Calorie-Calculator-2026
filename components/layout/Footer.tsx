@@ -16,10 +16,10 @@ export function Footer() {
               className="inline-flex rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
               imageClassName="h-auto w-[220px]"
             />
-            <p className="text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+            <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-400">
               Walking estimates use 2024 Adult Compendium MET references and ACSM incline equations. Free and privacy-first.
             </p>
-            <div className="flex items-center gap-2 text-xs text-slate-500">
+            <div className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400">
               <ShieldCheck className="w-4 h-4 text-brand-600 dark:text-brand-400" />
               <span>Evidence-based metabolic algorithms</span>
             </div>
@@ -35,7 +35,7 @@ export function Footer() {
                 <li key={tool.href}>
                   <Link
                     href={tool.href}
-                    className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
+                    className="hover:text-brand-700 dark:hover:text-brand-400 transition-colors"
                   >
                     {tool.title}
                   </Link>
@@ -54,7 +54,7 @@ export function Footer() {
                 <li key={tool.href}>
                   <Link
                     href={tool.href}
-                    className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
+                    className="hover:text-brand-700 dark:hover:text-brand-400 transition-colors"
                   >
                     {tool.title}
                   </Link>
@@ -63,7 +63,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/blog"
-                  className="hover:text-brand-600 dark:hover:text-brand-400 font-medium transition-colors"
+                  className="hover:text-brand-700 dark:hover:text-brand-400 font-medium transition-colors"
                 >
                   Walking & Fitness Blog &rarr;
                 </Link>
@@ -81,7 +81,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
+                    className="hover:text-brand-700 dark:hover:text-brand-400 transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -92,7 +92,7 @@ export function Footer() {
         </div>
 
         {/* Medical & Accuracy Disclaimer */}
-        <div className="mt-12 pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-500 leading-relaxed space-y-3">
+        <div className="mt-12 pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 leading-relaxed space-y-3">
           <p>
             <strong className="font-semibold text-slate-700 dark:text-slate-400">Medical & Scientific Disclaimer:</strong>{" "}
             All calorie expenditures, step estimations, and metabolic calculations generated on {siteConfig.SITE_NAME} are intended solely for personal fitness guidance, educational exploration, and informational reference. They do not constitute clinical health evaluations, diagnostic recommendations, or personalized medical counsel. Individual caloric burn rates naturally deviate based on body composition, muscle efficiency, hormonal health, ambient climate, and stride mechanics. Always consult your primary physician or a qualified healthcare specialist before initiating any intensive physical training or weight loss regimen.
@@ -101,7 +101,7 @@ export function Footer() {
             <div>
               &copy; {currentYear} {siteConfig.SITE_NAME}. All rights reserved.
             </div>
-            <div className="flex items-center gap-1 text-slate-500">
+            <div className="flex items-center gap-1 text-slate-600 dark:text-slate-400">
               <span>Engineered with accuracy & care</span>
             </div>
           </div>

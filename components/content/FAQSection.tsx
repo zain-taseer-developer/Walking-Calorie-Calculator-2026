@@ -63,13 +63,13 @@ export function FAQSection({
               <button
                 type="button"
                 onClick={() => toggleIndex(idx)}
-                className="w-full py-4 px-5 text-left flex items-center justify-between gap-4 font-semibold text-slate-900 dark:text-white text-base hover:text-brand-600 dark:hover:text-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-500"
+                className="w-full py-4 px-5 text-left flex items-center justify-between gap-4 font-semibold text-slate-900 dark:text-white text-base hover:text-brand-700 dark:hover:text-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-500"
                 aria-expanded={isOpen}
               >
                 <span>{faq.question}</span>
                 <ChevronDown
                   className={`w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200 ${
-                    isOpen ? "rotate-180 text-brand-600" : ""
+                    isOpen ? "rotate-180 text-brand-700" : ""
                   }`}
                 />
               </button>

@@ -146,7 +146,7 @@ export default function MaintenanceCalorieCalculatorPage() {
               {activityLevels.map((row) => (
                 <tr key={row.level} className="hover:bg-slate-50/70 dark:hover:bg-slate-900/50">
                   <td className="px-4 py-3 font-bold text-slate-900 dark:text-slate-100">{row.level}</td>
-                  <td className="px-4 py-3 font-mono font-bold text-emerald-600 dark:text-emerald-400">{row.multiplier}</td>
+                  <td className="px-4 py-3 font-mono font-bold text-emerald-700 dark:text-emerald-400">{row.multiplier}</td>
                   <td className="px-4 py-3 text-slate-600 dark:text-slate-400">{row.description}</td>
                 </tr>
               ))}
@@ -260,9 +260,9 @@ export default function MaintenanceCalorieCalculatorPage() {
       </div>
 
       {/* Internal Navigation to Flagship Tool */}
-      <div className="mt-12 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 p-8 text-white shadow-lg">
+      <div className="mt-12 rounded-2xl bg-gradient-to-r from-emerald-700 to-teal-800 p-8 text-white shadow-lg">
         <h3 className="text-2xl font-bold">Incorporate Walking Into Your Daily TDEE</h3>
-        <p className="mt-2 text-emerald-100">
+        <p className="mt-2 text-white">
           Walking can be one way to add movement to your routine. Use our calculator to estimate energy used while walking.
         </p>
         <div className="mt-6">

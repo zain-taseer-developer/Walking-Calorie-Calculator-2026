@@ -194,7 +194,7 @@ export default function WeightConverterPage() {
               {commonWeightsLbs.map((lbs) => (
                 <tr key={lbs} className="hover:bg-slate-50/70 dark:hover:bg-slate-900/50">
                   <td className="px-4 py-3 font-medium text-slate-900 dark:text-slate-100">{lbs} lbs</td>
-                  <td className="px-4 py-3 font-bold text-emerald-600 dark:text-emerald-400">{(lbs * 0.45359237).toFixed(2)} kg</td>
+                  <td className="px-4 py-3 font-bold text-emerald-700 dark:text-emerald-400">{(lbs * 0.45359237).toFixed(2)} kg</td>
                 </tr>
               ))}
             </tbody>
@@ -214,7 +214,7 @@ export default function WeightConverterPage() {
           A common simplified MET estimate is gross calories = MET × body weight in kg × duration in hours. Body mass is one input in this calculation, and some activity-science formulas are written with kilograms, so an accurate conversion keeps the units consistent. Weight is not the only factor: estimated expenditure also depends on activity intensity and duration, and real energy use varies among individuals.
         </p>
         <p>
-          Use your converted weight with our <Link href="/" className="font-semibold text-emerald-600 hover:underline dark:text-emerald-400">Walking Calorie Calculator</Link> or the <Link href="/calories-burned-calculator" className="font-semibold text-emerald-600 hover:underline dark:text-emerald-400">Calories Burned Calculator</Link>. You can also explore the <Link href="/maintenance-calorie-calculator" className="font-semibold text-emerald-600 hover:underline dark:text-emerald-400">Maintenance Calorie &amp; TDEE Calculator</Link>, <Link href="/bmi-calculator" className="font-semibold text-emerald-600 hover:underline dark:text-emerald-400">BMI &amp; FFMI Calculator</Link>, and <Link href="/walking-calories-burned-chart" className="font-semibold text-emerald-600 hover:underline dark:text-emerald-400">Walking Calories Burned Chart</Link>.
+          Use your converted weight with our <Link href="/" className="font-semibold text-emerald-700 hover:underline dark:text-emerald-400">Walking Calorie Calculator</Link> or the <Link href="/calories-burned-calculator" className="font-semibold text-emerald-700 hover:underline dark:text-emerald-400">Calories Burned Calculator</Link>. You can also explore the <Link href="/maintenance-calorie-calculator" className="font-semibold text-emerald-700 hover:underline dark:text-emerald-400">Maintenance Calorie &amp; TDEE Calculator</Link>, <Link href="/bmi-calculator" className="font-semibold text-emerald-700 hover:underline dark:text-emerald-400">BMI &amp; FFMI Calculator</Link>, and <Link href="/walking-calories-burned-chart" className="font-semibold text-emerald-700 hover:underline dark:text-emerald-400">Walking Calories Burned Chart</Link>.
         </p>
       </section>
 
@@ -227,9 +227,9 @@ export default function WeightConverterPage() {
       </div>
 
       {/* Internal Navigation to Flagship Tool */}
-      <div className="mt-12 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 p-8 text-white shadow-lg">
+      <div className="mt-12 rounded-2xl bg-gradient-to-r from-emerald-700 to-teal-800 p-8 text-white shadow-lg">
         <h2 className="text-2xl font-bold">Calculate Calories Burned for Your Weight</h2>
-        <p className="mt-2 text-emerald-100">
+        <p className="mt-2 text-white">
           Use your weight in kilograms or pounds to estimate energy expenditure for different walking speeds, step counts, and inclines.
         </p>
         <div className="mt-6">
