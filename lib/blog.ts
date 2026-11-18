@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { authorConfig } from "@/config/author";
 
 export interface BlogPostFrontmatter {
   title: string;
@@ -74,7 +75,7 @@ export function getAllPosts(): BlogPost[] {
         tags: Array.isArray(data.tags) ? data.tags : [],
         publishedAt: data.publishedAt || new Date().toISOString().split("T")[0],
         updatedAt: data.updatedAt,
-        author: data.author || "Editorial Fitness Team",
+        author: data.author || authorConfig.name,
         authorBio: data.authorBio,
         featuredImage: data.featuredImage,
         featuredImageAlt: data.featuredImageAlt,

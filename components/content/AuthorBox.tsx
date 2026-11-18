@@ -18,7 +18,7 @@ export function AuthorBox({
 }) {
   return (
     <div className="not-prose my-8 p-5 sm:p-6 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-start gap-4">
-      {/* <!-- TODO: asli author ka naam aur bio add karna --> */}
+
       <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-600 to-teal-400 text-white flex items-center justify-center font-bold text-lg shadow-sm shrink-0">
         <UserCheck className="w-6 h-6" />
       </div>

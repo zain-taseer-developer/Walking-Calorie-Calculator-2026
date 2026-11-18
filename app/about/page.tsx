@@ -74,7 +74,7 @@ export default function AboutPage() {
 
         <h2>Editorial Leadership &amp; Authorship</h2>
         <p>
-          Our guides and algorithms are developed and maintained by the <strong>{siteConfig.AUTHOR_NAME}</strong>. We synthesize publications from the American College of Sports Medicine (ACSM), the Centers for Disease Control and Prevention (CDC), the National Institutes of Health (NIH), and leading biomechanics laboratories worldwide.
+          Guides and algorithms on {siteConfig.SITE_NAME} are developed and maintained by <strong>{siteConfig.AUTHOR_NAME}</strong>. {siteConfig.SITE_NAME} synthesizes publications from the American College of Sports Medicine (ACSM), the Centers for Disease Control and Prevention (CDC), the National Institutes of Health (NIH), and leading biomechanics laboratories worldwide.
         </p>
 
         <p>
@@ -84,7 +84,7 @@ export default function AboutPage() {
           </Link>.
         </p>
 
-        <h2>Contacting Our Team</h2>
+        <h2>Contacting WalkingCalorieCalc</h2>
         <p>
           Have questions, identified an edge case in our calculator, or want to suggest a new feature? We welcome feedback from exercise physiologists, personal trainers, and everyday walkers alike. Please reach out via our{" "}
           <Link href="/contact" className="text-brand-600 underline font-medium">

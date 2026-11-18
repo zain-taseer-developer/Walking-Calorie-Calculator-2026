@@ -1,3 +1,5 @@
+import { authorConfig } from "@/config/author";
+
 /**
  * Site Configuration & Global Constants
  * Edit values here or override via environment variables.
@@ -19,12 +21,12 @@ export const siteConfig = {
   SITE_TAGLINE: "Accurate, Science-Backed Calories Burned Walking Calculator",
   DOMAIN: process.env.NEXT_PUBLIC_DOMAIN || "www.walkingcaloriecalc.com",
   CANONICAL_URL: canonicalUrl.origin,
-  CONTACT_EMAIL: "zainndevv@gmail.com",
+  CONTACT_EMAIL: authorConfig.contactEmail,
   
-  // Author & Editorial Transparency (placeholders for the publisher to fill in their real name & bio)
-  AUTHOR_NAME: process.env.NEXT_PUBLIC_AUTHOR_NAME || "Editorial Fitness Team",
-  AUTHOR_TITLE: "Fitness & Nutrition Researchers",
-  AUTHOR_BIO: process.env.NEXT_PUBLIC_AUTHOR_BIO || "Our team synthesizes peer-reviewed exercise science, clinical walking guidelines, and physical activity compendiums to make fitness metrics accessible, transparent, and accurate.",
+  // Author & Editorial Transparency (single source of truth in config/author.ts)
+  AUTHOR_NAME: process.env.NEXT_PUBLIC_AUTHOR_NAME || authorConfig.name,
+  AUTHOR_TITLE: process.env.NEXT_PUBLIC_AUTHOR_TITLE || authorConfig.role,
+  AUTHOR_BIO: process.env.NEXT_PUBLIC_AUTHOR_BIO || authorConfig.bio,
   AUTHOR_IMAGE: "/images/author.jpg",
 
   // Analytics & Monetisation (AdSense starts disabled until client ID is provided)

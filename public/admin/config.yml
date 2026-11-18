@@ -32,7 +32,7 @@ collections:
       - { label: "Tags", name: "tags", widget: "list", default: ["walking", "calories"] }
       - { label: "Publish Date", name: "publishedAt", widget: "date", format: "YYYY-MM-DD" }
       - { label: "Last Updated", name: "updatedAt", widget: "date", format: "YYYY-MM-DD", required: false }
-      - { label: "Author", name: "author", widget: "string", default: "Editorial Fitness Team" }
+      - { label: "Author", name: "author", widget: "string", default: "Zain Taseer" }
       - { label: "Featured Image", name: "featuredImage", widget: "image", required: false }
       - { label: "Featured Image Alt", name: "featuredImageAlt", widget: "string", required: false }
       - { label: "Draft", name: "draft", widget: "boolean", default: false }
