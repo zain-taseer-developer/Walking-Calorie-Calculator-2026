@@ -122,7 +122,7 @@ export default async function BlogPostPage({ params }: Props) {
   const nextPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
 
   // Extract headings from markdown content for the sticky TOC
-  const headingRegex = /^##\s+(.+)$/gm;
+  const headingRegex = /^#{2,3}\s+(.+)$/gm;
   const tocItems: TocItem[] = [];
   let match;
   while ((match = headingRegex.exec(post.content)) !== null) {

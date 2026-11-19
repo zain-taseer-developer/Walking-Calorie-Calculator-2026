@@ -10,11 +10,12 @@ import { RelatedTools } from "@/components/content/RelatedTools";
 import { HomeWalkTracker } from "@/components/calculator/HomeWalkTracker";
 
 export function MDXContent({ content }: { content: string }) {
-  // Split content by custom tag markers or double newlines to process paragraphs and interactive components
-  const blocks = content.split(/\n\n+/);
+  // Normalize line endings and split content by double newlines to process paragraphs and interactive components
+  const normalizedContent = content.replace(/\r\n/g, '\n');
+  const blocks = normalizedContent.split(/\n\n+/);
 
   return (
-    <div className="prose prose-slate dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 prose-headings:text-slate-900 dark:prose-headings:text-white prose-a:text-brand-600 dark:prose-a:text-brand-400 prose-a:no-underline hover:prose-a:underline prose-strong:text-slate-900 dark:prose-strong:text-white prose-li:leading-relaxed prose-li:my-1">
+    <div className="max-w-none text-slate-700 dark:text-slate-300">
       {blocks.map((block, index) => {
         const trimmed = block.trim();
 
@@ -56,24 +57,39 @@ export function MDXContent({ content }: { content: string }) {
           );
         }
 
-        // 4. Headings
+        // 4. Headings - only take first line for heading text to avoid capturing following content
         if (trimmed.startsWith("### ")) {
-          const text = trimmed.replace(/^###\s+/, "");
+          const firstLine = trimmed.split("\n")[0];
+          const text = firstLine.replace(/^###\s+/, "");
           const id = text.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+          const remainingContent = trimmed.slice(firstLine.length).trim();
           return (
-            <h3 key={index} id={id} className="mt-8 mb-3 scroll-mt-24 text-lg font-semibold leading-snug tracking-normal sm:text-xl">
-              {text}
-            </h3>
+            <React.Fragment key={index}>
+              <h3 id={id} className="mt-8 mb-3 scroll-mt-24 text-lg font-semibold leading-snug tracking-normal sm:text-xl">
+                {text}
+              </h3>
+              {remainingContent && (
+                <p className="leading-relaxed mb-4" dangerouslySetInnerHTML={{ __html: formatInlineMarkdown(remainingContent) }} />
+              )}
+            </React.Fragment>
           );
         }
 
+// 4. Headings - only take first line for heading text to avoid capturing following content
         if (trimmed.startsWith("## ")) {
-          const text = trimmed.replace(/^##\s+/, "");
+          const firstLine = trimmed.split("\n")[0];
+          const text = firstLine.replace(/^##\s+/, "");
           const id = text.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+          const remainingContent = trimmed.slice(firstLine.length).trim();
           return (
-            <h2 key={index} id={id} className="mt-10 mb-4 scroll-mt-24 text-2xl font-bold leading-tight tracking-normal sm:text-3xl">
-              {text}
-            </h2>
+            <React.Fragment key={index}>
+              <h2 id={id} className="mt-10 mb-4 scroll-mt-24 text-2xl font-bold leading-tight tracking-normal sm:text-3xl">
+                {text}
+              </h2>
+              {remainingContent && (
+                <p key={`${index}-rest`} className="leading-relaxed mb-4" dangerouslySetInnerHTML={{ __html: formatInlineMarkdown(remainingContent) }} />
+              )}
+            </React.Fragment>
           );
         }
 
