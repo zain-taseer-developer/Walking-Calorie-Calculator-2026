@@ -597,6 +597,18 @@ export default function HomePage() {
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             Walking for Weight Loss: Realistic Caloric Deficits
           </h2>
+          
+<p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
+  Before setting a calorie deficit for weight loss, it's important to understand how many calories your body needs each day. Your Total Daily Energy Expenditure (TDEE) estimates your daily calorie needs based on factors such as age, sex, height, weight, and activity level. Use our{" "}
+  <Link
+    href="/maintenance-calorie-calculator"
+    className="text-brand-700 dark:text-brand-400 font-semibold underline"
+  >
+    Maintenance Calorie &amp; TDEE Calculator
+  </Link>{" "}
+  to estimate your maintenance calories and plan your daily calorie intake more effectively.
+</p>
+
           <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
             Walking is one of the most clinically validated interventions for long-term weight loss and visceral fat reduction. Unlike extreme cardio sessions that often lead to exhaustion and subsequent binge eating, walking maintains steady blood glucose levels and keeps cortisol in check.
           </p>
