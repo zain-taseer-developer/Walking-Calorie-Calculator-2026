@@ -305,6 +305,16 @@ export default function HomePage() {
             These examples show approximate gross calories burned at different body weights, walking durations, and speeds. Estimates use the same calculator engine and 2024 Adult Compendium walking MET reference points for level pavement with no incline; individual results vary.
           </p>
 
+
+<p className="mt-3 text-sm text-slate-600 dark:text-slate-400 italic">
+  For a more detailed breakdown of walking calorie estimates, explore our{" "}
+  <Link href="/walking-calories-burned-chart" className="text-brand-700 dark:text-brand-400 font-semibold underline">
+    walking calories burned chart
+  </Link>{" "}
+  to compare calorie expenditure across different walking durations and body weights.
+</p>
+
+
           <DataTable
             title="Calories Burned in 30 Minutes of Walking"
             titleLevel={3}
