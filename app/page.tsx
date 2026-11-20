@@ -341,6 +341,16 @@ export default function HomePage() {
           <Callout type="tip" title="Notice the Speed Threshold">
             At the same weight and duration, increasing walking speed from 3.0 mph (3.8 MET) to 4.5 mph (7.0 MET) substantially increases estimated calorie use. Actual energy expenditure varies with the individual and walking conditions.
           </Callout>
+
+
+<p className="mt-3 text-sm text-slate-600 dark:text-slate-400 italic">
+  Want to understand how walking speed affects your pace and travel time? Use our{" "}
+  <Link href="/walking-pace-calculator" className="text-brand-700 dark:text-brand-400 font-semibold underline">
+    walking pace calculator
+  </Link>{" "}
+  to calculate your walking speed, pace, distance, and time.
+</p>
+
         </section>
 
         {/* Mid-Content In-Article Ad Slot */}
