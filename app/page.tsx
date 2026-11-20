@@ -181,11 +181,28 @@ export default function HomePage() {
       answer:
         "Because one pound of stored human adipose tissue equates to roughly 3,500 dietary calories, and each walking step burns approximately 0.04 to 0.055 calories (varying with body mass), it takes approximately 70,000 to 90,000 steps to burn one pound of fat if your caloric intake remains strictly at your baseline maintenance level. Accumulating 10,000 steps every day creates that 3,500-calorie deficit in approximately 7 to 9 days.",
     },
-    {
-      question: "How long does it take to walk a mile?",
-      answer:
-        "For an average, healthy adult, walking one mile takes between 15 and 20 minutes at a normal to moderate pace (3.0 to 4.0 mph). A leisurely, window-shopping stroll at 2.0 mph takes approximately 30 minutes per mile. A brisk, purposeful walk at 3.5 mph takes approximately 17 minutes and 8 seconds per mile, while a competitive power walk at 4.5 mph covers a mile in just 13 minutes and 20 seconds.",
-    },
+    // {
+    //   question: "How long does it take to walk a mile?",
+    //   answer:
+    //     "For an average, healthy adult, walking one mile takes between 15 and 20 minutes at a normal to moderate pace (3.0 to 4.0 mph). A leisurely, window-shopping stroll at 2.0 mph takes approximately 30 minutes per mile. A brisk, purposeful walk at 3.5 mph takes approximately 17 minutes and 8 seconds per mile, while a competitive power walk at 4.5 mph covers a mile in just 13 minutes and 20 seconds.",
+    // },
+   {
+  question: "How long does it take to walk a mile?",
+  answer:
+    "For an average, healthy adult, walking one mile takes between 15 and 20 minutes at a normal to moderate pace (3.0 to 4.0 mph). A leisurely stroll at 2.0 mph takes approximately 30 minutes per mile. A brisk walk at 3.5 mph takes approximately 17 minutes and 8 seconds per mile, while a competitive power walk at 4.5 mph takes approximately 13 minutes and 20 seconds.",
+  answerContent: (
+    <>
+      For an average, healthy adult, walking one mile takes between 15 and 20 minutes at a normal to moderate pace (3.0 to 4.0 mph). A leisurely stroll at 2.0 mph takes approximately 30 minutes per mile. A brisk walk at 3.5 mph takes approximately 17 minutes and 8 seconds per mile, while a competitive power walk at 4.5 mph takes approximately 13 minutes and 20 seconds. Want to explore walking times at different speeds? Check out our{" "}
+      <Link
+        href="/how-long-to-walk-a-mile"
+        className="text-brand-700 dark:text-brand-400 font-semibold underline"
+      >
+        How Long Does It Take to Walk a Mile guide
+      </Link>{" "}
+      for a detailed breakdown.
+    </>
+  ),
+},
     {
       question: "What is considered a normal walking pace?",
       answer:

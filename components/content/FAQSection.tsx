@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import React, { useState } from "react";
 import { ChevronDown, HelpCircle } from "lucide-react";
 import { generateFAQSchema } from "@/lib/seo";
