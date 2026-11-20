@@ -373,17 +373,22 @@ export default function HomePage() {
             highlightColumnIndex={4} // 180 lbs
           />
 
-          <p className="text-sm text-slate-600 dark:text-slate-400 italic">
-            Need a dedicated conversion from steps to miles or steps to calories? Explore our dedicated{" "}
-            <Link href="/steps-to-miles-calculator" className="text-brand-700 dark:text-brand-400 font-semibold underline">
-              steps to miles calculator
-            </Link>{" "}
-            and{" "}
-            <Link href="/steps-to-calories-calculator" className="text-brand-700 dark:text-brand-400 font-semibold underline">
-              steps to calories calculator
-            </Link>{" "}
-            for personalized stride length calibrations.
-          </p>
+         
+<p className="text-sm text-slate-600 dark:text-slate-400 italic">
+  Need a dedicated conversion from steps to miles or steps to calories? Explore our dedicated{" "}
+  <Link href="/steps-to-miles-calculator" className="text-brand-700 dark:text-brand-400 font-semibold underline">
+    steps to miles calculator
+  </Link>{" "}
+  and{" "}
+  <Link href="/steps-to-calories-calculator" className="text-brand-700 dark:text-brand-400 font-semibold underline">
+    steps to calories calculator
+  </Link>{" "}
+  for personalized stride length calibrations. For a deeper look at daily step goals, read our{" "}
+  <Link href="/how-many-miles-is-10000-steps" className="text-brand-700 dark:text-brand-400 font-semibold underline">
+    10,000 steps guide
+  </Link>.
+</p>
+
         </section>
 
         {/* Section 4: Key Factors Influencing Caloric Expenditure */}
