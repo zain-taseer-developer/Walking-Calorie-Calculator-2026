@@ -239,6 +239,31 @@ export default function HomePage() {
     </>
   ),
 },
+// 
+
+{
+  question: "What is a good incline for walking on a treadmill?",
+  answer:
+    "A good treadmill incline depends on your fitness level and workout goals. Beginners can start at 0–2%, while 3–6% provides a moderate uphill challenge. Higher inclines, such as 8–12%, require more effort and may not be suitable for everyone. There is no single best incline for all walkers. Use our Treadmill Incline Calculator & Pace Chart to estimate calorie burn at different incline levels and compare treadmill speeds with walking pace.",
+  answerContent: (
+    <>
+      A good treadmill incline depends on your fitness level and
+      workout goals. Beginners can start at 0–2%, while 3–6%
+      provides a moderate uphill challenge. Higher inclines, such
+      as 8–12%, require more effort and may not be suitable for
+      everyone. There is no single best incline for all walkers.
+      Use our{" "}
+      <Link
+        href="/treadmill-incline-calculator"
+        className="text-brand-700 dark:text-brand-400 font-semibold underline"
+      >
+        Treadmill Incline Calculator & Pace Chart
+      </Link>{" "}
+      to estimate calorie burn at different incline levels and
+      compare treadmill speeds with walking pace.
+    </>
+  ),
+},
 
     {
       question: "Is walking on an incline worth it for burning calories?",
