@@ -213,6 +213,33 @@ export default function HomePage() {
       answer:
         "Peer-reviewed validation studies (including research from Stanford University and the British Journal of Sports Medicine) reveal that commercial smartwatches and fitness bands exhibit an error rate between 15% and 30% when estimating active caloric burn. Devices measure wrist photoplethysmography (heart rate) and multi-axis accelerometry, but cannot measure individual metabolic efficiency, mitochondrial density, or foot ground-reaction forces. Our calculator uses direct MET regression tables from the Compendium of Physical Activities, providing an objective, standardized physiological estimate.",
     },
+    // 
+
+{
+  question: "How many steps should I walk per day?",
+  answer:
+    "There is no single daily step target that everyone needs to reach. While 10,000 steps is a popular goal, research suggests that meaningful health benefits may be associated with lower step counts too. Your ideal target depends on your age, current activity level, health, and fitness goals. If you're just starting, track your usual steps and gradually increase them. Explore our Recommended Steps Per Day guide to learn more about daily step-count ranges, activity levels, age-related research, and practical ways to build a walking routine.",
+  answerContent: (
+    <>
+      There is no single daily step target that everyone needs to reach.
+      While 10,000 steps is a popular goal, research suggests that
+      meaningful health benefits may be associated with lower step
+      counts too. Your ideal target depends on your age, current
+      activity level, health, and fitness goals. If you're just
+      starting, track your usual steps and gradually increase them.
+      Explore our{" "}
+      <Link
+        href="/how-many-steps-a-day"
+        className="text-brand-700 dark:text-brand-400 font-semibold underline"
+      >
+        Recommended Steps Per Day guide
+      </Link>{" "}
+      to learn more about daily step-count ranges, activity levels,
+      age-related research, and practical ways to build a walking routine.
+    </>
+  ),
+},
+
     {
       question: "Is walking on an incline worth it for burning calories?",
       answer:
