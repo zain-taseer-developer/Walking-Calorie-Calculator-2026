@@ -1,0 +1,13 @@
+# Coda runtime files: machine-local, never commit.
+# Project config in .coda/ (mcp.json, rules.md, instructions.md, commands/) is not listed and can be shared.
+server.port
+server.token
+memory.json
+feedback.jsonl
+execution-reports/
+eval-traces/
+live-evals/
+tool-output/
+session-events/
+background-tasks/
+attachments/
