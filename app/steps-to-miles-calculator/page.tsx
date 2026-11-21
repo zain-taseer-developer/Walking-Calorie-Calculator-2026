@@ -572,6 +572,81 @@ export default function StepsToMilesPage() {
           This is an estimate: your actual distance varies with your individual stride length, which can change with height, walking pace, and terrain.
         </p>
 
+        <h2>How to Calculate Steps from Miles</h2>
+        <p>
+          To convert miles to steps, multiply the distance in miles by the number of inches in a mile, then divide by your step length in inches:
+        </p>
+        <div className="not-prose my-6 rounded-2xl border border-blue-200 dark:border-blue-900 bg-blue-50 dark:bg-blue-950/40 p-5 sm:p-6">
+          <p className="text-center text-xl sm:text-2xl font-bold text-blue-900 dark:text-blue-200">
+            Steps = (Distance in Miles × 63,360) ÷ Step Length in Inches
+          </p>
+          <p className="mt-3 text-sm text-blue-800 dark:text-blue-300">
+            <strong>Distance in miles</strong> is the distance you walked. <strong>63,360</strong> is the number of inches in one mile. <strong>Step length</strong> is the distance of one step, measured in inches.
+          </p>
+          <p className="mt-3 text-sm text-blue-800 dark:text-blue-300">
+            <strong>Example:</strong> Using an assumed 28-inch stride, 2 miles × 63,360 ÷ 28 inches = approximately 4,526 steps.
+          </p>
+        </div>
+        <p>
+          This gives you the estimated total number of steps for any distance. Your actual step count may vary based on your individual stride length, walking pace, and terrain.
+        </p>
+
+        <h2>Miles to Steps Distance Benchmarks</h2>
+        <p>
+          Quick reference for popular walking distances, based on an average adult stride length of ~28 inches (~2,257 steps per mile):
+        </p>
+        <div className="not-prose my-6 overflow-x-auto">
+          <table className="w-full text-left border-collapse border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-900">
+            <thead>
+              <tr className="border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50">
+                <th className="px-4 py-3 text-xs font-bold text-slate-600 dark:text-slate-400 uppercase">Distance (Miles)</th>
+                <th className="px-4 py-3 text-xs font-bold text-slate-600 dark:text-slate-400 uppercase">Distance (Kilometers)</th>
+                <th className="px-4 py-3 text-xs font-bold text-slate-600 dark:text-slate-400 uppercase text-right">Estimated Steps</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b border-slate-200 dark:border-slate-700">
+                <td className="px-4 py-2 text-sm text-slate-700 dark:text-slate-300">0.5 mile</td>
+                <td className="px-4 py-2 text-sm text-slate-700 dark:text-slate-300">0.80 km</td>
+                <td className="px-4 py-2 text-sm text-slate-700 dark:text-slate-300 text-right font-mono">~1,129 steps</td>
+              </tr>
+              <tr className="border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/20">
+                <td className="px-4 py-2 text-sm text-slate-700 dark:text-slate-300">1 mile</td>
+                <td className="px-4 py-2 text-sm text-slate-700 dark:text-slate-300">1.61 km</td>
+                <td className="px-4 py-2 text-sm text-slate-700 dark:text-slate-300 text-right font-mono">~2,257 steps</td>
+              </tr>
+              <tr className="border-b border-slate-200 dark:border-slate-700">
+                <td className="px-4 py-2 text-sm text-slate-700 dark:text-slate-300">1.5 miles</td>
+                <td className="px-4 py-2 text-sm text-slate-700 dark:text-slate-300">2.41 km</td>
+                <td className="px-4 py-2 text-sm text-slate-700 dark:text-slate-300 text-right font-mono">~3,386 steps</td>
+              </tr>
+              <tr className="border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/20">
+                <td className="px-4 py-2 text-sm text-slate-700 dark:text-slate-300">2 miles</td>
+                <td className="px-4 py-2 text-sm text-slate-700 dark:text-slate-300">3.22 km</td>
+                <td className="px-4 py-2 text-sm text-slate-700 dark:text-slate-300 text-right font-mono">~4,514 steps</td>
+              </tr>
+              <tr className="border-b border-slate-200 dark:border-slate-700">
+                <td className="px-4 py-2 text-sm text-slate-700 dark:text-slate-300">3 miles</td>
+                <td className="px-4 py-2 text-sm text-slate-700 dark:text-slate-300">4.83 km</td>
+                <td className="px-4 py-2 text-sm text-slate-700 dark:text-slate-300 text-right font-mono">~6,771 steps</td>
+              </tr>
+              <tr className="border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/20">
+                <td className="px-4 py-2 text-sm text-slate-700 dark:text-slate-300">5 miles</td>
+                <td className="px-4 py-2 text-sm text-slate-700 dark:text-slate-300">8.05 km</td>
+                <td className="px-4 py-2 text-sm text-slate-700 dark:text-slate-300 text-right font-mono">~11,286 steps</td>
+              </tr>
+              <tr className="border-b border-slate-200 dark:border-slate-700">
+                <td className="px-4 py-2 text-sm text-slate-700 dark:text-slate-300">10 miles</td>
+                <td className="px-4 py-2 text-sm text-slate-700 dark:text-slate-300">16.09 km</td>
+                <td className="px-4 py-2 text-sm text-slate-700 dark:text-slate-300 text-right font-mono">~22,571 steps</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-sm text-slate-500 dark:text-slate-500 mt-2">
+          Benchmarks are estimates based on an average stride length of 28 inches. Your actual step count will vary based on your personal step length.
+        </p>
+
         <p>
           According to published kinesiology and biomechanics research, the average adult walking stride length is roughly <strong>2.2 to 2.5 feet</strong> (26 to 30 inches). This translates into:
         </p>
