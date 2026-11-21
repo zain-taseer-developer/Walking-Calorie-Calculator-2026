@@ -233,7 +233,7 @@ export default function StepsToMilesPage() {
                   : "text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50"
               }`}
             >
-              Miles to Steps <ArrowRightLeft className="w-4 h-4 ml-1.5" />
+              <ArrowRightLeft className="w-4 h-4 mr-1.5" /> Miles to Steps
             </button>
           </div>
           <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1.5">
@@ -400,11 +400,11 @@ export default function StepsToMilesPage() {
           </div>
 
           {/* Results Box */}
-          <div className="p-6 rounded-2xl bg-gradient-to-br from-brand-700 to-teal-800 text-white shadow-lg space-y-3 text-center">
+          <div className="p-6 rounded-2xl bg-gradient-to-br from-brand-700 to-teal-800 text-white shadow-lg space-y-4 text-center">
             <span className="text-xs font-semibold text-white uppercase tracking-wider block">
               {mode === "steps-to-miles" ? "Distance Covered" : "Estimated Total Steps"}
             </span>
-            <div>
+            <div className="space-y-1">
               <div className="text-5xl font-black font-mono tracking-tight">
                 {valid
                   ? mode === "steps-to-miles"
@@ -415,39 +415,55 @@ export default function StepsToMilesPage() {
               <div className="text-xl font-bold text-white">
                 {mode === "steps-to-miles" ? "Miles" : "Steps"}
               </div>
+              {mode === "steps-to-miles" && (
+                <div className="text-sm text-teal-100 font-mono">
+                  {valid ? distanceKm.toFixed(2) + " km" : "–"}
+                </div>
+              )}
             </div>
 
-            <div className="pt-3 border-t border-white/20 grid grid-cols-2 gap-2 text-xs">
-              <div>
-                <span className="text-teal-200 block">Kilometers</span>
-                <span className="text-base font-bold font-mono">
-                  {valid ? distanceKm.toFixed(2) + " km" : "–"}
-                </span>
-              </div>
-              <div>
+            <div className="pt-3 border-t border-white/20 grid grid-cols-2 gap-4 text-xs">
+              <div className="flex flex-col items-center gap-1">
                 <span className="text-teal-200 block">Steps per Mile</span>
                 <span className="text-base font-bold font-mono">
                   {valid ? Math.round(stepsPerMile).toLocaleString() : "–"}
                 </span>
               </div>
-            </div>
-
-            <div className="pt-2 border-t border-white/20 grid grid-cols-2 gap-2 text-xs">
-              <div>
-                <span className="text-teal-200 block">Step Length</span>
-                <span className="text-base font-bold font-mono">
-                  {valid
-                    ? `${stepLengthInches.toFixed(1)} in (${stepLengthDisplayCm.toFixed(1)} cm)`
-                    : "–"}
-                </span>
-              </div>
-              <div>
+              <div className="flex flex-col items-center gap-1">
                 <span className="text-teal-200 block">Steps per Kilometer</span>
                 <span className="text-base font-bold font-mono">
                   {valid ? Math.round(stepsPerKm).toLocaleString() : "–"}
                 </span>
               </div>
             </div>
+
+            {mode === "steps-to-miles" ? (
+              <div className="pt-2 border-t border-white/20">
+                <span className="text-teal-200 text-xs block">Step Length</span>
+                <span className="text-base font-bold font-mono">
+                  {valid
+                    ? `${stepLengthInches.toFixed(1)} in (${stepLengthDisplayCm.toFixed(1)} cm)`
+                    : "–"}
+                </span>
+              </div>
+            ) : (
+              <div className="pt-2 border-t border-white/20 grid grid-cols-2 gap-4 text-xs">
+                <div className="flex flex-col items-center gap-1">
+                  <span className="text-teal-200 block">Step Length</span>
+                  <span className="text-base font-bold font-mono">
+                    {valid
+                      ? `${stepLengthInches.toFixed(1)} in (${stepLengthDisplayCm.toFixed(1)} cm)`
+                      : "–"}
+                  </span>
+                </div>
+                <div className="flex flex-col items-center gap-1">
+                  <span className="text-teal-200 block">Distance in Miles</span>
+                  <span className="text-base font-bold font-mono">
+                    {valid ? distanceMiles.toFixed(2) : "–"}
+                  </span>
+                </div>
+              </div>
+            )}
 
             {mode === "steps-to-miles" && (
               <div className="pt-2">
