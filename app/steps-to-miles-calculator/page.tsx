@@ -210,7 +210,7 @@ export default function StepsToMilesPage() {
       {/* Interactive Converter Card */}
       <div className="my-6 p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl shadow-slate-900/5">
         {/* Conversion Mode Switch */}
-        <div className="mb-6">
+        <div className="mb-4">
           <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">
             Conversion Mode
           </label>
@@ -241,7 +241,7 @@ export default function StepsToMilesPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
           {/* Inputs */}
           <div className="space-y-5">
             {/* Primary input */}
