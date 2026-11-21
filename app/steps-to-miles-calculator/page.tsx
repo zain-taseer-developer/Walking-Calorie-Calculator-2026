@@ -350,7 +350,7 @@ export default function StepsToMilesPage() {
           <li><strong>30,000 Steps:</strong> How many miles is 30,000 steps? Walking 30,000 steps covers roughly 11.36 to 14.20 miles.</li>
         </ul> */}
 
-        <h2>Miles to Steps Distance Benchmarks</h2>
+        {/* <h2>Miles to Steps Distance Benchmarks</h2>
         <ul>
           <li><strong>1 Mile:</strong> How many steps is 1 mile? An average adult takes approximately 2,000 to 2,500 steps to walk one mile. This varies by height — taller adults average around 2,000 steps per mile, while shorter adults may take closer to 2,500 steps per mile.</li>
           <li><strong>1.5 Miles:</strong> How many steps in a mile and a half? Equals roughly 3,000 to 3,750 steps.</li>
@@ -360,7 +360,7 @@ export default function StepsToMilesPage() {
           <li><strong>5 Miles:</strong> How many steps is 5 miles? Approximately 10,000 to 12,500 steps.</li>
           <li><strong>7 Miles:</strong> How many steps is 7 miles? Approximately 14,000 to 17,500 steps.</li>
           <li><strong>10 Miles:</strong> How many steps is 10 miles equals 20,000 to 25,000 steps.</li>
-        </ul>
+        </ul> */}
 
         <h2>Health &amp; Weight Goals</h2>
         <p>
