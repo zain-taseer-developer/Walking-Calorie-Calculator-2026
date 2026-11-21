@@ -10,25 +10,120 @@ import { AdSlot } from "@/components/ads/AdSlot";
 import { Callout } from "@/components/content/Callout";
 import { KeyTakeaways } from "@/components/content/KeyTakeaways";
 import { DataTable } from "@/components/content/DataTable";
-import { Footprints, ArrowRightLeft, Sparkles, Ruler, Compass } from "lucide-react";
+import { Footprints, ArrowRightLeft, Sparkles, Ruler, Copy, RefreshCw, Check } from "lucide-react";
 import { estimateStrideLength } from "@/lib/calc";
 
 export default function StepsToMilesPage() {
+  type Mode = "steps-to-miles" | "miles-to-steps";
+  type LengthMode = "height" | "custom";
+  type Unit = "inches" | "cm";
+
+  const INCHES_PER_MILE = 63360;
+  const INCHES_PER_KM = 39370.07874015748;
+  const KM_PER_MILE = 1.609344;
+  const CM_PER_INCH = 2.54;
+
+  const PRESET_STEPS = [1000, 5000, 7500, 10000, 15000, 20000];
+
+  const [mode, setMode] = useState<Mode>("steps-to-miles");
   const [steps, setSteps] = useState<number>(10000);
+  const [miles, setMiles] = useState<number>(2);
   const [heightFt, setHeightFt] = useState<number>(5);
   const [heightIn, setHeightIn] = useState<number>(9);
-  const [customStrideFt, setCustomStrideFt] = useState<string>("");
+  const [lengthMode, setLengthMode] = useState<LengthMode>("height");
+  const [customLength, setCustomLength] = useState<string>("");
+  const [unit, setUnit] = useState<Unit>("inches");
+  const [copied, setCopied] = useState<boolean>(false);
 
-  const heightCm = Math.round((heightFt * 12 + heightIn) * 2.54);
-  const naturalStride = estimateStrideLength(heightCm);
-  const activeStrideFt = customStrideFt ? parseFloat(customStrideFt) || 2.5 : naturalStride.feet;
-  const activeStrideM = activeStrideFt * 0.3048;
+  const heightTotalInches = heightFt * 12 + heightIn;
+  const heightCm = Math.round(heightTotalInches * 2.54);
+  const naturalStrideM = estimateStrideLength(heightCm > 0 ? heightCm : 170).meters;
+  const naturalStrideInches = naturalStrideM * 39.37007874015748;
 
-  // Conversions
-  const distanceMiles = (steps * activeStrideFt) / 5280;
-  const distanceKm = (steps * activeStrideM) / 1000;
-  const stepsPerMile = Math.round(5280 / activeStrideFt);
-  const stepsPerKm = Math.round(1000 / activeStrideM);
+  let stepLengthInches = naturalStrideInches;
+  if (lengthMode === "custom") {
+    const v = parseFloat(customLength);
+    if (Number.isFinite(v) && v > 0) {
+      stepLengthInches = unit === "cm" ? v * CM_PER_INCH : v;
+    }
+  }
+
+  const stepsPerMile = INCHES_PER_MILE / stepLengthInches;
+  const stepsPerKm = INCHES_PER_KM / stepLengthInches;
+  const stepLengthDisplayCm = stepLengthInches * CM_PER_INCH;
+
+  function validate(): string | null {
+    const primaryValue = mode === "steps-to-miles" ? steps : miles;
+    if (!Number.isFinite(primaryValue) || primaryValue <= 0) {
+      return mode === "steps-to-miles"
+        ? "Please enter a valid number of steps (greater than 0)."
+        : "Please enter a valid distance in miles (greater than 0).";
+    }
+    if (lengthMode === "height") {
+      if (heightTotalInches <= 0) {
+        return "Please enter your height (feet and inches).";
+      }
+    } else {
+      const v = parseFloat(customLength);
+      if (!Number.isFinite(v) || v <= 0) {
+        return "Please enter a valid step length greater than 0.";
+      }
+    }
+    return null;
+  }
+
+  const error = validate();
+  const valid = !error;
+
+  let distanceMiles = 0;
+  let distanceKm = 0;
+  let totalSteps = 0;
+
+  if (valid && stepLengthInches > 0) {
+    if (mode === "steps-to-miles") {
+      distanceMiles = (steps * stepLengthInches) / INCHES_PER_MILE;
+      distanceKm = distanceMiles * KM_PER_MILE;
+    } else {
+      totalSteps = Math.round((miles * INCHES_PER_MILE) / stepLengthInches);
+      distanceMiles = miles;
+      distanceKm = miles * KM_PER_MILE;
+    }
+  }
+
+  const handleReset = () => {
+    setMode("steps-to-miles");
+    setSteps(10000);
+    setMiles(2);
+    setHeightFt(5);
+    setHeightIn(9);
+    setLengthMode("height");
+    setCustomLength("");
+    setUnit("inches");
+    setCopied(false);
+  };
+
+  const handleCopy = () => {
+    const summary = [
+      "Steps to Miles & Miles to Steps Calculator – WalkingCalorieCalc.com",
+      `Mode: ${mode === "steps-to-miles" ? "Steps to Miles" : "Miles to Steps"}`,
+      mode === "steps-to-miles"
+        ? `Steps: ${steps.toLocaleString()}`
+        : `Distance: ${miles.toLocaleString()} miles`,
+      `Height: ${heightFt} ft ${heightIn} in`,
+      `Step Length: ${stepLengthInches.toFixed(2)} in (${stepLengthDisplayCm.toFixed(2)} cm)`,
+      mode === "steps-to-miles"
+        ? `Distance: ${distanceMiles.toFixed(2)} miles (${distanceKm.toFixed(2)} km)`
+        : `Estimated Steps: ${totalSteps.toLocaleString()}`,
+      `Steps per Mile: ${Math.round(stepsPerMile).toLocaleString()}`,
+      `Steps per Kilometer: ${Math.round(stepsPerKm).toLocaleString()}`,
+    ].join("\n");
+
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(summary);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
 
   // Reference Table Data: Steps to Miles
   const stepMilestones = [
@@ -36,8 +131,8 @@ export default function StepsToMilesPage() {
   ];
 
   const milestoneRows = stepMilestones.map((s) => {
-    const mi = (s * activeStrideFt) / 5280;
-    const km = (s * activeStrideM) / 1000;
+    const mi = (s * stepLengthInches) / INCHES_PER_MILE;
+    const km = mi * KM_PER_MILE;
     const approxTimeMins = Math.round((mi / 3.0) * 60); // at moderate 3.0 mph
     return [s.toLocaleString(), `${mi.toFixed(2)} miles`, `${km.toFixed(2)} km`, `~${approxTimeMins} mins`];
   });
@@ -46,7 +141,7 @@ export default function StepsToMilesPage() {
   const mileList = [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 5, 6, 8, 10];
   const milesToStepsRows = mileList.map((m) => {
     const st = Math.round(m * stepsPerMile);
-    const km = (m * 1.609344).toFixed(2);
+    const km = (m * KM_PER_MILE).toFixed(2);
     return [`${m} mile${m === 1 ? "" : "s"}`, `${km} km`, `${st.toLocaleString()} steps`];
   });
 
@@ -108,112 +203,285 @@ export default function StepsToMilesPage() {
           Steps to Miles Calculator
         </h1>
         <p className="mt-2 text-base text-slate-600 dark:text-slate-300">
-          Convert any step count into exact miles and kilometers based on your height and personalized stride length.
+          Convert steps to miles and miles to steps instantly, based on your height and personalized stride length.
         </p>
       </div>
 
       {/* Interactive Converter Card */}
       <div className="my-8 p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl shadow-slate-900/5">
+        {/* Conversion Mode Switch */}
+        <div className="mb-6">
+          <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">
+            Conversion Mode
+          </label>
+          <div className="inline-flex w-full max-w-md rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800">
+            <button
+              onClick={() => setMode("steps-to-miles")}
+              className={`flex-1 py-2.5 text-sm font-semibold border-r border-transparent transition-colors ${
+                mode === "steps-to-miles"
+                  ? "bg-brand-700 border-brand-600 text-white shadow-md shadow-brand-600/20"
+                  : "text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50"
+              }`}
+            >
+              <ArrowRightLeft className="w-4 h-4 mr-1.5" /> Steps to Miles
+            </button>
+            <button
+              onClick={() => setMode("miles-to-steps")}
+              className={`flex-1 py-2.5 text-sm font-semibold transition-colors ${
+                mode === "miles-to-steps"
+                  ? "bg-brand-700 border-brand-600 text-white shadow-md shadow-brand-600/20"
+                  : "text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50"
+              }`}
+            >
+              Miles to Steps <ArrowRightLeft className="w-4 h-4 ml-1.5" />
+            </button>
+          </div>
+          <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1.5">
+            Toggle between converting steps into distance, or distance into steps.
+          </p>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* Inputs */}
           <div className="space-y-5">
+            {/* Primary input */}
+            {mode === "steps-to-miles" ? (
+              <div>
+                <label htmlFor="step-count" className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
+                  Number of Steps
+                </label>
+                <input
+                  id="step-count"
+                  type="number"
+                  inputMode="numeric"
+                  min={1}
+                  max={200000}
+                  value={steps}
+                  onChange={(e) => setSteps(Math.max(0, parseInt(e.target.value, 10) || 0))}
+                  className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-lg font-mono font-bold focus:ring-2 focus:ring-brand-500"
+                />
+                <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-1">
+                  Type a step count or tap a preset below.
+                </p>
+                <div className="flex flex-wrap gap-1.5 mt-2">
+                  {PRESET_STEPS.map((count) => (
+                    <button
+                      key={count}
+                      type="button"
+                      onClick={() => setSteps(count)}
+                      className={`px-2.5 py-1 text-xs rounded-lg border font-medium transition-colors ${
+                        steps === count
+                          ? "bg-brand-700 border-brand-600 text-white font-bold"
+                          : "bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100"
+                      }`}
+                    >
+                      {count.toLocaleString()}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <div>
+                <label htmlFor="distance-miles" className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
+                  Distance in Miles
+                </label>
+                <input
+                  id="distance-miles"
+                  type="number"
+                  inputMode="decimal"
+                  step="any"
+                  min={0}
+                  value={miles}
+                  onChange={(e) => setMiles(Math.max(0, parseFloat(e.target.value) || 0))}
+                  className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-lg font-mono font-bold focus:ring-2 focus:ring-brand-500"
+                />
+                <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-1">
+                  Enter a distance and we&rsquo;ll estimate the total steps.
+                </p>
+              </div>
+            )}
+
+            {/* Step length mode */}
             <div>
-              <label htmlFor="step-count" className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
-                Number of Steps
+              <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
+                Step Length Mode
               </label>
-              <input
-                id="step-count"
-                type="number"
-                inputMode="numeric"
-                min={1}
-                max={200000}
-                value={steps}
-                onChange={(e) => setSteps(Math.max(0, parseInt(e.target.value, 10) || 0))}
-                className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-lg font-mono font-bold focus:ring-2 focus:ring-brand-500"
-              />
-              {/* Preset buttons */}
-              <div className="flex flex-wrap gap-1.5 mt-2">
-                {[3000, 5000, 7500, 10000, 15000, 20000].map((count) => (
-                  <button
-                    key={count}
-                    type="button"
-                    onClick={() => setSteps(count)}
-                    className={`px-2.5 py-1 text-xs rounded-lg border font-medium transition-colors ${
-                      steps === count
-                        ? "bg-brand-700 border-brand-600 text-white font-bold"
-                        : "bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100"
-                    }`}
-                  >
-                    {count.toLocaleString()}
-                  </button>
-                ))}
+              <div className="inline-flex w-full max-w-md rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800">
+                <button
+                  onClick={() => setLengthMode("height")}
+                  className={`flex-1 py-2.5 text-sm font-semibold border-r border-transparent transition-colors ${
+                    lengthMode === "height"
+                      ? "bg-brand-700 border-brand-600 text-white shadow-md shadow-brand-600/20"
+                      : "text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50"
+                  }`}
+                >
+                  Use My Height
+                </button>
+                <button
+                  onClick={() => setLengthMode("custom")}
+                  className={`flex-1 py-2.5 text-sm font-semibold transition-colors ${
+                    lengthMode === "custom"
+                      ? "bg-brand-700 border-brand-600 text-white shadow-md shadow-brand-600/20"
+                      : "text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50"
+                  }`}
+                >
+                  Enter My Step Length
+                </button>
               </div>
             </div>
 
-            {/* Height for stride calculation */}
-            <div>
-              <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
-                Your Height (for Stride Calibration)
-              </label>
-              <div className="grid grid-cols-2 gap-3">
-                <div className="relative">
-                  <input
-                    aria-label="Height in feet"
-                    type="number"
-                    value={heightFt}
-                    onChange={(e) => setHeightFt(parseInt(e.target.value, 10) || 5)}
-                    className="w-full px-3.5 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono"
-                  />
-                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-600 dark:text-slate-400">ft</span>
+            {/* Height input (height mode) */}
+            {lengthMode === "height" ? (
+              <div>
+                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
+                  Your Height
+                </label>
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="relative">
+                    <input
+                      aria-label="Height in feet"
+                      type="number"
+                      value={heightFt}
+                      onChange={(e) => setHeightFt(parseInt(e.target.value, 10) || 5)}
+                      className="w-full px-3.5 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono"
+                    />
+                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-600 dark:text-slate-400">ft</span>
+                  </div>
+                  <div className="relative">
+                    <input
+                      aria-label="Additional height in inches"
+                      type="number"
+                      value={heightIn}
+                      onChange={(e) => setHeightIn(parseInt(e.target.value, 10) || 0)}
+                      className="w-full px-3.5 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono"
+                    />
+                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-600 dark:text-slate-400">in</span>
+                  </div>
                 </div>
-                <div className="relative">
-                  <input
-                    aria-label="Additional height in inches"
-                    type="number"
-                    value={heightIn}
-                    onChange={(e) => setHeightIn(parseInt(e.target.value, 10) || 0)}
-                    className="w-full px-3.5 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono"
-                  />
-                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-600 dark:text-slate-400">in</span>
-                </div>
+                <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-1">
+                  Estimated step length: {naturalStrideInches.toFixed(1)} in (
+                  {(naturalStrideInches * CM_PER_INCH).toFixed(1)} cm)
+                </p>
               </div>
-              <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-1">
-                Estimated stride: {activeStrideFt.toFixed(2)} ft ({activeStrideM.toFixed(2)} m)
-              </p>
-            </div>
+            ) : null}
+
+            {/* Custom step length input (custom mode) */}
+            {lengthMode === "custom" ? (
+              <div>
+                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
+                  Custom Step Length
+                </label>
+                <div className="flex gap-2">
+                  <input
+                    type="number"
+                    inputMode="decimal"
+                    step="any"
+                    min={0}
+                    value={customLength}
+                    onChange={(e) => setCustomLength(e.target.value)}
+                    className="flex-1 px-3.5 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono focus:ring-2 focus:ring-brand-500"
+                    placeholder="e.g. 30"
+                  />
+                  <select
+                    value={unit}
+                    onChange={(e) => setUnit(e.target.value as Unit)}
+                    className="px-3.5 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono focus:ring-2 focus:ring-brand-500"
+                  >
+                    <option value="inches">Inches</option>
+                    <option value="cm">Centimeters</option>
+                  </select>
+                </div>
+                <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-1">
+                  Step length is the distance of a single step (not stride). Enter in{" "}
+                  {unit === "cm" ? "centimeters" : "inches"}.
+                </p>
+              </div>
+            ) : null}
           </div>
 
           {/* Results Box */}
-          <div className="p-6 rounded-2xl bg-gradient-to-br from-brand-700 to-teal-800 text-white shadow-lg space-y-4 text-center">
+          <div className="p-6 rounded-2xl bg-gradient-to-br from-brand-700 to-teal-800 text-white shadow-lg space-y-3 text-center">
             <span className="text-xs font-semibold text-white uppercase tracking-wider block">
-              Calculated Ground Distance
+              {mode === "steps-to-miles" ? "Distance Covered" : "Estimated Total Steps"}
             </span>
             <div>
               <div className="text-5xl font-black font-mono tracking-tight">
-                {distanceMiles.toFixed(2)}
+                {valid
+                  ? mode === "steps-to-miles"
+                    ? distanceMiles.toFixed(2)
+                    : totalSteps.toLocaleString()
+                  : "–"}
               </div>
-              <div className="text-xl font-bold text-white">Miles</div>
+              <div className="text-xl font-bold text-white">
+                {mode === "steps-to-miles" ? "Miles" : "Steps"}
+              </div>
             </div>
 
             <div className="pt-3 border-t border-white/20 grid grid-cols-2 gap-2 text-xs">
               <div>
                 <span className="text-teal-200 block">Kilometers</span>
-                <span className="text-base font-bold font-mono">{distanceKm.toFixed(2)} km</span>
+                <span className="text-base font-bold font-mono">
+                  {valid ? distanceKm.toFixed(2) + " km" : "–"}
+                </span>
               </div>
               <div>
                 <span className="text-teal-200 block">Steps per Mile</span>
-                <span className="text-base font-bold font-mono">{stepsPerMile.toLocaleString()}</span>
+                <span className="text-base font-bold font-mono">
+                  {valid ? Math.round(stepsPerMile).toLocaleString() : "–"}
+                </span>
               </div>
             </div>
 
-            <div className="pt-2">
-              <Link
-                href={`/?steps=${steps}&mode=steps`}
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-900 font-bold text-xs transition-colors shadow-sm"
+            <div className="pt-2 border-t border-white/20 grid grid-cols-2 gap-2 text-xs">
+              <div>
+                <span className="text-teal-200 block">Step Length</span>
+                <span className="text-base font-bold font-mono">
+                  {valid
+                    ? `${stepLengthInches.toFixed(1)} in (${stepLengthDisplayCm.toFixed(1)} cm)`
+                    : "–"}
+                </span>
+              </div>
+              <div>
+                <span className="text-teal-200 block">Steps per Kilometer</span>
+                <span className="text-base font-bold font-mono">
+                  {valid ? Math.round(stepsPerKm).toLocaleString() : "–"}
+                </span>
+              </div>
+            </div>
+
+            {mode === "steps-to-miles" && (
+              <div className="pt-2">
+                <Link
+                  href={`/?steps=${steps}&mode=steps`}
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-900 font-bold text-xs transition-colors shadow-sm"
+                >
+                  <span>Calculate Calories for {steps.toLocaleString()} Steps</span>
+                  <Sparkles className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            )}
+
+            <div className="flex flex-col sm:flex-row gap-2 justify-center pt-4">
+              <button
+                onClick={handleCopy}
+                className="w-full sm:w-auto flex-1 items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-semibold text-sm transition-colors hover:bg-slate-100 dark:hover:bg-slate-800/50 focus:ring-2 focus:ring-brand-500"
               >
-                <span>Calculate Calories for {steps.toLocaleString()} Steps</span>
-                <Sparkles className="w-3.5 h-3.5" />
-              </Link>
+                {copied ? (
+                  <>
+                    <Check className="w-4 h-4" /> Copied!
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-4 h-4" /> Copy Results
+                  </>
+                )}
+              </button>
+              <button
+                onClick={handleReset}
+                className="w-full sm:w-auto flex-1 items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-semibold text-sm transition-colors hover:bg-slate-100 dark:hover:bg-slate-800/50 focus:ring-2 focus:ring-brand-500"
+              >
+                <RefreshCw className="w-4 h-4" /> Reset
+              </button>
             </div>
           </div>
         </div>
@@ -226,9 +494,9 @@ export default function StepsToMilesPage() {
         <h2>How to Use the Steps to Miles Calculator</h2>
         <ol className="not-prose grid grid-cols-1 sm:grid-cols-2 gap-3 my-5">
           {[
-            "Enter your step count in the Number of Steps field, or select a preset count.",
+            "Pick Steps to Miles or Miles to Steps using the mode switch, then enter your step count or distance, or tap a preset count.",
             "Enter your height in feet and inches. The calculator uses it to estimate your stride length.",
-            "The stride estimate updates automatically with your height; this calculator does not have a separate custom-stride control.",
+            "The stride estimate updates automatically with your height, or enter a custom step length in inches or centimeters.",
             "Read your calculated distance in miles and kilometers in the results card.",
           ].map((instruction, index) => (
             <li
