@@ -316,7 +316,7 @@ export default function StepsToMilesPage() {
           highlightColumnIndex={3}
         />
 
-        <h2>Comprehensive Step-to-Miles Conversion Matrix &amp; Mileage Benchmarks</h2>
+        {/* <h2>Comprehensive Step-to-Miles Conversion Matrix &amp; Mileage Benchmarks</h2>
         <p>
           Use our free <strong>steps to miles converter</strong> and interactive <strong>steps to miles conversion</strong> calculator to <strong>convert steps to miles</strong> accurately. Below are detailed benchmarks for every step volume from 1,000 to 30,000 steps:
         </p>
@@ -348,7 +348,7 @@ export default function StepsToMilesPage() {
           <li><strong>23,000 Steps:</strong> How many miles is 23000 steps? Equals roughly 8.71 to 10.89 miles.</li>
           <li><strong>25,000 Steps:</strong> How many miles is 25,000 steps? Walking 25,000 steps covers roughly 9.47 to 11.84 miles.</li>
           <li><strong>30,000 Steps:</strong> How many miles is 30,000 steps? Walking 30,000 steps covers roughly 11.36 to 14.20 miles.</li>
-        </ul>
+        </ul> */}
 
         <h2>Miles to Steps Distance Benchmarks</h2>
         <ul>
