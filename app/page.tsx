@@ -225,7 +225,7 @@ export default function HomePage() {
       While 10,000 steps is a popular goal, research suggests that
       meaningful health benefits may be associated with lower step
       counts too. Your ideal target depends on your age, current
-      activity level, health, and fitness goals. If you're just
+      activity level, health, and fitness goals. If you&apos;re just
       starting, track your usual steps and gradually increase them.
       Explore our{" "}
       <Link
@@ -599,7 +599,7 @@ export default function HomePage() {
           </h2>
           
 <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
-  Before setting a calorie deficit for weight loss, it's important to understand how many calories your body needs each day. Your Total Daily Energy Expenditure (TDEE) estimates your daily calorie needs based on factors such as age, sex, height, weight, and activity level. Use our{" "}
+  Before setting a calorie deficit for weight loss, it&apos;s important to understand how many calories your body needs each day. Your Total Daily Energy Expenditure (TDEE) estimates your daily calorie needs based on factors such as age, sex, height, weight, and activity level. Use our{" "}
   <Link
     href="/maintenance-calorie-calculator"
     className="text-brand-700 dark:text-brand-400 font-semibold underline"

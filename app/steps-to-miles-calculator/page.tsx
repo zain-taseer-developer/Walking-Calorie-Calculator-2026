@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState, useMemo } from "react";
 import Link from "next/link";
@@ -135,14 +135,6 @@ export default function StepsToMilesPage() {
     const km = mi * KM_PER_MILE;
     const approxTimeMins = Math.round((mi / 3.0) * 60); // at moderate 3.0 mph
     return [s.toLocaleString(), `${mi.toFixed(2)} miles`, `${km.toFixed(2)} km`, `~${approxTimeMins} mins`];
-  });
-
-  // Miles to Steps Reference
-  const mileList = [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 5, 6, 8, 10];
-  const milesToStepsRows = mileList.map((m) => {
-    const st = Math.round(m * stepsPerMile);
-    const km = (m * KM_PER_MILE).toFixed(2);
-    return [`${m} mile${m === 1 ? "" : "s"}`, `${km} km`, `${st.toLocaleString()} steps`];
   });
 
   const heightBenchmarkRows = [
@@ -553,25 +545,6 @@ export default function StepsToMilesPage() {
           The number of steps required to walk a mile is determined by simple geometry: <strong>5,280 feet divided by your average stride length</strong>. Because human leg length correlates directly with total standing height (accounting for approximately 45% of total stature), taller walkers take longer steps and register fewer steps per mile than shorter walkers.
         </p>
 
-        <h2>How to Calculate Miles from Steps</h2>
-        <p>
-          To convert steps to miles, multiply your step count by your stride length in inches, then divide by the number of inches in a mile:
-        </p>
-        <div className="not-prose my-6 rounded-2xl border border-blue-200 dark:border-blue-900 bg-blue-50 dark:bg-blue-950/40 p-5 sm:p-6">
-          <p className="text-center text-xl sm:text-2xl font-bold text-blue-900 dark:text-blue-200">
-            Miles = (Number of Steps × Stride Length in Inches) ÷ 63,360
-          </p>
-          <p className="mt-3 text-sm text-blue-800 dark:text-blue-300">
-            <strong>Number of steps</strong> is the count you enter. <strong>Stride length</strong> is the distance covered per step, measured in inches. <strong>63,360</strong> is the number of inches in one mile.
-          </p>
-          <p className="mt-3 text-sm text-blue-800 dark:text-blue-300">
-            <strong>Example:</strong> Using an assumed 28-inch stride, 2,000 steps × 28 inches ÷ 63,360 = approximately 0.88 miles.
-          </p>
-        </div>
-        <p>
-          This is an estimate: your actual distance varies with your individual stride length, which can change with height, walking pace, and terrain.
-        </p>
-
         <h2>How to Calculate Steps from Miles</h2>
         <p>
           To convert miles to steps, multiply the distance in miles by the number of inches in a mile, then divide by your step length in inches:
@@ -589,6 +562,47 @@ export default function StepsToMilesPage() {
         </div>
         <p>
           This gives you the estimated total number of steps for any distance. Your actual step count may vary based on your individual stride length, walking pace, and terrain.
+        </p>
+
+        <DataTable
+          title="Steps to Miles & Kilometers Quick Reference"
+          titleLevel={3}
+          caption="Based on average adult stride length (~2.38 feet / 0.725 meters)."
+          headers={["Steps", "Distance (Miles)", "Distance (Kilometers)", "Est. Walking Time (3.0 mph)"]}
+          rows={milestoneRows}
+          highlightColumnIndex={1}
+        />
+
+        <h2>Steps to Miles by Height</h2>
+        <p>
+          The chart below compares estimated walking distances at common heights. Stride length is estimated using the calculator&apos;s height-based model (0.414 × height in meters), assuming a typical walking step on level ground. These are illustrative estimates, not exact measurements; your personal stride may differ.
+        </p>
+        <DataTable
+          title="Estimated Steps-to-Miles Distances by Height"
+          titleLevel={3}
+          caption="Height-based stride estimates; individual results vary."
+          headers={["Height", "Estimated Stride Length", "5,000 Steps", "10,000 Steps", "15,000 Steps"]}
+          rows={heightBenchmarkRows}
+          highlightColumnIndex={3}
+        />
+
+        <h2>How to Calculate Miles from Steps</h2>
+        <p>
+          To convert steps to miles, multiply your step count by your stride length in inches, then divide by the number of inches in a mile:
+        </p>
+        <div className="not-prose my-6 rounded-2xl border border-blue-200 dark:border-blue-900 bg-blue-50 dark:bg-blue-950/40 p-5 sm:p-6">
+          <p className="text-center text-xl sm:text-2xl font-bold text-blue-900 dark:text-blue-200">
+            Miles = (Number of Steps × Stride Length in Inches) ÷ 63,360
+          </p>
+          <p className="mt-3 text-sm text-blue-800 dark:text-blue-300">
+            <strong>Number of steps</strong> is the count you enter. <strong>Stride length</strong> is the distance covered per step, measured in inches. <strong>63,360</strong> is the number of inches in one mile.
+          </p>
+          <p className="mt-3 text-sm text-blue-800 dark:text-blue-300">
+            <strong>Example:</strong> Using an assumed 28-inch stride, 2,000 steps × 28 inches ÷ 63,360 = approximately 0.88 miles.
+          </p>
+        </div>
+        <p>
+          This is an estimate: your actual distance varies with your individual stride length, which can change with height, walking pace, and terrain.
         </p>
 
         <h2>Miles to Steps Distance Benchmarks</h2>
@@ -666,82 +680,6 @@ export default function StepsToMilesPage() {
           to input your exact body weight and terrain factors.
         </p>
 
-        <DataTable
-          title="Steps to Miles & Kilometers Quick Reference"
-          titleLevel={3}
-          caption="Based on average adult stride length (~2.38 feet / 0.725 meters)."
-          headers={["Steps", "Distance (Miles)", "Distance (Kilometers)", "Est. Walking Time (3.0 mph)"]}
-          rows={milestoneRows}
-          highlightColumnIndex={1}
-        />
-
-        <DataTable
-          title="Miles to Steps Reference Table"
-          caption="Quick guide for popular walking distances."
-          headers={["Miles", "Kilometers", "Step Equivalent"]}
-          rows={milesToStepsRows}
-          highlightColumnIndex={2}
-        />
-
-        <h2>Steps to Miles by Height</h2>
-        <p>
-          The chart below compares estimated walking distances at common heights. Stride length is estimated using the calculator&apos;s height-based model (0.414 × height in meters), assuming a typical walking step on level ground. These are illustrative estimates, not exact measurements; your personal stride may differ.
-        </p>
-        <DataTable
-          title="Estimated Steps-to-Miles Distances by Height"
-          titleLevel={3}
-          caption="Height-based stride estimates; individual results vary."
-          headers={["Height", "Estimated Stride Length", "5,000 Steps", "10,000 Steps", "15,000 Steps"]}
-          rows={heightBenchmarkRows}
-          highlightColumnIndex={3}
-        />
-
-        {/* <h2>Comprehensive Step-to-Miles Conversion Matrix &amp; Mileage Benchmarks</h2>
-        <p>
-          Use our free <strong>steps to miles converter</strong> and interactive <strong>steps to miles conversion</strong> calculator to <strong>convert steps to miles</strong> accurately. Below are detailed benchmarks for every step volume from 1,000 to 30,000 steps:
-        </p>
-
-        <ul>
-          <li><strong>1,000 Steps:</strong> How far is 1000 steps? Approximately 0.38 to 0.47 miles (0.61 to 0.76 km).</li>
-          <li><strong>2,000 Steps:</strong> How many miles is 2000 steps? Approximately 0.76 to 0.95 miles.</li>
-          <li><strong>3,000 Steps:</strong> How many miles is 3,000 steps? Walking 3,000 steps covers roughly 1.14 to 1.42 miles.</li>
-          <li><strong>4,000 Steps:</strong> How many miles is 4,000 steps? Walking 4,000 steps covers roughly 1.52 to 1.89 miles.</li>
-          <li><strong>5,000 Steps:</strong> How many miles is 5,000 steps? Walking 5,000 steps covers approximately 1.89 to 2.37 miles.</li>
-          <li><strong>6,000 Steps:</strong> How many miles is 6,000 steps? Walking 6,000 steps covers approximately 2.27 to 2.84 miles.</li>
-          <li><strong>7,000 Steps:</strong> How many miles is 7,000 steps? Walking 7,000 steps covers roughly 2.65 to 3.31 miles.</li>
-          <li><strong>7,500 Steps:</strong> How many miles is 7,500 steps? Walking 7,500 steps covers approximately 2.84 to 3.55 miles.</li>
-          <li><strong>8,000 Steps:</strong> How many miles is 8,000 steps? Walking 8,000 steps covers roughly 3.03 to 3.79 miles.</li>
-          <li><strong>9,000 Steps:</strong> How many miles is 9000 steps? 9000 steps to miles equals roughly 3.41 to 4.26 miles.</li>
-          <li><strong>10,000 Steps:</strong> How many miles is 10,000 steps? Walking 10,000 steps covers approximately 3.79 to 4.73 miles depending on your stride length. This is the most popular daily step goal recommended by health organizations worldwide.</li>
-          <li><strong>11,000 Steps:</strong> How many miles is 11,000 steps? Walking 11,000 steps covers approximately 4.17 to 5.21 miles.</li>
-          <li><strong>12,000 Steps:</strong> How many miles is 12,000 steps? Walking 12,000 steps covers approximately 4.55 to 5.68 miles.</li>
-          <li><strong>13,000 Steps:</strong> How many miles is 13,000 steps? Walking 13,000 steps covers roughly 4.92 to 6.16 miles.</li>
-          <li><strong>14,000 Steps:</strong> How many miles is 14,000 steps? Walking 14,000 steps covers approximately 5.30 to 6.63 miles.</li>
-          <li><strong>15,000 Steps:</strong> How many miles is 15,000 steps? Walking 15,000 steps covers approximately 5.68 to 7.10 miles.</li>
-          <li><strong>16,000 Steps:</strong> How many miles is 16000 steps? Equals roughly 6.06 to 7.58 miles.</li>
-          <li><strong>17,000 Steps:</strong> How many miles is 17,000 steps? Walking 17,000 steps covers roughly 6.44 to 8.05 miles.</li>
-          <li><strong>18,000 Steps:</strong> How many miles is 18,000 steps? Walking 18,000 steps covers roughly 6.82 to 8.52 miles.</li>
-          <li><strong>19,000 Steps:</strong> How many miles is 19000 steps? 19000 steps in miles equals 7.20 to 9.00 miles.</li>
-          <li><strong>20,000 Steps:</strong> How many miles is 20,000 steps? Walking 20,000 steps covers approximately 7.58 to 9.47 miles.</li>
-          <li><strong>21,000 Steps:</strong> How many miles is 21000 steps? Equals roughly 7.95 to 9.94 miles.</li>
-          <li><strong>22,000 Steps:</strong> How many miles is 22,000 steps? Walking 22,000 steps covers roughly 8.33 to 10.42 miles.</li>
-          <li><strong>23,000 Steps:</strong> How many miles is 23000 steps? Equals roughly 8.71 to 10.89 miles.</li>
-          <li><strong>25,000 Steps:</strong> How many miles is 25,000 steps? Walking 25,000 steps covers roughly 9.47 to 11.84 miles.</li>
-          <li><strong>30,000 Steps:</strong> How many miles is 30,000 steps? Walking 30,000 steps covers roughly 11.36 to 14.20 miles.</li>
-        </ul> */}
-
-        {/* <h2>Miles to Steps Distance Benchmarks</h2>
-        <ul>
-          <li><strong>1 Mile:</strong> How many steps is 1 mile? An average adult takes approximately 2,000 to 2,500 steps to walk one mile. This varies by height — taller adults average around 2,000 steps per mile, while shorter adults may take closer to 2,500 steps per mile.</li>
-          <li><strong>1.5 Miles:</strong> How many steps in a mile and a half? Equals roughly 3,000 to 3,750 steps.</li>
-          <li><strong>2 Miles:</strong> How many steps in 2 miles? Approximately 4,000 to 5,000 steps.</li>
-          <li><strong>3 Miles:</strong> How many steps in 3 miles? Approximately 6,000 to 7,500 steps.</li>
-          <li><strong>4 Miles:</strong> How many steps is 4 miles? Approximately 8,000 to 10,000 steps.</li>
-          <li><strong>5 Miles:</strong> How many steps is 5 miles? Approximately 10,000 to 12,500 steps.</li>
-          <li><strong>7 Miles:</strong> How many steps is 7 miles? Approximately 14,000 to 17,500 steps.</li>
-          <li><strong>10 Miles:</strong> How many steps is 10 miles equals 20,000 to 25,000 steps.</li>
-        </ul> */}
-
         <h2>Health &amp; Weight Goals</h2>
         <p>
           Many walkers wonder: <strong>how many miles should i walk per day</strong>? Public health data recommends walking 3 to 5 miles per day (7,000 to 10,000 steps) for longevity. If you ask: <strong>how many steps do i need to lose weight</strong>? Accumulating 10,000 to 12,000 steps consistently burns 350 to 500 extra calories per day, supporting a safe, steady fat-loss rate of roughly 1 pound per week without restrictive diets.
@@ -756,3 +694,4 @@ export default function StepsToMilesPage() {
     </div>
   );
 }
+

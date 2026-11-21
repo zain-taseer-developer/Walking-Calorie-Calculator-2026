@@ -68,7 +68,9 @@ export function HomeWalkTracker() {
   const noMotionWarningShownRef = useRef(false);
   const lastSensorAtRef = useRef(0);
 
-  sensitivityRef.current = sensitivity;
+  useEffect(() => {
+    sensitivityRef.current = sensitivity;
+  }, [sensitivity]);
 
   const customStrideNumber = customStrideCm === "" ? undefined : Number(customStrideCm);
   const resolvedHeightCm = heightUnit === "cm"
