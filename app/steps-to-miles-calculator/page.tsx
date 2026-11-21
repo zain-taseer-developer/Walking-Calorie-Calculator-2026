@@ -544,7 +544,17 @@ export default function StepsToMilesPage() {
         <p>
           The number of steps required to walk a mile is determined by simple geometry: <strong>5,280 feet divided by your average stride length</strong>. Because human leg length correlates directly with total standing height (accounting for approximately 45% of total stature), taller walkers take longer steps and register fewer steps per mile than shorter walkers.
         </p>
-
+<p>
+  Wondering how long those steps will actually take? Check our guide on{" "}
+  <a href="/how-long-to-walk-a-mile">
+    how long it takes to walk a mile
+  </a>
+  . If you want to check your speed and splits, try our{" "}
+  <a href="https://www.walkingcaloriecalc.com/walking-pace-calculator">
+    Walking Pace Calculator
+  </a>
+  .
+</p>
         <h2>How to Calculate Steps from Miles</h2>
         <p>
           To convert miles to steps, multiply the distance in miles by the number of inches in a mile, then divide by your step length in inches:
