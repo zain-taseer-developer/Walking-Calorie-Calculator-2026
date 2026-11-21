@@ -208,32 +208,32 @@ export default function StepsToMilesPage() {
       </div>
 
       {/* Interactive Converter Card */}
-      <div className="my-8 p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl shadow-slate-900/5">
+      <div className="my-6 p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl shadow-slate-900/5">
         {/* Conversion Mode Switch */}
         <div className="mb-6">
           <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">
             Conversion Mode
           </label>
-          <div className="inline-flex w-full max-w-md rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800">
+          <div className="flex w-full max-w-md items-center justify-center rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800">
             <button
               onClick={() => setMode("steps-to-miles")}
-              className={`flex-1 py-2.5 text-sm font-semibold border-r border-transparent transition-colors ${
+              className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 text-sm font-semibold border-r border-transparent transition-colors ${
                 mode === "steps-to-miles"
                   ? "bg-brand-700 border-brand-600 text-white shadow-md shadow-brand-600/20"
                   : "text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50"
               }`}
             >
-              <ArrowRightLeft className="w-4 h-4 mr-1.5" /> Steps to Miles
+              <ArrowRightLeft className="w-4 h-4" /> Steps to Miles
             </button>
             <button
               onClick={() => setMode("miles-to-steps")}
-              className={`flex-1 py-2.5 text-sm font-semibold transition-colors ${
+              className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 text-sm font-semibold transition-colors ${
                 mode === "miles-to-steps"
                   ? "bg-brand-700 border-brand-600 text-white shadow-md shadow-brand-600/20"
                   : "text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50"
               }`}
             >
-              <ArrowRightLeft className="w-4 h-4 mr-1.5" /> Miles to Steps
+              <ArrowRightLeft className="w-4 h-4" /> Miles to Steps
             </button>
           </div>
           <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1.5">
@@ -241,7 +241,7 @@ export default function StepsToMilesPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
           {/* Inputs */}
           <div className="space-y-5">
             {/* Primary input */}
