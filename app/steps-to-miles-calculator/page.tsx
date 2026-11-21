@@ -597,7 +597,7 @@ export default function StepsToMilesPage() {
         />
 
 <p>
-  Because stride length changes with height, 10,000 steps doesn't cover the same distance for everyone. For a full height-by-height breakdown from 1,000 to 30,000 steps, see our guide on{" "}
+  Stride length changes with height, 10,000 steps doesn't cover the same distance for everyone. For a full height-by-height breakdown from 1,000 to 30,000 steps, see our guide on{" "}
   <a href="https://www.walkingcaloriecalc.com/how-many-miles-is-10000-steps">
     how many miles 10,000 steps
   </a>.
