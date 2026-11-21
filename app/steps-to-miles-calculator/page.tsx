@@ -596,6 +596,13 @@ export default function StepsToMilesPage() {
           highlightColumnIndex={3}
         />
 
+<p>
+  Because stride length changes with height, 10,000 steps doesn't cover the same distance for everyone. For a full height-by-height breakdown from 1,000 to 30,000 steps, see our guide on{" "}
+  <a href="https://www.walkingcaloriecalc.com/how-many-miles-is-10000-steps">
+    how many miles 10,000 steps
+  </a>.
+</p>
+
         <h2>How to Calculate Miles from Steps</h2>
         <p>
           To convert steps to miles, multiply your step count by your stride length in inches, then divide by the number of inches in a mile:
