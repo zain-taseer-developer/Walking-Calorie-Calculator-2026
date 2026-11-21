@@ -511,10 +511,11 @@ export default function StepsToMilesPage() {
         <h2>How to Use the Steps to Miles Calculator</h2>
         <ol className="not-prose grid grid-cols-1 sm:grid-cols-2 gap-3 my-5">
           {[
-            "Pick Steps to Miles or Miles to Steps using the mode switch, then enter your step count or distance, or tap a preset count.",
-            "Enter your height in feet and inches. The calculator uses it to estimate your stride length.",
-            "The stride estimate updates automatically with your height, or enter a custom step length in inches or centimeters.",
-            "Read your calculated distance in miles and kilometers in the results card.",
+            "Pick <strong>Steps to Miles</strong> or <strong>Miles to Steps</strong> using the mode switch at the top.",
+            "Enter a step count or distance, or tap a preset step count (1,000 to 20,000).",
+            "Choose <strong>Use My Height</strong> (feet + inches) or <strong>Enter My Step Length</strong> (inches or centimeters).",
+            "Results update live: see distance in miles and kilometers, steps per mile, steps per kilometer, and step length.",
+            "Use <strong>Copy Results</strong> to save the summary, or <strong>Reset</strong> to clear all inputs.",
           ].map((instruction, index) => (
             <li
               key={instruction}
@@ -523,7 +524,7 @@ export default function StepsToMilesPage() {
               <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-700 text-xs font-bold text-white">
                 {index + 1}
               </span>
-              <span className="leading-relaxed">{instruction}</span>
+              <span className="leading-relaxed" dangerouslySetInnerHTML={{ __html: instruction }} />
             </li>
           ))}
         </ol>
