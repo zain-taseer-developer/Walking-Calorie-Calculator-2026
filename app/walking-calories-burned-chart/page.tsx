@@ -86,11 +86,7 @@ export default function WalkingCaloriesBurnedChartPage() {
         "Locate your body weight in the left-hand column, then trace across horizontally to find your walking speed. The intersecting cell shows the estimated gross calories burned for that duration on level ground. If your weight falls between two rows, estimate between the nearest values or use our walking calorie calculator for a personalized result.",
       answerContent: (
         <>
-          Locate your body weight in the left-hand column, then trace across horizontally to find your walking speed. The intersecting cell shows the estimated gross calories burned for that duration on level ground. If your weight falls between two rows, estimate between the nearest values or use our{" "}
-          <Link href="/" className="font-bold text-brand-600 underline">
-            walking calorie calculator
-          </Link>{" "}
-          for a personalized result.
+          Locate your body weight in the left-hand column, then trace across horizontally to find your walking speed. The intersecting cell shows the estimated gross calories burned for that duration on level ground. If your weight falls between two rows, estimate between the nearest values or use our walking calorie calculator for a personalized result.
         </>
       ),
     },
@@ -183,7 +179,6 @@ export default function WalkingCaloriesBurnedChartPage() {
 
       <div className="prose prose-slate dark:prose-invert max-w-none my-10 space-y-4">
         <h2>Gross vs. Net Calories in This Chart</h2>
-
         <p>
           All values in the tables above are gross calories, which include the energy your body would burn at rest anyway. To estimate the extra (net) calories burned specifically by walking, multiply a chart value by the factor for your speed:
         </p>
@@ -207,15 +202,10 @@ export default function WalkingCaloriesBurnedChartPage() {
 
       <div className="prose prose-slate dark:prose-invert max-w-none my-10 space-y-4">
         <p>
-          Example: a 155 lb person walking for 30 minutes at 3.5 mph burns 169 calories gross, or about 134 calories net (169 x 0.79). Our{" "}
-          <Link href="/" className="font-bold text-brand-600 underline">
-            walking calorie calculator
-          </Link>{" "}
-          can show net calories with its Show Net Calories toggle.
+          Example: a 155 lb person walking for 30 minutes at 3.5 mph burns 169 calories gross, or about 134 calories net (169 x 0.79). Our walking calorie calculator can show net calories with its Show Net Calories toggle.
         </p>
 
         <h2>Calories Burned Walking One Mile</h2>
-
         <p>
           These values show approximate gross calories burned per mile at each walking speed, using the same MET values as the tables above (calories per mile = MET x weight in kg / speed in mph). Per-mile burn is lowest around 3.0 mph: gross values include resting energy, which adds up over more minutes at slow speeds, while faster walking uses more energy each minute.
         </p>
@@ -237,7 +227,6 @@ export default function WalkingCaloriesBurnedChartPage() {
 
       <div className="prose prose-slate dark:prose-invert max-w-none my-10 space-y-4">
         <h2>How This Chart Is Calculated</h2>
-
         <p>
           Calories burned = MET x body weight (kg) x time (hours). Walking MET reference points come from the 2024 Adult Compendium: 2.0 mph = 2.8, 2.5 mph = 3.0, 3.0 mph = 3.8, 3.5 mph = 4.8, 4.0 mph = 5.5, 4.5 mph = 7.0, and 5.0 mph = 8.5. Intermediate speeds are estimated by linear interpolation.
         </p>
@@ -248,10 +237,6 @@ export default function WalkingCaloriesBurnedChartPage() {
 
         <p>
           Values assume level, firm ground with no backpack, and are rounded to the nearest whole calorie. Incline, terrain, and carried load increase calorie burn. Use our{" "}
-          <Link href="/" className="font-bold text-brand-600 underline">
-            walking calorie calculator
-          </Link>{" "}
-          for those factors, or the{" "}
           <Link
             href="/treadmill-incline-calculator"
             className="font-bold text-brand-600 underline"
