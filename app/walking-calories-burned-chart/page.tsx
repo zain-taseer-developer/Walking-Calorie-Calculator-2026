@@ -83,10 +83,10 @@ export default function WalkingCaloriesBurnedChartPage() {
     {
       question: "How do I read this walking calorie burn chart?",
       answer:
-        "Locate your body weight in the left-hand column, then trace across horizontally to find your walking speed. The intersecting cell shows the estimated gross calories burned for that duration on level ground. If your weight falls between two rows, estimate between the nearest values or use our walking calorie calculator for a personalized result.",
+        "Locate your body weight in the left-hand column, then trace across horizontally to find your walking speed. The intersecting cell shows the estimated gross calories burned for that duration on level ground. If your weight falls between two rows, estimate between the nearest values to find your approximate calorie burn.",
       answerContent: (
         <>
-          Locate your body weight in the left-hand column, then trace across horizontally to find your walking speed. The intersecting cell shows the estimated gross calories burned for that duration on level ground. If your weight falls between two rows, estimate between the nearest values or use our walking calorie calculator for a personalized result.
+          Locate your body weight in the left-hand column, then trace across horizontally to find your walking speed. The intersecting cell shows the estimated gross calories burned for that duration on level ground. If your weight falls between two rows, estimate between the nearest values to find your approximate calorie burn.
         </>
       ),
     },
