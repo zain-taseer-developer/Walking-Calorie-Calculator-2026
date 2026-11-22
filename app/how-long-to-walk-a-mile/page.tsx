@@ -242,10 +242,17 @@ export default function HowLongToWalkMilePage() {
             <strong>Weather:</strong> Heat, rain, wind, and slippery conditions
             may affect your walking speed.
           </li>
-          <li>
-            <strong>Personal pace:</strong> Fitness, fatigue, comfort, and
-            experience can influence how consistently you walk.
-          </li>
+         <li>
+  <strong>Personal pace:</strong> Fitness, fatigue, comfort, and
+  experience can influence how consistently you walk. Use our{" "}
+  <Link
+    href="/walking-pace-calculator"
+    className="font-bold text-brand-600 underline"
+  >
+    Walking Pace Calculator
+  </Link>{" "}
+  to estimate your pace and understand how speed affects your walking time.
+</li>
         </ul>
 
         <h2>Walking vs. Running: 1 Mile Time</h2>
