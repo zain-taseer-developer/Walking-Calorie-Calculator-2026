@@ -90,6 +90,16 @@ export default function WalkingCaloriesBurnedChartPage() {
         "In this chart, calories are calculated from body weight (MET x kg x hours), so they scale directly with weight: a 220-pound person is estimated to burn twice as many calories as a 110-pound person walking the same distance at the same speed. In real life the relationship is approximately proportional, because moving a heavier body requires more muscular work, though individual differences in walking style and body composition affect the exact result.",
     },
     {
+      question: "Are the chart values gross or net calories?",
+      answer:
+        "Every value in the 30-minute, 60-minute, and per-mile tables is a gross calorie figure, meaning it includes resting energy your body burns regardless of activity. To get the walking-specific (net) burn, multiply the gross value by the net factor for your speed shown in the Gross vs. Net section above.",
+    },
+    {
+      question: "Why do calories burned differ at different walking speeds?",
+      answer:
+        "Walking faster raises your metabolic intensity — the Compendium MET value climbs from 2.8 at 2.0 mph to 7.0 at 4.5 mph — so each minute burns more. But faster speeds also take less time to cover the same distance, which is why the per-mile table dips near 3.0 mph before rising again at race-walking speeds. For a fixed duration, like the 30- and 60-minute tables, faster is always higher.",
+    },
+    {
       question: "Can I print or save this chart as a PDF?",
       answer:
         "Yes. Use the Print / Save as PDF button at the top of the page, or press Ctrl+P (Cmd+P on Mac) and choose Save as PDF. The print layout hides the navigation and shows the chart tables in a clean, high-contrast format.",
