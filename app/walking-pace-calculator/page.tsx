@@ -68,29 +68,9 @@ export default function WalkingPaceCalculatorPage() {
         "The average walking speed for healthy adults is approximately 2.8 to 3.2 mph (4.5 to 5.1 km/h), which corresponds to a pace between 18:45 and 21:25 per mile (11:45 to 13:20 per kilometer). Walking speeds generally decline by roughly 1% to 2% per decade after age 60.",
     },
     {
-      question: "How do you convert miles in minutes to miles per hour (miles per minute to miles per hour)?",
+      question: "How do you convert minutes per mile back to mph?",
       answer:
-        "To convert miles per minute to miles per hour (or miles in minutes to miles per hour), multiply your miles per minute by 60. For example, running 0.1 miles per minute equals 0.1 × 60 = 6.0 mph. Conversely, divide your speed in mph by 60 to find miles covered in one minute (e.g. 3.0 mph ÷ 60 = 0.05 miles per minute).",
-    },
-    {
-      question: "How many miles is 20k and 21k to miles?",
-      answer:
-        "When asking 'how many miles is 20k', 20 kilometers equals 12.43 miles (20 × 0.621371). A half marathon or '21k to miles' equals 13.05 to 13.11 miles (21.0975 km).",
-    },
-    {
-      question: "How do you convert track distances: 800m to mile, 1600m to miles, and 3000m to miles?",
-      answer:
-        "On standard athletic tracks: 800m to mile is exactly 0.497 miles (roughly half a mile). 1600m to miles is 0.994 miles (considered the high-school metric mile). A 3000 meter run is how many miles (3000m to miles)? 3,000 meters equals 1.864 miles (almost 1 and 7/8th miles).",
-    },
-    {
-      question: "How do you convert road travel distances: 55miles in km, 130km in miles, 220 km to miles, and 1600 miles to km?",
-      answer:
-        "Using the metric factor (1 mile = 1.60934 km; 1 km = 0.621371 miles): 55miles in km equals 88.51 km. 130km in miles equals 80.78 miles. 220 km to miles equals 136.70 miles. 1600 miles to km equals 2,574.95 km. A speed of 250 km h to miles (250 km/h) equals 155.34 mph.",
-    },
-    {
-      question: "How to calculate gas mileage vs walking efficiency?",
-      answer:
-        "To learn how to calculate gas mileage, divide distance driven in miles by fuel gallons consumed (MPG = Miles ÷ Gallons). For human walking, our walking calorie calculator computes metabolic fuel efficiency: the human body consumes roughly 75 to 90 calories per mile walked!",
+        "To convert pace back to speed, divide 60 by your minutes-per-mile pace. For example, a 20:00 min/mile pace equals 60 ÷ 20 = 3.0 mph. The same rule works for metric units: divide 60 by your min/km pace to get km/h.",
     },
   ];
 
@@ -344,28 +324,10 @@ export default function WalkingPaceCalculatorPage() {
       <div className="prose prose-slate dark:prose-invert max-w-none my-10 space-y-4">
         <h2>What Is a Good Walking Pace?</h2>
         <p>
-          A good walking pace is one that feels comfortable and appropriate for your goals and abilities. These are approximate adult examples, not medical standards or requirements; the pace you can sustain may vary.
+          For most healthy adults, somewhere between <strong>3.0 and 3.5 mph</strong> (roughly a 17:00–20:00 min/mile pace) is a practical fitness walking pace — fast enough to raise your breathing and heart rate, but sustainable for 30 minutes or more. Casual strolling sits closer to 2–2.5 mph, while anything above 4 mph crosses into race-walking territory.
         </p>
-        <div className="not-prose my-5 overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
-          <table className="w-full min-w-[480px] text-left text-sm">
-            <thead className="bg-slate-50 dark:bg-slate-950/60 text-slate-700 dark:text-slate-300">
-              <tr>
-                <th scope="col" className="px-4 py-3 font-semibold">Walking level</th>
-                <th scope="col" className="px-4 py-3 font-semibold">Approximate speed</th>
-                <th scope="col" className="px-4 py-3 font-semibold">Approximate pace</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-slate-600 dark:text-slate-300">
-              <tr><td className="px-4 py-3">Slow walking</td><td className="px-4 py-3 font-mono">Around 2 mph</td><td className="px-4 py-3 font-mono">About 30 min/mile</td></tr>
-              <tr><td className="px-4 py-3">Casual walking</td><td className="px-4 py-3 font-mono">Around 2.5 mph</td><td className="px-4 py-3 font-mono">About 24 min/mile</td></tr>
-              <tr><td className="px-4 py-3">Moderate walking</td><td className="px-4 py-3 font-mono">Around 3 mph</td><td className="px-4 py-3 font-mono">About 20 min/mile</td></tr>
-              <tr><td className="px-4 py-3">Brisk walking</td><td className="px-4 py-3 font-mono">Around 3.5–4 mph</td><td className="px-4 py-3 font-mono">About 17:09–15:00 min/mile</td></tr>
-              <tr><td className="px-4 py-3">Fast walking</td><td className="px-4 py-3 font-mono">Around 4.5–5 mph</td><td className="px-4 py-3 font-mono">About 13:20–12:00 min/mile</td></tr>
-            </tbody>
-          </table>
-        </div>
         <p>
-          Your walking pace can change with age, fitness, health, terrain, and individual ability. Use these ranges as a general reference rather than a target you must meet.
+          A "good" pace is ultimately one you can hold comfortably for your target duration. It varies with age, fitness, terrain, and health, so treat the intensity labels in the conversion chart above as reference points rather than targets. For a personal benchmark, walk a measured distance, note your time, and compare your result against the chart.
         </p>
       </div>
 
