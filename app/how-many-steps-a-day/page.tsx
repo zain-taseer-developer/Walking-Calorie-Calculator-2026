@@ -1,3 +1,4 @@
+
 import { Metadata } from "next";
 import Link from "next/link";
 import { constructMetadata } from "@/lib/seo";
@@ -8,13 +9,12 @@ import { RelatedTools } from "@/components/content/RelatedTools";
 import { AdSlot } from "@/components/ads/AdSlot";
 import { DataTable } from "@/components/content/DataTable";
 import { KeyTakeaways } from "@/components/content/KeyTakeaways";
-import { MiniCalculator } from "@/components/calculator/MiniCalculator";
 import { Footprints } from "lucide-react";
 
 export const metadata: Metadata = constructMetadata({
   title: "Recommended Steps Per Day: How Many Steps Per Day?",
   description:
-    "How many steps a day is good? Research shows 7,500 to 10,000 steps per day provides peak longevity, cardiovascular protection, and metabolic health.",
+    "Find out how many steps a day may support better health. Explore research on daily step counts, age, weight loss, and practical ways to walk more.",
   canonicalPath: "/how-many-steps-a-day",
   keywords: [
     "average steps per day",
@@ -34,46 +34,31 @@ export default function HowManyStepsADayPage() {
     ["Highly active", "12,500+ steps", "5.6+ miles", "Descriptive step-count tier"],
   ];
 
-  const stepCountHealth = [
-    ["4,000 steps", "A useful baseline for some people; adding movement from a low starting point may be beneficial."],
-    ["5,000 steps", "More daily movement than a lower baseline; a reasonable milestone, not a medical cutoff."],
-    ["7,000 steps", "Observational studies associate this range with lower mortality risk than very low step counts."],
-    ["8,000 steps", "Higher step counts have been associated with additional health benefits in cohort research."],
-    ["10,000 steps", "A memorable goal, but research does not show it is necessary for everyone to benefit."],
-  ];
-
-  const weightLossSteps = [
-    ["5,000", "Can be a starting point or an increase from a lower baseline."],
-    ["7,500", "Adds more walking than 5,000; the additional energy use varies by person."],
-    ["10,000", "A common goal, not a requirement for weight loss."],
-    ["12,000", "More steps may increase activity, but are not necessary or appropriate for everyone."],
-  ];
-
   const faqs: FAQItem[] = [
     {
       question: "What is the average number of steps per day for adults?",
       answer:
-        "There is no single average that applies to all U.S. adults; results vary by age, occupation, health, and how steps are measured. A personal baseline measured over several typical days is often more useful than comparing yourself with a population average.",
+        "There is no single average that applies to all U.S. adults. Daily step counts vary by age, occupation, health, and how steps are measured. Tracking your own activity over several typical days can provide a more useful starting point than comparing yourself with a population average.",
     },
     {
       question: "Is 7,000 steps a day enough for longevity?",
       answer:
-        "Seven thousand steps is a reasonable activity level associated with lower mortality risk in observational research compared with lower daily counts. The studies do not prove that a specific step count causes longer life or guarantee an individual outcome. Any increase that fits your ability can be worthwhile.",
+        "Around 7,000 daily steps is a reasonable activity level associated with lower mortality risk in observational research compared with lower daily counts. These studies do not prove that a specific step count causes longer life or guarantee an individual outcome. Your health, mobility, and starting activity level also matter.",
     },
     {
       question: "How many miles should you walk a day?",
       answer:
-        "There is no required daily mileage. Distance depends on your pace and stride length, and step counts do not directly equal minutes of moderate activity. U.S. guidance for adults recommends at least 150 minutes of moderate-intensity aerobic activity per week, plus muscle-strengthening activity on 2 days; some activity is better than none.",
+        "There is no required daily mileage. The distance you cover depends on your step count and stride length. U.S. guidance for adults recommends at least 150 minutes of moderate-intensity aerobic activity per week, plus muscle-strengthening activity on 2 days. Some activity is better than none.",
     },
     {
       question: "How many steps a day should I walk to lose weight?",
       answer:
-        "There is no universal step target for weight loss. More walking can increase energy use, but weight change also depends on food and drink intake, health, and other factors. A sustainable increase from your current baseline may help support a calorie deficit, but steps alone do not guarantee weight loss.",
+        "There is no universal step target for weight loss. Walking more can increase energy use, but weight change also depends on food and drink intake, health, and other factors. A sustainable increase from your current baseline may help support a calorie deficit, but steps alone do not guarantee weight loss.",
     },
     {
       question: "How can I start increasing my daily steps?",
       answer:
-        "First track your usual steps for several days, then choose a small, manageable increase—for example, an extra 500 steps a day for a week. If that feels comfortable, add another small amount. Adjust the pace to your health and mobility, and pause or seek professional advice if activity causes concerning symptoms.",
+        "First track your usual steps for several days, then choose a small, manageable increase, such as an extra 500 steps a day for a week. If that feels comfortable, add another small amount. Adjust the pace to your health and mobility, and pause or seek professional advice if activity causes concerning symptoms.",
     },
   ];
 
@@ -86,11 +71,14 @@ export default function HowManyStepsADayPage() {
           <Footprints className="w-3.5 h-3.5" />
           <span>Epidemiological Fitness Guide</span>
         </div>
+
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
           How Many Steps a Day Should You Take?
         </h1>
+
         <p className="mt-2 text-base text-slate-600 dark:text-slate-300">
-          A practical guide to daily step counts, activity, and what observational health research can—and cannot—tell us.
+          A practical guide to daily step counts, activity levels, and what
+          observational health research can—and cannot—tell us.
         </p>
       </div>
 
@@ -99,154 +87,358 @@ export default function HowManyStepsADayPage() {
         points={[
           "Observational studies associate higher daily step counts with lower risks of mortality and cardiovascular events; they cannot guarantee an individual result or prove cause and effect.",
           "There is no single step-count target that everyone must meet. Starting from your own baseline and adding activity gradually can be a practical approach.",
-          "Steps measure movement volume, while intensity describes how hard the activity feels. Both can help describe activity, but step count alone does not establish whether weekly activity guidance is met.",
+          "Steps measure movement volume, while intensity describes how hard the activity feels. Both help describe activity, but step count alone does not establish whether weekly activity guidance is met.",
           "A daily step target is not a requirement for weight loss; body weight is influenced by overall energy intake and expenditure.",
         ]}
       />
 
       <AdSlot format="horizontal" slotId="steps-a-day-top" />
 
-      {/* Embedded Mini Calculator */}
-      <MiniCalculator
-        defaultWeightLbs={160}
-        defaultDurationMins={60}
-        defaultMph={3.2}
-        title="Calculate Calories Burned for Your Daily Steps"
-      />
-
       <div className="prose prose-slate dark:prose-invert max-w-none my-10 space-y-4">
-        <h2>Physical Activity Classification Tiers</h2>
+        <h2>Daily Physical Activity Classification Tiers</h2>
+
         <p>
-          Tudor-Locke and Bassett step-count ranges are descriptive activity-classification tiers used in research. They are not strict medical diagnoses or individual health-risk categories. Approximate mileage varies with stride length.
+          Daily step counts are often grouped into activity categories to
+          describe how much a person moves. The Tudor-Locke and Bassett
+          classification uses descriptive ranges rather than medical
+          thresholds. These categories provide general context, not a
+          diagnosis or a personalized health recommendation.
         </p>
 
         <DataTable
           title="Daily Physical Activity Step Categories"
-          caption="Descriptive adult activity tiers; not diagnostic health categories."
-          headers={["Activity tier", "Daily step count", "Approx. mileage", "How to interpret"]}
+          caption="Descriptive adult activity tiers; approximate mileage varies with stride length."
+          headers={[
+            "Activity tier",
+            "Daily step count",
+            "Approx. mileage",
+            "How to interpret",
+          ]}
           rows={activityTiers}
           highlightColumnIndex={1}
         />
 
-        <h2>The Truth About the 10,000 Steps Target</h2>
         <p>
-          Ten thousand steps can be a motivating goal, but it is not a universal threshold for health. Research generally finds associations between more daily steps and better health outcomes, with patterns varying by age and outcome. These observational findings do not establish that a specific number of steps prevents disease. If your baseline is lower, gradual increases still add movement.
+          Mileage is only an estimate because people have different stride
+          lengths. To estimate the distance covered by your own step count,
+          use our{" "}
+          <Link
+            href="/steps-to-miles-calculator"
+            className="font-bold text-brand-600 underline"
+          >
+            Steps to Miles Calculator
+          </Link>
+          .
         </p>
 
-        <h2>Health Benefits of Different Daily Step Counts</h2>
+        <h2>Is 10,000 Steps a Day Necessary?</h2>
+
         <p>
-          Step-count studies compare groups over time and report associations, not guaranteed results for an individual. More movement may support health, but benefits depend on a person’s baseline, pace, health, and other behaviors.
+          Ten thousand steps can be a motivating daily goal, but it is not a
+          universal requirement for good health. The number became a popular
+          fitness target, while research has continued to examine how different
+          levels of daily movement relate to health outcomes.
         </p>
-        <DataTable
-          title="Daily Steps: A Simple Comparison"
-          caption="General context based on observational research; not individual predictions."
-          headers={["Daily steps", "What it may mean"]}
-          rows={stepCountHealth}
-        />
+
+        <p>
+          Observational research generally associates higher daily step counts
+          with lower risks of mortality and certain cardiovascular outcomes.
+          However, the relationship varies by age and health outcome, and
+          these findings do not prove that reaching exactly 10,000 steps
+          prevents disease.
+        </p>
+
+        <p>
+          If 10,000 steps feels manageable, it can be a useful personal goal.
+          If your current activity is much lower, a smaller increase can
+          still help you build a more active routine. For a detailed look at
+          the distance covered by this target, see our{" "}
+          <Link
+            href="/10-000-steps-guide"
+            className="font-bold text-brand-600 underline"
+          >
+            10,000 Steps Guide
+          </Link>
+          .
+        </p>
+
+        <h2>What Does Research Say About Daily Step Counts?</h2>
+
+        <p>
+          Studies have compared the daily step counts of different groups
+          over time and found associations between more movement and several
+          health outcomes. Some research has reported lower mortality risk
+          among people taking around 7,000 steps a day compared with those
+          taking substantially fewer steps.
+        </p>
+
+        <p>
+          These findings do not mean that everyone needs to reach 7,000 or
+          10,000 steps. A person's starting activity level, age, health, and
+          ability all matter. The practical takeaway is that increasing
+          movement from a low baseline can be worthwhile without treating
+          one number as a medical cutoff.
+        </p>
 
         <h2>How Many Steps Should You Walk by Age?</h2>
+
         <p>
-          Research has examined age groups differently, and evidence does not establish mandatory step counts for each age. Some large observational analyses report different step-count ranges associated with lower mortality for adults under 60 and adults 60 and older. The findings are not individualized prescriptions, and there is less evidence for precise targets across narrower age bands.
+          Research has examined daily step counts across different age
+          groups, but it has not established mandatory step targets for
+          every age. Some large observational analyses report different
+          ranges associated with lower mortality among adults under 60 and
+          adults 60 and older. These are population-level findings, not
+          individualized prescriptions.
         </p>
+
         <ul>
-          <li><strong>Younger adults:</strong> Consider building regular movement into work, travel, and recreation; a higher target may suit some people but is not required for everyone.</li>
-          <li><strong>Middle-aged adults:</strong> Choose a goal that fits your current routine, health, and fitness. A gradual increase from baseline can be more useful than chasing a fixed number.</li>
-          <li><strong>Adults over 60:</strong> Consider mobility, balance, chronic conditions, and recovery. Comfortable walking and other activity suited to ability can contribute to weekly movement.</li>
+          <li>
+            <strong>Younger adults:</strong> Build regular movement into
+            work, travel, and recreation. A higher daily target may suit
+            some people, but it is not required for everyone.
+          </li>
+          <li>
+            <strong>Middle-aged adults:</strong> Choose a goal that fits
+            your current routine, health, and fitness. A gradual increase
+            from your baseline can be more practical than chasing a fixed
+            number.
+          </li>
+          <li>
+            <strong>Adults over 60:</strong> Consider mobility, balance,
+            existing health conditions, and recovery. Comfortable walking
+            and other activities suited to your ability can contribute to
+            regular movement.
+          </li>
         </ul>
+
         <p>
-          Age-specific step research is still developing. Follow clinical advice for personal conditions, and use weekly physical-activity guidance as a complementary measure rather than treating steps as a medical target.
+          Evidence for precise targets across narrower age groups is still
+          developing. Follow clinical advice for personal health conditions,
+          and consider weekly physical-activity guidance alongside your
+          daily step count.
         </p>
 
         <h2>How Many Steps a Day for Weight Loss?</h2>
+
         <p>
-          Walking uses energy, and increasing steps may add to daily energy expenditure. The amount varies with body size, walking pace, terrain, and other factors. Weight loss generally requires a sustained calorie deficit—using more energy than you consume over time—so a step count by itself cannot guarantee weight loss.
+          Walking uses energy, and increasing your daily steps may add to
+          your total energy expenditure. The amount varies with body weight,
+          walking speed, terrain, and other individual factors.
         </p>
-        <DataTable
-          title="Step Counts Often Used as Activity Milestones"
-          caption="These are comparison points, not required weight-loss targets."
-          headers={["Daily steps", "Practical context"]}
-          rows={weightLossSteps}
-        />
+
         <p>
-          To estimate walking energy use using your body weight, speed, and duration, try the{" "}
-          <Link href="/" className="font-bold text-emerald-600 underline">
+          Weight loss generally requires a sustained calorie deficit,
+          meaning you use more energy than you consume over time. Walking
+          can contribute to that balance, but no particular step count
+          guarantees weight loss. Food intake, consistency, and other daily
+          activities also matter.
+        </p>
+
+        <p>
+          To estimate the calories used during a walk based on your body
+          weight, speed, and duration, try our{" "}
+          <Link
+            href="/"
+            className="font-bold text-brand-600 underline"
+          >
             Walking Calorie Calculator
           </Link>
-          . Its estimate is not a guarantee of weight change.
+          . Its results are estimates of energy expenditure, not predictions
+          of how much weight you will lose.
         </p>
 
         <h2>Walking Speed vs. Daily Step Count</h2>
+
         <p>
-          Daily steps measure how much you move across the day; walking intensity describes how hard you are working during a walk. A total can include short, slow movements as well as dedicated walks. Speed and cadence vary by height, stride, terrain, and ability, so there is no universal conversion between miles per hour and steps per minute.
+          Daily steps measure how much you move throughout the day, while
+          walking intensity describes how hard you are working. Your daily
+          total may include short, slow movements as well as dedicated
+          walks. This means two people with the same step count may have
+          different activity patterns.
         </p>
+
         <ul>
-          <li><strong>Slow or easy:</strong> Comfortable movement that may feel light.</li>
-          <li><strong>Moderate:</strong> You breathe faster but can still talk; individual effort varies.</li>
-          <li><strong>Brisk or vigorous:</strong> The effort is more challenging, and conversation becomes harder.</li>
+          <li>
+            <strong>Easy intensity:</strong> Comfortable movement that
+            requires little effort.
+          </li>
+          <li>
+            <strong>Moderate intensity:</strong> You breathe faster but
+            can still talk while walking.
+          </li>
+          <li>
+            <strong>Vigorous intensity:</strong> The effort is more
+            challenging, and holding a conversation becomes harder.
+          </li>
         </ul>
+
         <p>
-          Cadence is the number of steps taken per minute. It can help describe walking intensity, but a threshold such as 100 steps per minute is not necessary or appropriate for everyone. The CDC’s talk test—being able to talk but not sing during moderate activity—is another practical guide.
+          Cadence means the number of steps taken per minute. It can help
+          describe walking intensity, but a threshold such as 100 steps
+          per minute is not necessary or appropriate for everyone. The
+          CDC's talk test is another practical guide: during moderate
+          activity, you should be able to talk but not sing.
+        </p>
+
+        <p>
+          Your walking speed and pace can vary with fitness, stride,
+          terrain, and ability. Use our{" "}
+          <Link
+            href="/walking-pace-calculator"
+            className="font-bold text-brand-600 underline"
+          >
+            Walking Pace Calculator
+          </Link>{" "}
+          to estimate your pace and understand how speed relates to
+          walking time.
         </p>
 
         <h2>How to Increase Your Daily Steps</h2>
+
+        <p>
+          Small changes throughout the day can help increase your total
+          movement without requiring a long dedicated walk. For example:
+        </p>
+
         <ul>
           <li>Take a short walk during a break or at lunch.</li>
-          <li>Walk part of a trip or park farther away when it is safe and practical.</li>
+          <li>
+            Walk part of a trip or park farther away when it is safe
+            and practical.
+          </li>
           <li>Choose stairs when comfortable and accessible.</li>
           <li>Try a brief walk after a meal or during a phone call.</li>
-          <li>Break up longer sitting periods with movement when possible.</li>
+          <li>
+            Break up longer periods of sitting with movement when possible.
+          </li>
         </ul>
-        <p>Increase gradually rather than making a sudden, large jump in your daily target.</p>
+
+        <p>
+          Focus on consistency rather than making a sudden, large jump
+          in your daily target. Even short periods of movement can add
+          to your daily step count.
+        </p>
 
         <h2>How Many Steps Should Beginners Start With?</h2>
+
         <p>
-          Start with a few days of tracking your usual activity. Then choose a small increase that feels manageable based on your current steps, health, and physical ability. For example, if you average 3,000 steps, you might try 3,500 for a week; if that feels comfortable, increase by another 500. Adjust or pause if you experience pain, unusual shortness of breath, dizziness, or other concerning symptoms.
+          If you are new to regular walking, start by tracking your usual
+          activity for several days. This gives you a baseline to work
+          from. Then choose a small increase that feels manageable based
+          on your current activity, health, and physical ability.
+        </p>
+
+        <p>
+          For example, if you average 3,000 steps a day, you might try
+          3,500 for a week. If that feels comfortable, you can gradually
+          add another 500 steps. You do not need to increase your target
+          every week; choose a pace that you can maintain.
+        </p>
+
+        <p>
+          Adjust or pause your activity if you experience pain, unusual
+          shortness of breath, dizziness, or other concerning symptoms.
+          Seek appropriate medical advice when needed.
         </p>
 
         <h2>How to Track Your Daily Steps</h2>
-        <ul>
-          <li><strong>Smartphone:</strong> Built-in health apps estimate steps when you carry the phone.</li>
-          <li><strong>Smartwatch or fitness tracker:</strong> Wear it consistently and follow the manufacturer’s setup guidance.</li>
-          <li><strong>Pedometer:</strong> A clip-on device can count steps when positioned as directed.</li>
-        </ul>
+
         <p>
-          Devices use different sensors and algorithms, so step totals may not match exactly. For a useful comparison, use the same device, wear or carry it consistently, and look at trends across several typical days rather than focusing on a single reading.
+          You can use several types of devices to monitor your daily
+          activity:
+        </p>
+
+        <ul>
+          <li>
+            <strong>Smartphone:</strong> Built-in health apps estimate
+            steps when you carry your phone.
+          </li>
+          <li>
+            <strong>Smartwatch or fitness tracker:</strong> Wear it
+            consistently and follow the manufacturer's setup guidance.
+          </li>
+          <li>
+            <strong>Pedometer:</strong> A clip-on device can count steps
+            when positioned as directed.
+          </li>
+        </ul>
+
+        <p>
+          Devices use different sensors and algorithms, so their step
+          totals may not match exactly. For a more useful comparison,
+          use the same device consistently and look at trends across
+          several typical days rather than focusing on a single reading.
         </p>
 
         <h2>Scientific References</h2>
+
+        <p>
+          The following research and public-health resources provide
+          background on daily step counts, health outcomes, and physical
+          activity recommendations.
+        </p>
+
         <ul>
           <li>
-            <a href="https://doi.org/10.1016/S2468-2667(21)00302-9" target="_blank" rel="noopener noreferrer">
-              Paluch et al., “Daily steps and all-cause mortality: a meta-analysis of 15 international cohorts,” The Lancet Public Health (2022).
+            <a
+              href="https://doi.org/10.1016/S2468-2667(21)00302-9"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Paluch et al., "Daily steps and all-cause mortality: a
+              meta-analysis of 15 international cohorts," The Lancet
+              Public Health (2022).
             </a>{" "}
             Observational evidence on step counts, age, and mortality.
           </li>
           <li>
-            <a href="https://doi.org/10.1016/j.jacc.2023.07.029" target="_blank" rel="noopener noreferrer">
-              “Relationship of Daily Step Counts to All-Cause Mortality and Cardiovascular Events,” Journal of the American College of Cardiology (2023).
+            <a
+              href="https://doi.org/10.1016/j.jacc.2023.07.029"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              "Relationship of Daily Step Counts to All-Cause Mortality
+              and Cardiovascular Events," Journal of the American College
+              of Cardiology (2023).
             </a>{" "}
             Review of step counts and health outcomes.
           </li>
           <li>
-            <a href="https://www.cdc.gov/physical-activity-basics/guidelines/adults.html" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.cdc.gov/physical-activity-basics/guidelines/adults.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               CDC: Adult Activity Guidelines.
             </a>{" "}
-            Weekly activity recommendations and the principle that some activity is better than none.
+            Weekly activity recommendations and the principle that some
+            activity is better than none.
           </li>
           <li>
-            <a href="https://www.cdc.gov/physical-activity-basics/adding-adults/what-counts.html" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.cdc.gov/physical-activity-basics/adding-adults/what-counts.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               CDC: What Counts as Physical Activity for Adults.
             </a>{" "}
             Intensity guidance and the talk test.
           </li>
           <li>
-            <a href="https://doi.org/10.1123/jpah.2016-0366" target="_blank" rel="noopener noreferrer">
-              Brocklebank et al., “The Acute Effects of Breaking Up Seated Office Work With Standing or Light-Intensity Walking on Interstitial Glucose Concentration,” Journal of Physical Activity and Health (2017).
+            <a
+              href="https://doi.org/10.1123/jpah.2016-0366"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Brocklebank et al., "The Acute Effects of Breaking Up Seated
+              Office Work With Standing or Light-Intensity Walking on
+              Interstitial Glucose Concentration," Journal of Physical
+              Activity and Health (2017).
             </a>{" "}
-            An acute randomized crossover study; results should not be generalized as a guaranteed percentage reduction for everyone.
+            An acute randomized crossover study; its findings should not
+            be generalized as a guaranteed result for everyone.
           </li>
         </ul>
-
       </div>
 
       <FAQSection faqs={faqs} />
@@ -257,4 +449,3 @@ export default function HowManyStepsADayPage() {
     </div>
   );
 }
-
