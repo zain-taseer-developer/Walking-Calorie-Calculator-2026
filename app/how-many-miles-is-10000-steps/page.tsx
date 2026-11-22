@@ -40,18 +40,11 @@ export default function TenThousandStepsPage() {
     ["6'4\" (193 cm)", "2.68 ft (0.82 m)", "5.08 miles", "8.17 km", "1,970 steps/mi"],
   ];
 
-  const stepComparisonRows = [
-    ["1,000 steps", "0.45 miles", "0.72 km", "~9 to 11 mins", "~35-50 kcal"],
-    ["3,000 steps", "1.35 miles", "2.17 km", "~27 to 32 mins", "~110-150 kcal"],
-    ["5,000 steps", "2.25 miles", "3.62 km", "~45 to 54 mins", "~180-250 kcal"],
-    ["6,000 steps", "2.70 miles", "4.35 km", "~54 to 65 mins", "~215-300 kcal"],
-    ["7,000 steps", "3.15 miles", "5.07 km", "~63 to 75 mins", "~250-350 kcal"],
-    ["8,000 steps", "3.60 miles", "5.79 km", "~72 to 86 mins", "~290-400 kcal"],
-    ["10,000 steps", "4.55 miles", "7.32 km", "~1 hr 30 mins", "~360-500 kcal"],
-    ["12,000 steps", "5.45 miles", "8.77 km", "~1 hr 48 mins", "~430-600 kcal"],
-    ["15,000 steps", "6.82 miles", "10.97 km", "~2 hrs 15 mins", "~540-750 kcal"],
-    ["20,000 steps", "9.09 miles", "14.63 km", "~3 hrs 00 mins", "~720-1000 kcal"],
-    ["30,000 steps", "13.64 miles", "21.95 km", "~4 hrs 30 mins", "~1080-1500 kcal"],
+  const milestoneRows = [
+    ["5,000 steps", "2.25 miles (3.62 km)", "~45–54 min", "~180–250 kcal"],
+    ["8,000 steps", "3.60 miles (5.79 km)", "~72–86 min", "~290–400 kcal"],
+    ["15,000 steps", "6.82 miles (10.97 km)", "~2 hr 15 min", "~540–750 kcal"],
+    ["20,000 steps", "9.09 miles (14.63 km)", "~3 hr 00 min", "~720–1,000 kcal"],
   ];
 
   const faqs: FAQItem[] = [
@@ -132,13 +125,11 @@ export default function TenThousandStepsPage() {
       <div className="prose prose-slate dark:prose-invert max-w-none my-10 space-y-4">
         <h2>How to Calculate Miles from 10,000 Steps</h2>
         <p>
-          To estimate distance, multiply your step count by your average step length in inches, then divide by 63,360—the number of inches in a mile:
-        </p>
-        <p>
-          <strong>Miles = (Steps × Step Length in Inches) ÷ 63,360</strong>
-        </p>
-        <p>
-          For example, with an average step length of 28.8 inches, 10,000 steps × 28.8 ÷ 63,360 = about <strong>4.55 miles</strong> (7.32 km). Your result will vary with your step length, which is influenced by factors such as height and walking style.
+          Miles = (Steps × Step Length in Inches) ÷ 63,360. For a typical adult with a ~28.8-inch step length: 10,000 × 28.8 ÷ 63,360 = about <strong>4.55 miles</strong> (7.32 km). To run this conversion for any step count or step length, use the{" "}
+          <Link href="/steps-to-miles-calculator" className="font-bold text-brand-600 underline">
+            steps to miles calculator
+          </Link>
+          .
         </p>
 
         <h2>Why 10,000 Steps Mileage Varies by Height</h2>
@@ -161,20 +152,28 @@ export default function TenThousandStepsPage() {
 
         <h2>How Many Miles is 5,000, 8,000, 15,000, and 20,000 Steps?</h2>
         <p>
-          Whether your daily fitness goal is 5,000 steps for baseline longevity or 20,000 steps for active fat loss, the table below maps every major step milestone into exact miles, kilometers, duration, and approximate calorie expenditure:
+          If 10,000 feels too high or too low, this compact comparison shows how nearby daily targets scale for the same average adult walking at a brisk pace:
         </p>
 
         <DataTable
-          title="Step Count to Miles & Calories Benchmark Table"
+          title="Nearby Step Goals Compared"
           titleLevel={3}
-          caption="Based on average 5'9 adult stride at a brisk 3.2 mph pace."
-          headers={["Step Milestone", "Distance (Miles)", "Distance (Km)", "Walking Time (Brisk)", "Estimated Calories"]}
-          rows={stepComparisonRows}
+          caption="Based on an average 5'9 adult stride at a brisk pace."
+          headers={["Step Goal", "Distance", "Walking Time", "Estimated Calories"]}
+          rows={milestoneRows}
           highlightColumnIndex={1}
         />
 
         <p>
-          Want an exact calorie calculation tailored to your exact weight and walking speed? Use our full{" "}
+          For a full conversion table covering every step count, see the{" "}
+          <Link href="/steps-to-miles-calculator" className="font-bold text-brand-600 underline">
+            steps to miles calculator
+          </Link>
+          , and for step-based calorie estimates tuned to your body weight, use the{" "}
+          <Link href="/steps-to-calories-calculator" className="font-bold text-brand-600 underline">
+            steps to calories calculator
+          </Link>
+          . Want a calculation tailored to your exact weight and walking speed? Use the full{" "}
           <Link href="/" className="font-bold text-brand-600 underline">
             walking calorie calculator
           </Link>{" "}
@@ -183,7 +182,7 @@ export default function TenThousandStepsPage() {
 
         <h2>How Long Does It Take to Walk 10,000 Steps?</h2>
         <p>
-          Walking time depends on your stride and pace. Using the page&apos;s approximate 4.55-mile estimate for 10,000 steps, these continuous-walking times show how pace can affect the total:
+          At the brisk 3.0–3.5 mph pace most adults use, 10,000 steps takes roughly <strong>1 hour 20 minutes to 1 hour 45 minutes</strong> of continuous walking. Pace changes that total considerably:
         </p>
         <DataTable
           title="Estimated Time for 10,000 Steps by Walking Speed"
@@ -198,7 +197,11 @@ export default function TenThousandStepsPage() {
           ]}
         />
         <p>
-          These are approximate comparisons, not a time guarantee. Your step length, route, terrain, and pauses can all change how long it takes.
+          These are approximate comparisons, not a time guarantee. Your step length, route, terrain, and pauses can all change how long it takes. To fine-tune the pace that fits your schedule, use the{" "}
+          <Link href="/walking-pace-calculator" className="font-bold text-brand-600 underline">
+            walking pace calculator
+          </Link>
+          .
         </p>
 
         <h2>How to Reach 10,000 Steps a Day</h2>
