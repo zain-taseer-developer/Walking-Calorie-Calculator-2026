@@ -3,5 +3,5 @@ Allow: /
 Disallow: /admin/
 Disallow: /api/
 
-Sitemap: https://walkingcaloriecalc.com/sitemap.xml
+Sitemap: https://www.walkingcaloriecalc.com/sitemap.xml
 
