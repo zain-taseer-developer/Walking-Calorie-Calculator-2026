@@ -1,5 +1,6 @@
 
 import { Metadata } from "next";
+import Link from "next/link";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { RacePaceTool } from "@/components/calculator/RacePaceTool";
 import { FAQSection } from "@/components/content/FAQSection";
@@ -604,7 +605,14 @@ export default function MarathonPaceChartPage() {
           For example, an 8:00-per-mile pace is approximately 4:58 per
           kilometer. A 5:00-per-kilometer pace is approximately 8:03 per
           mile. These conversions help compare race pace targets when
-          switching between metric and imperial units.
+          switching between metric and imperial units. For walking-specific
+          speed and pace conversions, use our{" "}
+          <Link
+            href="/walking-pace-calculator"
+            className="font-medium text-emerald-700 underline underline-offset-2 dark:text-emerald-400"
+          >
+            Walking Pace Calculator
+          </Link>.
         </p>
 
         <h2>How to Choose a Realistic Marathon Goal</h2>
