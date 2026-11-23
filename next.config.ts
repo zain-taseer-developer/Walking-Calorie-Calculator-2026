@@ -48,6 +48,11 @@ const nextConfig: NextConfig = {
         destination: "/blog/category/walking-basics",
         permanent: true,
       },
+      {
+  source: "/10-000-steps-guide",
+  destination: "/how-many-miles-is-10000-steps",
+  permanent: true,
+},
     ];
   },
 };
