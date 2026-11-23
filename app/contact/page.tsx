@@ -8,7 +8,6 @@ import { Mail, Send, CheckCircle2, AlertCircle } from "lucide-react";
 const socialLinks = [
   {
     name: "Facebook",
-    label: "Follow us",
     href: "https://www.facebook.com/profile.php?id=61596070157235",
     color: "#1877F2",
     icon: (
@@ -19,7 +18,6 @@ const socialLinks = [
   },
   {
     name: "Instagram",
-    label: "Follow us",
     href: "https://www.instagram.com/walking_calorie_calculator/",
     color: "#E4405F",
     icon: (
@@ -32,7 +30,6 @@ const socialLinks = [
   },
   {
     name: "YouTube",
-    label: "Watch videos",
     href: "https://www.youtube.com/@walkingcaloriecalc",
     color: "#FF0000",
     icon: (
@@ -44,7 +41,6 @@ const socialLinks = [
   },
   {
     name: "X (Twitter)",
-    label: "Follow us",
     href: "https://x.com/walkingcalorie",
     color: "#000000",
     icon: (
@@ -55,7 +51,6 @@ const socialLinks = [
   },
   {
     name: "Pinterest",
-    label: "Follow us",
     href: "https://www.pinterest.com/walkingcalorie/",
     color: "#E60023",
     icon: (
@@ -66,7 +61,6 @@ const socialLinks = [
   },
   {
     name: "LinkedIn",
-    label: "Connect",
     href: "https://www.linkedin.com/in/walking-calorie-calculator-109855286/",
     color: "#0A66C2",
     icon: (
@@ -82,15 +76,10 @@ const socialLinks = [
 function SocialLinksCard() {
   return (
     <div className="p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4">
-      <div>
-        <h2 className="font-bold text-slate-900 dark:text-white text-base">
-          Follow Us
-        </h2>
-        <p className="mt-1 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-          Get walking tips, new calculators and updates on our social channels.
-        </p>
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <h2 className="font-bold text-slate-900 dark:text-white text-base">
+        Follow Us
+      </h2>
+      <div className="flex flex-wrap items-center gap-3">
         {socialLinks.map((social) => (
           <a
             key={social.name}
@@ -98,20 +87,11 @@ function SocialLinksCard() {
             target="_blank"
             rel="noopener noreferrer me"
             aria-label={`${social.name} - Walking Calorie Calculator`}
+            title={social.name}
             style={{ "--brand": social.color } as React.CSSProperties}
-            className="group flex items-center gap-3 p-2.5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-[var(--brand)] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+            className="group w-11 h-11 rounded-full flex items-center justify-center bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-[var(--brand)] hover:border-[var(--brand)] hover:text-white hover:shadow-lg hover:-translate-y-1 transition-all duration-200"
           >
-            <span className="w-10 h-10 shrink-0 rounded-xl flex items-center justify-center bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 group-hover:bg-[var(--brand)] group-hover:text-white transition-colors duration-200">
-              {social.icon}
-            </span>
-            <span className="min-w-0">
-              <span className="block text-sm font-bold text-slate-900 dark:text-white truncate">
-                {social.name}
-              </span>
-              <span className="block text-[11px] text-slate-500 dark:text-slate-400">
-                {social.label}
-              </span>
-            </span>
+            {social.icon}
           </a>
         ))}
       </div>
