@@ -1,6 +1,7 @@
+
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { FAQSection, FAQItem } from "@/components/content/FAQSection";
@@ -11,51 +12,106 @@ import { DataTable } from "@/components/content/DataTable";
 import { Sparkles, Zap } from "lucide-react";
 
 export default function CaloriesVsKcalPage() {
-  const [val, setVal] = useState<number>(259);
+  const [val, setVal] = useState("259");
   const [unit, setUnit] = useState<"kcal" | "cal" | "kj">("kcal");
 
-  // Normalized to kcal
-  const kcal = unit === "kcal" ? val : unit === "cal" ? val / 1000 : val / 4.184;
-  const smallCal = kcal * 1000;
+  const parsedValue = val.trim() === "" ? null : Number(val);
+
+  const isValid =
+    parsedValue !== null &&
+    Number.isFinite(parsedValue) &&
+    parsedValue >= 0;
+
+  const inputValue = isValid ? parsedValue : 0;
+
+  // Normalize the selected input to kilocalories.
+  const kcal =
+    unit === "kcal"
+      ? inputValue
+      : unit === "cal"
+        ? inputValue / 1000
+        : inputValue / 4.184;
+
   const dietaryCal = kcal;
+  const smallCal = kcal * 1000;
   const kilojoules = kcal * 4.184;
+
   const formatEnergy = (value: number) =>
-    new Intl.NumberFormat(undefined, { maximumFractionDigits: 2 }).format(value);
+    new Intl.NumberFormat("en-US", {
+      maximumFractionDigits: 2,
+    }).format(value);
+
+  const displayEnergy = (value: number, suffix: string) =>
+    isValid ? `${formatEnergy(value)} ${suffix}` : "—";
 
   const comparisonRows = [
-    ["1 Dietary Calorie (Cal)", "1 kcal", "1,000 small cal", "4.184 kJ", "Standard US nutrition label unit"],
-    ["100 kcal", "100 Calories", "100,000 small cal", "418.4 kJ", "About the energy in one medium banana"],
-    ["250 kcal", "250 Calories", "250,000 small cal", "1,046 kJ", "Energy value (not a food equivalence)"],
-    ["259 kcal to calories", "259 kcal = 259 Calories", "259,000 small cal", "1,083.7 kJ", "Converted energy value"],
-    ["500 kcal", "500 Calories", "500,000 small cal", "2,092 kJ", "Energy amount; not a guaranteed weight-loss outcome"],
-    ["3,500 kcal", "3,500 Calories", "3,500,000 small cal", "14,644 kJ", "Traditional approximation per pound of body fat"],
+    [
+      "1 Dietary Calorie (Cal)",
+      "1 kcal",
+      "1,000 small cal",
+      "4.184 kJ",
+      "US nutrition labels",
+    ],
+    [
+      "100 kcal",
+      "100 Calories",
+      "100,000 small cal",
+      "418.4 kJ",
+      "Energy conversion example",
+    ],
+    [
+      "250 kcal",
+      "250 Calories",
+      "250,000 small cal",
+      "1,046 kJ",
+      "Energy conversion example",
+    ],
+    [
+      "259 kcal",
+      "259 Calories",
+      "259,000 small cal",
+      "1,083.66 kJ",
+      "Converter example",
+    ],
+    [
+      "500 kcal",
+      "500 Calories",
+      "500,000 small cal",
+      "2,092 kJ",
+      "Energy conversion example",
+    ],
   ];
 
   const faqs: FAQItem[] = [
     {
       question: "Is kcal the same as calories?",
       answer:
-        "On US food labels, yes: one dietary Calorie (capital C) equals 1 kilocalorie (kcal). In physics, one small calorie (cal, lowercase c) is one-thousandth of a kcal.",
+        "On US food labels, one dietary Calorie (capital C) equals one kilocalorie (kcal). In scientific contexts, a small calorie (cal, lowercase c) is one-thousandth of a kilocalorie.",
     },
     {
-      question: "What is kcal vs cal?",
+      question: "What is the difference between kcal and cal?",
       answer:
-        "A kcal is 1,000 small calories (cal). Nutrition labels commonly call a kcal a Calorie, while scientific writing may use cal for the smaller unit.",
+        "One kilocalorie (kcal) equals 1,000 small calories (cal). Nutrition labels commonly use Calories to mean kilocalories, while scientific measurements may use the smaller calorie unit.",
     },
     {
-      question: "What does “kcal en cal” or “kcal of cal” mean on international labels?",
+      question: "What does kcal mean on food labels?",
       answer:
-        "These phrases may appear in multilingual labeling or searches referring to kilocalories and calories. Check the unit printed beside the number: on nutrition labels, kcal is the larger food-energy unit, while a small cal is 1/1,000 of a kcal.",
+        "Kcal stands for kilocalorie, a unit of energy. On US nutrition labels, Calories and kilocalories represent the same amount of food energy: 1 kcal equals 1 dietary Calorie.",
+    },
+    {
+      question: "How do you convert kcal to kJ?",
+      answer:
+        "Multiply kilocalories by 4.184 to get kilojoules. For example, 100 kcal equals 418.4 kJ. To convert kJ back to kcal, divide by 4.184.",
+    },
+    {
+      question: "How do you convert 259 kcal to calories?",
+      answer:
+        "259 kcal equals 259 dietary Calories (Cal), 259,000 small calories (cal), or approximately 1,083.66 kilojoules (kJ).",
     },
     {
       question: "What is the official calorie definition?",
       answer:
-        "The calorie is a non-SI unit of energy; the joule is the SI unit. The thermochemical calorie is defined as exactly 4.184 joules, so 1 kcal equals 4.184 kJ. Older water-heating descriptions are approximate because heat capacity depends on conditions.",
-    },
-    {
-      question: "How do you convert 259 kcal to calories or kcal to calories?",
-      answer:
-        "259 kcal equals 259 dietary Calories, 259,000 small calories (cal), or about 1,083.7 kJ. To convert kcal to small cal, multiply by 1,000; to convert kcal to dietary Calories, the number stays the same.",
+        "The calorie is a non-SI unit of energy, while the joule is the SI unit. The thermochemical calorie is defined as exactly 4.184 joules. Therefore, one kilocalorie equals 4,184 joules or 4.184 kilojoules.",
     },
   ];
 
@@ -68,22 +124,30 @@ export default function CaloriesVsKcalPage() {
           <Zap className="w-3.5 h-3.5" />
           <span>Scientific Energy Conversion Guide</span>
         </div>
+
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
           Kcal vs Calories: What&apos;s the Difference?
         </h1>
+
         <p className="mt-2 text-base text-slate-600 dark:text-slate-300">
-          Learn why 1 kcal equals 1 food Calorie, how small calories (cal) differ, and convert kcal to Calories or kilojoules (kJ).
+          Understand the difference between kcal, food Calories, and small
+          calories. Convert energy values to kilocalories, calories, and
+          kilojoules with this free converter.
         </p>
       </div>
 
-      {/* Interactive Converter Card */}
+      {/* Interactive Energy Converter */}
       <div className="my-8 p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl shadow-slate-900/5">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="space-y-4">
             <div>
-              <label htmlFor="energy-input" className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
-                Enter Calories or Energy Value
+              <label
+                htmlFor="energy-input"
+                className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1"
+              >
+                Enter Energy Value
               </label>
+
               <input
                 id="energy-input"
                 type="number"
@@ -91,21 +155,37 @@ export default function CaloriesVsKcalPage() {
                 step="any"
                 inputMode="decimal"
                 value={val}
-                onChange={(e) => setVal(parseFloat(e.target.value) || 0)}
+                onChange={(e) => setVal(e.target.value)}
+                aria-describedby="energy-input-help"
                 className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-xl font-bold"
               />
+
+              <p
+                id="energy-input-help"
+                className="mt-1 text-xs text-slate-500 dark:text-slate-400"
+              >
+                Enter a non-negative number.
+              </p>
             </div>
 
             <div>
-              <label id="energy-unit-label" className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
+              <label
+                id="energy-unit-label"
+                className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1"
+              >
                 Input Unit
               </label>
-              <div className="grid grid-cols-1 gap-2 sm:grid-cols-3" role="group" aria-labelledby="energy-unit-label">
+
+              <div
+                className="grid grid-cols-1 gap-2 sm:grid-cols-3"
+                role="group"
+                aria-labelledby="energy-unit-label"
+              >
                 <button
                   type="button"
                   aria-pressed={unit === "kcal"}
                   onClick={() => setUnit("kcal")}
-                  className={`py-2 text-xs font-bold rounded-xl border ${
+                  className={`py-2 px-2 text-xs font-bold rounded-xl border ${
                     unit === "kcal"
                       ? "bg-emerald-600 text-white border-emerald-600"
                       : "bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300"
@@ -113,11 +193,12 @@ export default function CaloriesVsKcalPage() {
                 >
                   Food Calories (kcal)
                 </button>
+
                 <button
                   type="button"
                   aria-pressed={unit === "cal"}
                   onClick={() => setUnit("cal")}
-                  className={`py-2 text-xs font-bold rounded-xl border ${
+                  className={`py-2 px-2 text-xs font-bold rounded-xl border ${
                     unit === "cal"
                       ? "bg-emerald-600 text-white border-emerald-600"
                       : "bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300"
@@ -125,11 +206,12 @@ export default function CaloriesVsKcalPage() {
                 >
                   Small cal
                 </button>
+
                 <button
                   type="button"
                   aria-pressed={unit === "kj"}
                   onClick={() => setUnit("kj")}
-                  className={`py-2 text-xs font-bold rounded-xl border ${
+                  className={`py-2 px-2 text-xs font-bold rounded-xl border ${
                     unit === "kj"
                       ? "bg-emerald-600 text-white border-emerald-600"
                       : "bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300"
@@ -139,35 +221,63 @@ export default function CaloriesVsKcalPage() {
                 </button>
               </div>
             </div>
+
+            {!isValid && (
+              <p className="text-sm text-red-600 dark:text-red-400" role="alert">
+                Enter a valid number greater than or equal to zero.
+              </p>
+            )}
           </div>
 
-          {/* Results Output */}
-          <div className="p-6 rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-700 text-white shadow-lg space-y-3 text-center">
+          {/* Conversion Results */}
+          <div
+            className="p-6 rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-700 text-white shadow-lg space-y-3 text-center"
+            aria-live="polite"
+          >
             <span className="text-xs font-semibold text-teal-100 uppercase tracking-wider block">
               Conversion Results
             </span>
 
             <div className="grid grid-cols-1 gap-3 text-left sm:grid-cols-2">
               <div className="p-3 rounded-xl bg-white/10 backdrop-blur-xs">
-                <span className="text-xs text-teal-200 block">Food Calories (Cal)</span>
-                <span className="text-xl font-bold font-mono">{formatEnergy(dietaryCal)} Cal</span>
+                <span className="text-xs text-teal-200 block">
+                  Food Calories (Cal)
+                </span>
+                <span className="text-xl font-bold font-mono">
+                  {displayEnergy(dietaryCal, "Cal")}
+                </span>
               </div>
+
               <div className="p-3 rounded-xl bg-white/10 backdrop-blur-xs">
-                <span className="text-xs text-teal-200 block">Kilocalories (kcal)</span>
-                <span className="text-xl font-bold font-mono">{formatEnergy(kcal)} kcal</span>
+                <span className="text-xs text-teal-200 block">
+                  Kilocalories (kcal)
+                </span>
+                <span className="text-xl font-bold font-mono">
+                  {displayEnergy(kcal, "kcal")}
+                </span>
               </div>
+
               <div className="p-3 rounded-xl bg-white/10 backdrop-blur-xs">
-                <span className="text-xs text-teal-200 block">Kilojoules</span>
-                <span className="text-xl font-bold font-mono">{formatEnergy(kilojoules)} kJ</span>
+                <span className="text-xs text-teal-200 block">
+                  Kilojoules
+                </span>
+                <span className="text-xl font-bold font-mono">
+                  {displayEnergy(kilojoules, "kJ")}
+                </span>
               </div>
+
               <div className="p-3 rounded-xl bg-white/10 backdrop-blur-xs">
-                <span className="text-xs text-teal-200 block">Scientific Small Calories</span>
-                <span className="text-xl font-bold font-mono">{formatEnergy(smallCal)} cal</span>
+                <span className="text-xs text-teal-200 block">
+                  Small Calories
+                </span>
+                <span className="text-xl font-bold font-mono">
+                  {displayEnergy(smallCal, "cal")}
+                </span>
               </div>
             </div>
 
             <p className="text-xs leading-relaxed text-teal-100">
-              Food-label Calories (Cal) and kilocalories (kcal) are equal; 1 kcal = 1,000 small cal = 4.184 kJ.
+              1 kcal = 1 dietary Calorie = 1,000 small cal = 4.184 kJ.
             </p>
 
             <div className="pt-2">
@@ -185,154 +295,347 @@ export default function CaloriesVsKcalPage() {
 
       <section className="prose prose-slate dark:prose-invert max-w-none my-8">
         <h2>How to Use the Calories Converter</h2>
+
         <ol>
-          <li>Under <strong>Enter Calories or Energy Value</strong>, type a number such as 259.</li>
-          <li>Under <strong>Input Unit</strong>, choose <strong>Food Calories (kcal)</strong>, <strong>Small cal</strong>, or <strong>Kilojoules (kJ)</strong>.</li>
-          <li>Read the live results for food Calories (Cal), kilocalories (kcal), kilojoules, and small calories.</li>
+          <li>
+            Enter a value in the <strong>Energy Value</strong> field.
+          </li>
+          <li>
+            Select <strong>Food Calories (kcal)</strong>,{" "}
+            <strong>Small cal</strong>, or <strong>Kilojoules (kJ)</strong> as
+            your input unit.
+          </li>
+          <li>
+            Read the converted values for dietary Calories, kilocalories,
+            kilojoules, and small calories.
+          </li>
         </ol>
-        <p>Results show up to two decimal places. For example, 259 kcal is 259,000 small cal and 1,083.66 kJ.</p>
+
+        <p>
+          Results are rounded to a maximum of two decimal places. For example,
+          entering 259 kcal gives 259 dietary Calories, 259,000 small
+          calories, and 1,083.66 kJ.
+        </p>
       </section>
 
       <AdSlot format="horizontal" slotId="kcal-top" />
 
-      {/* Content */}
       <div className="prose prose-slate dark:prose-invert max-w-none my-12 space-y-4">
-        <h2>The Core Rule: 1 kcal = 1 Food Calorie = 1,000 Small Calories</h2>
+        <h2>The Core Rule: 1 kcal = 1 Food Calorie</h2>
+
         <p>
-          On US nutrition labels, <strong>Calories</strong> is the dietary unit and is equivalent to <strong>kilocalories (kcal)</strong>. In scientific contexts, a lowercase <strong>calorie (cal)</strong> usually means a much smaller unit: 1 kcal = 1,000 cal. Capitalization helps distinguish a dietary Calorie (Cal) from a small calorie (cal), though everyday usage is not always consistent.
+          On US nutrition labels, <strong>Calories</strong> refers to dietary
+          energy and is equivalent to <strong>kilocalories (kcal)</strong>.
+          Therefore, 100 kcal is the same amount of energy as 100 food
+          Calories.
         </p>
 
         <p>
-          The word “calorie” can therefore refer to different-sized units depending on context. Look for kcal, cal, or kJ next to the number rather than relying on the word alone.
+          A scientific small calorie, written with a lowercase{" "}
+          <strong>cal</strong>, is different. One kilocalorie contains 1,000
+          small calories. This distinction is important when reading
+          scientific measurements, nutrition information, and energy
+          conversions.
         </p>
 
         <h2>Calories vs kcal vs cal: What&apos;s the Difference?</h2>
-        <p>These names describe related energy units, but they are not all the same size.</p>
+
+        <p>
+          These terms describe units of energy, but their sizes and common uses
+          differ.
+        </p>
+
         <div className="not-prose my-6 overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
           <table className="min-w-[34rem] divide-y divide-slate-200 text-left text-sm dark:divide-slate-800">
-            <caption className="sr-only">Comparison of small calories, kilocalories, and dietary Calories</caption>
+            <caption className="sr-only">
+              Comparison of small calories, kilocalories, and dietary Calories
+            </caption>
+
             <thead className="bg-slate-50 dark:bg-slate-900">
               <tr>
-                <th scope="col" className="px-4 py-3 font-semibold">Name</th>
-                <th scope="col" className="px-4 py-3 font-semibold">Symbol</th>
-                <th scope="col" className="px-4 py-3 font-semibold">Relationship</th>
-                <th scope="col" className="px-4 py-3 font-semibold">Common use</th>
+                <th scope="col" className="px-4 py-3 font-semibold">
+                  Name
+                </th>
+                <th scope="col" className="px-4 py-3 font-semibold">
+                  Symbol
+                </th>
+                <th scope="col" className="px-4 py-3 font-semibold">
+                  Relationship
+                </th>
+                <th scope="col" className="px-4 py-3 font-semibold">
+                  Common Use
+                </th>
               </tr>
             </thead>
+
             <tbody className="divide-y divide-slate-100 bg-white dark:divide-slate-800 dark:bg-slate-950">
-              <tr><th scope="row" className="px-4 py-3 font-semibold">Small calorie</th><td className="px-4 py-3">cal</td><td className="px-4 py-3">1/1,000 of a kcal</td><td className="px-4 py-3">Scientific energy measurements</td></tr>
-              <tr><th scope="row" className="px-4 py-3 font-semibold">Kilocalorie</th><td className="px-4 py-3">kcal</td><td className="px-4 py-3">1,000 small cal</td><td className="px-4 py-3">Nutrition and metabolism</td></tr>
-              <tr><th scope="row" className="px-4 py-3 font-semibold">Dietary Calorie</th><td className="px-4 py-3">Cal (often written Calories)</td><td className="px-4 py-3">1 Cal = 1 kcal</td><td className="px-4 py-3">US food labels</td></tr>
+              <tr>
+                <th scope="row" className="px-4 py-3 font-semibold">
+                  Small calorie
+                </th>
+                <td className="px-4 py-3">cal</td>
+                <td className="px-4 py-3">1/1,000 of a kcal</td>
+                <td className="px-4 py-3">Scientific energy measurements</td>
+              </tr>
+
+              <tr>
+                <th scope="row" className="px-4 py-3 font-semibold">
+                  Kilocalorie
+                </th>
+                <td className="px-4 py-3">kcal</td>
+                <td className="px-4 py-3">1,000 small cal</td>
+                <td className="px-4 py-3">Nutrition and metabolism</td>
+              </tr>
+
+              <tr>
+                <th scope="row" className="px-4 py-3 font-semibold">
+                  Dietary Calorie
+                </th>
+                <td className="px-4 py-3">Cal</td>
+                <td className="px-4 py-3">1 Cal = 1 kcal</td>
+                <td className="px-4 py-3">US food labels</td>
+              </tr>
             </tbody>
           </table>
         </div>
 
         <h2>Calories vs Kilojoules (kJ)</h2>
+
         <p>
-          A joule is the SI unit of energy, and a kilojoule (kJ) is 1,000 joules. Some countries use kJ, or show both kJ and kcal, on food labels. The conversion is <strong>1 kcal = 4.184 kJ</strong>. For example, 100 kcal × 4.184 = 418.4 kJ.
+          The joule is the International System of Units (SI) unit of energy.
+          A kilojoule (kJ) equals 1,000 joules. Some countries use kilojoules
+          on food labels, while others display both kJ and kcal.
+        </p>
+
+        <p>
+          The standard conversion is <strong>1 kcal = 4.184 kJ</strong>.
+          For example, 100 kcal equals 418.4 kJ. To convert kilojoules back
+          to kilocalories, divide the kJ value by 4.184.
         </p>
 
         <h2>How to Convert Calories to kcal and kJ</h2>
+
+        <p>
+          Use these formulas when converting between dietary Calories,
+          scientific small calories, kilocalories, and kilojoules.
+        </p>
+
         <ul>
-          <li><strong>kcal to small calories:</strong> kcal × 1,000. Example: 2.5 kcal = 2,500 cal.</li>
-          <li><strong>Small calories to kcal:</strong> cal ÷ 1,000. Example: 2,500 cal = 2.5 kcal.</li>
-          <li><strong>kcal to kJ:</strong> kcal × 4.184. Example: 259 kcal × 4.184 = 1,083.656 kJ, or about 1,083.7 kJ.</li>
-          <li><strong>kJ to kcal:</strong> kJ ÷ 4.184. Example: 418.4 kJ ÷ 4.184 = 100 kcal.</li>
+          <li>
+            <strong>kcal to small calories:</strong> Multiply kcal by 1,000.
+            Example: 2.5 kcal = 2,500 cal.
+          </li>
+          <li>
+            <strong>Small calories to kcal:</strong> Divide cal by 1,000.
+            Example: 2,500 cal = 2.5 kcal.
+          </li>
+          <li>
+            <strong>kcal to kJ:</strong> Multiply kcal by 4.184.
+            Example: 259 kcal = 1,083.656 kJ.
+          </li>
+          <li>
+            <strong>kJ to kcal:</strong> Divide kJ by 4.184.
+            Example: 418.4 kJ = 100 kcal.
+          </li>
+          <li>
+            <strong>Dietary Calories to kcal:</strong> The numerical value
+            stays the same. Example: 150 Calories = 150 kcal.
+          </li>
         </ul>
 
         <h2>Grams to Calories: Macronutrient Energy Density</h2>
+
         <p>
-          Common nutrition estimates use about 4 kcal per gram of protein, 4 kcal per gram of carbohydrate, 9 kcal per gram of fat, and 7 kcal per gram of alcohol. These are general factors, not exact values for every food; food composition, fiber, and labeling methods can affect reported energy.
+          Food energy is commonly estimated using the energy provided by
+          macronutrients. These general factors help explain how grams of
+          protein, carbohydrates, fat, and alcohol contribute to the
+          Calories listed on food labels.
         </p>
+
         <ul>
-          <li><strong>Protein:</strong> about 4 kcal/g.</li>
-          <li><strong>Carbohydrates:</strong> about 4 kcal/g.</li>
-          <li><strong>Fat:</strong> about 9 kcal/g.</li>
-          <li><strong>Alcohol:</strong> about 7 kcal/g.</li>
+          <li>
+            <strong>Protein:</strong> About 4 kcal per gram.
+          </li>
+          <li>
+            <strong>Carbohydrates:</strong> About 4 kcal per gram.
+          </li>
+          <li>
+            <strong>Fat:</strong> About 9 kcal per gram.
+          </li>
+          <li>
+            <strong>Alcohol:</strong> About 7 kcal per gram.
+          </li>
         </ul>
 
+        <p>
+          These are general energy factors rather than exact values for every
+          food. Fiber content, food composition, and labeling methods can
+          affect the energy value reported on a nutrition label.
+        </p>
+
         <h2>How to Read Calories on US Food Labels</h2>
+
         <p>
-          The Nutrition Facts label lists a serving size, servings per container, and Calories per serving. To estimate the Calories in the whole package, multiply Calories per serving by the number of servings you eat. The % Daily Value (%DV) indicates how much a nutrient in one serving contributes to a general reference based on a 2,000-Calorie daily diet; it is not a personalized target.
+          The Nutrition Facts label lists serving size, servings per
+          container, and Calories per serving. The listed Calories generally
+          refer to one serving, not automatically to the entire package.
         </p>
+
         <p>
-          <strong>Example:</strong> A package lists 2 servings, with 150 Calories per serving. Eating the entire package provides 2 × 150 = <strong>300 Calories</strong>. If the label shows 8% DV for a nutrient per serving, that percentage applies to one serving, not automatically to the whole package.
+          <strong>Example:</strong> A package contains 2 servings and lists
+          150 Calories per serving. Eating the entire package provides
+          2 × 150 = <strong>300 Calories</strong>.
         </p>
+
         <p>
-          The FDA explains serving sizes and %DV in its{" "}
-          <a href="https://www.fda.gov/food/nutrition-facts-label/how-understand-and-use-nutrition-facts-label" target="_blank" rel="noopener noreferrer">
-            Nutrition Facts label guide
+          The % Daily Value (%DV) indicates how much a nutrient in one serving
+          contributes to a general reference based on a 2,000-Calorie daily
+          diet. It is a general guide, not a personalized daily target.
+        </p>
+
+        <p>
+          For more information, see the{" "}
+          <a
+            href="https://www.fda.gov/food/nutrition-facts-label/how-understand-and-use-nutrition-facts-label"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            FDA Nutrition Facts label guide
           </a>
           .
         </p>
 
         <h2>Active Calories vs Resting Calories vs Total Calories</h2>
-        <ul>
-          <li><strong>Active calories</strong> estimate energy used for movement or exercise above resting needs; device definitions vary.</li>
-          <li><strong>Resting calories</strong> estimate energy used to support basic functions while at rest.</li>
-          <li><strong>Total daily energy expenditure (TDEE)</strong> is the energy used across a day, including resting needs, movement, and digestion.</li>
-        </ul>
+
         <p>
-          A fitness tracker may combine active and resting energy for a session or day, but its labels and methods differ by brand. These are estimates, not exact measurements of energy use.
+          Fitness trackers and health apps may divide energy expenditure into
+          different categories:
+        </p>
+
+        <ul>
+          <li>
+            <strong>Active calories:</strong> Energy attributed to movement
+            and physical activity above resting needs.
+          </li>
+          <li>
+            <strong>Resting calories:</strong> Energy used to support basic
+            body functions while at rest.
+          </li>
+          <li>
+            <strong>Total daily energy expenditure (TDEE):</strong> Estimated
+            energy used throughout the day, including resting needs,
+            movement, and digestion.
+          </li>
+        </ul>
+
+        <p>
+          Definitions and calculation methods can vary between devices.
+          These values are estimates, not exact measurements. To understand
+          daily energy needs in more detail, use our{" "}
+          <Link
+            href="/maintenance-calorie-calculator"
+            className="font-bold text-emerald-600 underline"
+          >
+            Maintenance Calorie &amp; TDEE Calculator
+          </Link>
+          .
         </p>
 
         <h2>Common Calorie Conversion Mistakes</h2>
-        <ul>
-          <li>Assuming a small cal and a dietary Calorie are the same size: 1 kcal = 1,000 small cal.</li>
-          <li>Missing the uppercase C: a dietary Calorie (Cal) equals 1 kcal; a small calorie is written cal.</li>
-          <li>Mixing kcal with kJ: multiply kcal by 4.184 to get kJ, or divide kJ by 4.184 to get kcal.</li>
-          <li>Ignoring serving size: label Calories are usually stated per serving, not necessarily per package.</li>
-        </ul>
 
-        <h2>Calories in Common Foods</h2>
-        <p>Values below are approximate; actual amounts vary by brand, portion, and preparation.</p>
-        <div className="not-prose my-6 overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
-          <table className="min-w-[28rem] divide-y divide-slate-200 text-left text-sm dark:divide-slate-800">
-            <caption className="sr-only">Approximate Calories in common food servings</caption>
-            <thead className="bg-slate-50 dark:bg-slate-900">
-              <tr>
-                <th scope="col" className="px-4 py-3 font-semibold">Food</th>
-                <th scope="col" className="px-4 py-3 font-semibold">Typical serving</th>
-                <th scope="col" className="px-4 py-3 font-semibold">Approx. Calories</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100 bg-white dark:divide-slate-800 dark:bg-slate-950">
-              <tr><th scope="row" className="px-4 py-3 font-semibold">Banana</th><td className="px-4 py-3">1 medium</td><td className="px-4 py-3">~105</td></tr>
-              <tr><th scope="row" className="px-4 py-3 font-semibold">Egg</th><td className="px-4 py-3">1 large</td><td className="px-4 py-3">~70</td></tr>
-              <tr><th scope="row" className="px-4 py-3 font-semibold">Milk</th><td className="px-4 py-3">1 cup (whole)</td><td className="px-4 py-3">~150</td></tr>
-              <tr><th scope="row" className="px-4 py-3 font-semibold">Bread</th><td className="px-4 py-3">1 slice</td><td className="px-4 py-3">~80</td></tr>
-              <tr><th scope="row" className="px-4 py-3 font-semibold">Cooked rice</th><td className="px-4 py-3">1 cup</td><td className="px-4 py-3">~205</td></tr>
-              <tr><th scope="row" className="px-4 py-3 font-semibold">Oats</th><td className="px-4 py-3">½ cup dry</td><td className="px-4 py-3">~150</td></tr>
-            </tbody>
-          </table>
-        </div>
+        <ul>
+          <li>
+            <strong>Confusing cal with kcal:</strong> One kcal equals 1,000
+            small calories, not one small calorie.
+          </li>
+          <li>
+            <strong>Missing the uppercase C:</strong> A dietary Calorie (Cal)
+            equals one kcal, while a scientific small calorie is written cal.
+          </li>
+          <li>
+            <strong>Mixing kcal with kJ:</strong> Multiply kcal by 4.184 to
+            get kJ, or divide kJ by 4.184 to get kcal.
+          </li>
+          <li>
+            <strong>Ignoring serving size:</strong> Food-label Calories are
+            generally listed per serving, not necessarily per package.
+          </li>
+        </ul>
 
         <DataTable
           title="Energy Conversion Equivalents Reference Table"
-          caption="Comparative energy values across international scientific and dietary units."
-          headers={["Dietary Energy", "Kilocalories (kcal)", "Small Calories (cal)", "Kilojoules (kJ)", "Common Context"]}
-          rows={comparisonRows}
+          caption="Common energy values expressed in dietary Calories, kilocalories, small calories, and kilojoules."
+          headers={[
+            "Energy Value",
+            "Kilocalories (kcal)",
+            "Small Calories (cal)",
+            "Kilojoules (kJ)",
+          ]}
+          rows={[
+            ["1 Dietary Calorie", "1 kcal", "1,000 cal", "4.184 kJ"],
+            ["100 Calories", "100 kcal", "100,000 cal", "418.4 kJ"],
+            ["250 Calories", "250 kcal", "250,000 cal", "1,046 kJ"],
+            ["259 Calories", "259 kcal", "259,000 cal", "1,083.66 kJ"],
+            ["500 Calories", "500 kcal", "500,000 cal", "2,092 kJ"],
+            ["1,000 Calories", "1,000 kcal", "1,000,000 cal", "4,184 kJ"],
+          ]}
           highlightColumnIndex={1}
         />
 
-        <p>
-          The 3,500 kcal-per-pound figure is a traditional approximation, not an exact biological rule. A daily 500 kcal deficit does not guarantee exactly one pound of weight loss each week; actual changes vary over time.
-        </p>
-
-        <p>
-          To estimate energy used during a workout, visit our homepage{" "}
-          <Link href="/" className="font-bold text-emerald-600 underline">
-            walking calorie calculator
-          </Link>.
-        </p>
-
         <h2>Scientific and Labeling References</h2>
+
         <ul>
-            <li><a href="https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b8" target="_blank" rel="noopener noreferrer">NIST conversion factors for non-SI units</a> — calorie and joule conversion references.</li>
-            <li><a href="https://www.fda.gov/food/nutrition-facts-label/how-understand-and-use-nutrition-facts-label" target="_blank" rel="noopener noreferrer">U.S. FDA: How to Understand and Use the Nutrition Facts Label</a> — serving size, Calories, and %DV.</li>
-            <li><a href="https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-101/section-101.9" target="_blank" rel="noopener noreferrer">21 CFR § 101.9</a> — U.S. nutrition labeling requirements and energy calculation methods.</li>
-            <li><a href="https://fdc.nal.usda.gov/" target="_blank" rel="noopener noreferrer">USDA FoodData Central</a> — nutrient data for generic foods and common serving sizes.</li>
+          <li>
+            <a
+              href="https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b8"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              NIST conversion factors for non-SI units
+            </a>{" "}
+            — reference information for converting energy units.
+          </li>
+
+          <li>
+            <a
+              href="https://www.fda.gov/food/nutrition-facts-label/how-understand-and-use-nutrition-facts-label"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              U.S. FDA: How to Understand and Use the Nutrition Facts Label
+            </a>{" "}
+            — serving sizes, Calories, and %DV.
+          </li>
+
+          <li>
+            <a
+              href="https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-101/section-101.9"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              21 CFR § 101.9
+            </a>{" "}
+            — US nutrition labeling requirements and energy calculations.
+          </li>
         </ul>
+
+        <p>
+          To estimate energy used during a walk, visit our{" "}
+          <Link
+            href="/"
+            className="font-bold text-emerald-600 underline"
+          >
+            Walking Calorie Calculator
+          </Link>
+          . For step-based activity estimates, try the{" "}
+          <Link
+            href="/steps-to-calories-calculator"
+            className="font-bold text-emerald-600 underline"
+          >
+            Steps to Calories Calculator
+          </Link>
+          .
+        </p>
       </div>
 
       <FAQSection faqs={faqs} />
