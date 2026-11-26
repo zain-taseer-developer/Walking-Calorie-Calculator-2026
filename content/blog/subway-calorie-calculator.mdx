@@ -1,0 +1,186 @@
+---
+title: "Subway Calorie Calculator: Calories & Walking Time"
+seoTitle: "Subway Calorie Calculator: Calories & Walking Time"
+slug: "subway-calorie-calculator"
+description: "Free Subway calorie calculator. Add your order to see calories, protein, carbs and fat, plus the minutes, miles and steps of walking that equal your meal."
+category: "Calories & Nutrition"
+tags:
+  [
+    "subway calories",
+    "fast food calories",
+    "walking equivalent",
+    "steps to calories",
+    "meal calculator",
+  ]
+publishedAt: "2026-11-26"
+updatedAt: "2026-11-26"
+author: "Zain Taseer"
+authorBio: "Walking and fitness calculators built on MET values from the 2024 Adult Compendium."
+draft: false
+relatedPosts:
+  [
+    "calories-per-gram-protein-carbs-fat",
+    "how-many-calories-in-a-pound-of-fat",
+    "how-many-calories-does-walking-10000-steps-burn",
+    "active-vs-total-calories-difference",
+  ]
+faq:
+  - question: "How many calories are in a 6-inch Subway sandwich?"
+    answer: "Most 6-inch Subway sandwiches on standard bread land between 270 and 670 calories. A 6-inch Oven Roasted Turkey is 270 kcal, a 6-inch Veggie Delite is 310 kcal, a 6-inch B.M.T. is 590 kcal, and a 6-inch Spicy Italian is 660 kcal. Values come from the official Subway US nutrition information (October 2026) and assume standard bread, cheese and vegetables."
+  - question: "How long do I have to walk to equal a Subway footlong?"
+    answer: "A typical Subway footlong contains roughly double the calories of the matching 6-inch sandwich, so most footlongs fall between 540 and 1,340 calories. At a brisk 3.5 mph pace, a 160 lb person walks about 4.6 kcal per minute net, which means a 940-calorie footlong Oven Roasted Turkey equals roughly 204 minutes of walking — about 11.9 miles or 26,500 steps. Lighter footlongs like the Veggie Delite (620 kcal) equal about 135 minutes."
+  - question: "How many steps equal 500 calories from Subway?"
+    answer: "For a 160 lb person walking at 3.5 mph, 500 calories equals about 109 minutes of walking, 6.3 miles, and roughly 14,100 steps. Steps scale with your height because stride length is estimated from height, and minutes scale with your body weight because the net calorie formula is (MET − 1) × weight in kilograms ÷ 60."
+  - question: "Is the Subway calculator accurate?"
+    answer: "The nutrition side uses the official Subway US nutrition chart (October 2026), so item calories, macros, sodium and fiber are as accurate as Subway's published standard recipes. The walking side uses MET values from the 2024 Adult Compendium of Physical Activities with linear interpolation between speeds, the same engine as our main walking calorie calculator. Real-world burn varies a few percent either way with terrain, grade and individual metabolism."
+  - question: "Does walking speed change the walking equivalent?"
+    answer: "Yes, significantly. At 3.5 mph (4.8 MET) a 160 lb person burns about 4.6 net kcal per minute, but at 2.5 mph (3.0 MET) only about 2.3 net kcal per minute — so the same 400-calorie order takes about 87 minutes at 3.5 mph versus about 174 minutes at 2.5 mph. Faster speeds cover the distance in less time, though miles stay similar because more calories are spent per mile at higher speeds."
+  - question: "What is the lowest-calorie thing at Subway?"
+    answer: "Among full sandwiches, the Fresh Fit 6-inch Veggie Delite is the lowest at 220 calories, followed by the Fresh Fit Oven Roasted Turkey at 270 calories. Individual add-ons are even lighter: yellow mustard is 10 kcal, a cookie is 200–210 kcal, and most vegetables are 0 to 5 calories per serving. Broth-based Chicken Noodle Soup is just 70 calories per 8 oz bowl."
+  - question: "Do I need to walk off what I eat?"
+    answer: "No. Your body already spends energy digesting and absorbing food, keeping your heart beating, and maintaining body temperature all day — the walking equivalent is simply a way to put a meal's energy in familiar units. Food is fuel, and one meal does not decide your health. Use the numbers to understand portions and stay active in a way you enjoy, not as a punishment or a debt to repay."
+  - question: "Are Subway deals and combos included in the calculator?"
+    answer: "The calculator includes a Deals & Combos category, and its rows are clearly marked as pending until the official nutrition values for each current US deal are added. In the meantime, you can build any deal yourself by adding the sandwich, drink, cookie or chips it contains, or use the Add custom item row with the calories printed on Subway's packaging or menu boards."
+  - question: "Is this calculator affiliated with Subway?"
+    answer: "No. This website is not affiliated with, endorsed, or sponsored by Subway®. All trademarks are property of their respective owners. Nutrition values are transcribed from Subway's publicly available US nutrition information document for educational use."
+---
+
+The **Subway calorie calculator** below lets you build any order — sandwiches, wraps, salads, protein bowls, sides and sauces — and instantly see its calories and macros, plus the minutes, miles and steps of walking that match it, personalised to your weight, height and pace.
+
+_Not affiliated with Subway®. US menu._
+
+<SubwayCalorieCalculator />
+
+## How to Use the Subway Calorie Calculator
+
+1. **Build your order.** Pick a menu category (including "Deals & Combos"), search for an item, and press Add. Use the plus/minus buttons to set quantity or the trash icon to remove an item. Anything missing — a regional special, a limited-time deal — can be added with the **Add custom item** row (name and calories; protein, carbs and fat are optional).
+2. **Read your order nutrition.** The totals panel shows calories, protein, carbs, fat, sodium and fiber for the whole order, and the per-item breakdown lists what each line contributes, including its own walking equivalent.
+3. **Enter your details.** Body weight, height (for stride length) and walking speed — nothing else. Switch between imperial and metric units with the toggle at the top.
+4. **See your walking equivalent.** The result shows minutes (also as h:min), miles, kilometers and steps for the whole order. Everything updates live — there is no submit button. Use **Copy Results** to save the numbers, **Reset** to start over, or **Open Full Calculator** for incline, terrain and duration-based calculations.
+
+## How the Walking Equivalent Is Calculated
+
+The calculator reuses the same engine as our [walking calorie calculator](/) and [steps to calories](/steps-to-calories-calculator) tools, which is built on the 2024 Adult Compendium of Physical Activities:
+
+- **MET value:** each speed maps to a metabolic equivalent (MET) from the Compendium, with linear interpolation between reference points (2.0 mph = 2.8 MET, 3.5 mph = 4.8 MET, 5.0 mph = 8.5 MET).
+- **Net calories per minute:** (MET − 1) × weight in kilograms ÷ 60. Subtracting 1 MET removes resting metabolism, so the result counts only the energy of the movement itself — the same "net" convention as our main calculator. A Gross/Net toggle lets you see both.
+- **Distance and steps:** miles = speed × minutes ÷ 60; km = miles × 1.609344; steps = miles × steps per mile, where steps per mile comes from your height (stride ≈ height × 0.414, the same function used across the site).
+
+In formula form:
+
+$$\text{Minutes} = \frac{\text{Meal kcal}}{(\text{MET} - 1) \times \text{weight}_{kg} / 60}$$
+
+### Worked Example
+
+A 6-inch Sweet Onion Chicken Teriyaki® is **430 kcal**. For a **160 lb (72.6 kg)** person at **3.5 mph**:
+
+- Net kcal/min = (4.8 − 1) × 72.6 ÷ 60 = **4.6 kcal/min**
+- Minutes = 430 ÷ 4.6 = **94 minutes** (1 h 34 min)
+- Miles = 3.5 × 94 ÷ 60 = **5.5 miles** (8.8 km)
+- Steps = 5.5 × ~2,220 steps/mile (at 5'9") = **~12,150 steps**
+
+That is slightly more than the classic 10,000-step day. The same sandwich at a casual 2.5 mph pace takes about 188 minutes, because the MET drops to 3.0 and each minute spends fewer calories.
+
+## Walking Equivalent Quick Reference
+
+Calories to walking at a **brisk 3.5 mph** pace for a **160 lb** person (net values):
+
+| Meal Calories | Minutes | Miles   | Kilometers | Steps (~) |
+| ------------- | ------- | ------- | ---------- | --------- |
+| 100 kcal      | 22 min  | 1.3 mi  | 2.0 km     | 2,800     |
+| 200 kcal      | 44 min  | 2.5 mi  | 4.1 km     | 5,600     |
+| 300 kcal      | 65 min  | 3.8 mi  | 6.1 km     | 8,500     |
+| 400 kcal      | 87 min  | 5.1 mi  | 8.2 km     | 11,300    |
+| 500 kcal      | 109 min | 6.4 mi  | 10.2 km    | 14,100    |
+| 600 kcal      | 131 min | 7.6 mi  | 12.3 km    | 16,900    |
+| 700 kcal      | 152 min | 8.9 mi  | 14.3 km    | 19,800    |
+| 800 kcal      | 174 min | 10.2 mi | 16.3 km    | 22,600    |
+
+For what a calorie actually is (and why food calories and exercise calories are the same unit), see our [calories vs kcal guide](/calories-vs-kcal).
+
+## Walking Time by Body Weight
+
+Heavier bodies spend more energy per minute, so the same meal equals less walking time. Table below: **500 kcal** at **3.5 mph**, height 5'9" for steps:
+
+| Body Weight | Minutes | Miles  | Steps (~) |
+| ----------- | ------- | ------ | --------- |
+| 120 lbs     | 145 min | 8.5 mi | 18,900    |
+| 140 lbs     | 124 min | 7.2 mi | 16,100    |
+| 160 lbs     | 109 min | 6.4 mi | 14,100    |
+| 180 lbs     | 97 min  | 5.7 mi | 12,600    |
+| 200 lbs     | 87 min  | 5.1 mi | 11,300    |
+| 220 lbs     | 79 min  | 4.6 mi | 10,200    |
+| 250 lbs     | 70 min  | 4.1 mi | 9,000     |
+
+Notice that minutes and miles move together, while steps stay in the same order of magnitude — a lighter person covers the calories with more minutes but the same stride-based step count per mile. Your pace matters more than anything: see our [walking pace calculator](/walking-pace-calculator) to find your speed.
+
+## 6-Inch vs Footlong: Calories and Walking Time
+
+Subway publishes footlong values as exactly double the 6-inch serving, so the walking equivalent doubles too — the cleanest illustration of how portions scale:
+
+| Sandwich              | 6" Calories | 6" Walking (160 lb, 3.5 mph)     | Footlong Calories | Footlong Walking                  |
+| --------------------- | ----------- | -------------------------------- | ----------------- | --------------------------------- |
+| Oven-Roasted Turkey   | 470 kcal    | 102 min · 6.0 mi · ~13,250 steps | 940 kcal          | 204 min · 11.9 mi · ~26,500 steps |
+| Veggie Delite®        | 310 kcal    | 67 min · 3.9 mi · ~8,700 steps   | 620 kcal          | 135 min · 7.9 mi · ~17,500 steps  |
+| B.M.T.®               | 590 kcal    | 128 min · 7.5 mi · ~16,600 steps | 1,180 kcal        | 257 min · 15.0 mi · ~33,200 steps |
+| Chicken & Bacon Ranch | 580 kcal    | 126 min · 7.4 mi · ~16,300 steps | 1,160 kcal        | 252 min · 14.7 mi · ~32,700 steps |
+
+If you have converted distances before, our [steps to miles calculator](/steps-to-miles-calculator) shows the same stride math in reverse.
+
+## Where the Calories in a Subway Order Come From
+
+Subway builds calories from four places, and knowing the split makes the menu easier to navigate:
+
+- **Bread:** the base of every sub. A 6" Artisan Italian is 210 kcal and a 6" Hearty Multigrain is 200 kcal — bread alone is often 40% of a light sandwich's calories.
+- **Protein:** surprisingly lean for most meats. Oven-Roasted Turkey adds just 50 kcal per 6" portion and Grilled Chicken 80 kcal, while Meatballs (250 kcal) and Tuna (250 kcal, from mayonnaise) carry far more energy density.
+- **Cheese:** 80–110 kcal per serving (American 80, Provolone 90, Pepperjack 100, Monterey Cheddar 110). A single cheese slice typically adds 15–25 minutes of walking at 3.5 mph for a 160 lb person.
+- **Sauces:** the quiet calorie bomb. Mayonnaise is 100 kcal per serving and Baja Chipotle 70 kcal, while yellow mustard is 10 kcal and most vegetables are 0–5 kcal. Two mayo servings can add more calories than the turkey itself.
+
+A 6" sandwich with lean protein, one cheese, mustard and loaded vegetables lands near 400–500 kcal; the same bread and protein with mayo, double cheese, a cookie (210 kcal) and hash browns (190 kcal) doubles the order without looking much bigger.
+
+## Easy Ways to Compare Your Subway Options
+
+Because the calculator updates live, use it as a comparison tool rather than a single lookup:
+
+- **Swap the bread:** multigrain instead of Italian Herbs & Cheese saves 50 kcal per 6-inch (about 11 walking minutes at 3.5 mph).
+- **Swap the sauce:** mustard instead of mayonnaise saves 90 kcal per serving (~20 walking minutes) with almost no flavor cost.
+- **Compare formats:** the same Grilled Chicken build runs 300 kcal as a Fresh Fit 6-inch, 450 kcal as a salad, 620 kcal extra calories come from the larger tortilla.
+- **Check sodium, not just calories:** several wraps and bowls exceed 2,000 mg sodium, the full daily target for many adults, while Fresh Fit 6-inch subs stay near 600–850 mg.
+- **Watch portion multipliers:** footlongs, 12" wraps and double-meat options multiply every line item — the per-item breakdown shows exactly which item drives the total.
+
+## Subway Menu Nutrition Table
+
+The full US nutrition chart is reproduced below, searchable. Use it to verify any item before adding it to the calculator. Footlong values are double the 6-inch serving unless noted.
+
+<BrandMenuTable />
+
+## Lower-Calorie Subway Order Ideas
+
+- **Fresh Fit builds (270–310 kcal):** a 6" multigrain with Oven Roasted Turkey, mustard and all the vegetables — about 59–67 walking minutes for a 160 lb person.
+- **Protein bowl (540–620 kcal):** skip the bread entirely; a Turkey or Grilled Chicken bowl keeps protein high (37–48 g) and carbs near 10–13 g.
+- **Broth-based soup + mini sub:** Chicken Noodle Soup (70 kcal) plus a Kids' Turkey Mini (170 kcal) makes a ~240 kcal meal — about 52 walking minutes.
+- **Lean 6-inch, no cheese:** dropping cheese from a Turkey sub saves 80 kcal and 420 mg sodium per serving.
+- **Veggie-forward Delite (310 kcal):** the lowest full-size 6-inch, and the vegetables add fiber that keeps you full.
+
+These ideas follow the same energy-balance logic as our guide on [how many calories are in a pound of fat](/blog/how-many-calories-in-a-pound-of-fat) — small, repeatable differences matter more than any single meal.
+
+## Practical Takeaways
+
+- **Use the walking equivalent as a unit of measure, not a debt.** 400 kcal ≈ 87 brisk minutes for a 160 lb adult is a useful sense of scale.
+- **Protein is your friend:** turkey, grilled chicken and roast beef add volume and satiety for 50–90 kcal per 6-inch portion.
+- **Sauces and cheese are where orders quietly grow:** mayo (100) + cheddar (110) doubles a lean sandwich's add-on load.
+- **Footlongs are two meals:** a 1,000+ kcal footlong equals roughly 22,000+ steps for an average adult — split it or log it accurately.
+- **Consistency beats precision:** a daily 30-minute walk at 3.5 mph is ~138 kcal net for a 160 lb walker, about 50,000 kcal a year.
+
+## Scientific References, Methodology & Disclaimer
+
+**Methodology.** Nutrition values are transcribed from the official Subway US nutrition information (October 2026), compiled by a registered dietitian from approved food manufacturer data, independent laboratory analysis and the USDA Nutrient Database for Standard Reference; values reflect standard recipes and may vary by region and assembly. Walking estimates use MET values from the 2024 Adult Compendium of Physical Activities with linear interpolation, net energy = (MET − 1) × body mass in kg × duration in hours, and stride length = height × 0.414 for steps-per-mile conversion — identical to the method used across this website.
+
+**References.**
+
+1. Ainsworth BE, et al. _2024 Adult Compendium of Physical Activities._ Med Sci Sports Exerc.
+2. Subway® U.S. Nutrition Information, October 2026 (public document).
+3. Hall KD, et al. _Calorie for Calorie, Dietary Fat Restriction Results in More Body Fat Loss than Carbohydrate Restriction in People with Obesity._ Cell Metabolism. 2015;22(3):427-436.
+4. U.S. Department of Agriculture, FoodData Central / Nutrient Database for Standard Reference.
+
+**Disclaimer.** This website is not affiliated with, endorsed, or sponsored by Subway®. All trademarks are property of their respective owners. No Subway logos or official images are used. Nutrition values may change without notice; check Subway's current published information before relying on them. Walking estimates are general guidance, not medical or dietary advice — consult a healthcare professional for personal recommendations.

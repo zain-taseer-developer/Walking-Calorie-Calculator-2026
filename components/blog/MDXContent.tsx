@@ -8,6 +8,8 @@ import { DataTable } from "@/components/content/DataTable";
 import { AdSlot } from "@/components/ads/AdSlot";
 import { RelatedTools } from "@/components/content/RelatedTools";
 import { HomeWalkTracker } from "@/components/calculator/HomeWalkTracker";
+import { SubwayCalorieCalculator } from "@/components/calculator/SubwayCalorieCalculator";
+import { BrandMenuTable } from "@/components/content/BrandMenuTable";
 
 export function MDXContent({ content }: { content: string }) {
   // Normalize line endings and split content by double newlines to process paragraphs and interactive components
@@ -36,6 +38,14 @@ export function MDXContent({ content }: { content: string }) {
 
         if (trimmed === "<HomeWalkTracker />") {
           return <HomeWalkTracker key={index} />;
+        }
+
+        if (trimmed === "<SubwayCalorieCalculator />") {
+          return <SubwayCalorieCalculator key={index} />;
+        }
+
+        if (trimmed === "<BrandMenuTable />") {
+          return <BrandMenuTable key={index} />;
         }
 
         if (trimmed.startsWith("<HomeWalkImagePlaceholder")) {
