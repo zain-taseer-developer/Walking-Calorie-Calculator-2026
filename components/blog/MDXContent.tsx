@@ -115,7 +115,10 @@ export function MDXContent({ content }: { content: string }) {
 
         // 6. Unordered List
         if (trimmed.startsWith("- ") || trimmed.startsWith("* ")) {
-          const items = trimmed.split(/\n[-*]\s+/).filter(Boolean);
+          const items = trimmed
+            .split(/\n[-*]\s+/)
+            .map((i) => i.replace(/^[-*]\s+/, ""))
+            .filter(Boolean);
           return (
             <ul key={index} className="my-5 list-outside list-disc space-y-2 pl-6 marker:text-brand-500">
               {items.map((item, itemIdx) => (
@@ -127,7 +130,10 @@ export function MDXContent({ content }: { content: string }) {
 
         // 7. Ordered List
         if (/^\d+\.\s+/.test(trimmed)) {
-          const items = trimmed.split(/\n\d+\.\s+/).filter(Boolean);
+          const items = trimmed
+            .split(/\n\d+\.\s+/)
+            .map((i) => i.replace(/^\d+\.\s+/, ""))
+            .filter(Boolean);
           return (
             <ol key={index} className="my-5 list-outside list-decimal space-y-2 pl-6 marker:font-semibold marker:text-brand-600 dark:marker:text-brand-400">
               {items.map((item, itemIdx) => (

@@ -5,8 +5,7 @@
  * recipes and formulations and may vary by location.
  *
  * IMPORTANT: Every value below is transcribed from the official Subway US
- * nutrition document. Rows marked with TODO are placeholders awaiting official
- * data — do not guess numbers.
+ * nutrition document. No placeholder or estimated rows are included.
  *
  * This file is not affiliated with, endorsed, or sponsored by Subway®.
  */
@@ -342,14 +341,6 @@ export const subwayMenu: BrandMenu = {
         S('Broccoli Cheddar Soup (8 oz.)', 227, 200, 9, 16, 13, 960, 1),
         S('Chicken Noodle Soup (8 oz.)', 227, 70, 7, 6, 3, 1160, 1),
         S('Loaded Baked Potato with Bacon Soup (8 oz.)', 227, 200, 9, 17, 14, 910, 1),
-      ],
-    },
-    {
-      id: "deals-combos",
-      label: "Deals & Combos",
-      items: [
-        // TODO: awaiting official Subway US deal/combo contents and nutrition values.
-        { name: "TODO: Deal / combo name", serving: "TODO", calories: 0, protein: 0, carbs: 0, fat: 0, sodium: 0, fiber: 0, isPlaceholder: true },
       ],
     },
   ],

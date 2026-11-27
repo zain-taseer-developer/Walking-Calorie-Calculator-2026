@@ -26,7 +26,7 @@ relatedPosts:
   ]
 faq:
   - question: "How many calories are in a 6-inch Subway sandwich?"
-    answer: "Most 6-inch Subway sandwiches on standard bread land between 270 and 670 calories. A 6-inch Oven Roasted Turkey is 270 kcal, a 6-inch Veggie Delite is 310 kcal, a 6-inch B.M.T. is 590 kcal, and a 6-inch Spicy Italian is 660 kcal. Values come from the official Subway US nutrition information (October 2026) and assume standard bread, cheese and vegetables."
+    answer: "Most standard 6-inch Subway sandwiches on standard bread land between 310 and 670 calories — the Veggie Delite® is 310 kcal, the Oven-Roasted Turkey is 470 kcal, the B.M.T.® is 590 kcal and the Spicy Italian is 660 kcal. The lighter Fresh Fit® builds (multigrain + veggies) run 220–310 kcal, with the Fresh Fit Oven Roasted Turkey at 270 kcal. Values come from the official Subway US nutrition information (October 2026)."
   - question: "How long do I have to walk to equal a Subway footlong?"
     answer: "Most footlongs fall between 540 and 1,340 calories, and a 940-calorie footlong Oven Roasted Turkey equals about 204 brisk walking minutes for a 160 lb person — roughly 11.9 miles or 26,500 steps. The full 6-inch vs footlong table below shows more examples."
   - question: "How many steps equal 500 calories from Subway?"
@@ -40,20 +40,20 @@ faq:
   - question: "Do I need to walk off what I eat?"
     answer: "No. Your body already spends energy digesting and absorbing food, keeping your heart beating, and maintaining body temperature all day — the walking equivalent is simply a way to put a meal's energy in familiar units. Food is fuel, and one meal does not decide your health. Use the numbers to understand portions and stay active in a way you enjoy, not as a punishment or a debt to repay."
   - question: "Are Subway deals and combos included in the calculator?"
-    answer: "The calculator includes a Deals & Combos category, and its rows are clearly marked as pending until the official nutrition values for each current US deal are added. In the meantime, you can build any deal yourself by adding the sandwich, drink, cookie or chips it contains, or use the Add custom item row with the calories printed on Subway's packaging or menu boards."
+    answer: "No. Deals change too often for the fixed nutrition chart to keep up. Build any deal yourself by adding the sandwich, drink, cookie or chips it contains, or use the Add custom item row with the calories printed on Subway's packaging or menu boards."
   - question: "Is this calculator affiliated with Subway?"
     answer: "No. This website is not affiliated with, endorsed, or sponsored by Subway®. All trademarks are property of their respective owners. Nutrition values are transcribed from Subway's publicly available US nutrition information document for educational use."
 ---
 
 The **Subway calorie calculator** below lets you build any order — sandwiches, wraps, salads, protein bowls, sides and sauces — and instantly see its calories and macros, plus the minutes, miles and steps of walking that match it, personalised to your weight, height and pace.
 
-_Not affiliated with Subway®. US menu._
+*Not affiliated with Subway®. US menu.*
 
 <SubwayCalorieCalculator />
 
 ## How to Use the Subway Calorie Calculator
 
-1. **Build your order.** Pick a menu category (including "Deals & Combos"), search for an item, and press Add. Use the plus/minus buttons to set quantity or the trash icon to remove an item. Anything missing — a regional special, a limited-time deal — can be added with the **Add custom item** row (name and calories; protein, carbs and fat are optional).
+1. **Build your order.** Pick a menu category, search for an item, and press Add. Use the plus/minus buttons to set quantity or the trash icon to remove an item. Anything missing — a regional special, a limited-time deal — can be added with the **Add custom item** row (name and calories; protein, carbs and fat are optional).
 2. **Read your order nutrition.** The totals panel shows calories, protein, carbs, fat, sodium and fiber for the whole order, and the per-item breakdown lists what each line contributes, including its own walking equivalent.
 3. **Enter your details.** Body weight, height (for stride length) and walking speed — nothing else. Switch between imperial and metric units with the toggle at the top.
 4. **See your walking equivalent.** The result shows minutes (also as h:min), miles, kilometers and steps for the whole order. Everything updates live — there is no submit button. Use **Copy Results** to save the numbers, **Reset** to start over, or **Open Full Calculator** for incline, terrain and duration-based calculations.
@@ -62,7 +62,7 @@ _Not affiliated with Subway®. US menu._
 
 The calculator reuses the same engine as our [walking calorie calculator](/) and [steps to calories](/steps-to-calories-calculator) tools, built on the 2024 Adult Compendium of Physical Activities. Each speed maps to a MET value (2.0 mph = 2.8, 3.5 mph = 4.8, 5.0 mph = 8.5, with linear interpolation in between), and net calories per minute are (MET − 1) × weight in kg ÷ 60 — subtracting 1 MET removes resting metabolism. A Gross/Net toggle shows both. Distance is speed × minutes, and steps come from stride length ≈ height × 0.414.
 
-$$\text{Minutes} = \frac{\text{Meal kcal}}{(\text{MET} - 1) \times \text{weight}_{kg} / 60}$$
+Minutes = Meal kcal ÷ [(MET − 1) × weight in kg ÷ 60]
 
 ### Worked Example
 
@@ -158,18 +158,18 @@ These ideas follow the same energy-balance logic as our guide on [how many calor
 ## Practical Takeaways
 
 - **Use the walking equivalent as a unit of measure, not a debt.** 400 kcal ≈ 87 brisk minutes for a 160 lb adult is a useful sense of scale.
-- **Footlongs are two meals:** a 1,000+ kcal footlong equals roughly 22,000+ steps for an average adult — split it or log it accurately.
+- **Footlongs are two meals:** a 1,160-kcal footlong Chicken & Bacon Ranch equals roughly 32,700 steps for a 160 lb adult — split it or log it accurately.
 - **Consistency beats precision:** a daily 30-minute walk at 3.5 mph is ~138 kcal net for a 160 lb walker, about 50,000 kcal a year.
 
 ## Scientific References, Methodology & Disclaimer
 
-**Methodology.** Nutrition values are transcribed from the official Subway US nutrition information (October 2026), compiled from approved food manufacturer data, independent laboratory analysis and the USDA Nutrient Database for Standard Reference; values reflect standard recipes and may vary by region and assembly. Walking estimates follow the MET-based method described above, identical to the one used across this website.
+**Methodology.** Nutrition values are transcribed from the official Subway US nutrition information (October 2026); they reflect standard recipes and may vary by region and assembly. Walking estimates follow the MET-based method described above, identical to the one used across this website.
 
 **References.**
 
-1. Ainsworth BE, et al. _2024 Adult Compendium of Physical Activities._ Med Sci Sports Exerc.
+1. Ainsworth BE, et al. *2024 Adult Compendium of Physical Activities.* Med Sci Sports Exerc.
 2. Subway® U.S. Nutrition Information, October 2026 (public document).
-3. Hall KD, et al. _Calorie for Calorie, Dietary Fat Restriction Results in More Body Fat Loss than Carbohydrate Restriction in People with Obesity._ Cell Metabolism. 2015;22(3):427-436.
+3. Hall KD, et al. *Calorie for Calorie, Dietary Fat Restriction Results in More Body Fat Loss than Carbohydrate Restriction in People with Obesity.* Cell Metabolism. 2015;22(3):427-436.
 4. U.S. Department of Agriculture, FoodData Central / Nutrient Database for Standard Reference.
 
 **Disclaimer.** This website is not affiliated with, endorsed, or sponsored by Subway®. All trademarks are property of their respective owners. No Subway logos or official images are used. Nutrition values may change without notice; check Subway's current published information before relying on them. Walking estimates are general guidance, not medical or dietary advice — consult a healthcare professional for personal recommendations.
